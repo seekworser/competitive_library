@@ -22,6 +22,8 @@ public:
     vector<Edge> E;
     vector<int> I;
     int n;
+    Graph() : n(0) {}
+    Graph(int _n) : n(_n) {}
     Graph(int _n, const vector<int>& from, vector<int>& to, vector<Cost>& cost, bool rev = false) : n(_n) {
         vector<int> buf(n+1, 0);
         for(int i=0; i<(int)from.size(); i++){

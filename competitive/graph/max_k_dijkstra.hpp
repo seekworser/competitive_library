@@ -1,3 +1,5 @@
+#ifndef COMPETITIVE_GRAPH_MAXKDIJKSTRA_HPP
+#define COMPETITIVE_GRAPH_MAXKDIJKSTRA_HPP 1
 #include <competitive/std/std.hpp>
 #include <competitive/graph/graph.hpp>
 template<class Cost> void max_k_dijkstra(const Graph<Cost>& G, int start, int k, vector<Cost> &min_cost, vector<int> &prev, Cost inf=INF, Cost identity=0){
@@ -35,3 +37,4 @@ template<class Cost> void max_k_dijkstra(const Graph<Cost>& G, int start, int k,
     }
     return;
 }
+#endif // COMPETITIVE_GRAPH_MAXKDIJKSTRA_HPP
