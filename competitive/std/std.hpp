@@ -67,7 +67,7 @@ void debug_func(const T &...) {}
 #endif
 
 // modでのpow
-ll powm(ll a, ll n, ll mod=MODINT1000000007) {
+ll powm(ll a, ll n, ll mod=INFL) {
     ll res = 1;
     while (n > 0) {
         if (n & 1) res = (res * a) % mod;
