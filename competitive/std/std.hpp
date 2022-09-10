@@ -84,6 +84,7 @@ int digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return r
 template <class T, class U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is; }
 template <class T> inline istream& operator>>(istream& is, vector<T>& v) { repe(x, v) is >> x; return is; }
 template <class T, class U> inline ostream& operator<<(ostream& os, pair<T, U>& p) { os << p.first << " " << p.second; return os; }
+template <class T, class U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first << " " << p.second; return os; }
 template <class T> inline ostream& operator<<(ostream& os, vector<T>& v) {
     rep(i, sz(v)) {
         os << v.at(i);
