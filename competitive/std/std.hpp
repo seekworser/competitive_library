@@ -46,9 +46,28 @@ struct fast_io { fast_io() { cin.tie(nullptr); ios::sync_with_stdio(false); cout
 #define sdiv(n, m) (((n) - smod(n, m)) / (m)) // 非負div
 #define uniq(a) {sort(all(a)); (a).erase(unique(all(a)), (a).end());} // 重複除去
 #define EXIT(a) {cout << (a) << endl; exit(0);} // 強制終了
+#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) // debug print
+#ifdef LOCAL_TEST
+template <typename T>
+void debug_func(int i, T name) {
+    (void)i;
+    (void)name;
+    cerr << endl;
+}
+template <typename T1, typename T2, typename... T3>
+void debug_func(int i, const T1 &name, const T2 &a, const T3 &...b) {
+  for ( ; name[i] != ',' && name[i] != '\0'; i++ ) cerr << name[i];
+  cerr << ":" << a << " ";
+  debug_func(i + 1, name, b...);
+}
+#endif
+#ifndef LOCAL_TEST
+template <typename... T>
+void debug_func(const T &...) {}
+#endif
 
 // modでのpow
-ll powm(ll a, ll n, ll mod=1000000007LL) {
+ll powm(ll a, ll n, ll mod=MODINT1000000007) {
     ll res = 1;
     while (n > 0) {
         if (n & 1) res = (res * a) % mod;
