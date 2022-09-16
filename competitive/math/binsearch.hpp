@@ -13,11 +13,11 @@ template <class T> T binsearch(T s, T e, std::function<bool(T)> le) {
     return cmin;
 }
 //s~eでle(ans) = trueとなる最大のansを返す
-template <class T> T binsearch_double(T s, T e, std::function<bool(T)> le, double eps=1e-10) {
-    T cmin = s;
-    T cmax = e;
+template <class F> double binsearch_double(double s, double e, F le, double eps=1e-10) {
+    double cmin = s;
+    double cmax = e;
     while (abs(cmax - cmin) > eps) {
-        T p = (cmin + cmax) / 2;
+        double p = (cmin + cmax) / 2;
         if (le(p)) cmin = p;
         else cmax = p;
     }
