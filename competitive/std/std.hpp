@@ -23,7 +23,7 @@ template <class T> using priority_queue_rev = priority_queue<T, vector<T>, great
 
 // 定数の定義
 const double PI = acos(-1);
-int INF = 100100100; ll INFL = 4004004004004004004LL;
+int INF = 100100111; ll INFL = 3300300300300300491LL;
 double EPS = 1e-16;
 constexpr int MODINT998244353 = 998244353;
 constexpr int MODINT1000000007 = 1000000007;

@@ -3,11 +3,10 @@
 #include <competitive/std/std.hpp>
 template <class T> bool is_prime(T n) {
     if (n == 1) return false;
-    bool ans = true;
     for (T i=2; i <= (T)std::sqrt(n); i++) {
-        if (n % i == 0) ans = false;
+        if (n % i == 0) return false;
     }
-    return ans;
+    return true;
 };
 //return all devisor
 template <class T> vector<T> divisor(T n, bool sorted=true) {
