@@ -17,5 +17,7 @@ jobs:
       run: pip3 install -U online-judge-verify-helper
 
     - name: Run tests
+      env:
+        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
       run: oj-verify run
       working-directory: ./test
