@@ -1,0 +1,3 @@
+[[languages.cpp.environments]]
+CXX = "g++-12"
+CXXFLAGS = ["-std=c++17", "-I", "../"]
