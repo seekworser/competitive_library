@@ -23,4 +23,4 @@ jobs:
       env:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
       run: oj-verify run -j 4 --tle --timeout 10
-      working-directory: ./onlie_test
+      working-directory: online_test
