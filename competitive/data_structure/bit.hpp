@@ -16,7 +16,7 @@ template<class T> struct BIT {
         }
         T sum_from_left(int p) {
             assert(0 <= p && p <= _n);
-            int ret = 0;
+            T ret = 0;
             for (int i = p; i > 0; i -= i & -i){
                 ret += bit[i];
             }
