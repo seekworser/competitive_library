@@ -19,8 +19,8 @@ jobs:
     - name: Rename g++
       run: sudo ln -s /usr/bin/g++ /usr/bin/g++-12
 
-    - name: Run tests
+    - name: Run online tests
       env:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-      run: oj-verify run
-      working-directory: ./test
+      run: oj-verify run -j 4 --tle --timeout 10
+      working-directory: ./onlie_test
