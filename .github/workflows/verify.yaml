@@ -16,11 +16,11 @@ jobs:
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
 
+    - name: Rename g++
+      run: ln -s /usr/bin/g++ /usr/bin/g++-12
+
     - name: Run tests
       env:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
       run: oj-verify run
       working-directory: ./test
-
-    - name: Get g++ path
-      run: which g++
