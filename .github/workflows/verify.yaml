@@ -21,3 +21,6 @@ jobs:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
       run: oj-verify run
       working-directory: ./test
+
+    - name: Get g++ path
+      run: which g++
