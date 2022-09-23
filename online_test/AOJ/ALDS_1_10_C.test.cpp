@@ -10,6 +10,6 @@ int main() {
         vector<char> sv, tv;
         rep(i, sz(s)) sv.push_back(s[i]);
         rep(i, sz(t)) tv.push_back(t[i]);
-        cout << lcs(sv, tv) << endl;
+        cout << lcs(sv, tv).size() << endl;
     }
 }

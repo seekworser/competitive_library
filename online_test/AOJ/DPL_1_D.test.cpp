@@ -6,6 +6,6 @@ int main() {
     cin >> n;
     vl a(n);
     cin >> a;
-    int ans = lis(a);
-    cout << ans << endl;
+    vi ans = lis(a);
+    cout << ans.size() << endl;
 }
