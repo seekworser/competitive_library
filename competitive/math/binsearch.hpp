@@ -2,7 +2,7 @@
 #define COMPETITIVE_MATH_BINSERCH_HPP 1
 #include <functional>
 //s~eでle(ans) = trueとなる最大のansを返す
-template <class T> T binsearch(T s, T e, std::function<bool(T)> le) {
+template <class T, class F> T binsearch(T s, T e, F le) {
     T cmin = s;
     T cmax = e;
     while (cmin != cmax) {
@@ -24,7 +24,7 @@ template <class F> double binsearch_double(double s, double e, F le, double eps=
     return cmin;
 }
 //s~eで高々1つしか極値を持たないfについて極値を与える点を返す
-template <class T, class U> T ternary_search_double(T s, T e, std::function<U(T)> f, double eps=1e-10) {
+template <class T, class F> T ternary_search_double(T s, T e, F f, double eps=1e-10) {
     T cmin = s;
     T cmax = e;
     while (abs(cmax - cmin) > eps) {
