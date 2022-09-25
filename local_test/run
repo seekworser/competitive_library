@@ -14,9 +14,10 @@ for d_par in */; do
         fi
         g++-12 --std=c++17 -I ../../../ answer.cpp
         oj t -c "./a.out" --tle 20 -e 1e-6 -j 4
-        if [ $? -ne 0 ]
+        status=$?
+        if [ ! $status -eq 0 ]
         then
-            return_code=$?
+            return_code=$status
         fi
         cd ..
     done
