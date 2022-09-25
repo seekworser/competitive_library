@@ -24,3 +24,7 @@ jobs:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
       run: oj-verify run -j 4 --tle 10
       working-directory: online_test
+
+    - name: Run local tests
+      run: ./run
+      working-directory: local_test
