@@ -4,7 +4,7 @@ for d_par in */; do
     cd $d_par
     for d in */; do
         cd $d
-        if [[ -f "test/" ]]; then
+        if [[ ! -d "test/" ]]; then
             mkdir "test"
             python make_cases.py
         fi
