@@ -1,15 +1,25 @@
 #!/bin/bash
+return_code=0
 for d_par in */; do
     cd $d_par
     for d in */; do
         cd $d
+        if [[ -f "test/" ]]; then
+            mkdir "test"
+            python make_cases.py
+        fi
         if [[ -f "make_cases.py" ]]; then
             echo "make cases from script."
             python make_cases.py
         fi
         g++-12 --std=c++17 -I ../../../ answer.cpp
         oj t -c "./a.out" --tle 20 -e 1e-6 -j 4
+        if [ $? -ne 0 ]
+        then
+            return_code=$?
+        fi
         cd ..
     done
     cd ..
 done
+exit $return_code
