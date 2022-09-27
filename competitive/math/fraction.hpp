@@ -65,6 +65,10 @@ struct Frac {
         ll g = gcd((*this).num, (*this).den);
         (*this).num /= g;
         (*this).den /= g;
+        if ((*this).den < 0) {
+            (*this).num *= -1;
+            (*this).den *= -1;
+        }
         return;
     }
 };

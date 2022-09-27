@@ -4,7 +4,7 @@ import numpy as np
 from itertools import product
 import sys
 
-for i in range(100):
+for i in range(10):
     n = np.random.randint(1, 100)
     m = np.random.randint(1, 100)
     p = np.random.randint(1, 100)
