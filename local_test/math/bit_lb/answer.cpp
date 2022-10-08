@@ -6,12 +6,12 @@ template <typename T>
 void printnv_func(int i, T name) {
     (void)i;
     (void)name;
-    cerr << endl;
+    cout << endl;
 }
 template <typename T1, typename T2, typename... T3>
 void printnv_func(int i, const T1 &name, const T2 &a, const T3 &...b) {
-  for ( ; name[i] != ',' && name[i] != '\0'; i++ ) cerr << name[i];
-  cerr << ":" << a << " ";
+  for ( ; name[i] != ',' && name[i] != '\0'; i++ ) cout << name[i];
+  cout << ":" << a << " ";
   printnv_func(i + 1, name, b...);
 }
 int main() {
