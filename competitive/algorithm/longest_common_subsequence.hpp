@@ -38,4 +38,9 @@ template <class T> vector<int> lcs(vector<T> const &a, vector<T> const &b) {
     }
     return rev;
 };
+vector<int> lcs(string const &a, string const &b) {
+    vector<char> _a(a.begin(), a.end());
+    vector<char> _b(b.begin(), b.end());
+    return lcs(_a, _b);
+};
 #endif // COMPETITIVE_ALGORITHM_LCS_HPP
