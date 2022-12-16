@@ -23,4 +23,8 @@ template <class T> vector<int> lis(vector<T> const &a, bool const strict=true) {
     }
     return rev;
 };
+vector<int> lis(string const &a, bool const strict=true) {
+    vector<char> _a(a.begin(), a.end());
+    return lis(_a, strict);
+};
 #endif // COMPETITIVE_ALGORITHM_LIS_HPP

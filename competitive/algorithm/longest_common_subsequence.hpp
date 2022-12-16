@@ -1,5 +1,5 @@
-#ifndef COMPEmimiVE_ALGORITHM_LCS_HPP
-#define COMPEmimiVE_ALGORITHM_LCS_HPP 1
+#ifndef COMPETITIVE_ALGORITHM_LCS_HPP
+#define COMPETITIVE_ALGORITHM_LCS_HPP 1
 #include <competitive/std/std.hpp>
 // return index_of a for longest common subsequence
 template <class T> vector<int> lcs(vector<T> const &a, vector<T> const &b) {
@@ -38,4 +38,9 @@ template <class T> vector<int> lcs(vector<T> const &a, vector<T> const &b) {
     }
     return rev;
 };
-#endif // COMPEmimiVE_ALGORITHM_LCS_HPP
+vector<int> lcs(string const &a, string const &b) {
+    vector<char> _a(a.begin(), a.end());
+    vector<char> _b(b.begin(), b.end());
+    return lcs(_a, _b);
+};
+#endif // COMPETITIVE_ALGORITHM_LCS_HPP
