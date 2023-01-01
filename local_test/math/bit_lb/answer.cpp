@@ -1,5 +1,6 @@
 #include <competitive/std/std.hpp>
 #include <competitive/math/bit.hpp>
+#include <competitive/std/io.hpp>
 using namespace bit;
 #define printnv(...) printnv_func(0, #__VA_ARGS__, __VA_ARGS__) // debug print
 template <typename T>

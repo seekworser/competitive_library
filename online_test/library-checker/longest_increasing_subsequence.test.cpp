@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/longest_increasing_subsequence"
 #include <competitive/std/std.hpp>
 #include <competitive/algorithm/longest_increasing_subsequence.hpp>
+#include <competitive/std/io.hpp>
 int main() {
     int n;
     cin >> n;

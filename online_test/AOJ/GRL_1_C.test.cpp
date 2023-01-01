@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C"
 #include <competitive/std/std.hpp>
 #include <competitive/graph/warshall_floyd.hpp>
+#include <competitive/std/io.hpp>
 
 int main() {
     int V, E;

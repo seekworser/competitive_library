@@ -1,5 +1,6 @@
 #include <competitive/std/std.hpp>
 #include <competitive/math/f2.hpp>
+#include <competitive/std/io.hpp>
 int main() {
     cout << "Constructor" << "\n";
     {
