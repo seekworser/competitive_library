@@ -62,6 +62,9 @@ struct Frac {
     friend ostream& operator<<(ostream& os, const Frac &x) { os << x.num << "/" << x.den; return os; }
     private:
     void reduce() {
+        assert((*this).den != 0 || (*this).num != 0);
+        if ((*this).den == 0) { (*this).num = 1; return; }
+        if ((*this).num == 0) { (*this).den = 1; return; }
         ll g = gcd((*this).num, (*this).den);
         (*this).num /= g;
         (*this).den /= g;
