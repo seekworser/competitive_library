@@ -34,10 +34,10 @@ struct fast_io { fast_io() { cin.tie(nullptr); ios::sync_with_stdio(false); cout
 #define sz(x) ((int)(x).size())
 #define lbpos(a, x) (int)distance((a).begin(), std::lower_bound(all(a), x))
 #define ubpos(a, x) (int)distance((a).begin(), std::upper_bound(all(a), x))
-#define rep(i, n) for(int i = 0, i##_len = int(n); i < i##_len; ++i) // 0 から n-1 まで昇順
-#define repi(i, s, t) for(int i = int(s), i##_end = int(t); i < i##_end; ++i) // s から t まで昇順
-#define repis(i, s, t, step) for(int i = int(s), i##_end = int(t); i < i##_end; i+=step) // s から t まで stepずつ
-#define repir(i, s, t, step) for(int i = int(s), i##_end = int(t); i > i##_end; i+=step) // s から t まで stepずつ
+#define rep(i, n) for(ll i = 0, i##_len = int(n); i < i##_len; ++i) // 0 から n-1 まで昇順
+#define repi(i, s, t) for(ll i = ll(s), i##_end = ll(t); i < i##_end; ++i) // s から t まで昇順
+#define repis(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i < i##_end; i+=step) // s から t まで stepずつ
+#define repir(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i > i##_end; i+=step) // s から t まで stepずつ
 #define repe(a, v) for(auto& a : (v)) // v の全要素（変更可能）
 #define repea(a, v) for(const auto& a : (v)) // v の全要素（変更不可能）
 #define smod(n, m) ((((n) % (m)) + (m)) % (m)) // 非負mod
