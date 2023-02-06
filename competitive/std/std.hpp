@@ -34,7 +34,7 @@ struct fast_io { fast_io() { cin.tie(nullptr); ios::sync_with_stdio(false); cout
 #define sz(x) ((int)(x).size())
 #define lbpos(a, x) (int)distance((a).begin(), std::lower_bound(all(a), x))
 #define ubpos(a, x) (int)distance((a).begin(), std::upper_bound(all(a), x))
-#define rep(i, n) for(ll i = 0, i##_len = int(n); i < i##_len; ++i) // 0 から n-1 まで昇順
+#define rep(i, n) for(ll i = 0, i##_len = ll(n); i < i##_len; ++i) // 0 から n-1 まで昇順
 #define repi(i, s, t) for(ll i = ll(s), i##_end = ll(t); i < i##_end; ++i) // s から t まで昇順
 #define repis(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i < i##_end; i+=step) // s から t まで stepずつ
 #define repir(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i > i##_end; i+=step) // s から t まで stepずつ
