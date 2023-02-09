@@ -22,6 +22,14 @@ template <class T> using priority_queue_min = priority_queue<T, vector<T>, great
 const double PI = acos(-1.0L);
 int INF = 100100111; ll INFL = 3300300300300300491LL;
 double EPS = 1e-8; double EPSL = 1e-16;
+bool eq(double x, double y) { return abs(x - y) < EPSL; }
+bool eq(float x, float y) { return abs(x - y) < EPS; }
+template<typename T> bool eq(T x, T y) { return x == y; }
+template<typename T> bool neq(T x, T y) { return !(eq(x, y)); }
+template<typename T> bool ge(T x, T y) { return eq(x, y) || (x > y); }
+template<typename T> bool le(T x, T y) { return eq(x, y) || (x < y); }
+template<typename T> bool gt(T x, T y) { return !(le(x, y)); }
+template<typename T> bool lt(T x, T y) { return !(ge(x, y)); }
 constexpr int MODINT998244353 = 998244353;
 constexpr int MODINT1000000007 = 1000000007;
 // 入出力高速化
