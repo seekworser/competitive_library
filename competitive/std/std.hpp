@@ -58,10 +58,10 @@ ll powm(ll a, ll n, ll mod=INFL) {
 ll sqrtll(ll x) {
     assert(x >= 0);
     ll hi(x), lo(0);
-    while (hi - lo > 1) {
-        ll y = (hi + lo) / 2;
+    while (hi != lo) {
+        ll y = (hi + lo + 1) / 2;
         if (y <= x/y) lo = y;
-        else hi = y;
+        else hi = y - 1;
     }
     return lo;
 }

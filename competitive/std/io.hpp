@@ -1,7 +1,6 @@
 #ifndef COMPETITIVE_STD_IO_HPP
 #define COMPETITIVE_STD_IO_HPP 1
-#include <bits/stdc++.h>
-using namespace std;
+#include <competitive/std/std.hpp>
 // 演算子オーバーロード（プロトタイプ宣言）
 template <class T, class U> inline istream& operator>>(istream& is, pair<T, U>& p);
 template <class T> inline istream& operator>>(istream& is, vector<T>& v);
