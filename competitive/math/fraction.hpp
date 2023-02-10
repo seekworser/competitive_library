@@ -60,8 +60,8 @@ struct Frac {
         return lhs.num * rhs.den < lhs.den * rhs.num;
     }
 
-    friend ostream& operator<<(ostream& os, Frac &x) { x.reduce(); os << x.num << "/" << x.den; return os; }
-    private:
+    double val() const {return (double)((*this).num) / (double)((*this).den); }
+    friend ostream& operator<<(ostream& os, const Frac &x) { os << x.val(); return os; }
     void reduce() {
         assert((*this).den != 0 || (*this).num != 0);
         if ((*this).den == 0) { (*this).num = 1; return; }

@@ -12,10 +12,10 @@ for i in range(10):
     b = Fraction(s, t)
     with open("test/random-{0:03d}.out".format(i), "w") as f:
         c = a + b
-        f.write("{0}\n".format(c))
+        f.write("{0}\n".format(float(c)))
         c = a - b
-        f.write("{0}\n".format(c))
+        f.write("{0}\n".format(float(c)))
         c = a * b
-        f.write("{0}\n".format(c))
+        f.write("{0}\n".format(float(c)))
         c = a / b
-        f.write("{0}\n".format(c))
+        f.write("{0}\n".format(float(c)))
