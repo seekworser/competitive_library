@@ -69,6 +69,8 @@ template<typename T> struct Line {
             s = Point(T(0), -c / b); t = Point(-c / a, T(1));
         }
     };
+    Point<T> direction() const { return (*this).t - (*this).s; }
+    Point<T> normal() const { return normal_vector((*this).direction()); }
     friend ostream& operator<<(ostream& os, const Line<T> &l) { os << l.s << " " << l.t; return os; }
 };
 

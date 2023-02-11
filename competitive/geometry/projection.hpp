@@ -3,8 +3,8 @@
 #include <competitive/std/std.hpp>
 #include <competitive/geometry/base.hpp>
 template<typename T> Point<T> projection(const Line<T> &l, const Point<T> &p) {
-    T t = dot(p - l.s, l.t - l.s) / norm(l.t - l.s);
-    return l.s + (l.t - l.s) * t;
+    T t = dot(p - l.s, l.direction()) / norm(l.direction());
+    return l.s + (l.direction()) * t;
 }
 template<typename T> Point<T> projection(const Segment<T> &l, const Point<T> &p) {
     return Point<T>();
