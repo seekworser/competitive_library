@@ -69,7 +69,7 @@ Point<double> rotate(const Point<double> &p, const double &theta) { return Point
 template<typename T> struct Line {
     Point<T> s, t;
     Line() = default;
-    Line(Point<T> s, Point<T> t) : s(s), t(t) {};
+    Line(Point<T> s, Point<T> t) : s(s), t(t) {assert(s != t);};
     // ax+by+c=0;
     Line(T a, T b, T c) {
         assert(neq<T>(a, 0) || neq<T>(b, 0));

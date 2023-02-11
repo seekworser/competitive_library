@@ -10,7 +10,6 @@ constexpr int ANGLE_180 = 4;
 constexpr int ANGLE_180_270 = -3;
 constexpr int ANGLE_270 = -2;
 constexpr int ANGLE_270_360 = -1;
-
 template <typename T> int angle(const Point<T> &p1, const Point<T> &p2) {
     Point<T> zero(0, 0);
     assert(p1 != zero && p2 != zero);
