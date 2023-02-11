@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C"
 #include <competitive/std/std.hpp>
 #include <competitive/math/fraction.hpp>
 #include <competitive/geometry/base.hpp>

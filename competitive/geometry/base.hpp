@@ -26,11 +26,21 @@ template<typename T> struct Point {
     friend Point<T> operator/(const T& lhs, const Point<T>& rhs) { return Point(rhs) /= lhs; }
 
     friend bool operator==(const Point<T> &lhs, const Point<T> &rhs) {
-        return eq(lhs.x, rhs.x) && eq(lhs.y, rhs.y);
+        return eq<T>(lhs.x, rhs.x) && eq<T>(lhs.y, rhs.y);
     }
     friend bool operator!=(const Point<T> &lhs, const Point<T> &rhs) {
-        return !(lhs != rhs);
+        return !(lhs == rhs);
     }
+    friend bool operator>(const Point<T>& lhs, const Point<T>& rhs) {
+        if (eq<T>(lhs.x, rhs.x)) return gt<T>(lhs.y, rhs.y);
+        return gt<T>(lhs.x, rhs.x);
+    }
+    friend bool operator<(const Point<T>& lhs, const Point<T>& rhs) {
+        if (eq<T>(lhs.x, rhs.x)) return lt<T>(lhs.y, rhs.y);
+        return lt<T>(lhs.x, rhs.x);
+    }
+    friend bool operator>=(const Point<T>& lhs, const Point<T>& rhs) { return !(lhs < rhs); }
+    friend bool operator<=(const Point<T>& lhs, const Point<T>& rhs) { return !(lhs > rhs); }
     T dot(const Point<T> &p) const {return (*this).x * p.x + (*this).y * p.y; };
     T cross(const Point<T> &p) const {return (*this).x * p.y - (*this).y * p.x; };
     T norm() const {return (*this).dot(*this); };
