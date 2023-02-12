@@ -35,8 +35,8 @@ template <class T, class F> T ternary_search(T s, T e, F f, double eps=1e-10) {
     }
     T rev = cmin;
     auto val = f(cmin);
-    rep(i, 3) {
-        if (chmin<double>(val, f(cmin+i))) rev = cmin + i;
+    rep(i, 4) {
+        if (chmin<T>(val, f(cmin+i))) rev = cmin + i;
     }
     return rev;
 }
