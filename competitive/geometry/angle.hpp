@@ -29,7 +29,7 @@ template <typename T> int angle(const Point<T> &p1, const Point<T> &p2) {
     if (gt<T>(d, 0) && lt<T>(c, 0)) return ANGLE_270_360;
     throw runtime_error("function angle unexpectedly reached end");
 };
-template<typename T> int angle(const Line<T> &l1, const Line<T> &l2) { return angle(l1.direction(), l2.direction()); };
+template<typename T> int angle(const Line<T> &l1, const Line<T> &l2) { return angle(l1.vec(), l2.vec()); };
 template<typename PointOrLine> bool is_parallel(const PointOrLine &p1, const PointOrLine &p2) {
     int result = angle(p1, p2);
     return result == ANGLE_0 || result == ANGLE_180;

@@ -26,9 +26,9 @@ template<typename T> bool intersect(const Line<T> &l1, const Line<T> &l2) {
 template<typename T> Point<T> cross_point(const Line<T> &l1, const Line<T> &l2) {
     assert(intersect(l1, l2));
     if(is_parallel(l1, l2)) return l1.s;
-    T d1 = cross(l1.direction(), l2.direction());
-    T d2 = cross(l1.direction(), l1.t - l2.s);
-    return l2.s + l2.direction() * (d2 / d1);
+    T d1 = cross(l1.vec(), l2.vec());
+    T d2 = cross(l1.vec(), l1.t - l2.s);
+    return l2.s + l2.vec() * (d2 / d1);
 };
 template<typename T> Point<T> cross_point(const Segment<T> &s1, const Segment<T> &s2, bool strict=false) {
     assert(intersect(s1, s2, strict));

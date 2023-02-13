@@ -8,16 +8,16 @@ constexpr int ONSEGMENT = 0;
 constexpr int ONLINE_BACK = 1;
 constexpr int ONLINE_FRONT = -1;
 template<typename T> int ccw(const Line<T> &l, const Point<T> &p, bool strict=false) {
-    T crs = cross(l.direction(), p - l.s);
+    T crs = cross(l.vec(), p - l.s);
     if (lt<T>(crs, 0)) return CLOCKWISE;
     if (gt<T>(crs, 0)) return COUNTER_CLOCKWISE;
-    T d = dot(l.direction(), p - l.s);
+    T d = dot(l.vec(), p - l.s);
     if (strict) {
         if (le<T>(d, 0)) return ONLINE_BACK;
-        if (ge<T>(d, norm(l.direction()))) return ONLINE_FRONT;
+        if (ge<T>(d, norm(l.vec()))) return ONLINE_FRONT;
     } else {
         if (lt<T>(d, 0)) return ONLINE_BACK;
-        if (gt<T>(d, norm(l.direction()))) return ONLINE_FRONT;
+        if (gt<T>(d, norm(l.vec()))) return ONLINE_FRONT;
     }
     return ONSEGMENT;
 };
