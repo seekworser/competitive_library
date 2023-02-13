@@ -77,13 +77,18 @@ struct Frac {
     }
 };
 ll Frac::redcue_limit = 1000000000;
-Frac pow(Frac a, ll n) {
-    Frac res(1);
+Frac pow(const Frac &a, ll n) {
+    Frac res(1); Frac cur(a);
     while (n > 0) {
-        if (n & 1) res = res * a;
-        a = a * a;
+        if (n & 1) res *= cur;
+        cur *= cur;
         n >>= 1;
     }
     return res;
+}
+Frac abs(const Frac &f) {
+    Frac rev(f);
+    if (rev.den * rev.num < 0) return -rev;
+    return rev;
 }
 #endif // COMPETITIVE_MATH_FRACTION_HPP
