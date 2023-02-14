@@ -98,5 +98,4 @@ template<typename T> struct Circle {
     Circle() = default;
     Circle(Point<T> o, double r) : o(o), r(r) {}
 };
-
 #endif // COMPETITIVE_GEOMERY_BASE_HPP
