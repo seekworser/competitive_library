@@ -26,11 +26,21 @@ template<typename T> struct Point {
     friend Point<T> operator/(const T& lhs, const Point<T>& rhs) { return Point(rhs) /= lhs; }
 
     friend bool operator==(const Point<T> &lhs, const Point<T> &rhs) {
-        return eq(lhs.x, rhs.x) && eq(lhs.y, rhs.y);
+        return eq<T>(lhs.x, rhs.x) && eq<T>(lhs.y, rhs.y);
     }
     friend bool operator!=(const Point<T> &lhs, const Point<T> &rhs) {
-        return !(lhs != rhs);
+        return !(lhs == rhs);
     }
+    friend bool operator>(const Point<T>& lhs, const Point<T>& rhs) {
+        if (eq<T>(lhs.x, rhs.x)) return gt<T>(lhs.y, rhs.y);
+        return gt<T>(lhs.x, rhs.x);
+    }
+    friend bool operator<(const Point<T>& lhs, const Point<T>& rhs) {
+        if (eq<T>(lhs.x, rhs.x)) return lt<T>(lhs.y, rhs.y);
+        return lt<T>(lhs.x, rhs.x);
+    }
+    friend bool operator>=(const Point<T>& lhs, const Point<T>& rhs) { return !(lhs < rhs); }
+    friend bool operator<=(const Point<T>& lhs, const Point<T>& rhs) { return !(lhs > rhs); }
     T dot(const Point<T> &p) const {return (*this).x * p.x + (*this).y * p.y; };
     T cross(const Point<T> &p) const {return (*this).x * p.y - (*this).y * p.x; };
     T norm() const {return (*this).dot(*this); };
@@ -59,7 +69,7 @@ Point<double> rotate(const Point<double> &p, const double &theta) { return Point
 template<typename T> struct Line {
     Point<T> s, t;
     Line() = default;
-    Line(Point<T> s, Point<T> t) : s(s), t(t) {};
+    Line(Point<T> s, Point<T> t) : s(s), t(t) {assert(s != t);};
     // ax+by+c=0;
     Line(T a, T b, T c) {
         assert(neq<T>(a, 0) || neq<T>(b, 0));
@@ -69,6 +79,8 @@ template<typename T> struct Line {
             s = Point(T(0), -c / b); t = Point(-c / a, T(1));
         }
     };
+    Point<T> vec() const { return (*this).t - (*this).s; }
+    Point<T> normal() const { return normal_vector((*this).vec()); }
     friend ostream& operator<<(ostream& os, const Line<T> &l) { os << l.s << " " << l.t; return os; }
 };
 
