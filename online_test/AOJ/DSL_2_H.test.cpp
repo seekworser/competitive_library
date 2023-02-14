@@ -6,7 +6,7 @@
 int main() {
     int n,q;
     cin >> n >> q;
-    lseg_min_radd<ll> lseg(n);
+    lseg_min_radd<ll> lseg(vl(n, 0));
     rep(i, q) {
         int t;
         cin >> t;
