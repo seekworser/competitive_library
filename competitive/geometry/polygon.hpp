@@ -15,10 +15,12 @@ template<typename T> struct Polygon {
     }
 };
 template<typename T> T area(const Polygon<T>& p) { return p.area(); }
-template<typename T> bool is_convex(const Polygon<T> &p) {
+template<typename T> bool is_convex(const Polygon<T> &p, bool strict=true) {
     bool rev(true);
     rep(i, p.n) {
-        if (ccw(p.vertex[i], p.vertex[(i + 1) % p.n], p.vertex[(i + 2) % p.n]) != COUNTER_CLOCKWISE) rev = false;
+        int ccwi = ccw(p.vertex[i], p.vertex[(i + 1) % p.n], p.vertex[(i + 2) % p.n]);
+        if (strict && ccwi != COUNTER_CLOCKWISE) rev = false;
+        if (!strict && ccwi == CLOCKWISE) rev = false;
     }
     return rev;
 }
