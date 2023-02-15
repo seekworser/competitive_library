@@ -24,4 +24,6 @@ template <typename T> T norm(const Segment<T> &s1, const Segment<T> &s2) {
 double distance(const Point<double> &p, const Line<double> &l) { return sqrt(norm(p, l)); }
 double distance(const Point<double> &p, const Segment<double> &s) { return sqrt(norm(p, s)); }
 double distance(const Segment<double> &s1, const Segment<double> &s2) { return sqrt(norm(s1, s2)); }
+template<typename T> T manhattan(const Point<T> &p) { return abs(p.x) + abs(p.y); }
+template<typename T> T manhattan(const Point<T> &p1, const Point<T> &p2) { return manhattan(p1 - p2); }
 #endif // COMPETITIVE_GEOMERY_DISTANCE_HPP
