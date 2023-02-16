@@ -15,9 +15,15 @@ jobs:
     - name: Install dependencies
       run: |
         pip3 install -U online-judge-verify-helper numpy &&
+        git clone https://github.com/seekworser/ac-library &&
+        ls ../ && pwd
 
     - name: Rename g++
       run: sudo ln -sf /usr/bin/g++ /usr/bin/g++-12
+
+    - name: Run local tests
+      run: ./run
+      working-directory: local_test
 
     - name: Run tests
       env:

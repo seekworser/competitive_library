@@ -24,9 +24,10 @@ jobs:
 
     - name: Run online tests
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+        GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify run -j 4 --tle 10
-      working-directory: online_test
 
     - name: Run local tests
       run: ./run

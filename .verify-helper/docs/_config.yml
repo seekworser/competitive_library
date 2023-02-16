@@ -1,0 +1,3 @@
+exclude: ['expander_acl.py', 'expander_competitive.py', 'atcoder', 'LICENSE','old', 'local_test']
+title: seekworser's Library
+theme: jekyll-theme-hacker
