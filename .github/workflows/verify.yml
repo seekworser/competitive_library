@@ -15,7 +15,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip3 install -U online-judge-verify-helper numpy &&
-        git clone https://github.com/seekworser/ac-library &&
         ls ../ && pwd
 
     - name: Rename g++
