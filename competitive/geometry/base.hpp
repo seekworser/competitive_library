@@ -1,10 +1,17 @@
+/**
+ * @file base.hpp
+ * @brief 幾何ライブラリベースクラス
+ * @details 幾何ライブラリのベースとなるクラス群
+ */
 #ifndef COMPETITIVE_GEOMERY_BASE_HPP
 #define COMPETITIVE_GEOMERY_BASE_HPP 1
 #include <competitive/std/std.hpp>
 /**
+ * @brief Pointクラス
+ * @details
  * Point : 2次元空間上の点・ベクトルを扱うためのクラス
  * absもしくは単位ベクトルを使う場合はdoubleを使い、その他の場合はFracを使う
- */
+*/
 template<typename T> struct Point {
 	T x, y;
     Point(T x, T y) : x(x), y(y) {
