@@ -57,7 +57,7 @@ ll powm(ll a, ll n, ll mod=INFL) {
     ll res = 1;
     while (n > 0) {
         if (n & 1) res = (res * a) % mod;
-        a = (a * a) % mod;
+        if (n > 1) a = (a * a) % mod;
         n >>= 1;
     }
     return res;
