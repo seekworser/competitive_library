@@ -15,10 +15,10 @@ jobs:
     - name: Install dependencies
       run: |
         pip3 install -U online-judge-verify-helper numpy &&
-        ls ../ && pwd
+        sudo apt install -y g++-12
 
-    - name: Rename g++
-      run: sudo ln -sf /usr/bin/g++ /usr/bin/g++-12
+    # - name: Rename g++
+    #   run: sudo ln -sf /usr/bin/g++ /usr/bin/g++-12
 
     - name: Run local tests
       run: ./run
