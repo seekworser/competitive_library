@@ -188,7 +188,7 @@ data:
   path: competitive/std/io.hpp
   requiredBy:
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-02-14 09:29:01+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/ALDS_1_10_C.test.cpp

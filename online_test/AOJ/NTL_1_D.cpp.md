@@ -33,7 +33,7 @@ data:
   isVerificationFile: false
   path: online_test/AOJ/NTL_1_D.cpp
   requiredBy: []
-  timestamp: '2023-02-14 09:29:01+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: online_test/AOJ/NTL_1_D.cpp

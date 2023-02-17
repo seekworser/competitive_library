@@ -88,7 +88,7 @@ data:
   - competitive/geometry/intersection.hpp
   - competitive/geometry/polygon.hpp
   - competitive/geometry/distance.hpp
-  timestamp: '2023-02-17 13:48:31+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_2_B.test.cpp

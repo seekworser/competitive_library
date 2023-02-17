@@ -108,7 +108,7 @@ data:
   isVerificationFile: false
   path: competitive/data_structure/lazysegtree.hpp
   requiredBy: []
-  timestamp: '2023-02-16 22:26:28+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/DSL_2_G.test.cpp

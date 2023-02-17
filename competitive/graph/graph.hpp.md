@@ -116,7 +116,7 @@ data:
   - competitive/tree/depth.hpp
   - competitive/tree/kruskal.hpp
   - competitive/tree/diameter.hpp
-  timestamp: '2023-02-14 09:29:01+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/GRL_1_C.test.cpp

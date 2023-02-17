@@ -48,7 +48,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/CGL_3_A.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 13:48:31+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/CGL_3_A.test.cpp

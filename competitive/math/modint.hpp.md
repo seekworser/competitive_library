@@ -127,7 +127,7 @@ data:
   isVerificationFile: false
   path: competitive/math/modint.hpp
   requiredBy: []
-  timestamp: '2023-02-16 22:26:28+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/modint.hpp

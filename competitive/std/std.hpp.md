@@ -234,18 +234,18 @@ data:
     \ b) { cout << (b ? \"Yes\\n\" : \"No\\n\"); return; }\nvoid YES(bool b) { cout\
     \ << (b ? \"YES\\n\" : \"NO\\n\"); return; }\n\n// mod\u3067\u306Epow\nll powm(ll\
     \ a, ll n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n\
-    \ & 1) res = (res * a) % mod;\n        a = (a * a) % mod;\n        n >>= 1;\n\
-    \    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
+    \ & 1) res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n       \
+    \ n >>= 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n\
+    \    assert(x >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll\
+    \ y = (hi + lo + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y -\
+    \ 1;\n    }\n    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const\
+    \ T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m >\
+    \ x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n\n"
+    \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
+    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n\n"
   code: "#ifndef COMPETITIVE_STD_STD_HPP\n#define COMPETITIVE_STD_STD_HPP 1\n#include\
     \ <bits/stdc++.h>\n#ifndef LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC\
     \ optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"\
@@ -292,18 +292,18 @@ data:
     \ b) { cout << (b ? \"Yes\\n\" : \"No\\n\"); return; }\nvoid YES(bool b) { cout\
     \ << (b ? \"YES\\n\" : \"NO\\n\"); return; }\n\n// mod\u3067\u306Epow\nll powm(ll\
     \ a, ll n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n\
-    \ & 1) res = (res * a) % mod;\n        a = (a * a) % mod;\n        n >>= 1;\n\
-    \    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
+    \ & 1) res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n       \
+    \ n >>= 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n\
+    \    assert(x >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll\
+    \ y = (hi + lo + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y -\
+    \ 1;\n    }\n    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const\
+    \ T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m >\
+    \ x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n#endif // COMPETITIVE_STD_STD_HPP"
+    \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
+    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n#endif // COMPETITIVE_STD_STD_HPP"
   dependsOn: []
   isVerificationFile: false
   path: competitive/std/std.hpp
@@ -343,7 +343,7 @@ data:
   - competitive/algorithm/minimum_excludant.hpp
   - competitive/algorithm/longest_common_subsequence.hpp
   - competitive/matrix/matrix.hpp
-  timestamp: '2023-02-14 09:29:01+09:00'
+  timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/ALDS_1_10_C.test.cpp
