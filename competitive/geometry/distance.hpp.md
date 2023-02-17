@@ -6,7 +6,8 @@ data:
     title: competitive/geometry/angle.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/base.hpp
-    title: competitive/geometry/base.hpp
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\u30D9\u30FC\u30B9\u30AF\u30E9\
+      \u30B9"
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/counter_clockwise.hpp
     title: competitive/geometry/counter_clockwise.hpp
@@ -71,7 +72,7 @@ data:
   isVerificationFile: false
   path: competitive/geometry/distance.hpp
   requiredBy: []
-  timestamp: '2023-02-15 18:53:43+09:00'
+  timestamp: '2023-02-17 13:48:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_2_D.test.cpp
