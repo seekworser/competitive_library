@@ -44,6 +44,31 @@ public:
         return true;
     }
 
+    bool erase(T x) {
+        auto nit = s.lower_bound(make_pair(x+1, x+1));
+        auto it = prev(nit);
+        auto [l, u] = *it;
+        if (x < l || u < x) return false;
+        if (l == x) {
+            if (u == x) {
+                s.erase(it);
+            } else {
+                s.erase(it);
+                s.emplace(l+1, u);
+            }
+            return true;
+        }
+        if (u == x) {
+            s.erase(it);
+            s.emplace(l, u-1);
+            return true;
+        }
+        s.erase(it);
+        s.emplace(l, x-1);
+        s.emplace(x+1, u);
+        return true;
+    }
+
     T mex(T x = 0) const {
         auto [l, u] = *prev(s.lower_bound(make_pair(x+1, x+1)));
         if (l <= x && x <= u) {
