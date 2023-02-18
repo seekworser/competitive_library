@@ -45,8 +45,8 @@ data:
   timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - online_test/AOJ/CGL_1_B.test.cpp
   - online_test/AOJ/CGL_1_A.test.cpp
+  - online_test/AOJ/CGL_1_B.test.cpp
 documentation_of: competitive/geometry/projection.hpp
 layout: document
 redirect_from:

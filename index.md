@@ -68,6 +68,9 @@ data:
     - icon: ':warning:'
       path: competitive/algorithm/minimum_excludant.hpp
       title: competitive/algorithm/minimum_excludant.hpp
+    - icon: ':warning:'
+      path: competitive/algorithm/mo.hpp
+      title: Mo's algorithm
   - name: competitive/data_structure
     pages:
     - icon: ':heavy_check_mark:'

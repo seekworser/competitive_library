@@ -44,9 +44,9 @@ data:
   isVerificationFile: false
   path: atcoder/internal_csr.hpp
   requiredBy:
-  - atcoder/internal_scc.hpp
   - atcoder/mincostflow.hpp
   - atcoder/scc.hpp
+  - atcoder/internal_scc.hpp
   - atcoder/twosat.hpp
   timestamp: '2023-02-16 22:26:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS

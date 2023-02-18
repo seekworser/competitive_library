@@ -112,10 +112,10 @@ data:
   isVerificationFile: false
   path: atcoder/internal_type_traits.hpp
   requiredBy:
+  - competitive/math/modint.hpp
   - atcoder/fenwicktree.hpp
   - atcoder/modint.hpp
   - atcoder/convolution.hpp
-  - competitive/math/modint.hpp
   timestamp: '2023-02-16 22:26:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

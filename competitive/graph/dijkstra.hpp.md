@@ -55,8 +55,8 @@ data:
   timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - online_test/AOJ/GRL_1_A.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp
+  - online_test/AOJ/GRL_1_A.test.cpp
 documentation_of: competitive/graph/dijkstra.hpp
 layout: document
 redirect_from:

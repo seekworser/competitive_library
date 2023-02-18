@@ -327,8 +327,8 @@ data:
   isVerificationFile: false
   path: atcoder/modint.hpp
   requiredBy:
-  - atcoder/convolution.hpp
   - competitive/math/modint.hpp
+  - atcoder/convolution.hpp
   timestamp: '2023-02-16 22:26:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

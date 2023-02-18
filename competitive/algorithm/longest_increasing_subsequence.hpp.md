@@ -49,8 +49,8 @@ data:
   timestamp: '2023-02-17 21:43:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - online_test/AOJ/DPL_1_D.test.cpp
   - online_test/library-checker/longest_increasing_subsequence.test.cpp
+  - online_test/AOJ/DPL_1_D.test.cpp
 documentation_of: competitive/algorithm/longest_increasing_subsequence.hpp
 layout: document
 redirect_from:
