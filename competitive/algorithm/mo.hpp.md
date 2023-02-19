@@ -40,7 +40,11 @@ data:
     \ cl--; add_left(cl); }\n            while (cr < r) { add_right(cr); cr++;}\n\
     \            while (cl < l) { delete_left(cl); cl++; }\n            while (cr\
     \ > r) { cr--; delete_right(cr); }\n            rev[id] = get();\n        }\n\
-    \        return rev;\n    };\n};\n/**\n * @brief Mo's algorithm\n*/\n\n"
+    \        return rev;\n    };\n    template<typename A, typename D, typename GET>\n\
+    \    vector<Rev_t> answer(\n        const A& add,\n        const D& del,\n   \
+    \     const GET& get,\n        int init_l = 0,\n        int init_r = 0\n    )\
+    \ {\n        return (*this).answer(add, add, del, del, get, init_l, init_r);\n\
+    \    }\n};\n/**\n * @brief Mo's algorithm\n*/\n\n"
   code: "#ifndef COMPETITIVE_ALGORITHM_MO_HPP\n#define COMPETITIVE_ALGORITHM_MO_HPP\
     \ 1\n#include <competitive/std/std.hpp>\ntemplate<typename Rev_t> struct Mo {\n\
     \    int range_min, range_max;\n    using query_t = tuple<int, int, int>;\n  \
@@ -69,14 +73,17 @@ data:
     \            while (cl > l) { cl--; add_left(cl); }\n            while (cr < r)\
     \ { add_right(cr); cr++;}\n            while (cl < l) { delete_left(cl); cl++;\
     \ }\n            while (cr > r) { cr--; delete_right(cr); }\n            rev[id]\
-    \ = get();\n        }\n        return rev;\n    };\n};\n/**\n * @brief Mo's algorithm\n\
-    */\n#endif // COMPETITIVE_ALGORITHM_MO_HPP"
+    \ = get();\n        }\n        return rev;\n    };\n    template<typename A, typename\
+    \ D, typename GET>\n    vector<Rev_t> answer(\n        const A& add,\n       \
+    \ const D& del,\n        const GET& get,\n        int init_l = 0,\n        int\
+    \ init_r = 0\n    ) {\n        return (*this).answer(add, add, del, del, get,\
+    \ init_l, init_r);\n    }\n};\n/**\n * @brief Mo's algorithm\n*/\n#endif // COMPETITIVE_ALGORITHM_MO_HPP"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/algorithm/mo.hpp
   requiredBy: []
-  timestamp: '2023-02-18 19:35:19+09:00'
+  timestamp: '2023-02-19 09:22:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/algorithm/mo.hpp
