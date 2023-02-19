@@ -60,6 +60,16 @@ template<typename Rev_t> struct Mo {
         }
         return rev;
     };
+    template<typename A, typename D, typename GET>
+    vector<Rev_t> answer(
+        const A& add,
+        const D& del,
+        const GET& get,
+        int init_l = 0,
+        int init_r = 0
+    ) {
+        return (*this).answer(add, add, del, del, get, init_l, init_r);
+    }
 };
 /**
  * @brief Mo's algorithm
