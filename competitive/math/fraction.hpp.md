@@ -125,7 +125,7 @@ data:
   isVerificationFile: false
   path: competitive/math/fraction.hpp
   requiredBy: []
-  timestamp: '2023-02-17 21:43:12+09:00'
+  timestamp: '2023-02-22 09:47:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_2_C.test.cpp

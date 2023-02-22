@@ -71,7 +71,7 @@ data:
   isVerificationFile: false
   path: competitive/helper/board_helper.hpp
   requiredBy: []
-  timestamp: '2023-02-17 21:43:12+09:00'
+  timestamp: '2023-02-22 09:47:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/helper/board_helper.hpp

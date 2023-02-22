@@ -116,7 +116,7 @@ data:
   - competitive/tree/diameter.hpp
   - competitive/tree/depth.hpp
   - competitive/tree/kruskal.hpp
-  timestamp: '2023-02-17 21:43:12+09:00'
+  timestamp: '2023-02-22 09:47:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_dijkstra.test.cpp

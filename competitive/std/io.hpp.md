@@ -127,14 +127,19 @@ data:
     \ &os, priority_queue<T, Container, Compare> pq) { while (pq.size()) { os << pq.top()\
     \ << \" \"; pq.pop(); } return os; }\ntemplate <class T> inline vector<T>& operator--(vector<T>&\
     \ v) { repe(x, v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
-    \ v) { repe(x, v) ++x; return v; }\n\n#define debug(...) debug_func(0, #__VA_ARGS__,\
-    \ __VA_ARGS__) // debug print\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid\
-    \ debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename\
-    \ T1, typename T2, typename... T3> void debug_func(int i, const T1 &name, const\
-    \ T2 &a, const T3 &...b) {\n  for ( ; name[i] != ',' && name[i] != '\\0'; i++\
-    \ ) cerr << name[i];\n  cerr << \":\" << a << \" \";\n  debug_func(i + 1, name,\
-    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n\n"
+    \ v) { repe(x, v) ++x; return v; }\n\ntemplate <typename T> void print_sep_end(string\
+    \ sep, string end, const T& val) { (void)sep; cout << val << end; };\ntemplate\
+    \ <typename T1, typename... T2> void print_sep_end(string sep, string end, const\
+    \ T1 &val, const T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep,\
+    \ end, remain...);\n};\ntemplate <typename... T> void print(const T&...args) {print_sep_end(\"\
+    \ \", \"\\n\", args...);};\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__)\
+    \ // debug print\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int\
+    \ i, T name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    for ( ; name[i] != ',' && name[i] != '\\0'; i++ ) cerr << name[i];\n\
+    \    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n}\n#endif\n\
+    #ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const T &...) {}\n\
+    #endif\n\n"
   code: "#ifndef COMPETITIVE_STD_IO_HPP\n#define COMPETITIVE_STD_IO_HPP 1\n#include\
     \ <competitive/std/std.hpp>\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\
     \u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate\
@@ -174,21 +179,26 @@ data:
     \ &os, priority_queue<T, Container, Compare> pq) { while (pq.size()) { os << pq.top()\
     \ << \" \"; pq.pop(); } return os; }\ntemplate <class T> inline vector<T>& operator--(vector<T>&\
     \ v) { repe(x, v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
-    \ v) { repe(x, v) ++x; return v; }\n\n#define debug(...) debug_func(0, #__VA_ARGS__,\
-    \ __VA_ARGS__) // debug print\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid\
-    \ debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename\
-    \ T1, typename T2, typename... T3> void debug_func(int i, const T1 &name, const\
-    \ T2 &a, const T3 &...b) {\n  for ( ; name[i] != ',' && name[i] != '\\0'; i++\
-    \ ) cerr << name[i];\n  cerr << \":\" << a << \" \";\n  debug_func(i + 1, name,\
-    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n#endif // COMPETITIVE_STD_IO_HPP\n"
+    \ v) { repe(x, v) ++x; return v; }\n\ntemplate <typename T> void print_sep_end(string\
+    \ sep, string end, const T& val) { (void)sep; cout << val << end; };\ntemplate\
+    \ <typename T1, typename... T2> void print_sep_end(string sep, string end, const\
+    \ T1 &val, const T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep,\
+    \ end, remain...);\n};\ntemplate <typename... T> void print(const T&...args) {print_sep_end(\"\
+    \ \", \"\\n\", args...);};\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__)\
+    \ // debug print\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int\
+    \ i, T name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    for ( ; name[i] != ',' && name[i] != '\\0'; i++ ) cerr << name[i];\n\
+    \    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n}\n#endif\n\
+    #ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const T &...) {}\n\
+    #endif\n#endif // COMPETITIVE_STD_IO_HPP\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/std/io.hpp
   requiredBy:
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-02-17 21:43:12+09:00'
+  timestamp: '2023-02-22 09:47:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/yukicoder/yuki-hello-world.test.cpp

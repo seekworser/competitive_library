@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 21:43:12+09:00'
+  timestamp: '2023-02-22 09:47:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
