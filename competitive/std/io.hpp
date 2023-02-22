@@ -29,14 +29,20 @@ template <class T, class Container, class Compare> ostream &operator<<(ostream &
 template <class T> inline vector<T>& operator--(vector<T>& v) { repe(x, v) --x; return v; }
 template <class T> inline vector<T>& operator++(vector<T>& v) { repe(x, v) ++x; return v; }
 
+template <typename T> void print_sep_end(string sep, string end, const T& val) { (void)sep; cout << val << end; };
+template <typename T1, typename... T2> void print_sep_end(string sep, string end, const T1 &val, const T2 &...remain) {
+    cout << val << sep;
+    print_sep_end(sep, end, remain...);
+};
+template <typename... T> void print(const T&...args) {print_sep_end(" ", "\n", args...);};
 #define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) // debug print
 #ifdef LOCAL_TEST
 template <typename T>
 void debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }
 template <typename T1, typename T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3 &...b) {
-  for ( ; name[i] != ',' && name[i] != '\0'; i++ ) cerr << name[i];
-  cerr << ":" << a << " ";
-  debug_func(i + 1, name, b...);
+    for ( ; name[i] != ',' && name[i] != '\0'; i++ ) cerr << name[i];
+    cerr << ":" << a << " ";
+    debug_func(i + 1, name, b...);
 }
 #endif
 #ifndef LOCAL_TEST

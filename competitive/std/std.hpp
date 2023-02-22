@@ -37,20 +37,20 @@ struct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false); cout << fi
 // 汎用マクロの定義
 #define all(a) (a).begin(), (a).end()
 #define sz(x) ((int)(x).size())
-// #define lbpos(a, x) (int)distance((a).begin(), std::lower_bound(all(a), x))
-// #define ubpos(a, x) (int)distance((a).begin(), std::upper_bound(all(a), x))
 #define rep(i, n) for(ll i = 0, i##_len = ll(n); i < i##_len; ++i) // 0 から n-1 まで昇順
 #define repi(i, s, t) for(ll i = ll(s), i##_end = ll(t); i < i##_end; ++i) // s から t まで昇順
 #define repis(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i < i##_end; i+=step) // s から t まで stepずつ
 #define repir(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i > i##_end; i+=step) // s から t まで stepずつ
 #define repe(a, v) for(auto& a : (v)) // v の全要素（変更可能）
-// #define repea(a, v) for(const auto& a : (v)) // v の全要素（変更不可能）
 #define smod(n, m) ((((n) % (m)) + (m)) % (m)) // 非負mod
 #define sdiv(n, m) (((n) - smod(n, m)) / (m)) // 非負div
-// #define uniq(a) {sort(all(a)); (a).erase(unique(all(a)), (a).end());} // 重複除去
-// #define EXIT(a) {cout << (a) << endl; exit(0);} // 強制終了
+#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)), (a).end());} // 重複除去
 void Yes(bool b) { cout << (b ? "Yes\n" : "No\n"); return; }
 void YES(bool b) { cout << (b ? "YES\n" : "NO\n"); return; }
+template<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a)); }
+template<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a)); }
+template<typename T> T max(vector<T>& a) { return *max_element(all(a)); }
+template<typename T> T min(vector<T>& a) { return *min_element(all(a)); }
 
 // modでのpow
 ll powm(ll a, ll n, ll mod=INFL) {
