@@ -2,9 +2,6 @@
 #define COMPETITIVE_DATASTRUCTURE_SEGTREE_HPP 1
 #include <atcoder/segtree.hpp>
 #include <competitive/std/std.hpp>
-constexpr int SEG_MAX(0);
-constexpr int SEG_MAX(1);
-constexpr int SEG_MAX(2);
 template <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream& os, const atcoder::segtree<S, op, e> seg) {
     int n = seg.n();
     rep(i, n) { os << seg.get(i); if (i != n-1) os << " "; }

@@ -45,12 +45,13 @@ struct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false); cout << fi
 #define smod(n, m) ((((n) % (m)) + (m)) % (m)) // 非負mod
 #define sdiv(n, m) (((n) - smod(n, m)) / (m)) // 非負div
 #define uniq(a) {sort(all(a)); (a).erase(unique(all(a)), (a).end());} // 重複除去
-void Yes(bool b) { cout << (b ? "Yes\n" : "No\n"); return; }
-void YES(bool b) { cout << (b ? "YES\n" : "NO\n"); return; }
-template<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a)); }
-template<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a)); }
-template<typename T> T max(vector<T>& a) { return *max_element(all(a)); }
-template<typename T> T min(vector<T>& a) { return *min_element(all(a)); }
+void Yes(bool b) { cout << (b ? "Yes\n" : "No\n"); return; };
+void YES(bool b) { cout << (b ? "YES\n" : "NO\n"); return; };
+template<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a)); };
+template<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a)); };
+template<typename T> T max(vector<T>& a) { return *max_element(all(a)); };
+template<typename T> T min(vector<T>& a) { return *min_element(all(a)); };
+template<typename T> T sum(vector<T>& a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };
 
 // modでのpow
 ll powm(ll a, ll n, ll mod=INFL) {
