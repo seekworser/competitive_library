@@ -44,10 +44,25 @@ namespace internal {
 }
 
 struct RollingHash {
-    int hash_size;
-    ll maxa;
-    vector<hash_t> base;
-    RollingHash(int hash_size=3, ll maxa=1e9) : hash_size(hash_size), maxa(maxa), base() {
+    private:
+    static bool initialized;
+    static int hash_size;
+    static vector<hash_t> base;
+    static vector<hash_t> base_inv;
+
+    public:
+    vector<hash_vector_t> cum;
+    template<typename T> RollingHash(vector<T> &a, int hash_size=3, ll maxa=1e9) {
+        if(!initialized) (*this).init_base(hash_size, maxa);
+        (*this).calc(a);
+    };
+    RollingHash(string &a, int hash_size=3, ll maxa=1e9) {
+        if(!initialized) (*this).init_base(hash_size, maxa);
+        (*this).calc(a);
+    }
+
+    void init_base(int hash_size, ll maxa) {
+        (*this).hash_size = hash_size;
         random_device seed_gen;
         mt19937 engine(seed_gen());
         while (sz(base) < hash_size) {
@@ -58,9 +73,36 @@ struct RollingHash {
                 b = internal::Pow(RHR, k);
             }
             base.push_back(b);
+            base_inv.push_back(internal::Pow(b, RHMOD-2));
         }
-        return;
+        initialized = true;
+    }
+
+    template<typename T> void calc(vector<T> const &a) {
+        cum = vector<hash_vector_t>(sz(a)+1, vector<hash_t>(hash_size, 0));
+        rep(i, hash_size) {
+            hash_t base_pow = 1;
+            rep(j, sz(a)) {
+                cum[j+1][i] = internal::CalcMod(cum[j][i] + internal::Mul(a[j], base_pow));
+                base_pow = internal::Mul(base_pow, (*this).base[i]);
+            }
+        }
+    }
+
+    void calc(string const &a) {
+        vector<char> _a(a.begin(), a.end());
+        calc(_a);
     };
+
+    vector<hash_t> query(int l, int r) {
+        assert(l <= r);
+        assert(0 <= l && r < sz(cum));
+        vector<hash_t> rev(hash_size);
+        rep(i, hash_size) {
+            rev[i] = internal::Mul(cum[r][i] + RHMOD - cum[l][i], internal::Pow((*this).base_inv[i], l));
+        }
+        return rev;
+    }
 
     template <class T> vector<hash_vector_t> calc_hash(vector<T> const &a, int k){
         assert(sz(a) >= k);
@@ -89,4 +131,8 @@ struct RollingHash {
         return calc_hash(_a, k);
     };
 };
+bool RollingHash::initialized = false;
+int RollingHash::hash_size = 3;
+vector<hash_t> RollingHash::base(0);
+vector<hash_t> RollingHash::base_inv(0);
 #endif // COMPETITIVE_STRING_ROLLINGHASH_HPP
