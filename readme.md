@@ -2,6 +2,8 @@
 
 Library for competitive programming contests.
 
+Pages: https://seekworser.github.io/competitive_library/
+
 Some codes refered to:
 - https://github.com/atcoder/ac-library
 - https://github.com/NyaanNyaan/library

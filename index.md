@@ -224,7 +224,7 @@ data:
       title: competitive/std/std.hpp
   - name: competitive/string
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: competitive/string/rolling_hash.hpp
       title: competitive/string/rolling_hash.hpp
   - name: competitive/tree
@@ -249,6 +249,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/ALDS_1_10_C.test.cpp
       title: online_test/AOJ/ALDS_1_10_C.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: online_test/AOJ/ALDS_1_14_B.test.cpp
+      title: online_test/AOJ/ALDS_1_14_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/CGL_1_A.test.cpp
       title: online_test/AOJ/CGL_1_A.test.cpp

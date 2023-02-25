@@ -35,7 +35,7 @@ data:
   path: competitive/math/euler_phi.hpp
   requiredBy:
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-02-22 09:47:28+09:00'
+  timestamp: '2023-02-26 03:11:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/euler_phi.hpp

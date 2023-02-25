@@ -13,6 +13,9 @@ data:
     path: online_test/AOJ/ALDS_1_10_C.test.cpp
     title: online_test/AOJ/ALDS_1_10_C.test.cpp
   - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/ALDS_1_14_B.test.cpp
+    title: online_test/AOJ/ALDS_1_14_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_A.test.cpp
     title: online_test/AOJ/CGL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -198,7 +201,7 @@ data:
   path: competitive/std/io.hpp
   requiredBy:
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-02-22 09:47:28+09:00'
+  timestamp: '2023-02-26 03:11:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/yukicoder/yuki-hello-world.test.cpp
@@ -211,6 +214,7 @@ data:
   - online_test/AOJ/CGL_2_B.test.cpp
   - online_test/AOJ/ALDS_1_10_C.test.cpp
   - online_test/AOJ/CGL_1_A.test.cpp
+  - online_test/AOJ/ALDS_1_14_B.test.cpp
   - online_test/AOJ/CGL_2_A.test.cpp
   - online_test/AOJ/CGL_1_B.test.cpp
   - online_test/AOJ/DSL_2_I.test.cpp

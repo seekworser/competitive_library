@@ -96,7 +96,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: competitive/std/io.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/string/rolling_hash.hpp
     title: competitive/string/rolling_hash.hpp
   - icon: ':warning:'
@@ -115,6 +115,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ALDS_1_10_C.test.cpp
     title: online_test/AOJ/ALDS_1_10_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/ALDS_1_14_B.test.cpp
+    title: online_test/AOJ/ALDS_1_14_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_A.test.cpp
     title: online_test/AOJ/CGL_1_A.test.cpp
@@ -230,25 +233,26 @@ data:
     \ // \u975E\u8CA0mod\n#define sdiv(n, m) (((n) - smod(n, m)) / (m)) // \u975E\u8CA0\
     div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)), (a).end());} //\
     \ \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b) { cout << (b ? \"Yes\\n\" : \"No\\\
-    n\"); return; }\nvoid YES(bool b) { cout << (b ? \"YES\\n\" : \"NO\\n\"); return;\
-    \ }\ntemplate<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a));\
-    \ }\ntemplate<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a));\
-    \ }\ntemplate<typename T> T max(vector<T>& a) { return *max_element(all(a)); }\n\
-    template<typename T> T min(vector<T>& a) { return *min_element(all(a)); }\n\n\
-    // mod\u3067\u306Epow\nll powm(ll a, ll n, ll mod=INFL) {\n    ll res = 1;\n \
-    \   while (n > 0) {\n        if (n & 1) res = (res * a) % mod;\n        if (n\
-    \ > 1) a = (a * a) % mod;\n        n >>= 1;\n    }\n    return res;\n}\n// \u6574\
-    \u6570Sqrt\nll sqrtll(ll x) {\n    assert(x >= 0);\n    ll hi(x), lo(0);\n   \
-    \ while (hi != lo) {\n        ll y = (hi + lo + 1) / 2;\n        if (y <= x/y)\
-    \ lo = y;\n        else hi = y - 1;\n    }\n    return lo;\n}\ntemplate <class\
-    \ T> inline bool chmax(T& M, const T& x) { if (M < x) { M = x; return true; }\
-    \ return false; } // \u6700\u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\
-    \u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool\
-    \ chmin(T& m, const T& x) { if (m > x) { m = x; return true; } return false; }\
-    \ // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089\
-    \ true \u3092\u8FD4\u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while\
-    \ (x > 0) { rev++; x /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\
-    \n\n"
+    n\"); return; };\nvoid YES(bool b) { cout << (b ? \"YES\\n\" : \"NO\\n\"); return;\
+    \ };\ntemplate<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a));\
+    \ };\ntemplate<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a));\
+    \ };\ntemplate<typename T> T max(vector<T>& a) { return *max_element(all(a));\
+    \ };\ntemplate<typename T> T min(vector<T>& a) { return *min_element(all(a));\
+    \ };\ntemplate<typename T> T sum(vector<T>& a, T zero = T(0)) { T rev = zero;\
+    \ rep(i, sz(a)) rev += a[i]; return rev; };\n\n// mod\u3067\u306Epow\nll powm(ll\
+    \ a, ll n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n\
+    \ & 1) res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n       \
+    \ n >>= 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n\
+    \    assert(x >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll\
+    \ y = (hi + lo + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y -\
+    \ 1;\n    }\n    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const\
+    \ T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m >\
+    \ x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\
+    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
+    \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
+    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n\n"
   code: "#ifndef COMPETITIVE_STD_STD_HPP\n#define COMPETITIVE_STD_STD_HPP 1\n#include\
     \ <bits/stdc++.h>\n#ifndef LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC\
     \ optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"\
@@ -288,25 +292,26 @@ data:
     \ // \u975E\u8CA0mod\n#define sdiv(n, m) (((n) - smod(n, m)) / (m)) // \u975E\u8CA0\
     div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)), (a).end());} //\
     \ \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b) { cout << (b ? \"Yes\\n\" : \"No\\\
-    n\"); return; }\nvoid YES(bool b) { cout << (b ? \"YES\\n\" : \"NO\\n\"); return;\
-    \ }\ntemplate<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a));\
-    \ }\ntemplate<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a));\
-    \ }\ntemplate<typename T> T max(vector<T>& a) { return *max_element(all(a)); }\n\
-    template<typename T> T min(vector<T>& a) { return *min_element(all(a)); }\n\n\
-    // mod\u3067\u306Epow\nll powm(ll a, ll n, ll mod=INFL) {\n    ll res = 1;\n \
-    \   while (n > 0) {\n        if (n & 1) res = (res * a) % mod;\n        if (n\
-    \ > 1) a = (a * a) % mod;\n        n >>= 1;\n    }\n    return res;\n}\n// \u6574\
-    \u6570Sqrt\nll sqrtll(ll x) {\n    assert(x >= 0);\n    ll hi(x), lo(0);\n   \
-    \ while (hi != lo) {\n        ll y = (hi + lo + 1) / 2;\n        if (y <= x/y)\
-    \ lo = y;\n        else hi = y - 1;\n    }\n    return lo;\n}\ntemplate <class\
-    \ T> inline bool chmax(T& M, const T& x) { if (M < x) { M = x; return true; }\
-    \ return false; } // \u6700\u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\
-    \u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool\
-    \ chmin(T& m, const T& x) { if (m > x) { m = x; return true; } return false; }\
-    \ // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089\
-    \ true \u3092\u8FD4\u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while\
-    \ (x > 0) { rev++; x /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\
-    \n#endif // COMPETITIVE_STD_STD_HPP"
+    n\"); return; };\nvoid YES(bool b) { cout << (b ? \"YES\\n\" : \"NO\\n\"); return;\
+    \ };\ntemplate<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a));\
+    \ };\ntemplate<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a));\
+    \ };\ntemplate<typename T> T max(vector<T>& a) { return *max_element(all(a));\
+    \ };\ntemplate<typename T> T min(vector<T>& a) { return *min_element(all(a));\
+    \ };\ntemplate<typename T> T sum(vector<T>& a, T zero = T(0)) { T rev = zero;\
+    \ rep(i, sz(a)) rev += a[i]; return rev; };\n\n// mod\u3067\u306Epow\nll powm(ll\
+    \ a, ll n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n\
+    \ & 1) res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n       \
+    \ n >>= 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n\
+    \    assert(x >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll\
+    \ y = (hi + lo + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y -\
+    \ 1;\n    }\n    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const\
+    \ T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m >\
+    \ x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\
+    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
+    \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
+    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n#endif // COMPETITIVE_STD_STD_HPP"
   dependsOn: []
   isVerificationFile: false
   path: competitive/std/std.hpp
@@ -347,7 +352,7 @@ data:
   - competitive/algorithm/mo.hpp
   - competitive/string/rolling_hash.hpp
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-02-22 09:47:28+09:00'
+  timestamp: '2023-02-26 03:11:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/yukicoder/yuki-hello-world.test.cpp
@@ -360,6 +365,7 @@ data:
   - online_test/AOJ/CGL_2_B.test.cpp
   - online_test/AOJ/ALDS_1_10_C.test.cpp
   - online_test/AOJ/CGL_1_A.test.cpp
+  - online_test/AOJ/ALDS_1_14_B.test.cpp
   - online_test/AOJ/CGL_2_A.test.cpp
   - online_test/AOJ/CGL_1_B.test.cpp
   - online_test/AOJ/DSL_2_I.test.cpp

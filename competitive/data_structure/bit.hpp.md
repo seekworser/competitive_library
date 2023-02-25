@@ -44,7 +44,7 @@ data:
   path: competitive/data_structure/bit.hpp
   requiredBy:
   - competitive/math/inversion_num.hpp
-  timestamp: '2023-02-22 09:47:28+09:00'
+  timestamp: '2023-02-26 03:11:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/static_range_sum.test.cpp

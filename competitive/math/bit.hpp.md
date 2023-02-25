@@ -39,7 +39,7 @@ data:
   isVerificationFile: false
   path: competitive/math/bit.hpp
   requiredBy: []
-  timestamp: '2023-02-22 09:47:28+09:00'
+  timestamp: '2023-02-26 03:11:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/bit.hpp

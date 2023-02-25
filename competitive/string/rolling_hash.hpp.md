@@ -5,10 +5,13 @@ data:
     path: competitive/std/std.hpp
     title: competitive/std/std.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/ALDS_1_14_B.test.cpp
+    title: online_test/AOJ/ALDS_1_14_B.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"competitive/string/rolling_hash.hpp\"\n\n\n#include <competitive/std/std.hpp>\n\
@@ -27,27 +30,47 @@ data:
     \ bu * 2 + midu + (midd << 31) + ad * bd);\n    }\n\n    hash_t Pow(hash_t a,\
     \ hash_t n) {\n        hash_t res = 1;\n        while (n > 0) {\n            if\
     \ (n & 1) res = Mul(res, a);\n            a = Mul(a, a);\n            n >>= 1;\n\
-    \        }\n        return res;\n    }\n}\n\nstruct RollingHash {\n    int hash_size;\n\
-    \    ll maxa;\n    vector<hash_t> base;\n    RollingHash(int hash_size=3, ll maxa=1e9)\
-    \ : hash_size(hash_size), maxa(maxa), base() {\n        random_device seed_gen;\n\
+    \        }\n        return res;\n    }\n}\n\nstruct RollingHash {\n    private:\n\
+    \    static bool initialized;\n    static int hash_size;\n    static vector<hash_t>\
+    \ base;\n    static vector<hash_t> base_inv;\n\n    public:\n    vector<hash_vector_t>\
+    \ cum;\n    template<typename T> RollingHash(vector<T> &a, int hash_size=3, ll\
+    \ maxa=1e9) {\n        if(!initialized) (*this).init_base(hash_size, maxa);\n\
+    \        (*this).calc(a);\n    };\n    RollingHash(string &a, int hash_size=3,\
+    \ ll maxa=1e9) {\n        if(!initialized) (*this).init_base(hash_size, maxa);\n\
+    \        (*this).calc(a);\n    }\n\n    void init_base(int hash_size, ll maxa)\
+    \ {\n        (*this).hash_size = hash_size;\n        random_device seed_gen;\n\
     \        mt19937 engine(seed_gen());\n        while (sz(base) < hash_size) {\n\
     \            hash_t k = 0;\n            hash_t b = internal::Pow(RHR, k);\n  \
     \          while (b <= maxa || gcd(RHMOD-1, b) != 1) {\n                k = engine();\n\
     \                b = internal::Pow(RHR, k);\n            }\n            base.push_back(b);\n\
-    \        }\n        return;\n    };\n\n    template <class T> vector<hash_vector_t>\
-    \ calc_hash(vector<T> const &a, int k){\n        assert(sz(a) >= k);\n       \
-    \ vector<hash_vector_t> res(sz(a) - k + 1, vector<hash_t>(hash_size));\n     \
-    \   vector<hash_t> base_pow(hash_size);\n        rep(i, hash_size) base_pow[i]\
-    \ = internal::Pow(this->base[i], k);\n\n        rep(i, hash_size) {\n        \
-    \    // \u5148\u982D\u306E\u30CF\u30C3\u30B7\u30E5\u8A08\u7B97\n            hash_t\
-    \ b = this->base[i];\n            hash_t sh = 0;\n            rep(j, k){ sh =\
-    \ internal::CalcMod(internal::Mul(sh, b) + a[j]); }\n            res[0][i] = sh;\n\
-    \n            // s\u3092\u305A\u3089\u3057\u3066\u30CF\u30C3\u30B7\u30E5\u5024\
-    \u3092\u66F4\u65B0\n            rep(j, sz(a) - k){\n                sh = internal::CalcMod(internal::Mul(sh,\
-    \ b) + a[j+k] + RHMOD - internal::Mul(a[j], base_pow[i]));\n                res[j+1][i]\
-    \ = sh;\n            }\n        }\n        return res;\n    }\n\n    vector<hash_vector_t>\
+    \            base_inv.push_back(internal::Pow(b, RHMOD-2));\n        }\n     \
+    \   initialized = true;\n    }\n\n    template<typename T> void calc(vector<T>\
+    \ const &a) {\n        cum = vector<hash_vector_t>(sz(a)+1, vector<hash_t>(hash_size,\
+    \ 0));\n        rep(i, hash_size) {\n            hash_t base_pow = 1;\n      \
+    \      rep(j, sz(a)) {\n                cum[j+1][i] = internal::CalcMod(cum[j][i]\
+    \ + internal::Mul(a[j], base_pow));\n                base_pow = internal::Mul(base_pow,\
+    \ (*this).base[i]);\n            }\n        }\n    }\n\n    void calc(string const\
+    \ &a) {\n        vector<char> _a(a.begin(), a.end());\n        calc(_a);\n   \
+    \ };\n\n    vector<hash_t> query(int l, int r) {\n        assert(l <= r);\n  \
+    \      assert(0 <= l && r < sz(cum));\n        vector<hash_t> rev(hash_size);\n\
+    \        rep(i, hash_size) {\n            rev[i] = internal::Mul(cum[r][i] + RHMOD\
+    \ - cum[l][i], internal::Pow((*this).base_inv[i], l));\n        }\n        return\
+    \ rev;\n    }\n\n    template <class T> vector<hash_vector_t> calc_hash(vector<T>\
+    \ const &a, int k){\n        assert(sz(a) >= k);\n        vector<hash_vector_t>\
+    \ res(sz(a) - k + 1, vector<hash_t>(hash_size));\n        vector<hash_t> base_pow(hash_size);\n\
+    \        rep(i, hash_size) base_pow[i] = internal::Pow(this->base[i], k);\n\n\
+    \        rep(i, hash_size) {\n            // \u5148\u982D\u306E\u30CF\u30C3\u30B7\
+    \u30E5\u8A08\u7B97\n            hash_t b = this->base[i];\n            hash_t\
+    \ sh = 0;\n            rep(j, k){ sh = internal::CalcMod(internal::Mul(sh, b)\
+    \ + a[j]); }\n            res[0][i] = sh;\n\n            // s\u3092\u305A\u3089\
+    \u3057\u3066\u30CF\u30C3\u30B7\u30E5\u5024\u3092\u66F4\u65B0\n            rep(j,\
+    \ sz(a) - k){\n                sh = internal::CalcMod(internal::Mul(sh, b) + a[j+k]\
+    \ + RHMOD - internal::Mul(a[j], base_pow[i]));\n                res[j+1][i] =\
+    \ sh;\n            }\n        }\n        return res;\n    }\n\n    vector<hash_vector_t>\
     \ calc_hash(string const &a, int k) {\n        vector<char> _a(a.begin(), a.end());\n\
-    \        return calc_hash(_a, k);\n    };\n};\n\n"
+    \        return calc_hash(_a, k);\n    };\n};\nbool RollingHash::initialized =\
+    \ false;\nint RollingHash::hash_size = 3;\nvector<hash_t> RollingHash::base(0);\n\
+    vector<hash_t> RollingHash::base_inv(0);\n\n"
   code: "#ifndef COMPETITIVE_STRING_ROLLINGHASH_HPP\n#define COMPETITIVE_STRING_ROLLINGHASH_HPP\
     \ 1\n#include <competitive/std/std.hpp>\nusing hash_t = unsigned long long;\n\
     using hash_vector_t = vector<hash_t>;\nconstexpr hash_t RHMOD = (1UL << 61) -\
@@ -65,16 +88,33 @@ data:
     \ ad * bd);\n    }\n\n    hash_t Pow(hash_t a, hash_t n) {\n        hash_t res\
     \ = 1;\n        while (n > 0) {\n            if (n & 1) res = Mul(res, a);\n \
     \           a = Mul(a, a);\n            n >>= 1;\n        }\n        return res;\n\
-    \    }\n}\n\nstruct RollingHash {\n    int hash_size;\n    ll maxa;\n    vector<hash_t>\
-    \ base;\n    RollingHash(int hash_size=3, ll maxa=1e9) : hash_size(hash_size),\
-    \ maxa(maxa), base() {\n        random_device seed_gen;\n        mt19937 engine(seed_gen());\n\
-    \        while (sz(base) < hash_size) {\n            hash_t k = 0;\n         \
-    \   hash_t b = internal::Pow(RHR, k);\n            while (b <= maxa || gcd(RHMOD-1,\
-    \ b) != 1) {\n                k = engine();\n                b = internal::Pow(RHR,\
-    \ k);\n            }\n            base.push_back(b);\n        }\n        return;\n\
-    \    };\n\n    template <class T> vector<hash_vector_t> calc_hash(vector<T> const\
-    \ &a, int k){\n        assert(sz(a) >= k);\n        vector<hash_vector_t> res(sz(a)\
-    \ - k + 1, vector<hash_t>(hash_size));\n        vector<hash_t> base_pow(hash_size);\n\
+    \    }\n}\n\nstruct RollingHash {\n    private:\n    static bool initialized;\n\
+    \    static int hash_size;\n    static vector<hash_t> base;\n    static vector<hash_t>\
+    \ base_inv;\n\n    public:\n    vector<hash_vector_t> cum;\n    template<typename\
+    \ T> RollingHash(vector<T> &a, int hash_size=3, ll maxa=1e9) {\n        if(!initialized)\
+    \ (*this).init_base(hash_size, maxa);\n        (*this).calc(a);\n    };\n    RollingHash(string\
+    \ &a, int hash_size=3, ll maxa=1e9) {\n        if(!initialized) (*this).init_base(hash_size,\
+    \ maxa);\n        (*this).calc(a);\n    }\n\n    void init_base(int hash_size,\
+    \ ll maxa) {\n        (*this).hash_size = hash_size;\n        random_device seed_gen;\n\
+    \        mt19937 engine(seed_gen());\n        while (sz(base) < hash_size) {\n\
+    \            hash_t k = 0;\n            hash_t b = internal::Pow(RHR, k);\n  \
+    \          while (b <= maxa || gcd(RHMOD-1, b) != 1) {\n                k = engine();\n\
+    \                b = internal::Pow(RHR, k);\n            }\n            base.push_back(b);\n\
+    \            base_inv.push_back(internal::Pow(b, RHMOD-2));\n        }\n     \
+    \   initialized = true;\n    }\n\n    template<typename T> void calc(vector<T>\
+    \ const &a) {\n        cum = vector<hash_vector_t>(sz(a)+1, vector<hash_t>(hash_size,\
+    \ 0));\n        rep(i, hash_size) {\n            hash_t base_pow = 1;\n      \
+    \      rep(j, sz(a)) {\n                cum[j+1][i] = internal::CalcMod(cum[j][i]\
+    \ + internal::Mul(a[j], base_pow));\n                base_pow = internal::Mul(base_pow,\
+    \ (*this).base[i]);\n            }\n        }\n    }\n\n    void calc(string const\
+    \ &a) {\n        vector<char> _a(a.begin(), a.end());\n        calc(_a);\n   \
+    \ };\n\n    vector<hash_t> query(int l, int r) {\n        assert(l <= r);\n  \
+    \      assert(0 <= l && r < sz(cum));\n        vector<hash_t> rev(hash_size);\n\
+    \        rep(i, hash_size) {\n            rev[i] = internal::Mul(cum[r][i] + RHMOD\
+    \ - cum[l][i], internal::Pow((*this).base_inv[i], l));\n        }\n        return\
+    \ rev;\n    }\n\n    template <class T> vector<hash_vector_t> calc_hash(vector<T>\
+    \ const &a, int k){\n        assert(sz(a) >= k);\n        vector<hash_vector_t>\
+    \ res(sz(a) - k + 1, vector<hash_t>(hash_size));\n        vector<hash_t> base_pow(hash_size);\n\
     \        rep(i, hash_size) base_pow[i] = internal::Pow(this->base[i], k);\n\n\
     \        rep(i, hash_size) {\n            // \u5148\u982D\u306E\u30CF\u30C3\u30B7\
     \u30E5\u8A08\u7B97\n            hash_t b = this->base[i];\n            hash_t\
@@ -85,15 +125,18 @@ data:
     \ + RHMOD - internal::Mul(a[j], base_pow[i]));\n                res[j+1][i] =\
     \ sh;\n            }\n        }\n        return res;\n    }\n\n    vector<hash_vector_t>\
     \ calc_hash(string const &a, int k) {\n        vector<char> _a(a.begin(), a.end());\n\
-    \        return calc_hash(_a, k);\n    };\n};\n#endif // COMPETITIVE_STRING_ROLLINGHASH_HPP"
+    \        return calc_hash(_a, k);\n    };\n};\nbool RollingHash::initialized =\
+    \ false;\nint RollingHash::hash_size = 3;\nvector<hash_t> RollingHash::base(0);\n\
+    vector<hash_t> RollingHash::base_inv(0);\n#endif // COMPETITIVE_STRING_ROLLINGHASH_HPP"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-02-22 09:47:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-02-26 05:21:37+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - online_test/AOJ/ALDS_1_14_B.test.cpp
 documentation_of: competitive/string/rolling_hash.hpp
 layout: document
 redirect_from:

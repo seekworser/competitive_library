@@ -82,7 +82,7 @@ data:
   requiredBy:
   - competitive/geometry/intersection.hpp
   - competitive/geometry/distance.hpp
-  timestamp: '2023-02-22 09:47:28+09:00'
+  timestamp: '2023-02-26 03:11:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_2_C.test.cpp
