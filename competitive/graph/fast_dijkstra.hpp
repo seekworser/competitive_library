@@ -1,9 +1,8 @@
-#ifndef COMPETITIVE_GRAPH_DIJKSTRA_HPP
-#define COMPETITIVE_GRAPH_DIJKSTRA_HPP 1
-#include <competitive/std/std.hpp>
-#include <competitive/graph/graph.hpp>
-#include <competitive/data_structure/radix_heap.hpp>
-template<class Cost> void dijkstra(const Graph<Cost>& G, int start, vector<Cost> &min_cost, vector<int> &prev, Cost inf=INF, Cost identity=0){
+#pragma once
+#include "competitive/std/std.hpp"
+#include "competitive/graph/graph.hpp"
+#include "competitive/data_structure/radix_heap.hpp"
+template"class Cost> void dijkstra(const Graph<Cost>& G, int start, vector<Cost> &min_cost, vector<int" &prev, Cost inf=INF, Cost identity=0){
     // priority_queue<pair<Cost, int>, vector<pair<Cost, int>>, greater<pair<Cost, int>>> que;
     RadixHeap<Cost, int> que;
     min_cost = vector<Cost>(G.n, inf);
@@ -25,4 +24,7 @@ template<class Cost> void dijkstra(const Graph<Cost>& G, int start, vector<Cost>
     }
     return;
 }
-#endif // COMPETITIVE_GRAPH_DIJKSTRA_HPP
+/**
+ * @brief fast_dijkstra.hpp
+ * @docs docs/graph/fast_dijkstra.md
+ */

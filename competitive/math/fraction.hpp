@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_MATH_FRACTION_HPP
-#define COMPETITIVE_MATH_FRACTION_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 struct Frac {
     ll num;
     ll den;
@@ -91,4 +90,7 @@ Frac abs(const Frac &f) {
     if (rev.den * rev.num < 0) return -rev;
     return rev;
 }
-#endif // COMPETITIVE_MATH_FRACTION_HPP
+/**
+ * @brief fraction.hpp
+ * @docs docs/math/fraction.md
+ */

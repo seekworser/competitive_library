@@ -1,7 +1,6 @@
-#ifndef COMPETITIVE_GEOMERY_ANGLE_HPP
-#define COMPETITIVE_GEOMERY_ANGLE_HPP 1
-#include <competitive/std/std.hpp>
-#include <competitive/geometry/base.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
+#include "competitive/geometry/base.hpp"
 constexpr int ANGLE_0 = 0;
 constexpr int ANGLE_0_90 = 1;
 constexpr int ANGLE_90 = 2;
@@ -38,4 +37,7 @@ template<typename PointOrLine> bool is_orthogonal(const PointOrLine &p1, const P
     int result = angle(p1, p2);
     return result == ANGLE_90 || result == ANGLE_270;
 }
-#endif // COMPETITIVE_GEOMERY_ANGLE_HPP
+/**
+ * @brief angle.hpp
+ * @docs docs/geometry/angle.md
+ */

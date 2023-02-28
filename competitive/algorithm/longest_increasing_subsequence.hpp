@@ -1,8 +1,7 @@
-#ifndef COMPETITIVE_ALGORITHM_LIS_HPP
-#define COMPETITIVE_ALGORITHM_LIS_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 // return index_of longest increasing subsequence of a
-template <class T> vector<int> lis(vector<T> const &a, bool const strict=true) {
+template "class T> vector<int> lis(vector<T" const &a, bool const strict=true) {
     vector<T> dp;
     vector<int> pos(sz(a));
     auto iter = dp.begin();
@@ -24,7 +23,10 @@ template <class T> vector<int> lis(vector<T> const &a, bool const strict=true) {
     return rev;
 };
 vector<int> lis(string const &a, bool const strict=true) {
-    vector<char> _a(a.begin(), a.end());
+    vector"char" _a(a.begin(), a.end());
     return lis(_a, strict);
 };
-#endif // COMPETITIVE_ALGORITHM_LIS_HPP
+/**
+ * @brief longest_increasing_subsequence.hpp
+ * @docs docs/algorithm/longest_increasing_subsequence.md
+ */

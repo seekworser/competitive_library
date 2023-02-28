@@ -1,10 +1,8 @@
-#ifndef ATCODER_TWOSAT_HPP
-#define ATCODER_TWOSAT_HPP 1
-
+#pragma once
 #include <cassert>
 #include <vector>
 
-#include "atcoder/internal_scc"
+#include "atcoder/internal_scc.hpp"
 
 namespace atcoder {
 
@@ -40,5 +38,3 @@ struct two_sat {
 };
 
 }  // namespace atcoder
-
-#endif  // ATCODER_TWOSAT_HPP

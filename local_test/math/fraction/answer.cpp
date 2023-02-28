@@ -1,6 +1,6 @@
-#include <competitive/std/std.hpp>
-#include <competitive/math/fraction.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/math/fraction.hpp"
+#include "competitive/std/io.hpp"
 int main() {
     int n,m,s,t;
     cin >> n >> m >> s >> t;

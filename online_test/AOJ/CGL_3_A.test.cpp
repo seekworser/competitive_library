@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_A"
-#include <competitive/std/std.hpp>
-#include <competitive/geometry/polygon.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/geometry/polygon.hpp"
+#include "competitive/std/io.hpp"
 
 int main() {
     using P = Point<double>;

@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_14_B"
-#include <competitive/std/std.hpp>
-#include <competitive/string/rolling_hash.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/string/rolling_hash.hpp"
+#include "competitive/std/io.hpp"
 
 int main() {
     string s, t;

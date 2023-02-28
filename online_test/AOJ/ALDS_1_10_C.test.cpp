@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C"
-#include <competitive/std/std.hpp>
-#include <competitive/algorithm/longest_common_subsequence.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/algorithm/longest_common_subsequence.hpp"
+#include "competitive/std/io.hpp"
 int main() {
     int n;
     cin >> n;

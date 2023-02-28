@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_MATH_F2_HPP
-#define COMPETITIVE_MATH_F2_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 struct F2 {
     bool val;
     F2() : val(false) {}
@@ -47,4 +46,7 @@ struct F2 {
     }
     friend ostream& operator<<(ostream& os, const F2 &x) { os << x.val; return os; }
 };
-#endif // COMPETITIVE_MATH_F2_HPP
+/**
+ * @brief f2.hpp
+ * @docs docs/math/f2.md
+ */

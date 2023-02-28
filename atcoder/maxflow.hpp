@@ -1,13 +1,11 @@
-#ifndef ATCODER_MAXFLOW_HPP
-#define ATCODER_MAXFLOW_HPP 1
-
+#pragma once
 #include <algorithm>
 #include <cassert>
 #include <limits>
 #include <queue>
 #include <vector>
 
-#include "atcoder/internal_queue"
+#include "atcoder/internal_queue.hpp"
 
 namespace atcoder {
 
@@ -147,5 +145,3 @@ template <class Cap> struct mf_graph {
 };
 
 }  // namespace atcoder
-
-#endif  // ATCODER_MAXFLOW_HPP

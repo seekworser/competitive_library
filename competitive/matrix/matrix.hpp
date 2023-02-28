@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_MATRIX_MATRIX_HPP
-#define COMPETITIVE_MATRIX_MATRIX_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 template <class T>
 struct Matrix {
   vector<vector<T> > A;
@@ -133,4 +132,7 @@ struct Matrix {
     return ret;
   }
 };
-#endif // COMPETITIVE_MATRIX_MATRIX_HPP
+/**
+ * @brief matrix.hpp
+ * @docs docs/matrix/matrix.md
+ */

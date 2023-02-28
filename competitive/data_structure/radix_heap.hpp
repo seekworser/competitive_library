@@ -1,5 +1,4 @@
-#ifndef COMPETITIVE_DATASTRUCTURE_REDIXHEAP_HPP
-#define COMPETITIVE_DATASTRUCTURE_REDIXHEAP_HPP 1
+#pragma once
 template <typename Key, typename Val>
 struct RadixHeap {
   using uint = typename make_unsigned<Key>::type;
@@ -47,5 +46,7 @@ struct RadixHeap {
     return res;
   }
 };
-
-#endif // COMPETITIVE_DATASTRUCTURE_REDIXHEAP_HPP
+/**
+ * @brief radix_heap.hpp
+ * @docs docs/data_structure/radix_heap.md
+ */

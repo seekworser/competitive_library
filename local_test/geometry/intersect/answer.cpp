@@ -1,7 +1,7 @@
-#include <competitive/std/std.hpp>
-#include <competitive/geometry/intersection.hpp>
-#include <competitive/math/fraction.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/geometry/intersection.hpp"
+#include "competitive/math/fraction.hpp"
+#include "competitive/std/io.hpp"
 int main() {
     using P = Point<Frac>;
     using S = Segment<Frac>;

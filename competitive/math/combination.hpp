@@ -1,8 +1,5 @@
-#ifndef COMPETITIVE_MATH_COMBINATION_HPP
-#define COMPETITIVE_MATH_COMBINATION_HPP 1
-
-#include <competitive/std/std.hpp>
-
+#pragma once
+#include "competitive/std/std.hpp"
 struct Combination {
     ll pm;
     vl fact, fact_inv;
@@ -24,5 +21,7 @@ struct Combination {
         return fact[n] * (fact_inv[r] * fact_inv[n - r] % pm) % pm;
     }
 };
-
-#endif // COMPETITIVE_MATH_COMBINATION_HPP
+/**
+ * @brief combination.hpp
+ * @docs docs/math/combination.md
+ */

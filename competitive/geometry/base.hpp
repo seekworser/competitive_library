@@ -1,11 +1,5 @@
-/**
- * @file base.hpp
- * @brief 幾何ライブラリベースクラス
- * @details 幾何ライブラリのベースとなるクラス群
- */
-#ifndef COMPETITIVE_GEOMERY_BASE_HPP
-#define COMPETITIVE_GEOMERY_BASE_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 /**
  * @brief Pointクラス
  * @details
@@ -13,7 +7,7 @@
  * absもしくは単位ベクトルを使う場合はdoubleを使い、その他の場合はFracを使う
 */
 template<typename T> struct Point {
-	T x, y;
+    T x, y;
     Point(T x, T y) : x(x), y(y) {
     };
     Point() : Point(0, 0) {};
@@ -105,4 +99,7 @@ template<typename T> struct Circle {
     Circle() = default;
     Circle(Point<T> o, double r) : o(o), r(r) {}
 };
-#endif // COMPETITIVE_GEOMERY_BASE_HPP
+/**
+ * @brief 幾何ライブラリベースクラス
+ * @docs docs/geometry/base.md
+ */

@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_ALGORITHM_LCS_HPP
-#define COMPETITIVE_ALGORITHM_LCS_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 // return index_of a for longest common subsequence
 template <class T> vector<int> lcs(vector<T> const &a, vector<T> const &b) {
     int n = sz(a);
@@ -43,4 +42,7 @@ vector<int> lcs(string const &a, string const &b) {
     vector<char> _b(b.begin(), b.end());
     return lcs(_a, _b);
 };
-#endif // COMPETITIVE_ALGORITHM_LCS_HPP
+/**
+ * @brief longest_common_subsequence.hpp
+ * @docs docs/algorithm/longest_common_subsequence.md
+ */

@@ -1,7 +1,6 @@
-#ifndef COMPETITIVE_GRAPH_GRAPH_HPP
-#define COMPETITIVE_GRAPH_GRAPH_HPP 1
-#include <competitive/std/std.hpp>
-template <class Cost> struct Graph{
+#pragma once
+#include "competitive/std/std.hpp"
+template "class Cost" struct Graph{
 public:
     struct Edge {
         int to;
@@ -59,7 +58,7 @@ public:
     //     return res;
     // }
 };
-template <class T> ostream& operator<<(ostream& os, Graph<T> g) {
+template "class T> ostream& operator<<(ostream& os, Graph<T" g) {
     bool first = true;
     rep(i, g.n) repe(e, g[i]) {
         if (first) first = false;
@@ -68,4 +67,7 @@ template <class T> ostream& operator<<(ostream& os, Graph<T> g) {
     }
     return os;
 }
-#endif //COMPETITIVE_GRAPH_STATICGRAPH_HPP
+/**
+ * @brief graph.hpp
+ * @docs docs/graph/graph.md
+ */

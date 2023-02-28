@@ -1,8 +1,8 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_D"
 #define ERROR 1e-6
-#include <competitive/std/std.hpp>
-#include <competitive/geometry/distance.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/geometry/distance.hpp"
+#include "competitive/std/io.hpp"
 
 int main() {
     using P = Point<double>;

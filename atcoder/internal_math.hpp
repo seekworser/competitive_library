@@ -1,6 +1,4 @@
-#ifndef ATCODER_INTERNAL_MATH_HPP
-#define ATCODER_INTERNAL_MATH_HPP 1
-
+#pragma once
 #include <utility>
 
 #ifdef _MSC_VER
@@ -209,5 +207,3 @@ unsigned long long floor_sum_unsigned(unsigned long long n,
 }  // namespace internal
 
 }  // namespace atcoder
-
-#endif  // ATCODER_INTERNAL_MATH_HPP

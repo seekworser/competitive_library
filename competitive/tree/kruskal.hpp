@@ -1,8 +1,7 @@
-#ifndef COMPETITIVE_TREE_KRUSKAL_HPP
-#define COMPETITIVE_TREE_KRUSKAL_HPP 1
-#include <atcoder/dsu.hpp>
-#include <competitive/std/std.hpp>
-#include <competitive/graph/graph.hpp>
+#pragma once
+#include "atcoder/dsu.hpp"
+#include "competitive/std/std.hpp"
+#include "competitive/graph/graph.hpp"
 // return minimul spanning tree
 template<class Cost> Graph<Cost> kruskal(const Graph<Cost>& G){
     atcoder::dsu uf(G.n);
@@ -25,4 +24,7 @@ template<class Cost> Graph<Cost> kruskal(const Graph<Cost>& G){
     if (count != G.n - 1) return Graph<Cost>(0);
     return Graph<Cost>(G.n, from, to, cost, true);
 }
-#endif // COMPETITIVE_TREE_KRUSKAL_HPP
+/**
+ * @brief kruskal.hpp
+ * @docs docs/tree/kruskal.md
+ */

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
-#include <competitive/std/std.hpp>
-#include <competitive/graph/fast_dijkstra.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/graph/fast_dijkstra.hpp"
+#include "competitive/std/io.hpp"
 int main() {
     int n,m,s,t;
     cin >> n >> m >> s >> t;

@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_MATH_PRIME_HPP
-#define COMPETITIVE_MATH_PRIME_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 template <class T> bool is_prime(T n) {
     if (n == 1) return false;
     for (T i=2; i <= (T)std::sqrt(n); i++) {
@@ -71,4 +70,7 @@ template <class T> vector<T> segment_seive(T s, T t) {
     }
     return ans;
 };
-#endif // COMPETITIVE_MATH_PRIME_HPP
+/**
+ * @brief prime.hpp
+ * @docs docs/math/prime.md
+ */

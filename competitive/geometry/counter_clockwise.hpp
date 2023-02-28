@@ -1,7 +1,6 @@
-#ifndef COMPETITIVE_GEOMERY_COUNTER_CLOCKWISE_HPP
-#define COMPETITIVE_GEOMERY_COUNTER_CLOCKWISE_HPP 1
-#include <competitive/std/std.hpp>
-#include <competitive/geometry/base.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
+#include "competitive/geometry/base.hpp"
 constexpr int COUNTER_CLOCKWISE = 2;
 constexpr int CLOCKWISE = -2;
 constexpr int ONSEGMENT = 0;
@@ -31,4 +30,7 @@ template <typename T> bool online(const Line<T> &l, const Point<T> &p) {
 template <typename T> int online(const Point<T> &p1, const Point<T> &p2, const Point<T> &p3) {
     return online(Line<T>(p1, p2), p3);
 };
-#endif // COMPETITIVE_GEOMERY_COUNTER_CLOCKWISE_HPP
+/**
+ * @brief counter_clockwise.hpp
+ * @docs docs/geometry/counter_clockwise.md
+ */

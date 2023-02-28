@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_STRING_ROLLINGHASH_HPP
-#define COMPETITIVE_STRING_ROLLINGHASH_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 using hash_t = unsigned long long;
 using hash_vector_t = vector<hash_t>;
 constexpr hash_t RHMOD = (1UL << 61) - 1;
@@ -135,4 +134,7 @@ bool RollingHash::initialized = false;
 int RollingHash::hash_size = 3;
 vector<hash_t> RollingHash::base(0);
 vector<hash_t> RollingHash::base_inv(0);
-#endif // COMPETITIVE_STRING_ROLLINGHASH_HPP
+/**
+ * @brief rolling_hash.hpp
+ * @docs docs/string/rolling_hash.md
+ */

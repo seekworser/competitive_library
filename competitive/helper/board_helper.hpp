@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_HELPER_BOARD_HPP
-#define COMPETITIVE_HELPER_BOARD_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 const vector<pii> DXY = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 const vector<pii> DDXY = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 const vector<tuple<int, int, int>> DXYZ = {{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}};
@@ -65,4 +64,7 @@ class BoardHelper{
         return true;
     }
 };
-#endif //COMPETITIVE_HELPER_BOARD_HPP
+/**
+ * @brief board_helper.hpp
+ * @docs docs/helper/board_helper.md
+ */

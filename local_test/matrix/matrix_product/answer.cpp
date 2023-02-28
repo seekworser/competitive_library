@@ -1,6 +1,6 @@
-#include <competitive/std/std.hpp>
-#include <competitive/matrix/matrix.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/matrix/matrix.hpp"
+#include "competitive/std/io.hpp"
 int main() {
     int n,m,p;
     cin >> n >> m >> p;

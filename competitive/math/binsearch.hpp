@@ -1,5 +1,4 @@
-#ifndef COMPETITIVE_MATH_BINSERCH_HPP
-#define COMPETITIVE_MATH_BINSERCH_HPP 1
+#pragma once
 #include <functional>
 //s~eでle(ans) = trueとなる最大のansを返す
 template <class T, class F> T binsearch(T s, T e, F le) {
@@ -52,4 +51,7 @@ template <class F> double ternary_search_double(double s, double e, F f, double 
     }
     return cmin;
 }
-#endif // COMPETITIVE_MATH_BINSERCH_HPP
+/**
+ * @brief binsearch.hpp
+ * @docs docs/math/binsearch.md
+ */

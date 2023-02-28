@@ -1,8 +1,7 @@
-#ifndef COMPETITIVE_ALGORITHM_MEX_HPP
-#define COMPETITIVE_ALGORITHM_MEX_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 // return index_of a for longest common subsequence
-template <class T> struct Mex {
+template "class T" struct Mex {
 private:
     set<pair<T, T>> s;
 
@@ -78,4 +77,7 @@ public:
         }
     }
 };
-#endif // COMPETITIVE_ALGORITHM_MEX_HPP
+/**
+ * @brief minimum_excludant.hpp
+ * @docs docs/algorithm/minimum_excludant.md
+ */

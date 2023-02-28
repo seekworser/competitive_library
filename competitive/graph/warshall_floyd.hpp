@@ -1,8 +1,7 @@
-#ifndef COMPETITIVE_GRAPH_WARSHALLFLOYD_HPP
-#define COMPETITIVE_GRAPH_WARSHALLFLOYD_HPP 1
-#include <competitive/std/std.hpp>
-#include <competitive/graph/graph.hpp>
-template <class Cost> bool warshall_floyd(
+#pragma once
+#include "competitive/std/std.hpp"
+#include "competitive/graph/graph.hpp"
+template "class Cost" bool warshall_floyd(
     Graph<Cost> &G,
     vector<vector<Cost>> &min_cost,
     Cost inf=INF,
@@ -30,4 +29,7 @@ template <class Cost> bool warshall_floyd(
     }
     return true;
 }
-#endif // COMPETITIVE_GRAPH_WARSHALLFLOYD_HPP
+/**
+ * @brief warshall_floyd.hpp
+ * @docs docs/graph/warshall_floyd.md
+ */

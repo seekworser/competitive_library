@@ -1,11 +1,9 @@
-#ifndef ATCODER_INTERNAL_SCC_HPP
-#define ATCODER_INTERNAL_SCC_HPP 1
-
+#pragma once
 #include <algorithm>
 #include <utility>
 #include <vector>
 
-#include "atcoder/internal_csr"
+#include "atcoder/internal_csr.hpp"
 
 namespace atcoder {
 namespace internal {
@@ -85,5 +83,3 @@ struct scc_graph {
 }  // namespace internal
 
 }  // namespace atcoder
-
-#endif  // ATCODER_INTERNAL_SCC_HPP

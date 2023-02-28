@@ -1,6 +1,4 @@
-#ifndef ATCODER_INTERNAL_QUEUE_HPP
-#define ATCODER_INTERNAL_QUEUE_HPP 1
-
+#pragma once
 #include <vector>
 
 namespace atcoder {
@@ -25,5 +23,3 @@ template <class T> struct simple_queue {
 }  // namespace internal
 
 }  // namespace atcoder
-
-#endif  // ATCODER_INTERNAL_QUEUE_HPP

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
-#include <competitive/std/std.hpp>
-#include <competitive/data_structure/bit.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/data_structure/bit.hpp"
+#include "competitive/std/io.hpp"
 int main() {
     int n,q;
     cin >> n >> q;

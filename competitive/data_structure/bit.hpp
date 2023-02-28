@@ -1,7 +1,6 @@
-#ifndef COMPETITIVE_DATASTRUCTURE_BIT_HPP
-#define COMPETITIVE_DATASTRUCTURE_BIT_HPP 1
-#include <competitive/std/std.hpp>
-template<class T> struct BIT {
+#pragma once
+#include "competitive/std/std.hpp"
+template"class T" struct BIT {
     private:
         vector<T> bit;
         int _n;
@@ -26,4 +25,7 @@ template<class T> struct BIT {
             return sum_from_left(pt) - sum_from_left(ps);
         }
 };
-#endif //COMPETITIVE_DATASTRUCTURE_BIT_HPP
+/**
+ * @brief bit.hpp
+ * @docs docs/data_structure/bit.md
+ */

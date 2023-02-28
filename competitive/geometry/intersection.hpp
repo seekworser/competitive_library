@@ -1,9 +1,8 @@
-#ifndef COMPETITIVE_GEOMERY_INTERSECTION_HPP
-#define COMPETITIVE_GEOMERY_INTERSECTION_HPP 1
-#include <competitive/std/std.hpp>
-#include <competitive/geometry/base.hpp>
-#include <competitive/geometry/counter_clockwise.hpp>
-#include <competitive/geometry/angle.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
+#include "competitive/geometry/base.hpp"
+#include "competitive/geometry/counter_clockwise.hpp"
+#include "competitive/geometry/angle.hpp"
 template <typename T> bool intersect(const Segment<T> &s1, const Segment<T> &s2, bool strict=false) {
     if (strict) {
         if (ccw(s1, s2.s, true) == ONSEGMENT) return online(s1, s2.t);
@@ -41,4 +40,7 @@ template<typename T> Point<T> cross_point(const Segment<T> &s1, const Segment<T>
     }
     return cross_point(Line(s1), Line(s2));
 };
-#endif // COMPETITIVE_GEOMERY_INTERSECTION_HPP
+/**
+ * @brief intersection.hpp
+ * @docs docs/geometry/intersection.md
+ */

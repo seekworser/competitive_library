@@ -1,8 +1,7 @@
-#ifndef COMPETITIVE_DATASTRUCTURE_LAZYSEGTREE_HPP
-#define COMPETITIVE_DATASTRUCTURE_LAZYSEGTREE_HPP 1
-#include <atcoder/lazysegtree.hpp>
-#include <competitive/std/std.hpp>
-template <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>
+#pragma once
+#include "atcoder/lazysegtree.hpp"
+#include "competitive/std/std.hpp"
+template "class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()"
 std::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S, op, e, F, mapping, composition, id> seg) {
     int n = seg.n();
     rep(i, n) { os << seg.get(i); if (i != n-1) os << " "; }
@@ -49,4 +48,7 @@ template<typename T> using lseg_max_radd = atcoder::lazy_segtree<T, op_max<T>, e
 template<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<AddNode<T>, op_add<T>, e_add<T>, T, mapping_add_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;
 template<typename T> using lseg_min_rupdate = atcoder::lazy_segtree<T, op_min<T>, e_min<T>, T, mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;
 template<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T, op_max<T>, e_max<T>, T, mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;
-#endif //COMPETITIVE_DATASTRUCTURE_SEGTREE_HPP
+/**
+ * @brief lazysegtree.hpp
+ * @docs docs/data_structure/lazysegtree.md
+ */

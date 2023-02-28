@@ -1,7 +1,6 @@
-#ifndef COMPETITIVE_MATH_INVERSIONNUM_HPP
-#define COMPETITIVE_MATH_INVERSIONNUM_HPP 1
-#include <competitive/std/std.hpp>
-#include <competitive/data_structure/bit.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
+#include "competitive/data_structure/bit.hpp"
 template<class T> ll inversion_number(vector<T> &a) {
     ll ans = 0;
     BIT<ll> b(a.size());
@@ -15,4 +14,7 @@ template<class T> ll inversion_number(vector<T> &a) {
     }
     return ans;
 }
-#endif //COMPETITIVE_MATH_INVERSIONNUM_HPP
+/**
+ * @brief inversion_num.hpp
+ * @docs docs/math/inversion_num.md
+ */

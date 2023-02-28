@@ -1,7 +1,6 @@
-#ifndef COMPETITIVE_GEOMERY_POLYGON_HPP
-#define COMPETITIVE_GEOMERY_POLYGON_HPP 1
-#include <competitive/geometry/base.hpp>
-#include <competitive/geometry/counter_clockwise.hpp>
+#pragma once
+#include "competitive/geometry/base.hpp"
+#include "competitive/geometry/counter_clockwise.hpp"
 // Polygon : 多角形
 template<typename T> struct Polygon {
     vector<Point<T>> vertex;
@@ -66,4 +65,7 @@ template<typename T> Polygon<T> convex_full(const vector<Point<T>> &p, bool stri
     rev.erase(rev.begin());
     return Polygon<T>(rev);
 }
-#endif // COMPETITIVE_GEOMERY_POLYGON_HPP
+/**
+ * @brief polygon.hpp
+ * @docs docs/geometry/polygon.md
+ */

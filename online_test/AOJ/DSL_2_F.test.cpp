@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_F"
-#include <competitive/std/std.hpp>
-#include <competitive/data_structure/lazysegtree.hpp>
-#include <competitive/std/io.hpp>
+#include "competitive/std/std.hpp"
+#include "competitive/data_structure/lazysegtree.hpp"
+#include "competitive/std/io.hpp"
 
 int main() {
     int n,q;

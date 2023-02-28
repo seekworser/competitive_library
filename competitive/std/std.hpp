@@ -1,5 +1,4 @@
-#ifndef COMPETITIVE_STD_STD_HPP
-#define COMPETITIVE_STD_STD_HPP 1
+#pragma once
 #include <bits/stdc++.h>
 #ifndef LOCAL_TEST
 #pragma GCC target ("avx")
@@ -77,4 +76,7 @@ ll sqrtll(ll x) {
 template <class T> inline bool chmax(T& M, const T& x) { if (M < x) { M = x; return true; } return false; } // 最大値を更新（更新されたら true を返す）
 template <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x; return true; } return false; } // 最小値を更新（更新されたら true を返す）
 int digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } // xのd進数桁数
-#endif // COMPETITIVE_STD_STD_HPP
+/**
+ * @brief std.hpp
+ * @docs docs/std/std.md
+ */

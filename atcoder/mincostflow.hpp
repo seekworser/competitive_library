@@ -1,14 +1,12 @@
-#ifndef ATCODER_MINCOSTFLOW_HPP
-#define ATCODER_MINCOSTFLOW_HPP 1
-
+#pragma once
 #include <algorithm>
 #include <cassert>
 #include <limits>
 #include <queue>
 #include <vector>
 
-#include "atcoder/internal_csr"
-#include "atcoder/internal_queue"
+#include "atcoder/internal_csr.hpp"
+#include "atcoder/internal_queue.hpp"
 
 namespace atcoder {
 
@@ -215,5 +213,3 @@ template <class Cap, class Cost> struct mcf_graph {
 };
 
 }  // namespace atcoder
-
-#endif  // ATCODER_MINCOSTFLOW_HPP

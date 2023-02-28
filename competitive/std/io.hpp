@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_STD_IO_HPP
-#define COMPETITIVE_STD_IO_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 // 演算子オーバーロード（プロトタイプ宣言）
 template <class T, class U> inline istream& operator>>(istream& is, pair<T, U>& p);
 template <class T> inline istream& operator>>(istream& is, vector<T>& v);
@@ -49,4 +48,7 @@ template <typename T1, typename T2, typename... T3> void debug_func(int i, const
 template <typename... T>
 void debug_func(const T &...) {}
 #endif
-#endif // COMPETITIVE_STD_IO_HPP
+/**
+ * @brief io.hpp
+ * @docs docs/std/io.md
+ */

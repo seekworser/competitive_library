@@ -1,6 +1,5 @@
-#ifndef COMPETITIVE_ALGORITHM_MO_HPP
-#define COMPETITIVE_ALGORITHM_MO_HPP 1
-#include <competitive/std/std.hpp>
+#pragma once
+#include "competitive/std/std.hpp"
 template<typename Rev_t> struct Mo {
     int range_min, range_max;
     using query_t = tuple<int, int, int>;
@@ -72,6 +71,6 @@ template<typename Rev_t> struct Mo {
     }
 };
 /**
- * @brief Mo's algorithm
-*/
-#endif // COMPETITIVE_ALGORITHM_MO_HPP
+ * @brief mo.hpp
+ * @docs docs/algorithm/mo.md
+ */
