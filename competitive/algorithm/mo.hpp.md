@@ -152,3 +152,4 @@ redirect_from:
 - /library/competitive/algorithm/mo.hpp.html
 title: mo.hpp
 ---
+うしさんだよーもーもー
