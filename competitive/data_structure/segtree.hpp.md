@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
   - icon: ':warning:'
@@ -130,8 +130,8 @@ data:
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
     \ docs/std/std.md\n */\n#line 4 \"competitive/data_structure/segtree.hpp\"\ntemplate\
-    \ \"class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream& os,\
-    \ const atcoder::segtree<S, op, e\" seg) {\n    int n = seg.n();\n    rep(i, n)\
+    \ <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream& os,\
+    \ const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i, n)\
     \ { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\ntemplate<typename\
     \ T> T op_max(T x, T y) { return x > y? x : y; }\ntemplate<typename T> T op_min(T\
     \ x, T y) { return x < y? x : y; }\ntemplate<typename T> T op_add(T x, T y) {\
@@ -143,8 +143,8 @@ data:
     \ T> using seg_min = atcoder::segtree<T, op_min<T>, e_min<T>>;\n/**\n * @brief\
     \ segtree.hpp\n * @docs docs/data_structure/segtree.md\n */\n"
   code: "#pragma once\n#include \"atcoder/segtree.hpp\"\n#include \"competitive/std/std.hpp\"\
-    \ntemplate \"class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
-    \ os, const atcoder::segtree<S, op, e\" seg) {\n    int n = seg.n();\n    rep(i,\
+    \ntemplate <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
+    \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
     \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\ntemplate<typename\
     \ T> T op_max(T x, T y) { return x > y? x : y; }\ntemplate<typename T> T op_min(T\
     \ x, T y) { return x < y? x : y; }\ntemplate<typename T> T op_add(T x, T y) {\
@@ -162,7 +162,7 @@ data:
   isVerificationFile: false
   path: competitive/data_structure/segtree.hpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
+  timestamp: '2023-02-28 17:09:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/data_structure/segtree.hpp

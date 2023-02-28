@@ -12,7 +12,7 @@ data:
     - icon: ':warning:'
       path: atcoder/fenwicktree.hpp
       title: atcoder/fenwicktree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/internal_bit.hpp
       title: atcoder/internal_bit.hpp
     - icon: ':warning:'
@@ -30,7 +30,7 @@ data:
     - icon: ':warning:'
       path: atcoder/internal_type_traits.hpp
       title: atcoder/internal_type_traits.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/lazysegtree.hpp
       title: atcoder/lazysegtree.hpp
     - icon: ':warning:'
@@ -76,7 +76,7 @@ data:
     - icon: ':x:'
       path: competitive/data_structure/bit.hpp
       title: bit.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: competitive/data_structure/lazysegtree.hpp
       title: lazysegtree.hpp
     - icon: ':x:'
@@ -281,16 +281,16 @@ data:
     - icon: ':x:'
       path: online_test/AOJ/DPL_1_D.test.cpp
       title: online_test/AOJ/DPL_1_D.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_F.test.cpp
       title: online_test/AOJ/DSL_2_F.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_G.test.cpp
       title: online_test/AOJ/DSL_2_G.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_H.test.cpp
       title: online_test/AOJ/DSL_2_H.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_I.test.cpp
       title: online_test/AOJ/DSL_2_I.test.cpp
     - icon: ':x:'

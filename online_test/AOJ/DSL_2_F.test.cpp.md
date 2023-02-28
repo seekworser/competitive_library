@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/lazysegtree.hpp
     title: lazysegtree.hpp
   - icon: ':question:'
@@ -18,9 +18,9 @@ data:
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_F
@@ -161,15 +161,15 @@ data:
     \ = mapping(f, d[k]);\n        if (k < size) lz[k] = composition(f, lz[k]);\n\
     \    }\n    void push(int k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2\
     \ * k + 1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n}  // namespace atcoder\n\
-    #line 4 \"competitive/data_structure/lazysegtree.hpp\"\ntemplate \"class S, S\
-    \ (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F),\
-    \ F (*id)()\"\nstd::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S,\
-    \ op, e, F, mapping, composition, id> seg) {\n    int n = seg.n();\n    rep(i,\
-    \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\n\n\
-    template<typename T> struct AddNode {\n    T value;\n    ll size;\n    AddNode()\
-    \ : value(T(0)), size(1) {};\n    AddNode(T value, ll size) : value(value), size(size)\
-    \ {};\n    friend ostream& operator<<(std::ostream& os, const AddNode<T> &n) {\
-    \ os << n.value; return os; };\n};\n\nint e_max() { return -INF; }\ntemplate<typename\
+    #line 4 \"competitive/data_structure/lazysegtree.hpp\"\ntemplate <class S, S (*op)(S,\
+    \ S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>\n\
+    std::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S, op, e, F,\
+    \ mapping, composition, id> seg) {\n    int n = seg.n();\n    rep(i, n) { os <<\
+    \ seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\n\ntemplate<typename\
+    \ T> struct AddNode {\n    T value;\n    ll size;\n    AddNode() : value(T(0)),\
+    \ size(1) {};\n    AddNode(T value, ll size) : value(value), size(size) {};\n\
+    \    friend ostream& operator<<(std::ostream& os, const AddNode<T> &n) { os <<\
+    \ n.value; return os; };\n};\n\nint e_max() { return -INF; }\ntemplate<typename\
     \ T> T e_max() { return -INFL; }\nint e_min() { return INF; }\ntemplate<typename\
     \ T> T e_min() { return INFL; }\ntemplate<typename T> AddNode<T> e_add() { return\
     \ {0, 1}; }\n\ntemplate<typename T> T op_max(T x, T y) { return x > y ? x : y;\
@@ -273,8 +273,8 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/DSL_2_F.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-02-28 17:09:48+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/DSL_2_F.test.cpp
 layout: document
