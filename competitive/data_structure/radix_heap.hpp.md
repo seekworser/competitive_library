@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/fast_dijkstra.hpp
     title: fast_dijkstra.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/radix_heap.md
     document_title: radix_heap.hpp
@@ -54,7 +54,7 @@ data:
   requiredBy:
   - competitive/graph/fast_dijkstra.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
 documentation_of: competitive/data_structure/radix_heap.hpp

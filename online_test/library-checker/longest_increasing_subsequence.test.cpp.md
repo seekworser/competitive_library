@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/algorithm/longest_increasing_subsequence.hpp
     title: longest_increasing_subsequence.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -81,39 +81,39 @@ data:
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
     \ docs/std/std.md\n */\n#line 3 \"competitive/algorithm/longest_increasing_subsequence.hpp\"\
-    \n// return index_of longest increasing subsequence of a\ntemplate \"class T>\
-    \ vector<int> lis(vector<T\" const &a, bool const strict=true) {\n    vector<T>\
-    \ dp;\n    vector<int> pos(sz(a));\n    auto iter = dp.begin();\n    rep(i, sz(a))\
-    \ {\n        if (strict) iter = lower_bound(all(dp), a[i]);\n        else iter\
-    \ = upper_bound(all(dp), a[i]);\n        pos[i] = distance(dp.begin(), iter);\n\
-    \        if (iter == dp.end()) dp.push_back(a[i]);\n        else *iter = a[i];\n\
-    \    }\n    int m = sz(dp) - 1;\n    vector<int> rev(m+1);\n    for (int i = sz(a)-1;\
-    \ m >= 0 && i >= 0; --i) {\n        if (pos[i] == m) {\n            rev[m] = i;\n\
-    \            --m;\n        }\n    }\n    return rev;\n};\nvector<int> lis(string\
-    \ const &a, bool const strict=true) {\n    vector\"char\" _a(a.begin(), a.end());\n\
-    \    return lis(_a, strict);\n};\n/**\n * @brief longest_increasing_subsequence.hpp\n\
-    \ * @docs docs/algorithm/longest_increasing_subsequence.md\n */\n#line 3 \"competitive/std/io.hpp\"\
-    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
-    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
-    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
-    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
-    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
-    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
-    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
-    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
-    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
-    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
-    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
-    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
-    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
-    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
-    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
-    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \n// return index_of longest increasing subsequence of a\ntemplate <class T> vector<int>\
+    \ lis(vector<T> const &a, bool const strict=true) {\n    vector<T> dp;\n    vector<int>\
+    \ pos(sz(a));\n    auto iter = dp.begin();\n    rep(i, sz(a)) {\n        if (strict)\
+    \ iter = lower_bound(all(dp), a[i]);\n        else iter = upper_bound(all(dp),\
+    \ a[i]);\n        pos[i] = distance(dp.begin(), iter);\n        if (iter == dp.end())\
+    \ dp.push_back(a[i]);\n        else *iter = a[i];\n    }\n    int m = sz(dp) -\
+    \ 1;\n    vector<int> rev(m+1);\n    for (int i = sz(a)-1; m >= 0 && i >= 0; --i)\
+    \ {\n        if (pos[i] == m) {\n            rev[m] = i;\n            --m;\n \
+    \       }\n    }\n    return rev;\n};\nvector<int> lis(string const &a, bool const\
+    \ strict=true) {\n    vector<char> _a(a.begin(), a.end());\n    return lis(_a,\
+    \ strict);\n};\n/**\n * @brief longest_increasing_subsequence.hpp\n * @docs docs/algorithm/longest_increasing_subsequence.md\n\
+    \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
+    \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
+    \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
+    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
+    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
+    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
+    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
+    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
+    template <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
+    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
+    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
+    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
+    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
+    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
+    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
+    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
+    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
     \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
     \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
@@ -158,8 +158,8 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/longest_increasing_subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-02-28 17:17:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/longest_increasing_subsequence.test.cpp
 layout: document

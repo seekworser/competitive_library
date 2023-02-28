@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
     title: bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -74,9 +74,9 @@ data:
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
-    \ docs/std/std.md\n */\n#line 3 \"competitive/data_structure/bit.hpp\"\ntemplate\"\
-    class T\" struct BIT {\n    private:\n        vector<T> bit;\n        int _n;\n\
-    \    public:\n        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int\
+    \ docs/std/std.md\n */\n#line 3 \"competitive/data_structure/bit.hpp\"\ntemplate<class\
+    \ T> struct BIT {\n    private:\n        vector<T> bit;\n        int _n;\n   \
+    \ public:\n        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int\
     \ p, T x) {\n            assert(0 <= p && p <= _n);\n            p++;\n      \
     \      for (int i = p; i <= _n; i += i & -i) {\n                bit[i] += x;\n\
     \            }\n        }\n        T sum_from_left(int p) {\n            assert(0\
@@ -103,7 +103,7 @@ data:
   isVerificationFile: false
   path: competitive/math/inversion_num.hpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
+  timestamp: '2023-02-28 17:22:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/inversion_num.hpp

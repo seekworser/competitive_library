@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/algorithm/longest_common_subsequence.hpp
     title: longest_common_subsequence.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/algorithm/longest_increasing_subsequence.hpp
     title: longest_increasing_subsequence.hpp
   - icon: ':warning:'
@@ -14,7 +14,7 @@ data:
   - icon: ':warning:'
     path: competitive/algorithm/mo.hpp
     title: mo.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
     title: bit.hpp
   - icon: ':heavy_check_mark:'
@@ -44,19 +44,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/projection.hpp
     title: projection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/dijkstra.hpp
     title: dijkstra.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/fast_dijkstra.hpp
     title: fast_dijkstra.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':warning:'
     path: competitive/graph/max_k_dijkstra.hpp
     title: max_k_dijkstra.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/warshall_floyd.hpp
     title: warshall_floyd.hpp
   - icon: ':warning:'
@@ -92,7 +92,7 @@ data:
   - icon: ':warning:'
     path: competitive/matrix/matrix.hpp
     title: matrix.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
   - icon: ':heavy_check_mark:'
@@ -147,7 +147,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_4_A.test.cpp
     title: online_test/AOJ/CGL_4_A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DPL_1_D.test.cpp
     title: online_test/AOJ/DPL_1_D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -162,10 +162,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_1_A.test.cpp
     title: online_test/AOJ/GRL_1_A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_1_C.test.cpp
     title: online_test/AOJ/GRL_1_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -174,24 +174,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/aplusb.test.cpp
     title: online_test/library-checker/aplusb.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/longest_increasing_subsequence.test.cpp
     title: online_test/library-checker/longest_increasing_subsequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/shortest_path_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_dijkstra.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-hello-world.test.cpp
     title: online_test/yukicoder/yuki-hello-world.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/std/std.md
     document_title: std.hpp
@@ -355,7 +355,7 @@ data:
   - competitive/string/rolling_hash.hpp
   - online_test/AOJ/NTL_1_D.cpp
   timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/yukicoder/yuki-hello-world.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp

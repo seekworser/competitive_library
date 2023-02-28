@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/warshall_floyd.hpp
     title: warshall_floyd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
@@ -82,8 +82,8 @@ data:
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
-    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate \"class\
-    \ Cost\" struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
+    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate <class\
+    \ Cost> struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
     \ cost;\n        Edge() {};\n        Edge(int _to, Cost _cost) : to(_to), cost(_cost)\
     \ {};\n    };\n    struct AdjacencyListRange{\n        using iterator = typename\
     \ std::vector<Edge>::const_iterator;\n        iterator begi, endi;\n        iterator\
@@ -107,45 +107,45 @@ data:
     \ 0);\n    //     for(int v : E) ++buf[v];\n    //     for(int i=1; i<=n; i++)\
     \ buf[i] += buf[i-1];\n    //     res.E.resize(buf[n]);\n    //     for(int u=0;\
     \ u<n; u++) for(int v : operator[](u)) res.E[--buf[v]] = u;\n    //     res.I\
-    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate \"class T>\
-    \ ostream& operator<<(ostream& os, Graph<T\" g) {\n    bool first = true;\n  \
-    \  rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
+    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate <class T>\
+    \ ostream& operator<<(ostream& os, Graph<T> g) {\n    bool first = true;\n   \
+    \ rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
     \ os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n    }\n\
     \    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n */\n\
-    #line 4 \"competitive/graph/warshall_floyd.hpp\"\ntemplate \"class Cost\" bool\
-    \ warshall_floyd(\n    Graph<Cost> &G,\n    vector<vector<Cost>> &min_cost,\n\
-    \    Cost inf=INF,\n    Cost identity=0\n) {\n    min_cost = vector<vector<Cost>>(G.n,\
-    \ vector<Cost>(G.n, inf));\n    rep(i, G.n) repe(e, G[i]) {\n        min_cost[i][e.to]\
-    \ = e.cost;\n    }\n    rep(i, G.n) chmin(min_cost[i][i], identity);\n    rep(k,\
-    \ G.n) {\n        rep(i, G.n) {\n            rep(j, G.n) {\n                if\
-    \ (min_cost[i][k] == inf || min_cost[k][j] == inf) continue;\n               \
-    \ if (min_cost[i][j] == inf) {\n                    min_cost[i][j] = min_cost[i][k]\
-    \ + min_cost[k][j];\n                } else {\n                    chmin(min_cost[i][j],\
-    \ min_cost[i][k] + min_cost[k][j]);\n                }\n            }\n      \
-    \  }\n    }\n    rep(i, G.n) {\n        if (min_cost[i][i] < identity) return\
-    \ false;\n    }\n    return true;\n}\n/**\n * @brief warshall_floyd.hpp\n * @docs\
-    \ docs/graph/warshall_floyd.md\n */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\
-    \u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline istream&\
-    \ operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline istream&\
-    \ operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U> inline ostream&\
-    \ operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class T> inline ostream&\
-    \ operator<<(ostream& os, const vector<T>& v);\ntemplate <typename T, typename\
-    \ S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename T>\
-    \ ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
-    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
-    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
-    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
-    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
-    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
-    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
-    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
-    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
-    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    #line 4 \"competitive/graph/warshall_floyd.hpp\"\ntemplate <class Cost> bool warshall_floyd(\n\
+    \    Graph<Cost> &G,\n    vector<vector<Cost>> &min_cost,\n    Cost inf=INF,\n\
+    \    Cost identity=0\n) {\n    min_cost = vector<vector<Cost>>(G.n, vector<Cost>(G.n,\
+    \ inf));\n    rep(i, G.n) repe(e, G[i]) {\n        min_cost[i][e.to] = e.cost;\n\
+    \    }\n    rep(i, G.n) chmin(min_cost[i][i], identity);\n    rep(k, G.n) {\n\
+    \        rep(i, G.n) {\n            rep(j, G.n) {\n                if (min_cost[i][k]\
+    \ == inf || min_cost[k][j] == inf) continue;\n                if (min_cost[i][j]\
+    \ == inf) {\n                    min_cost[i][j] = min_cost[i][k] + min_cost[k][j];\n\
+    \                } else {\n                    chmin(min_cost[i][j], min_cost[i][k]\
+    \ + min_cost[k][j]);\n                }\n            }\n        }\n    }\n   \
+    \ rep(i, G.n) {\n        if (min_cost[i][i] < identity) return false;\n    }\n\
+    \    return true;\n}\n/**\n * @brief warshall_floyd.hpp\n * @docs docs/graph/warshall_floyd.md\n\
+    \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
+    \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
+    \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
+    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
+    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
+    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
+    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
+    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
+    template <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
+    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
+    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
+    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
+    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
+    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
+    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
+    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
+    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
     \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
     \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
@@ -200,8 +200,8 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/GRL_1_C.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-02-28 17:22:26+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/GRL_1_C.test.cpp
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -74,8 +74,8 @@ data:
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
-    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate \"class\
-    \ Cost\" struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
+    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate <class\
+    \ Cost> struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
     \ cost;\n        Edge() {};\n        Edge(int _to, Cost _cost) : to(_to), cost(_cost)\
     \ {};\n    };\n    struct AdjacencyListRange{\n        using iterator = typename\
     \ std::vector<Edge>::const_iterator;\n        iterator begi, endi;\n        iterator\
@@ -99,13 +99,13 @@ data:
     \ 0);\n    //     for(int v : E) ++buf[v];\n    //     for(int i=1; i<=n; i++)\
     \ buf[i] += buf[i-1];\n    //     res.E.resize(buf[n]);\n    //     for(int u=0;\
     \ u<n; u++) for(int v : operator[](u)) res.E[--buf[v]] = u;\n    //     res.I\
-    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate \"class T>\
-    \ ostream& operator<<(ostream& os, Graph<T\" g) {\n    bool first = true;\n  \
-    \  rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
+    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate <class T>\
+    \ ostream& operator<<(ostream& os, Graph<T> g) {\n    bool first = true;\n   \
+    \ rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
     \ os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n    }\n\
     \    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n */\n\
-    #line 4 \"competitive/graph/max_k_dijkstra.hpp\"\ntemplate\"class Cost> void max_k_dijkstra(const\
-    \ Graph<Cost>& G, int start, int k, vector<Cost> &min_cost, vector<int\" &prev,\
+    #line 4 \"competitive/graph/max_k_dijkstra.hpp\"\ntemplate<class Cost> void max_k_dijkstra(const\
+    \ Graph<Cost>& G, int start, int k, vector<Cost> &min_cost, vector<int> &prev,\
     \ Cost inf=INF, Cost identity=0){\n    vvi que(k+1, vi(0));\n    min_cost = vector<Cost>(G.n,\
     \ inf);\n    min_cost[start] = identity;\n    prev = vector<int>(G.n);\n    que[0].push_back(start);\n\
     \    int current = 0;\n    while(true) {\n        bool all_empty = true;\n   \
@@ -121,8 +121,8 @@ data:
     \       current %= k+1;\n    }\n    return;\n}\n/**\n * @brief max_k_dijkstra.hpp\n\
     \ * @docs docs/graph/max_k_dijkstra.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/graph.hpp\"\
-    \ntemplate\"class Cost> void max_k_dijkstra(const Graph<Cost>& G, int start, int\
-    \ k, vector<Cost> &min_cost, vector<int\" &prev, Cost inf=INF, Cost identity=0){\n\
+    \ntemplate<class Cost> void max_k_dijkstra(const Graph<Cost>& G, int start, int\
+    \ k, vector<Cost> &min_cost, vector<int> &prev, Cost inf=INF, Cost identity=0){\n\
     \    vvi que(k+1, vi(0));\n    min_cost = vector<Cost>(G.n, inf);\n    min_cost[start]\
     \ = identity;\n    prev = vector<int>(G.n);\n    que[0].push_back(start);\n  \
     \  int current = 0;\n    while(true) {\n        bool all_empty = true;\n     \
@@ -143,7 +143,7 @@ data:
   isVerificationFile: false
   path: competitive/graph/max_k_dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
+  timestamp: '2023-02-28 17:22:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/graph/max_k_dijkstra.hpp

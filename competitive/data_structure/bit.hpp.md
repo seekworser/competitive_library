@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy:
@@ -9,12 +9,12 @@ data:
     path: competitive/math/inversion_num.hpp
     title: inversion_num.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/bit.md
     document_title: bit.hpp
@@ -77,9 +77,9 @@ data:
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
-    \ docs/std/std.md\n */\n#line 3 \"competitive/data_structure/bit.hpp\"\ntemplate\"\
-    class T\" struct BIT {\n    private:\n        vector<T> bit;\n        int _n;\n\
-    \    public:\n        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int\
+    \ docs/std/std.md\n */\n#line 3 \"competitive/data_structure/bit.hpp\"\ntemplate<class\
+    \ T> struct BIT {\n    private:\n        vector<T> bit;\n        int _n;\n   \
+    \ public:\n        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int\
     \ p, T x) {\n            assert(0 <= p && p <= _n);\n            p++;\n      \
     \      for (int i = p; i <= _n; i += i & -i) {\n                bit[i] += x;\n\
     \            }\n        }\n        T sum_from_left(int p) {\n            assert(0\
@@ -88,7 +88,7 @@ data:
     \ ret;\n        }\n        T sum(int ps, int pt) {\n            return sum_from_left(pt)\
     \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief bit.hpp\n * @docs docs/data_structure/bit.md\n\
     \ */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate\"class T\" struct\
+  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<class T> struct\
     \ BIT {\n    private:\n        vector<T> bit;\n        int _n;\n    public:\n\
     \        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int p, T x)\
     \ {\n            assert(0 <= p && p <= _n);\n            p++;\n            for\
@@ -105,8 +105,8 @@ data:
   path: competitive/data_structure/bit.hpp
   requiredBy:
   - competitive/math/inversion_num.hpp
-  timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-02-28 17:22:26+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/static_range_sum.test.cpp
 documentation_of: competitive/data_structure/bit.hpp

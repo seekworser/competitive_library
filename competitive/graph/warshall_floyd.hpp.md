@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_1_C.test.cpp
     title: online_test/AOJ/GRL_1_C.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/graph/warshall_floyd.md
     document_title: warshall_floyd.hpp
@@ -77,8 +77,8 @@ data:
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
-    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate \"class\
-    \ Cost\" struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
+    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate <class\
+    \ Cost> struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
     \ cost;\n        Edge() {};\n        Edge(int _to, Cost _cost) : to(_to), cost(_cost)\
     \ {};\n    };\n    struct AdjacencyListRange{\n        using iterator = typename\
     \ std::vector<Edge>::const_iterator;\n        iterator begi, endi;\n        iterator\
@@ -102,26 +102,26 @@ data:
     \ 0);\n    //     for(int v : E) ++buf[v];\n    //     for(int i=1; i<=n; i++)\
     \ buf[i] += buf[i-1];\n    //     res.E.resize(buf[n]);\n    //     for(int u=0;\
     \ u<n; u++) for(int v : operator[](u)) res.E[--buf[v]] = u;\n    //     res.I\
-    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate \"class T>\
-    \ ostream& operator<<(ostream& os, Graph<T\" g) {\n    bool first = true;\n  \
-    \  rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
+    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate <class T>\
+    \ ostream& operator<<(ostream& os, Graph<T> g) {\n    bool first = true;\n   \
+    \ rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
     \ os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n    }\n\
     \    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n */\n\
-    #line 4 \"competitive/graph/warshall_floyd.hpp\"\ntemplate \"class Cost\" bool\
-    \ warshall_floyd(\n    Graph<Cost> &G,\n    vector<vector<Cost>> &min_cost,\n\
-    \    Cost inf=INF,\n    Cost identity=0\n) {\n    min_cost = vector<vector<Cost>>(G.n,\
-    \ vector<Cost>(G.n, inf));\n    rep(i, G.n) repe(e, G[i]) {\n        min_cost[i][e.to]\
-    \ = e.cost;\n    }\n    rep(i, G.n) chmin(min_cost[i][i], identity);\n    rep(k,\
-    \ G.n) {\n        rep(i, G.n) {\n            rep(j, G.n) {\n                if\
-    \ (min_cost[i][k] == inf || min_cost[k][j] == inf) continue;\n               \
-    \ if (min_cost[i][j] == inf) {\n                    min_cost[i][j] = min_cost[i][k]\
-    \ + min_cost[k][j];\n                } else {\n                    chmin(min_cost[i][j],\
-    \ min_cost[i][k] + min_cost[k][j]);\n                }\n            }\n      \
-    \  }\n    }\n    rep(i, G.n) {\n        if (min_cost[i][i] < identity) return\
-    \ false;\n    }\n    return true;\n}\n/**\n * @brief warshall_floyd.hpp\n * @docs\
-    \ docs/graph/warshall_floyd.md\n */\n"
+    #line 4 \"competitive/graph/warshall_floyd.hpp\"\ntemplate <class Cost> bool warshall_floyd(\n\
+    \    Graph<Cost> &G,\n    vector<vector<Cost>> &min_cost,\n    Cost inf=INF,\n\
+    \    Cost identity=0\n) {\n    min_cost = vector<vector<Cost>>(G.n, vector<Cost>(G.n,\
+    \ inf));\n    rep(i, G.n) repe(e, G[i]) {\n        min_cost[i][e.to] = e.cost;\n\
+    \    }\n    rep(i, G.n) chmin(min_cost[i][i], identity);\n    rep(k, G.n) {\n\
+    \        rep(i, G.n) {\n            rep(j, G.n) {\n                if (min_cost[i][k]\
+    \ == inf || min_cost[k][j] == inf) continue;\n                if (min_cost[i][j]\
+    \ == inf) {\n                    min_cost[i][j] = min_cost[i][k] + min_cost[k][j];\n\
+    \                } else {\n                    chmin(min_cost[i][j], min_cost[i][k]\
+    \ + min_cost[k][j]);\n                }\n            }\n        }\n    }\n   \
+    \ rep(i, G.n) {\n        if (min_cost[i][i] < identity) return false;\n    }\n\
+    \    return true;\n}\n/**\n * @brief warshall_floyd.hpp\n * @docs docs/graph/warshall_floyd.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/graph.hpp\"\
-    \ntemplate \"class Cost\" bool warshall_floyd(\n    Graph<Cost> &G,\n    vector<vector<Cost>>\
+    \ntemplate <class Cost> bool warshall_floyd(\n    Graph<Cost> &G,\n    vector<vector<Cost>>\
     \ &min_cost,\n    Cost inf=INF,\n    Cost identity=0\n) {\n    min_cost = vector<vector<Cost>>(G.n,\
     \ vector<Cost>(G.n, inf));\n    rep(i, G.n) repe(e, G[i]) {\n        min_cost[i][e.to]\
     \ = e.cost;\n    }\n    rep(i, G.n) chmin(min_cost[i][i], identity);\n    rep(k,\
@@ -139,8 +139,8 @@ data:
   isVerificationFile: false
   path: competitive/graph/warshall_floyd.hpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-02-28 17:22:26+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/GRL_1_C.test.cpp
 documentation_of: competitive/graph/warshall_floyd.hpp

@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/radix_heap.hpp
     title: radix_heap.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/fast_dijkstra.hpp
     title: fast_dijkstra.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
@@ -86,8 +86,8 @@ data:
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
-    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate \"class\
-    \ Cost\" struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
+    \ docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate <class\
+    \ Cost> struct Graph{\npublic:\n    struct Edge {\n        int to;\n        Cost\
     \ cost;\n        Edge() {};\n        Edge(int _to, Cost _cost) : to(_to), cost(_cost)\
     \ {};\n    };\n    struct AdjacencyListRange{\n        using iterator = typename\
     \ std::vector<Edge>::const_iterator;\n        iterator begi, endi;\n        iterator\
@@ -111,9 +111,9 @@ data:
     \ 0);\n    //     for(int v : E) ++buf[v];\n    //     for(int i=1; i<=n; i++)\
     \ buf[i] += buf[i-1];\n    //     res.E.resize(buf[n]);\n    //     for(int u=0;\
     \ u<n; u++) for(int v : operator[](u)) res.E[--buf[v]] = u;\n    //     res.I\
-    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate \"class T>\
-    \ ostream& operator<<(ostream& os, Graph<T\" g) {\n    bool first = true;\n  \
-    \  rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
+    \ = std::move(buf);\n    //     return res;\n    // }\n};\ntemplate <class T>\
+    \ ostream& operator<<(ostream& os, Graph<T> g) {\n    bool first = true;\n   \
+    \ rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n        else\
     \ os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n    }\n\
     \    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n */\n\
     #line 2 \"competitive/data_structure/radix_heap.hpp\"\ntemplate <typename Key,\
@@ -132,9 +132,9 @@ data:
     \ ms[idx] = uint(-1);\n    }\n    --s;\n    auto res = vs[0].back();\n    vs[0].pop_back();\n\
     \    if (vs[0].empty()) ms[0] = uint(-1);\n    return res;\n  }\n};\n/**\n * @brief\
     \ radix_heap.hpp\n * @docs docs/data_structure/radix_heap.md\n */\n#line 5 \"\
-    competitive/graph/fast_dijkstra.hpp\"\ntemplate\"class Cost> void dijkstra(const\
-    \ Graph<Cost>& G, int start, vector<Cost> &min_cost, vector<int\" &prev, Cost\
-    \ inf=INF, Cost identity=0){\n    // priority_queue<pair<Cost, int>, vector<pair<Cost,\
+    competitive/graph/fast_dijkstra.hpp\"\ntemplate<class Cost> void dijkstra(const\
+    \ Graph<Cost>& G, int start, vector<Cost> &min_cost, vector<int> &prev, Cost inf=INF,\
+    \ Cost identity=0){\n    // priority_queue<pair<Cost, int>, vector<pair<Cost,\
     \ int>>, greater<pair<Cost, int>>> que;\n    RadixHeap<Cost, int> que;\n    min_cost\
     \ = vector<Cost>(G.n, inf);\n    min_cost[start] = identity;\n    prev = vector<int>(G.n);\n\
     \    que.push(identity, start);\n    while(!que.empty()){\n        auto [d, u]\
@@ -223,8 +223,8 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-02-28 17:22:26+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
 layout: document

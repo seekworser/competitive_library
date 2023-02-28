@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -72,7 +72,7 @@ data:
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
     \ docs/std/std.md\n */\n#line 3 \"competitive/algorithm/minimum_excludant.hpp\"\
-    \n// return index_of a for longest common subsequence\ntemplate \"class T\" struct\
+    \n// return index_of a for longest common subsequence\ntemplate <class T> struct\
     \ Mex {\nprivate:\n    set<pair<T, T>> s;\n\npublic:\n    Mex(T inf=INF) {\n \
     \       s.emplace(-inf, -inf);\n        s.emplace(inf, inf);\n    }\n\n    bool\
     \ contains(T x) const {\n        auto it = prev(s.lower_bound(make_pair(x+1, x+1)));\n\
@@ -99,7 +99,7 @@ data:
     \      return x;\n        }\n    }\n};\n/**\n * @brief minimum_excludant.hpp\n\
     \ * @docs docs/algorithm/minimum_excludant.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n// return index_of a\
-    \ for longest common subsequence\ntemplate \"class T\" struct Mex {\nprivate:\n\
+    \ for longest common subsequence\ntemplate <class T> struct Mex {\nprivate:\n\
     \    set<pair<T, T>> s;\n\npublic:\n    Mex(T inf=INF) {\n        s.emplace(-inf,\
     \ -inf);\n        s.emplace(inf, inf);\n    }\n\n    bool contains(T x) const\
     \ {\n        auto it = prev(s.lower_bound(make_pair(x+1, x+1)));\n        auto\
@@ -130,7 +130,7 @@ data:
   isVerificationFile: false
   path: competitive/algorithm/minimum_excludant.hpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
+  timestamp: '2023-02-28 17:22:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/algorithm/minimum_excludant.hpp

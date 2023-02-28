@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DPL_1_D.test.cpp
     title: online_test/AOJ/DPL_1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/longest_increasing_subsequence.test.cpp
     title: online_test/library-checker/longest_increasing_subsequence.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/algorithm/longest_increasing_subsequence.md
     document_title: longest_increasing_subsequence.hpp
@@ -78,28 +78,28 @@ data:
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
     \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
     \ docs/std/std.md\n */\n#line 3 \"competitive/algorithm/longest_increasing_subsequence.hpp\"\
-    \n// return index_of longest increasing subsequence of a\ntemplate \"class T>\
-    \ vector<int> lis(vector<T\" const &a, bool const strict=true) {\n    vector<T>\
-    \ dp;\n    vector<int> pos(sz(a));\n    auto iter = dp.begin();\n    rep(i, sz(a))\
-    \ {\n        if (strict) iter = lower_bound(all(dp), a[i]);\n        else iter\
-    \ = upper_bound(all(dp), a[i]);\n        pos[i] = distance(dp.begin(), iter);\n\
-    \        if (iter == dp.end()) dp.push_back(a[i]);\n        else *iter = a[i];\n\
-    \    }\n    int m = sz(dp) - 1;\n    vector<int> rev(m+1);\n    for (int i = sz(a)-1;\
-    \ m >= 0 && i >= 0; --i) {\n        if (pos[i] == m) {\n            rev[m] = i;\n\
-    \            --m;\n        }\n    }\n    return rev;\n};\nvector<int> lis(string\
-    \ const &a, bool const strict=true) {\n    vector\"char\" _a(a.begin(), a.end());\n\
-    \    return lis(_a, strict);\n};\n/**\n * @brief longest_increasing_subsequence.hpp\n\
-    \ * @docs docs/algorithm/longest_increasing_subsequence.md\n */\n"
+    \n// return index_of longest increasing subsequence of a\ntemplate <class T> vector<int>\
+    \ lis(vector<T> const &a, bool const strict=true) {\n    vector<T> dp;\n    vector<int>\
+    \ pos(sz(a));\n    auto iter = dp.begin();\n    rep(i, sz(a)) {\n        if (strict)\
+    \ iter = lower_bound(all(dp), a[i]);\n        else iter = upper_bound(all(dp),\
+    \ a[i]);\n        pos[i] = distance(dp.begin(), iter);\n        if (iter == dp.end())\
+    \ dp.push_back(a[i]);\n        else *iter = a[i];\n    }\n    int m = sz(dp) -\
+    \ 1;\n    vector<int> rev(m+1);\n    for (int i = sz(a)-1; m >= 0 && i >= 0; --i)\
+    \ {\n        if (pos[i] == m) {\n            rev[m] = i;\n            --m;\n \
+    \       }\n    }\n    return rev;\n};\nvector<int> lis(string const &a, bool const\
+    \ strict=true) {\n    vector<char> _a(a.begin(), a.end());\n    return lis(_a,\
+    \ strict);\n};\n/**\n * @brief longest_increasing_subsequence.hpp\n * @docs docs/algorithm/longest_increasing_subsequence.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n// return index_of longest\
-    \ increasing subsequence of a\ntemplate \"class T> vector<int> lis(vector<T\"\
-    \ const &a, bool const strict=true) {\n    vector<T> dp;\n    vector<int> pos(sz(a));\n\
+    \ increasing subsequence of a\ntemplate <class T> vector<int> lis(vector<T> const\
+    \ &a, bool const strict=true) {\n    vector<T> dp;\n    vector<int> pos(sz(a));\n\
     \    auto iter = dp.begin();\n    rep(i, sz(a)) {\n        if (strict) iter =\
     \ lower_bound(all(dp), a[i]);\n        else iter = upper_bound(all(dp), a[i]);\n\
     \        pos[i] = distance(dp.begin(), iter);\n        if (iter == dp.end()) dp.push_back(a[i]);\n\
     \        else *iter = a[i];\n    }\n    int m = sz(dp) - 1;\n    vector<int> rev(m+1);\n\
     \    for (int i = sz(a)-1; m >= 0 && i >= 0; --i) {\n        if (pos[i] == m)\
     \ {\n            rev[m] = i;\n            --m;\n        }\n    }\n    return rev;\n\
-    };\nvector<int> lis(string const &a, bool const strict=true) {\n    vector\"char\"\
+    };\nvector<int> lis(string const &a, bool const strict=true) {\n    vector<char>\
     \ _a(a.begin(), a.end());\n    return lis(_a, strict);\n};\n/**\n * @brief longest_increasing_subsequence.hpp\n\
     \ * @docs docs/algorithm/longest_increasing_subsequence.md\n */\n"
   dependsOn:
@@ -107,8 +107,8 @@ data:
   isVerificationFile: false
   path: competitive/algorithm/longest_increasing_subsequence.hpp
   requiredBy: []
-  timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-02-28 17:17:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/longest_increasing_subsequence.test.cpp
   - online_test/AOJ/DPL_1_D.test.cpp

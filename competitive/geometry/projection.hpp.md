@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/base.hpp
     title: "Point\u30AF\u30E9\u30B9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
