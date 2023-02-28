@@ -1,6 +1,6 @@
 #pragma once
 #include "competitive/std/std.hpp"
-template "class Cost" struct Graph{
+template <class Cost> struct Graph{
 public:
     struct Edge {
         int to;
@@ -58,7 +58,7 @@ public:
     //     return res;
     // }
 };
-template "class T> ostream& operator<<(ostream& os, Graph<T" g) {
+template <class T> ostream& operator<<(ostream& os, Graph<T> g) {
     bool first = true;
     rep(i, g.n) repe(e, g[i]) {
         if (first) first = false;

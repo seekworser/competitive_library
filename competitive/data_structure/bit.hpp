@@ -1,6 +1,6 @@
 #pragma once
 #include "competitive/std/std.hpp"
-template"class T" struct BIT {
+template<class T> struct BIT {
     private:
         vector<T> bit;
         int _n;

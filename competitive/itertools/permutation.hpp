@@ -1,5 +1,5 @@
 #pragma once
-template"class T> void init_permutation_dup(vector<T> &cur, vector<T> &a, vector<ll" &ind) {
+template<class T> void init_permutation_dup(vector<T> &cur, vector<T> &a, vector<ll> &ind) {
     long long n = a.size();
     long long r = cur.size();
     for (long long i = 0; i < r; i++) {
@@ -8,7 +8,7 @@ template"class T> void init_permutation_dup(vector<T> &cur, vector<T> &a, vector
     }
     return;
 };
-template"class T> bool next_permutation_dup(vector<T> &cur, vector<T> &a, vector<ll" &ind) {
+template<class T> bool next_permutation_dup(vector<T> &cur, vector<T> &a, vector<ll> &ind) {
     long long n = a.size();
     long long r = cur.size();
     for (long long i = r - 1; i > -1; i--) {
@@ -25,7 +25,7 @@ template"class T> bool next_permutation_dup(vector<T> &cur, vector<T> &a, vector
     }
     return false;
 };
-template"class T> void init_combination(vector<T> &cur, vector<T> &a, vector<ll" &ind) {
+template<class T> void init_combination(vector<T> &cur, vector<T> &a, vector<ll> &ind) {
     long long n = a.size();
     long long r = cur.size();
     assert(r <= n && r != 0);
@@ -35,7 +35,7 @@ template"class T> void init_combination(vector<T> &cur, vector<T> &a, vector<ll"
     }
     return;
 };
-template"class T> bool next_combination(vector<T> &cur, vector<T> &a, vector<ll" &ind) {
+template<class T> bool next_combination(vector<T> &cur, vector<T> &a, vector<ll> &ind) {
     long long n = a.size();
     long long r = cur.size();
     for (long long i = r - 1; i > -1; i--) {
@@ -52,7 +52,7 @@ template"class T> bool next_combination(vector<T> &cur, vector<T> &a, vector<ll"
     }
     return false;
 };
-template"class T> void init_combination_dup(vector<T> &cur, vector<T> &a, vector<ll" &ind) {
+template<class T> void init_combination_dup(vector<T> &cur, vector<T> &a, vector<ll> &ind) {
     long long n = a.size();
     long long r = cur.size();
     for (long long i = 0; i < r; i++) {
@@ -61,7 +61,7 @@ template"class T> void init_combination_dup(vector<T> &cur, vector<T> &a, vector
     }
     return;
 };
-template"class T> bool next_combination_dup(vector<T> &cur, vector<T> &a, vector<ll" &ind) {
+template<class T> bool next_combination_dup(vector<T> &cur, vector<T> &a, vector<ll> &ind) {
     long long n = a.size();
     long long r = cur.size();
     for (long long i = r - 1; i > -1; i--) {
@@ -78,7 +78,7 @@ template"class T> bool next_combination_dup(vector<T> &cur, vector<T> &a, vector
     }
     return false;
 };
-template"class T> void init_permutation(vector<T> &cur, vector<T> &a, vector<ll> &ind, vector<ll" &all_index) {
+template<class T> void init_permutation(vector<T> &cur, vector<T> &a, vector<ll> &ind, vector<ll> &all_index) {
     long long n = a.size();
     long long r = cur.size();
     assert(r <= n && r != 0);
@@ -91,7 +91,7 @@ template"class T> void init_permutation(vector<T> &cur, vector<T> &a, vector<ll>
     }
     return;
 };
-template"class T> bool next_permutation_(vector<T> &cur, vector<T> &a, vector<ll> &ind, vector<ll> &ind_comb, vector<ll" &all_index) {  // add '_' sufix to avoid name clashes
+template<class T> bool next_permutation_(vector<T> &cur, vector<T> &a, vector<ll> &ind, vector<ll> &ind_comb, vector<ll> &all_index) {
     long long n = a.size();
     long long r = cur.size();
     if (next_permutation(all(ind))) {

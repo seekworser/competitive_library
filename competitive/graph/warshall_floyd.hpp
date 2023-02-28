@@ -1,7 +1,7 @@
 #pragma once
 #include "competitive/std/std.hpp"
 #include "competitive/graph/graph.hpp"
-template "class Cost" bool warshall_floyd(
+template <class Cost> bool warshall_floyd(
     Graph<Cost> &G,
     vector<vector<Cost>> &min_cost,
     Cost inf=INF,
