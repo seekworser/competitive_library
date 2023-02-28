@@ -1,7 +1,7 @@
 #pragma once
 #include "atcoder/lazysegtree.hpp"
 #include "competitive/std/std.hpp"
-template "class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()"
+template <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>
 std::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S, op, e, F, mapping, composition, id> seg) {
     int n = seg.n();
     rep(i, n) { os << seg.get(i); if (i != n-1) os << " "; }

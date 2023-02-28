@@ -1,7 +1,7 @@
 #pragma once
 #include "atcoder/segtree.hpp"
 #include "competitive/std/std.hpp"
-template "class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream& os, const atcoder::segtree<S, op, e" seg) {
+template <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream& os, const atcoder::segtree<S, op, e> seg) {
     int n = seg.n();
     rep(i, n) { os << seg.get(i); if (i != n-1) os << " "; }
     return os;
