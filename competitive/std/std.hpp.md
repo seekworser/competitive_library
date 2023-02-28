@@ -390,3 +390,4 @@ redirect_from:
 - /library/competitive/std/std.hpp.html
 title: std.hpp
 ---
+競プロテンプレート、よく使うやつ全部のせ、偉い
