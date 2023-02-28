@@ -2,7 +2,7 @@
 #include "competitive/std/std.hpp"
 #include "competitive/graph/graph.hpp"
 #include "competitive/data_structure/radix_heap.hpp"
-template"class Cost> void dijkstra(const Graph<Cost>& G, int start, vector<Cost> &min_cost, vector<int" &prev, Cost inf=INF, Cost identity=0){
+template<class Cost> void dijkstra(const Graph<Cost>& G, int start, vector<Cost> &min_cost, vector<int> &prev, Cost inf=INF, Cost identity=0){
     // priority_queue<pair<Cost, int>, vector<pair<Cost, int>>, greater<pair<Cost, int>>> que;
     RadixHeap<Cost, int> que;
     min_cost = vector<Cost>(G.n, inf);
