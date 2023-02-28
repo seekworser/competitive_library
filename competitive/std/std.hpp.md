@@ -4,110 +4,109 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: competitive/algorithm/longest_common_subsequence.hpp
-    title: competitive/algorithm/longest_common_subsequence.hpp
-  - icon: ':heavy_check_mark:'
+    title: longest_common_subsequence.hpp
+  - icon: ':x:'
     path: competitive/algorithm/longest_increasing_subsequence.hpp
-    title: competitive/algorithm/longest_increasing_subsequence.hpp
+    title: longest_increasing_subsequence.hpp
   - icon: ':warning:'
     path: competitive/algorithm/minimum_excludant.hpp
-    title: competitive/algorithm/minimum_excludant.hpp
+    title: minimum_excludant.hpp
   - icon: ':warning:'
     path: competitive/algorithm/mo.hpp
-    title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+    title: mo.hpp
+  - icon: ':x:'
     path: competitive/data_structure/bit.hpp
-    title: competitive/data_structure/bit.hpp
-  - icon: ':heavy_check_mark:'
+    title: bit.hpp
+  - icon: ':x:'
     path: competitive/data_structure/lazysegtree.hpp
-    title: competitive/data_structure/lazysegtree.hpp
+    title: lazysegtree.hpp
   - icon: ':warning:'
     path: competitive/data_structure/segtree.hpp
-    title: competitive/data_structure/segtree.hpp
+    title: segtree.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/angle.hpp
-    title: competitive/geometry/angle.hpp
+    title: angle.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/base.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\u30D9\u30FC\u30B9\u30AF\u30E9\
-      \u30B9"
+    title: "Point\u30AF\u30E9\u30B9"
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/counter_clockwise.hpp
-    title: competitive/geometry/counter_clockwise.hpp
+    title: counter_clockwise.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/distance.hpp
-    title: competitive/geometry/distance.hpp
+    title: distance.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/intersection.hpp
-    title: competitive/geometry/intersection.hpp
+    title: intersection.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/polygon.hpp
-    title: competitive/geometry/polygon.hpp
+    title: polygon.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/projection.hpp
-    title: competitive/geometry/projection.hpp
-  - icon: ':heavy_check_mark:'
+    title: projection.hpp
+  - icon: ':x:'
     path: competitive/graph/dijkstra.hpp
-    title: competitive/graph/dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+    title: dijkstra.hpp
+  - icon: ':x:'
     path: competitive/graph/fast_dijkstra.hpp
-    title: competitive/graph/fast_dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+    title: fast_dijkstra.hpp
+  - icon: ':x:'
     path: competitive/graph/graph.hpp
-    title: competitive/graph/graph.hpp
+    title: graph.hpp
   - icon: ':warning:'
     path: competitive/graph/max_k_dijkstra.hpp
-    title: competitive/graph/max_k_dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+    title: max_k_dijkstra.hpp
+  - icon: ':x:'
     path: competitive/graph/warshall_floyd.hpp
-    title: competitive/graph/warshall_floyd.hpp
+    title: warshall_floyd.hpp
   - icon: ':warning:'
     path: competitive/helper/board_helper.hpp
-    title: competitive/helper/board_helper.hpp
+    title: board_helper.hpp
   - icon: ':warning:'
     path: competitive/math/bit.hpp
-    title: competitive/math/bit.hpp
+    title: bit.hpp
   - icon: ':warning:'
     path: competitive/math/combination.hpp
-    title: competitive/math/combination.hpp
+    title: combination.hpp
   - icon: ':warning:'
     path: competitive/math/distance.hpp
-    title: competitive/math/distance.hpp
+    title: distance.hpp
   - icon: ':warning:'
     path: competitive/math/euler_phi.hpp
-    title: competitive/math/euler_phi.hpp
+    title: euler_phi.hpp
   - icon: ':warning:'
     path: competitive/math/f2.hpp
-    title: competitive/math/f2.hpp
+    title: f2.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/math/fraction.hpp
-    title: competitive/math/fraction.hpp
+    title: fraction.hpp
   - icon: ':warning:'
     path: competitive/math/inversion_num.hpp
-    title: competitive/math/inversion_num.hpp
+    title: inversion_num.hpp
   - icon: ':warning:'
     path: competitive/math/modint.hpp
-    title: competitive/math/modint.hpp
+    title: modint.hpp
   - icon: ':warning:'
     path: competitive/math/prime.hpp
-    title: competitive/math/prime.hpp
+    title: prime.hpp
   - icon: ':warning:'
     path: competitive/matrix/matrix.hpp
-    title: competitive/matrix/matrix.hpp
-  - icon: ':heavy_check_mark:'
+    title: matrix.hpp
+  - icon: ':question:'
     path: competitive/std/io.hpp
-    title: competitive/std/io.hpp
+    title: io.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/string/rolling_hash.hpp
-    title: competitive/string/rolling_hash.hpp
+    title: rolling_hash.hpp
   - icon: ':warning:'
     path: competitive/tree/depth.hpp
-    title: competitive/tree/depth.hpp
+    title: depth.hpp
   - icon: ':warning:'
     path: competitive/tree/diameter.hpp
-    title: competitive/tree/diameter.hpp
+    title: diameter.hpp
   - icon: ':warning:'
     path: competitive/tree/kruskal.hpp
-    title: competitive/tree/kruskal.hpp
+    title: kruskal.hpp
   - icon: ':warning:'
     path: online_test/AOJ/NTL_1_D.cpp
     title: online_test/AOJ/NTL_1_D.cpp
@@ -148,25 +147,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_4_A.test.cpp
     title: online_test/AOJ/CGL_4_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DPL_1_D.test.cpp
     title: online_test/AOJ/DPL_1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_F.test.cpp
     title: online_test/AOJ/DSL_2_F.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_G.test.cpp
     title: online_test/AOJ/DSL_2_G.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_H.test.cpp
     title: online_test/AOJ/DSL_2_H.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/GRL_1_A.test.cpp
     title: online_test/AOJ/GRL_1_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/GRL_1_C.test.cpp
     title: online_test/AOJ/GRL_1_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -175,29 +174,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/aplusb.test.cpp
     title: online_test/library-checker/aplusb.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/longest_increasing_subsequence.test.cpp
     title: online_test/library-checker/longest_increasing_subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/shortest_path_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-hello-world.test.cpp
     title: online_test/yukicoder/yuki-hello-world.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
+    _deprecated_at_docs: docs/std/std.md
+    document_title: std.hpp
     links: []
-  bundledCode: "#line 1 \"competitive/std/std.hpp\"\n\n\n#include <bits/stdc++.h>\n\
-    #ifndef LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\"\
-    )\n#pragma GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
+  bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
+    \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
+    \ GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
     )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
     \nusing ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\n\
     using vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
@@ -252,19 +253,19 @@ data:
     \ x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
-    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n\n"
-  code: "#ifndef COMPETITIVE_STD_STD_HPP\n#define COMPETITIVE_STD_STD_HPP 1\n#include\
-    \ <bits/stdc++.h>\n#ifndef LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC\
-    \ optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"\
-    sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n#endif // LOCAL_TEST\n\
-    using namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\nusing ll = long long;\n\
-    using pii = pair<int, int>; using pll = pair<ll, ll>;\nusing vi = vector<int>;\
-    \  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing vl = vector<ll>; \
-    \ using vvl = vector<vl>; using vvvl = vector<vvl>;\nusing vb = vector<bool>;\
-    \ using vvb = vector<vb>; using vvvb = vector<vvb>;\nusing vc = vector<char>;\
-    \ using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd = vector<double>;\
-    \ using vvd = vector<vd>; using vvvd = vector<vvd>;\nusing vs = vector<string>;\
-    \ using vvs = vector<vector<string>>; using vvvs = vector<vector<vector<string>>>;\n\
+    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
+    \ docs/std/std.md\n */\n"
+  code: "#pragma once\n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n#pragma GCC target\
+    \ (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\"\
+    )\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
+    )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
+    \nusing ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\n\
+    using vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
+    \ vl = vector<ll>;  using vvl = vector<vl>; using vvvl = vector<vvl>;\nusing vb\
+    \ = vector<bool>; using vvb = vector<vb>; using vvvb = vector<vvb>;\nusing vc\
+    \ = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd\
+    \ = vector<double>; using vvd = vector<vd>; using vvvd = vector<vvd>;\nusing vs\
+    \ = vector<string>; using vvs = vector<vector<string>>; using vvvs = vector<vector<vector<string>>>;\n\
     template <class T> using priority_queue_min = priority_queue<T, vector<T>, greater<T>>;\n\
     // \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double PI = 3.14159265358979323;\n\
     constexpr int INF = 100100111; constexpr ll INFL = 3300300300300300491LL;\nfloat\
@@ -311,7 +312,8 @@ data:
     \ x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\
     \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
     \nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return\
-    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n#endif // COMPETITIVE_STD_STD_HPP"
+    \ rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs\
+    \ docs/std/std.md\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: competitive/std/std.hpp
@@ -352,8 +354,8 @@ data:
   - competitive/algorithm/mo.hpp
   - competitive/string/rolling_hash.hpp
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-02-26 03:11:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-02-28 16:59:41+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - online_test/yukicoder/yuki-hello-world.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp
@@ -386,5 +388,5 @@ layout: document
 redirect_from:
 - /library/competitive/std/std.hpp
 - /library/competitive/std/std.hpp.html
-title: competitive/std/std.hpp
+title: std.hpp
 ---

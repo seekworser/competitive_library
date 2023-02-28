@@ -8,9 +8,9 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/string.hpp\"\n\n\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <numeric>\n#include <string>\n#include <vector>\n\nnamespace\
-    \ atcoder {\n\nnamespace internal {\n\nstd::vector<int> sa_naive(const std::vector<int>&\
+  bundledCode: "#line 2 \"atcoder/string.hpp\"\n#include <algorithm>\n#include <cassert>\n\
+    #include <numeric>\n#include <string>\n#include <vector>\n\nnamespace atcoder\
+    \ {\n\nnamespace internal {\n\nstd::vector<int> sa_naive(const std::vector<int>&\
     \ s) {\n    int n = int(s.size());\n    std::vector<int> sa(n);\n    std::iota(sa.begin(),\
     \ sa.end(), 0);\n    std::sort(sa.begin(), sa.end(), [&](int l, int r) {\n   \
     \     if (l == r) return false;\n        while (l < n && r < n) {\n          \
@@ -105,40 +105,40 @@ data:
     \ + z[i]) j = i;\n    }\n    z[0] = n;\n    return z;\n}\n\nstd::vector<int> z_algorithm(const\
     \ std::string& s) {\n    int n = int(s.size());\n    std::vector<int> s2(n);\n\
     \    for (int i = 0; i < n; i++) {\n        s2[i] = s[i];\n    }\n    return z_algorithm(s2);\n\
-    }\n\n}  // namespace atcoder\n\n\n"
-  code: "#ifndef ATCODER_STRING_HPP\n#define ATCODER_STRING_HPP 1\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <numeric>\n#include <string>\n#include <vector>\n\
-    \nnamespace atcoder {\n\nnamespace internal {\n\nstd::vector<int> sa_naive(const\
-    \ std::vector<int>& s) {\n    int n = int(s.size());\n    std::vector<int> sa(n);\n\
-    \    std::iota(sa.begin(), sa.end(), 0);\n    std::sort(sa.begin(), sa.end(),\
-    \ [&](int l, int r) {\n        if (l == r) return false;\n        while (l < n\
-    \ && r < n) {\n            if (s[l] != s[r]) return s[l] < s[r];\n           \
-    \ l++;\n            r++;\n        }\n        return l == n;\n    });\n    return\
-    \ sa;\n}\n\nstd::vector<int> sa_doubling(const std::vector<int>& s) {\n    int\
-    \ n = int(s.size());\n    std::vector<int> sa(n), rnk = s, tmp(n);\n    std::iota(sa.begin(),\
-    \ sa.end(), 0);\n    for (int k = 1; k < n; k *= 2) {\n        auto cmp = [&](int\
-    \ x, int y) {\n            if (rnk[x] != rnk[y]) return rnk[x] < rnk[y];\n   \
-    \         int rx = x + k < n ? rnk[x + k] : -1;\n            int ry = y + k <\
-    \ n ? rnk[y + k] : -1;\n            return rx < ry;\n        };\n        std::sort(sa.begin(),\
-    \ sa.end(), cmp);\n        tmp[sa[0]] = 0;\n        for (int i = 1; i < n; i++)\
-    \ {\n            tmp[sa[i]] = tmp[sa[i - 1]] + (cmp(sa[i - 1], sa[i]) ? 1 : 0);\n\
-    \        }\n        std::swap(tmp, rnk);\n    }\n    return sa;\n}\n\n// SA-IS,\
-    \ linear-time suffix array construction\n// Reference:\n// G. Nong, S. Zhang,\
-    \ and W. H. Chan,\n// Two Efficient Algorithms for Linear Time Suffix Array Construction\n\
-    template <int THRESHOLD_NAIVE = 10, int THRESHOLD_DOUBLING = 40>\nstd::vector<int>\
-    \ sa_is(const std::vector<int>& s, int upper) {\n    int n = int(s.size());\n\
-    \    if (n == 0) return {};\n    if (n == 1) return {0};\n    if (n == 2) {\n\
-    \        if (s[0] < s[1]) {\n            return {0, 1};\n        } else {\n  \
-    \          return {1, 0};\n        }\n    }\n    if (n < THRESHOLD_NAIVE) {\n\
-    \        return sa_naive(s);\n    }\n    if (n < THRESHOLD_DOUBLING) {\n     \
-    \   return sa_doubling(s);\n    }\n\n    std::vector<int> sa(n);\n    std::vector<bool>\
-    \ ls(n);\n    for (int i = n - 2; i >= 0; i--) {\n        ls[i] = (s[i] == s[i\
-    \ + 1]) ? ls[i + 1] : (s[i] < s[i + 1]);\n    }\n    std::vector<int> sum_l(upper\
-    \ + 1), sum_s(upper + 1);\n    for (int i = 0; i < n; i++) {\n        if (!ls[i])\
-    \ {\n            sum_s[s[i]]++;\n        } else {\n            sum_l[s[i] + 1]++;\n\
-    \        }\n    }\n    for (int i = 0; i <= upper; i++) {\n        sum_s[i] +=\
-    \ sum_l[i];\n        if (i < upper) sum_l[i + 1] += sum_s[i];\n    }\n\n    auto\
-    \ induce = [&](const std::vector<int>& lms) {\n        std::fill(sa.begin(), sa.end(),\
+    }\n\n}  // namespace atcoder\n"
+  code: "#pragma once\n#include <algorithm>\n#include <cassert>\n#include <numeric>\n\
+    #include <string>\n#include <vector>\n\nnamespace atcoder {\n\nnamespace internal\
+    \ {\n\nstd::vector<int> sa_naive(const std::vector<int>& s) {\n    int n = int(s.size());\n\
+    \    std::vector<int> sa(n);\n    std::iota(sa.begin(), sa.end(), 0);\n    std::sort(sa.begin(),\
+    \ sa.end(), [&](int l, int r) {\n        if (l == r) return false;\n        while\
+    \ (l < n && r < n) {\n            if (s[l] != s[r]) return s[l] < s[r];\n    \
+    \        l++;\n            r++;\n        }\n        return l == n;\n    });\n\
+    \    return sa;\n}\n\nstd::vector<int> sa_doubling(const std::vector<int>& s)\
+    \ {\n    int n = int(s.size());\n    std::vector<int> sa(n), rnk = s, tmp(n);\n\
+    \    std::iota(sa.begin(), sa.end(), 0);\n    for (int k = 1; k < n; k *= 2) {\n\
+    \        auto cmp = [&](int x, int y) {\n            if (rnk[x] != rnk[y]) return\
+    \ rnk[x] < rnk[y];\n            int rx = x + k < n ? rnk[x + k] : -1;\n      \
+    \      int ry = y + k < n ? rnk[y + k] : -1;\n            return rx < ry;\n  \
+    \      };\n        std::sort(sa.begin(), sa.end(), cmp);\n        tmp[sa[0]] =\
+    \ 0;\n        for (int i = 1; i < n; i++) {\n            tmp[sa[i]] = tmp[sa[i\
+    \ - 1]] + (cmp(sa[i - 1], sa[i]) ? 1 : 0);\n        }\n        std::swap(tmp,\
+    \ rnk);\n    }\n    return sa;\n}\n\n// SA-IS, linear-time suffix array construction\n\
+    // Reference:\n// G. Nong, S. Zhang, and W. H. Chan,\n// Two Efficient Algorithms\
+    \ for Linear Time Suffix Array Construction\ntemplate <int THRESHOLD_NAIVE = 10,\
+    \ int THRESHOLD_DOUBLING = 40>\nstd::vector<int> sa_is(const std::vector<int>&\
+    \ s, int upper) {\n    int n = int(s.size());\n    if (n == 0) return {};\n  \
+    \  if (n == 1) return {0};\n    if (n == 2) {\n        if (s[0] < s[1]) {\n  \
+    \          return {0, 1};\n        } else {\n            return {1, 0};\n    \
+    \    }\n    }\n    if (n < THRESHOLD_NAIVE) {\n        return sa_naive(s);\n \
+    \   }\n    if (n < THRESHOLD_DOUBLING) {\n        return sa_doubling(s);\n   \
+    \ }\n\n    std::vector<int> sa(n);\n    std::vector<bool> ls(n);\n    for (int\
+    \ i = n - 2; i >= 0; i--) {\n        ls[i] = (s[i] == s[i + 1]) ? ls[i + 1] :\
+    \ (s[i] < s[i + 1]);\n    }\n    std::vector<int> sum_l(upper + 1), sum_s(upper\
+    \ + 1);\n    for (int i = 0; i < n; i++) {\n        if (!ls[i]) {\n          \
+    \  sum_s[s[i]]++;\n        } else {\n            sum_l[s[i] + 1]++;\n        }\n\
+    \    }\n    for (int i = 0; i <= upper; i++) {\n        sum_s[i] += sum_l[i];\n\
+    \        if (i < upper) sum_l[i + 1] += sum_s[i];\n    }\n\n    auto induce =\
+    \ [&](const std::vector<int>& lms) {\n        std::fill(sa.begin(), sa.end(),\
     \ -1);\n        std::vector<int> buf(upper + 1);\n        std::copy(sum_s.begin(),\
     \ sum_s.end(), buf.begin());\n        for (auto d : lms) {\n            if (d\
     \ == n) continue;\n            sa[buf[s[d]]++] = d;\n        }\n        std::copy(sum_l.begin(),\
@@ -203,12 +203,12 @@ data:
     \ + z[i]) j = i;\n    }\n    z[0] = n;\n    return z;\n}\n\nstd::vector<int> z_algorithm(const\
     \ std::string& s) {\n    int n = int(s.size());\n    std::vector<int> s2(n);\n\
     \    for (int i = 0; i < n; i++) {\n        s2[i] = s[i];\n    }\n    return z_algorithm(s2);\n\
-    }\n\n}  // namespace atcoder\n\n#endif  // ATCODER_STRING_HPP\n"
+    }\n\n}  // namespace atcoder\n"
   dependsOn: []
   isVerificationFile: false
   path: atcoder/string.hpp
   requiredBy: []
-  timestamp: '2023-02-16 22:26:28+09:00'
+  timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: atcoder/string.hpp

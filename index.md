@@ -12,7 +12,7 @@ data:
     - icon: ':warning:'
       path: atcoder/fenwicktree.hpp
       title: atcoder/fenwicktree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: atcoder/internal_bit.hpp
       title: atcoder/internal_bit.hpp
     - icon: ':warning:'
@@ -30,7 +30,7 @@ data:
     - icon: ':warning:'
       path: atcoder/internal_type_traits.hpp
       title: atcoder/internal_type_traits.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: atcoder/lazysegtree.hpp
       title: atcoder/lazysegtree.hpp
     - icon: ':warning:'
@@ -61,121 +61,117 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: competitive/algorithm/longest_common_subsequence.hpp
-      title: competitive/algorithm/longest_common_subsequence.hpp
-    - icon: ':heavy_check_mark:'
+      title: longest_common_subsequence.hpp
+    - icon: ':x:'
       path: competitive/algorithm/longest_increasing_subsequence.hpp
-      title: competitive/algorithm/longest_increasing_subsequence.hpp
+      title: longest_increasing_subsequence.hpp
     - icon: ':warning:'
       path: competitive/algorithm/minimum_excludant.hpp
-      title: competitive/algorithm/minimum_excludant.hpp
+      title: minimum_excludant.hpp
     - icon: ':warning:'
       path: competitive/algorithm/mo.hpp
-      title: Mo's algorithm
+      title: mo.hpp
   - name: competitive/data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: competitive/data_structure/bit.hpp
-      title: competitive/data_structure/bit.hpp
-    - icon: ':heavy_check_mark:'
+      title: bit.hpp
+    - icon: ':x:'
       path: competitive/data_structure/lazysegtree.hpp
-      title: competitive/data_structure/lazysegtree.hpp
-    - icon: ':heavy_check_mark:'
+      title: lazysegtree.hpp
+    - icon: ':x:'
       path: competitive/data_structure/radix_heap.hpp
-      title: competitive/data_structure/radix_heap.hpp
+      title: radix_heap.hpp
     - icon: ':warning:'
       path: competitive/data_structure/segtree.hpp
-      title: competitive/data_structure/segtree.hpp
+      title: segtree.hpp
   - name: competitive/geometry
     pages:
     - icon: ':heavy_check_mark:'
       path: competitive/geometry/angle.hpp
-      title: competitive/geometry/angle.hpp
+      title: angle.hpp
     - icon: ':heavy_check_mark:'
       path: competitive/geometry/base.hpp
-      title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\u30D9\u30FC\u30B9\u30AF\u30E9\
-        \u30B9"
+      title: "Point\u30AF\u30E9\u30B9"
     - icon: ':heavy_check_mark:'
       path: competitive/geometry/counter_clockwise.hpp
-      title: competitive/geometry/counter_clockwise.hpp
+      title: counter_clockwise.hpp
     - icon: ':heavy_check_mark:'
       path: competitive/geometry/distance.hpp
-      title: competitive/geometry/distance.hpp
+      title: distance.hpp
     - icon: ':heavy_check_mark:'
       path: competitive/geometry/intersection.hpp
-      title: competitive/geometry/intersection.hpp
+      title: intersection.hpp
     - icon: ':heavy_check_mark:'
       path: competitive/geometry/polygon.hpp
-      title: competitive/geometry/polygon.hpp
+      title: polygon.hpp
     - icon: ':heavy_check_mark:'
       path: competitive/geometry/projection.hpp
-      title: competitive/geometry/projection.hpp
+      title: projection.hpp
   - name: competitive/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: competitive/graph/dijkstra.hpp
-      title: competitive/graph/dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+      title: dijkstra.hpp
+    - icon: ':x:'
       path: competitive/graph/fast_dijkstra.hpp
-      title: competitive/graph/fast_dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+      title: fast_dijkstra.hpp
+    - icon: ':x:'
       path: competitive/graph/graph.hpp
-      title: competitive/graph/graph.hpp
+      title: graph.hpp
     - icon: ':warning:'
       path: competitive/graph/max_k_dijkstra.hpp
-      title: competitive/graph/max_k_dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+      title: max_k_dijkstra.hpp
+    - icon: ':x:'
       path: competitive/graph/warshall_floyd.hpp
-      title: competitive/graph/warshall_floyd.hpp
+      title: warshall_floyd.hpp
   - name: competitive/helper
     pages:
     - icon: ':warning:'
       path: competitive/helper/board_helper.hpp
-      title: competitive/helper/board_helper.hpp
+      title: board_helper.hpp
   - name: competitive/itertools
     pages:
     - icon: ':warning:'
       path: competitive/itertools/permutation.hpp
-      title: competitive/itertools/permutation.hpp
+      title: permutation.hpp
   - name: competitive/math
     pages:
     - icon: ':warning:'
       path: competitive/math/binsearch.hpp
-      title: competitive/math/binsearch.hpp
+      title: binsearch.hpp
     - icon: ':warning:'
       path: competitive/math/bit.hpp
-      title: competitive/math/bit.hpp
+      title: bit.hpp
     - icon: ':warning:'
       path: competitive/math/combination.hpp
-      title: competitive/math/combination.hpp
+      title: combination.hpp
     - icon: ':warning:'
       path: competitive/math/distance.hpp
-      title: competitive/math/distance.hpp
+      title: distance.hpp
     - icon: ':warning:'
       path: competitive/math/euler_phi.hpp
-      title: competitive/math/euler_phi.hpp
+      title: euler_phi.hpp
     - icon: ':warning:'
       path: competitive/math/f2.hpp
-      title: competitive/math/f2.hpp
+      title: f2.hpp
     - icon: ':heavy_check_mark:'
       path: competitive/math/fraction.hpp
-      title: competitive/math/fraction.hpp
-    - icon: ':warning:'
-      path: competitive/math/gcp.hpp
-      title: competitive/math/gcp.hpp
+      title: fraction.hpp
     - icon: ':warning:'
       path: competitive/math/inversion_num.hpp
-      title: competitive/math/inversion_num.hpp
+      title: inversion_num.hpp
     - icon: ':warning:'
       path: competitive/math/modint.hpp
-      title: competitive/math/modint.hpp
+      title: modint.hpp
     - icon: ':warning:'
       path: competitive/math/prime.hpp
-      title: competitive/math/prime.hpp
+      title: prime.hpp
   - name: competitive/matrix
     pages:
     - icon: ':warning:'
       path: competitive/matrix/matrix.hpp
-      title: competitive/matrix/matrix.hpp
+      title: matrix.hpp
   - name: competitive/python
     pages:
     - icon: ':warning:'
@@ -216,28 +212,28 @@ data:
       title: competitive/python/union_find.py
   - name: competitive/std
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/std/io.hpp
-      title: competitive/std/io.hpp
-    - icon: ':heavy_check_mark:'
+      title: io.hpp
+    - icon: ':question:'
       path: competitive/std/std.hpp
-      title: competitive/std/std.hpp
+      title: std.hpp
   - name: competitive/string
     pages:
     - icon: ':heavy_check_mark:'
       path: competitive/string/rolling_hash.hpp
-      title: competitive/string/rolling_hash.hpp
+      title: rolling_hash.hpp
   - name: competitive/tree
     pages:
     - icon: ':warning:'
       path: competitive/tree/depth.hpp
-      title: competitive/tree/depth.hpp
+      title: depth.hpp
     - icon: ':warning:'
       path: competitive/tree/diameter.hpp
-      title: competitive/tree/diameter.hpp
+      title: diameter.hpp
     - icon: ':warning:'
       path: competitive/tree/kruskal.hpp
-      title: competitive/tree/kruskal.hpp
+      title: kruskal.hpp
   - name: online_test/AOJ
     pages:
     - icon: ':warning:'
@@ -282,25 +278,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/CGL_4_A.test.cpp
       title: online_test/AOJ/CGL_4_A.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/DPL_1_D.test.cpp
       title: online_test/AOJ/DPL_1_D.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/DSL_2_F.test.cpp
       title: online_test/AOJ/DSL_2_F.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/DSL_2_G.test.cpp
       title: online_test/AOJ/DSL_2_G.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/DSL_2_H.test.cpp
       title: online_test/AOJ/DSL_2_H.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/DSL_2_I.test.cpp
       title: online_test/AOJ/DSL_2_I.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/GRL_1_A.test.cpp
       title: online_test/AOJ/GRL_1_A.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/GRL_1_C.test.cpp
       title: online_test/AOJ/GRL_1_C.test.cpp
     - icon: ':heavy_check_mark:'
@@ -311,16 +307,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/aplusb.test.cpp
       title: online_test/library-checker/aplusb.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/library-checker/longest_increasing_subsequence.test.cpp
       title: online_test/library-checker/longest_increasing_subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/library-checker/shortest_path_dijkstra.test.cpp
       title: online_test/library-checker/shortest_path_dijkstra.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
       title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/library-checker/static_range_sum.test.cpp
       title: online_test/library-checker/static_range_sum.test.cpp
   - name: online_test/yukicoder

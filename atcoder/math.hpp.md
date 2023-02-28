@@ -11,13 +11,13 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/math.hpp\"\n\n\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <tuple>\n#include <vector>\n\n#line 1 \"atcoder/internal_math.hpp\"\
-    \n\n\n\n#include <utility>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n\
-    namespace atcoder {\n\nnamespace internal {\n\n// @param m `1 <= m`\n// @return\
-    \ x mod m\nconstexpr long long safe_mod(long long x, long long m) {\n    x %=\
-    \ m;\n    if (x < 0) x += m;\n    return x;\n}\n\n// Fast modular multiplication\
-    \ by barrett reduction\n// Reference: https://en.wikipedia.org/wiki/Barrett_reduction\n\
+  bundledCode: "#line 2 \"atcoder/math.hpp\"\n#include <algorithm>\n#include <cassert>\n\
+    #include <tuple>\n#include <vector>\n\n#line 2 \"atcoder/internal_math.hpp\"\n\
+    #include <utility>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace\
+    \ atcoder {\n\nnamespace internal {\n\n// @param m `1 <= m`\n// @return x mod\
+    \ m\nconstexpr long long safe_mod(long long x, long long m) {\n    x %= m;\n \
+    \   if (x < 0) x += m;\n    return x;\n}\n\n// Fast modular multiplication by\
+    \ barrett reduction\n// Reference: https://en.wikipedia.org/wiki/Barrett_reduction\n\
     // NOTE: reconsider after Ice Lake\nstruct barrett {\n    unsigned int _m;\n \
     \   unsigned long long im;\n\n    // @param m `1 <= m < 2^31`\n    explicit barrett(unsigned\
     \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n\
@@ -86,7 +86,7 @@ data:
     \ < m) break;\n        // y_max < m * (n + 1)\n        // floor(y_max / m) <=\
     \ n\n        n = (unsigned long long)(y_max / m);\n        b = (unsigned long\
     \ long)(y_max % m);\n        std::swap(m, a);\n    }\n    return ans;\n}\n\n}\
-    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 10 \"atcoder/math.hpp\"\
+    \  // namespace internal\n\n}  // namespace atcoder\n#line 8 \"atcoder/math.hpp\"\
     \n\nnamespace atcoder {\n\nlong long pow_mod(long long x, long long n, int m)\
     \ {\n    assert(0 <= n && 1 <= m);\n    if (m == 1) return 0;\n    internal::barrett\
     \ bt((unsigned int)(m));\n    unsigned int r = 1, y = (unsigned int)(internal::safe_mod(x,\
@@ -121,18 +121,18 @@ data:
     \    }\n    if (b < 0) {\n        unsigned long long b2 = internal::safe_mod(b,\
     \ m);\n        ans -= 1ULL * n * ((b2 - b) / m);\n        b = b2;\n    }\n   \
     \ return ans + internal::floor_sum_unsigned(n, m, a, b);\n}\n\n}  // namespace\
-    \ atcoder\n\n\n"
-  code: "#ifndef ATCODER_MATH_HPP\n#define ATCODER_MATH_HPP 1\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <tuple>\n#include <vector>\n\n#include \"atcoder/internal_math\"\
-    \n\nnamespace atcoder {\n\nlong long pow_mod(long long x, long long n, int m)\
-    \ {\n    assert(0 <= n && 1 <= m);\n    if (m == 1) return 0;\n    internal::barrett\
-    \ bt((unsigned int)(m));\n    unsigned int r = 1, y = (unsigned int)(internal::safe_mod(x,\
-    \ m));\n    while (n) {\n        if (n & 1) r = bt.mul(r, y);\n        y = bt.mul(y,\
-    \ y);\n        n >>= 1;\n    }\n    return r;\n}\n\nlong long inv_mod(long long\
-    \ x, long long m) {\n    assert(1 <= m);\n    auto z = internal::inv_gcd(x, m);\n\
-    \    assert(z.first == 1);\n    return z.second;\n}\n\n// (rem, mod)\nstd::pair<long\
-    \ long, long long> crt(const std::vector<long long>& r,\n                    \
-    \                const std::vector<long long>& m) {\n    assert(r.size() == m.size());\n\
+    \ atcoder\n"
+  code: "#pragma once\n#include <algorithm>\n#include <cassert>\n#include <tuple>\n\
+    #include <vector>\n\n#include \"atcoder/internal_math.hpp\"\n\nnamespace atcoder\
+    \ {\n\nlong long pow_mod(long long x, long long n, int m) {\n    assert(0 <= n\
+    \ && 1 <= m);\n    if (m == 1) return 0;\n    internal::barrett bt((unsigned int)(m));\n\
+    \    unsigned int r = 1, y = (unsigned int)(internal::safe_mod(x, m));\n    while\
+    \ (n) {\n        if (n & 1) r = bt.mul(r, y);\n        y = bt.mul(y, y);\n   \
+    \     n >>= 1;\n    }\n    return r;\n}\n\nlong long inv_mod(long long x, long\
+    \ long m) {\n    assert(1 <= m);\n    auto z = internal::inv_gcd(x, m);\n    assert(z.first\
+    \ == 1);\n    return z.second;\n}\n\n// (rem, mod)\nstd::pair<long long, long\
+    \ long> crt(const std::vector<long long>& r,\n                               \
+    \     const std::vector<long long>& m) {\n    assert(r.size() == m.size());\n\
     \    int n = int(r.size());\n    // Contracts: 0 <= r0 < m0\n    long long r0\
     \ = 0, m0 = 1;\n    for (int i = 0; i < n; i++) {\n        assert(1 <= m[i]);\n\
     \        long long r1 = internal::safe_mod(r[i], m[i]), m1 = m[i];\n        if\
@@ -158,13 +158,13 @@ data:
     \    }\n    if (b < 0) {\n        unsigned long long b2 = internal::safe_mod(b,\
     \ m);\n        ans -= 1ULL * n * ((b2 - b) / m);\n        b = b2;\n    }\n   \
     \ return ans + internal::floor_sum_unsigned(n, m, a, b);\n}\n\n}  // namespace\
-    \ atcoder\n\n#endif  // ATCODER_MATH_HPP\n"
+    \ atcoder\n"
   dependsOn:
   - atcoder/internal_math.hpp
   isVerificationFile: false
   path: atcoder/math.hpp
   requiredBy: []
-  timestamp: '2023-02-16 22:26:28+09:00'
+  timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: atcoder/math.hpp

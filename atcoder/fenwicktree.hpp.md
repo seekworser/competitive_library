@@ -12,27 +12,27 @@ data:
   attributes:
     links:
     - https://en.wikipedia.org/wiki/Fenwick_tree
-  bundledCode: "#line 1 \"atcoder/fenwicktree.hpp\"\n\n\n\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 1 \"atcoder/internal_type_traits.hpp\"\n\n\n\n#line 5 \"atcoder/internal_type_traits.hpp\"\
-    \n#include <numeric>\n#include <type_traits>\n\nnamespace atcoder {\n\nnamespace\
-    \ internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128 =\n\
-    \    typename std::conditional<std::is_same<T, __int128_t>::value ||\n       \
-    \                           std::is_same<T, __int128>::value,\n              \
-    \                std::true_type,\n                              std::false_type>::type;\n\
-    \ntemplate <class T>\nusing is_unsigned_int128 =\n    typename std::conditional<std::is_same<T,\
-    \ __uint128_t>::value ||\n                                  std::is_same<T, unsigned\
-    \ __int128>::value,\n                              std::true_type,\n         \
-    \                     std::false_type>::type;\n\ntemplate <class T>\nusing make_unsigned_int128\
-    \ =\n    typename std::conditional<std::is_same<T, __int128_t>::value,\n     \
-    \                         __uint128_t,\n                              unsigned\
-    \ __int128>;\n\ntemplate <class T>\nusing is_integral = typename std::conditional<std::is_integral<T>::value\
-    \ ||\n                                                  is_signed_int128<T>::value\
-    \ ||\n                                                  is_unsigned_int128<T>::value,\n\
-    \                                              std::true_type,\n             \
-    \                                 std::false_type>::type;\n\ntemplate <class T>\n\
-    using is_signed_int = typename std::conditional<(is_integral<T>::value &&\n  \
-    \                                               std::is_signed<T>::value) ||\n\
-    \                                                    is_signed_int128<T>::value,\n\
+  bundledCode: "#line 2 \"atcoder/fenwicktree.hpp\"\n#include <cassert>\n#include\
+    \ <vector>\n\n#line 3 \"atcoder/internal_type_traits.hpp\"\n#include <numeric>\n\
+    #include <type_traits>\n\nnamespace atcoder {\n\nnamespace internal {\n\n#ifndef\
+    \ _MSC_VER\ntemplate <class T>\nusing is_signed_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value ||\n                                  std::is_same<T, __int128>::value,\n\
+    \                              std::true_type,\n                             \
+    \ std::false_type>::type;\n\ntemplate <class T>\nusing is_unsigned_int128 =\n\
+    \    typename std::conditional<std::is_same<T, __uint128_t>::value ||\n      \
+    \                            std::is_same<T, unsigned __int128>::value,\n    \
+    \                          std::true_type,\n                              std::false_type>::type;\n\
+    \ntemplate <class T>\nusing make_unsigned_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value,\n                              __uint128_t,\n          \
+    \                    unsigned __int128>;\n\ntemplate <class T>\nusing is_integral\
+    \ = typename std::conditional<std::is_integral<T>::value ||\n                \
+    \                                  is_signed_int128<T>::value ||\n           \
+    \                                       is_unsigned_int128<T>::value,\n      \
+    \                                        std::true_type,\n                   \
+    \                           std::false_type>::type;\n\ntemplate <class T>\nusing\
+    \ is_signed_int = typename std::conditional<(is_integral<T>::value &&\n      \
+    \                                           std::is_signed<T>::value) ||\n   \
+    \                                                 is_signed_int128<T>::value,\n\
     \                                                std::true_type,\n           \
     \                                     std::false_type>::type;\n\ntemplate <class\
     \ T>\nusing is_unsigned_int =\n    typename std::conditional<(is_integral<T>::value\
@@ -56,7 +56,7 @@ data:
     template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
     \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
     \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
-    }  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 8 \"atcoder/fenwicktree.hpp\"\
+    }  // namespace internal\n\n}  // namespace atcoder\n#line 6 \"atcoder/fenwicktree.hpp\"\
     \n\nnamespace atcoder {\n\n// Reference: https://en.wikipedia.org/wiki/Fenwick_tree\n\
     template <class T> struct fenwick_tree {\n    using U = internal::to_unsigned_t<T>;\n\
     \n  public:\n    fenwick_tree() : _n(0) {}\n    explicit fenwick_tree(int n) :\
@@ -67,10 +67,9 @@ data:
     \    }\n\n  private:\n    int _n;\n    std::vector<U> data;\n\n    U sum(int r)\
     \ {\n        U s = 0;\n        while (r > 0) {\n            s += data[r - 1];\n\
     \            r -= r & -r;\n        }\n        return s;\n    }\n};\n\n}  // namespace\
-    \ atcoder\n\n\n"
-  code: "#ifndef ATCODER_FENWICKTREE_HPP\n#define ATCODER_FENWICKTREE_HPP 1\n\n#include\
-    \ <cassert>\n#include <vector>\n\n#include \"atcoder/internal_type_traits\"\n\n\
-    namespace atcoder {\n\n// Reference: https://en.wikipedia.org/wiki/Fenwick_tree\n\
+    \ atcoder\n"
+  code: "#pragma once\n#include <cassert>\n#include <vector>\n\n#include \"atcoder/internal_type_traits.hpp\"\
+    \n\nnamespace atcoder {\n\n// Reference: https://en.wikipedia.org/wiki/Fenwick_tree\n\
     template <class T> struct fenwick_tree {\n    using U = internal::to_unsigned_t<T>;\n\
     \n  public:\n    fenwick_tree() : _n(0) {}\n    explicit fenwick_tree(int n) :\
     \ _n(n), data(n) {}\n\n    void add(int p, T x) {\n        assert(0 <= p && p\
@@ -80,13 +79,13 @@ data:
     \    }\n\n  private:\n    int _n;\n    std::vector<U> data;\n\n    U sum(int r)\
     \ {\n        U s = 0;\n        while (r > 0) {\n            s += data[r - 1];\n\
     \            r -= r & -r;\n        }\n        return s;\n    }\n};\n\n}  // namespace\
-    \ atcoder\n\n#endif  // ATCODER_FENWICKTREE_HPP\n"
+    \ atcoder\n"
   dependsOn:
   - atcoder/internal_type_traits.hpp
   isVerificationFile: false
   path: atcoder/fenwicktree.hpp
   requiredBy: []
-  timestamp: '2023-02-16 22:26:28+09:00'
+  timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: atcoder/fenwicktree.hpp

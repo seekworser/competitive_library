@@ -5,59 +5,58 @@ data:
   - icon: ':warning:'
     path: atcoder/convolution.hpp
     title: atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
   - icon: ':warning:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: competitive/data_structure/lazysegtree.hpp
-    title: competitive/data_structure/lazysegtree.hpp
+    title: lazysegtree.hpp
   - icon: ':warning:'
     path: competitive/data_structure/segtree.hpp
-    title: competitive/data_structure/segtree.hpp
+    title: segtree.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_F.test.cpp
     title: online_test/AOJ/DSL_2_F.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_G.test.cpp
     title: online_test/AOJ/DSL_2_G.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_H.test.cpp
     title: online_test/AOJ/DSL_2_H.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n#include\
-    \ <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n// @param\
-    \ n `0 <= n`\n// @return minimum non-negative `x` s.t. `n <= 2**x`\nint ceil_pow2(int\
-    \ n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return\
-    \ x;\n}\n\n// @param n `1 <= n`\n// @return minimum non-negative `x` s.t. `(n\
-    \ & (1 << x)) != 0`\nconstexpr int bsf_constexpr(unsigned int n) {\n    int x\
-    \ = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\n// @param n `1 <=\
-    \ n`\n// @return minimum non-negative `x` s.t. `(n & (1 << x)) != 0`\nint bsf(unsigned\
+  bundledCode: "#line 2 \"atcoder/internal_bit.hpp\"\n#ifdef _MSC_VER\n#include <intrin.h>\n\
+    #endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n// @param n `0 <= n`\n\
+    // @return minimum non-negative `x` s.t. `n <= 2**x`\nint ceil_pow2(int n) {\n\
+    \    int x = 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return x;\n\
+    }\n\n// @param n `1 <= n`\n// @return minimum non-negative `x` s.t. `(n & (1 <<\
+    \ x)) != 0`\nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n \
+    \   while (!(n & (1 << x))) x++;\n    return x;\n}\n\n// @param n `1 <= n`\n//\
+    \ @return minimum non-negative `x` s.t. `(n & (1 << x)) != 0`\nint bsf(unsigned\
     \ int n) {\n#ifdef _MSC_VER\n    unsigned long index;\n    _BitScanForward(&index,\
     \ n);\n    return index;\n#else\n    return __builtin_ctz(n);\n#endif\n}\n\n}\
-    \  // namespace internal\n\n}  // namespace atcoder\n\n\n"
-  code: "#ifndef ATCODER_INTERNAL_BITOP_HPP\n#define ATCODER_INTERNAL_BITOP_HPP 1\n\
-    \n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
-    \ internal {\n\n// @param n `0 <= n`\n// @return minimum non-negative `x` s.t.\
-    \ `n <= 2**x`\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\n// @param n `1 <= n`\n// @return\
-    \ minimum non-negative `x` s.t. `(n & (1 << x)) != 0`\nconstexpr int bsf_constexpr(unsigned\
-    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
-    }\n\n// @param n `1 <= n`\n// @return minimum non-negative `x` s.t. `(n & (1 <<\
-    \ x)) != 0`\nint bsf(unsigned int n) {\n#ifdef _MSC_VER\n    unsigned long index;\n\
-    \    _BitScanForward(&index, n);\n    return index;\n#else\n    return __builtin_ctz(n);\n\
-    #endif\n}\n\n}  // namespace internal\n\n}  // namespace atcoder\n\n#endif  //\
-    \ ATCODER_INTERNAL_BITOP_HPP\n"
+    \  // namespace internal\n\n}  // namespace atcoder\n"
+  code: "#pragma once\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder\
+    \ {\n\nnamespace internal {\n\n// @param n `0 <= n`\n// @return minimum non-negative\
+    \ `x` s.t. `n <= 2**x`\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U\
+    \ << x) < (unsigned int)(n)) x++;\n    return x;\n}\n\n// @param n `1 <= n`\n\
+    // @return minimum non-negative `x` s.t. `(n & (1 << x)) != 0`\nconstexpr int\
+    \ bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n & (1 << x)))\
+    \ x++;\n    return x;\n}\n\n// @param n `1 <= n`\n// @return minimum non-negative\
+    \ `x` s.t. `(n & (1 << x)) != 0`\nint bsf(unsigned int n) {\n#ifdef _MSC_VER\n\
+    \    unsigned long index;\n    _BitScanForward(&index, n);\n    return index;\n\
+    #else\n    return __builtin_ctz(n);\n#endif\n}\n\n}  // namespace internal\n\n\
+    }  // namespace atcoder\n"
   dependsOn: []
   isVerificationFile: false
   path: atcoder/internal_bit.hpp
@@ -67,8 +66,8 @@ data:
   - atcoder/lazysegtree.hpp
   - atcoder/convolution.hpp
   - atcoder/segtree.hpp
-  timestamp: '2023-02-16 22:26:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-02-28 16:59:41+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - online_test/AOJ/DSL_2_I.test.cpp
   - online_test/AOJ/DSL_2_G.test.cpp

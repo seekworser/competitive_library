@@ -13,33 +13,32 @@ data:
     title: atcoder/convolution.hpp
   - icon: ':warning:'
     path: competitive/math/modint.hpp
-    title: competitive/math/modint.hpp
+    title: modint.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/modint.hpp\"\n\n\n\n#include <cassert>\n#include\
-    \ <numeric>\n#include <type_traits>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n\
-    #endif\n\n#line 1 \"atcoder/internal_math.hpp\"\n\n\n\n#include <utility>\n\n\
-    #ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
-    \ internal {\n\n// @param m `1 <= m`\n// @return x mod m\nconstexpr long long\
-    \ safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n\
-    \    return x;\n}\n\n// Fast modular multiplication by barrett reduction\n// Reference:\
-    \ https://en.wikipedia.org/wiki/Barrett_reduction\n// NOTE: reconsider after Ice\
-    \ Lake\nstruct barrett {\n    unsigned int _m;\n    unsigned long long im;\n\n\
-    \    // @param m `1 <= m < 2^31`\n    explicit barrett(unsigned int m) : _m(m),\
-    \ im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n    unsigned int\
-    \ umod() const { return _m; }\n\n    // @param a `0 <= a < m`\n    // @param b\
-    \ `0 <= b < m`\n    // @return `a * b % m`\n    unsigned int mul(unsigned int\
-    \ a, unsigned int b) const {\n        // [1] m = 1\n        // a = b = im = 0,\
-    \ so okay\n\n        // [2] m >= 2\n        // im = ceil(2^64 / m)\n        //\
-    \ -> im * m = 2^64 + r (0 <= r < m)\n        // let z = a*b = c*m + d (0 <= c,\
-    \ d < m)\n        // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64 + c*r\
-    \ + d*im\n        // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64 +\
-    \ m * (m + 1) < 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n       \
-    \ unsigned long long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned\
+  bundledCode: "#line 2 \"atcoder/modint.hpp\"\n#include <cassert>\n#include <numeric>\n\
+    #include <type_traits>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#line\
+    \ 2 \"atcoder/internal_math.hpp\"\n#include <utility>\n\n#ifdef _MSC_VER\n#include\
+    \ <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n// @param\
+    \ m `1 <= m`\n// @return x mod m\nconstexpr long long safe_mod(long long x, long\
+    \ long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\n// Fast\
+    \ modular multiplication by barrett reduction\n// Reference: https://en.wikipedia.org/wiki/Barrett_reduction\n\
+    // NOTE: reconsider after Ice Lake\nstruct barrett {\n    unsigned int _m;\n \
+    \   unsigned long long im;\n\n    // @param m `1 <= m < 2^31`\n    explicit barrett(unsigned\
+    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n\
+    \    unsigned int umod() const { return _m; }\n\n    // @param a `0 <= a < m`\n\
+    \    // @param b `0 <= b < m`\n    // @return `a * b % m`\n    unsigned int mul(unsigned\
+    \ int a, unsigned int b) const {\n        // [1] m = 1\n        // a = b = im\
+    \ = 0, so okay\n\n        // [2] m >= 2\n        // im = ceil(2^64 / m)\n    \
+    \    // -> im * m = 2^64 + r (0 <= r < m)\n        // let z = a*b = c*m + d (0\
+    \ <= c, d < m)\n        // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64\
+    \ + c*r + d*im\n        // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64\
+    \ + m * (m + 1) < 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n     \
+    \   unsigned long long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned\
     \ long long x;\n        _umul128(z, im, &x);\n#else\n        unsigned long long\
     \ x =\n            (unsigned long long)(((unsigned __int128)(z)*im) >> 64);\n\
     #endif\n        unsigned int v = (unsigned int)(z - x * _m);\n        if (_m <=\
@@ -96,26 +95,26 @@ data:
     \ < m) break;\n        // y_max < m * (n + 1)\n        // floor(y_max / m) <=\
     \ n\n        n = (unsigned long long)(y_max / m);\n        b = (unsigned long\
     \ long)(y_max % m);\n        std::swap(m, a);\n    }\n    return ans;\n}\n\n}\
-    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 1 \"atcoder/internal_type_traits.hpp\"\
-    \n\n\n\n#line 7 \"atcoder/internal_type_traits.hpp\"\n\nnamespace atcoder {\n\n\
-    namespace internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128\
-    \ =\n    typename std::conditional<std::is_same<T, __int128_t>::value ||\n   \
-    \                               std::is_same<T, __int128>::value,\n          \
-    \                    std::true_type,\n                              std::false_type>::type;\n\
-    \ntemplate <class T>\nusing is_unsigned_int128 =\n    typename std::conditional<std::is_same<T,\
-    \ __uint128_t>::value ||\n                                  std::is_same<T, unsigned\
-    \ __int128>::value,\n                              std::true_type,\n         \
-    \                     std::false_type>::type;\n\ntemplate <class T>\nusing make_unsigned_int128\
-    \ =\n    typename std::conditional<std::is_same<T, __int128_t>::value,\n     \
-    \                         __uint128_t,\n                              unsigned\
-    \ __int128>;\n\ntemplate <class T>\nusing is_integral = typename std::conditional<std::is_integral<T>::value\
-    \ ||\n                                                  is_signed_int128<T>::value\
-    \ ||\n                                                  is_unsigned_int128<T>::value,\n\
-    \                                              std::true_type,\n             \
-    \                                 std::false_type>::type;\n\ntemplate <class T>\n\
-    using is_signed_int = typename std::conditional<(is_integral<T>::value &&\n  \
-    \                                               std::is_signed<T>::value) ||\n\
-    \                                                    is_signed_int128<T>::value,\n\
+    \  // namespace internal\n\n}  // namespace atcoder\n#line 5 \"atcoder/internal_type_traits.hpp\"\
+    \n\nnamespace atcoder {\n\nnamespace internal {\n\n#ifndef _MSC_VER\ntemplate\
+    \ <class T>\nusing is_signed_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value ||\n                                  std::is_same<T, __int128>::value,\n\
+    \                              std::true_type,\n                             \
+    \ std::false_type>::type;\n\ntemplate <class T>\nusing is_unsigned_int128 =\n\
+    \    typename std::conditional<std::is_same<T, __uint128_t>::value ||\n      \
+    \                            std::is_same<T, unsigned __int128>::value,\n    \
+    \                          std::true_type,\n                              std::false_type>::type;\n\
+    \ntemplate <class T>\nusing make_unsigned_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value,\n                              __uint128_t,\n          \
+    \                    unsigned __int128>;\n\ntemplate <class T>\nusing is_integral\
+    \ = typename std::conditional<std::is_integral<T>::value ||\n                \
+    \                                  is_signed_int128<T>::value ||\n           \
+    \                                       is_unsigned_int128<T>::value,\n      \
+    \                                        std::true_type,\n                   \
+    \                           std::false_type>::type;\n\ntemplate <class T>\nusing\
+    \ is_signed_int = typename std::conditional<(is_integral<T>::value &&\n      \
+    \                                           std::is_signed<T>::value) ||\n   \
+    \                                                 is_signed_int128<T>::value,\n\
     \                                                std::true_type,\n           \
     \                                     std::false_type>::type;\n\ntemplate <class\
     \ T>\nusing is_unsigned_int =\n    typename std::conditional<(is_integral<T>::value\
@@ -139,7 +138,7 @@ data:
     template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
     \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
     \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
-    }  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 14 \"atcoder/modint.hpp\"\
+    }  // namespace internal\n\n}  // namespace atcoder\n#line 12 \"atcoder/modint.hpp\"\
     \n\nnamespace atcoder {\n\nnamespace internal {\n\nstruct modint_base {};\nstruct\
     \ static_modint_base : modint_base {};\n\ntemplate <class T> using is_modint =\
     \ std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
@@ -228,13 +227,13 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace atcoder\n\n\n"
-  code: "#ifndef ATCODER_MODINT_HPP\n#define ATCODER_MODINT_HPP 1\n\n#include <cassert>\n\
-    #include <numeric>\n#include <type_traits>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n\
-    #endif\n\n#include \"atcoder/internal_math\"\n#include \"atcoder/internal_type_traits\"\
-    \n\nnamespace atcoder {\n\nnamespace internal {\n\nstruct modint_base {};\nstruct\
-    \ static_modint_base : modint_base {};\n\ntemplate <class T> using is_modint =\
-    \ std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace atcoder\n"
+  code: "#pragma once\n#include <cassert>\n#include <numeric>\n#include <type_traits>\n\
+    \n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#include \"atcoder/internal_math.hpp\"\
+    \n#include \"atcoder/internal_type_traits.hpp\"\n\nnamespace atcoder {\n\nnamespace\
+    \ internal {\n\nstruct modint_base {};\nstruct static_modint_base : modint_base\
+    \ {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\n\
+    template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n}  // namespace internal\n\ntemplate <int m, std::enable_if_t<(1 <= m)>* = nullptr>\n\
     struct static_modint : internal::static_modint_base {\n    using mint = static_modint;\n\
     \n  public:\n    static constexpr int mod() { return m; }\n    static mint raw(int\
@@ -320,7 +319,7 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace atcoder\n\n#endif  // ATCODER_MODINT_HPP\n"
+    \n}  // namespace internal\n\n}  // namespace atcoder\n"
   dependsOn:
   - atcoder/internal_math.hpp
   - atcoder/internal_type_traits.hpp
@@ -329,7 +328,7 @@ data:
   requiredBy:
   - competitive/math/modint.hpp
   - atcoder/convolution.hpp
-  timestamp: '2023-02-16 22:26:28+09:00'
+  timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: atcoder/modint.hpp

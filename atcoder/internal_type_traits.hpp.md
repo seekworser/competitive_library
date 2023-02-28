@@ -13,14 +13,14 @@ data:
     title: atcoder/modint.hpp
   - icon: ':warning:'
     path: competitive/math/modint.hpp
-    title: competitive/math/modint.hpp
+    title: modint.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/internal_type_traits.hpp\"\n\n\n\n#include <cassert>\n\
+  bundledCode: "#line 2 \"atcoder/internal_type_traits.hpp\"\n#include <cassert>\n\
     #include <numeric>\n#include <type_traits>\n\nnamespace atcoder {\n\nnamespace\
     \ internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128 =\n\
     \    typename std::conditional<std::is_same<T, __int128_t>::value ||\n       \
@@ -63,27 +63,27 @@ data:
     template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
     \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
     \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
-    }  // namespace internal\n\n}  // namespace atcoder\n\n\n"
-  code: "#ifndef ATCODER_INTERNAL_TYPE_TRAITS_HPP\n#define ATCODER_INTERNAL_TYPE_TRAITS_HPP\
-    \ 1\n\n#include <cassert>\n#include <numeric>\n#include <type_traits>\n\nnamespace\
-    \ atcoder {\n\nnamespace internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\n\
-    using is_signed_int128 =\n    typename std::conditional<std::is_same<T, __int128_t>::value\
-    \ ||\n                                  std::is_same<T, __int128>::value,\n  \
-    \                            std::true_type,\n                              std::false_type>::type;\n\
-    \ntemplate <class T>\nusing is_unsigned_int128 =\n    typename std::conditional<std::is_same<T,\
-    \ __uint128_t>::value ||\n                                  std::is_same<T, unsigned\
-    \ __int128>::value,\n                              std::true_type,\n         \
-    \                     std::false_type>::type;\n\ntemplate <class T>\nusing make_unsigned_int128\
-    \ =\n    typename std::conditional<std::is_same<T, __int128_t>::value,\n     \
-    \                         __uint128_t,\n                              unsigned\
-    \ __int128>;\n\ntemplate <class T>\nusing is_integral = typename std::conditional<std::is_integral<T>::value\
-    \ ||\n                                                  is_signed_int128<T>::value\
-    \ ||\n                                                  is_unsigned_int128<T>::value,\n\
-    \                                              std::true_type,\n             \
-    \                                 std::false_type>::type;\n\ntemplate <class T>\n\
-    using is_signed_int = typename std::conditional<(is_integral<T>::value &&\n  \
-    \                                               std::is_signed<T>::value) ||\n\
-    \                                                    is_signed_int128<T>::value,\n\
+    }  // namespace internal\n\n}  // namespace atcoder\n"
+  code: "#pragma once\n#include <cassert>\n#include <numeric>\n#include <type_traits>\n\
+    \nnamespace atcoder {\n\nnamespace internal {\n\n#ifndef _MSC_VER\ntemplate <class\
+    \ T>\nusing is_signed_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value ||\n                                  std::is_same<T, __int128>::value,\n\
+    \                              std::true_type,\n                             \
+    \ std::false_type>::type;\n\ntemplate <class T>\nusing is_unsigned_int128 =\n\
+    \    typename std::conditional<std::is_same<T, __uint128_t>::value ||\n      \
+    \                            std::is_same<T, unsigned __int128>::value,\n    \
+    \                          std::true_type,\n                              std::false_type>::type;\n\
+    \ntemplate <class T>\nusing make_unsigned_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value,\n                              __uint128_t,\n          \
+    \                    unsigned __int128>;\n\ntemplate <class T>\nusing is_integral\
+    \ = typename std::conditional<std::is_integral<T>::value ||\n                \
+    \                                  is_signed_int128<T>::value ||\n           \
+    \                                       is_unsigned_int128<T>::value,\n      \
+    \                                        std::true_type,\n                   \
+    \                           std::false_type>::type;\n\ntemplate <class T>\nusing\
+    \ is_signed_int = typename std::conditional<(is_integral<T>::value &&\n      \
+    \                                           std::is_signed<T>::value) ||\n   \
+    \                                                 is_signed_int128<T>::value,\n\
     \                                                std::true_type,\n           \
     \                                     std::false_type>::type;\n\ntemplate <class\
     \ T>\nusing is_unsigned_int =\n    typename std::conditional<(is_integral<T>::value\
@@ -107,7 +107,7 @@ data:
     template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
     \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
     \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
-    }  // namespace internal\n\n}  // namespace atcoder\n\n#endif  // ATCODER_INTERNAL_TYPE_TRAITS_HPP\n"
+    }  // namespace internal\n\n}  // namespace atcoder\n"
   dependsOn: []
   isVerificationFile: false
   path: atcoder/internal_type_traits.hpp
@@ -116,7 +116,7 @@ data:
   - atcoder/fenwicktree.hpp
   - atcoder/modint.hpp
   - atcoder/convolution.hpp
-  timestamp: '2023-02-16 22:26:28+09:00'
+  timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: atcoder/internal_type_traits.hpp
