@@ -24,11 +24,11 @@ float EPS = 1e-8; double EPSL = 1e-16;
 bool eq(const double x, const double y) { return abs(x - y) < EPSL; }
 bool eq(const float x, const float y) { return abs(x - y) < EPS; }
 template<typename T> bool eq(const T x, const T y) { return x == y; }
-template<typename T> bool neq(const T x, const T y) { return !(eq(x, y)); }
-template<typename T> bool ge(const T x, const T y) { return eq(x, y) || (x > y); }
-template<typename T> bool le(const T x, const T y) { return eq(x, y) || (x < y); }
-template<typename T> bool gt(const T x, const T y) { return !(le(x, y)); }
-template<typename T> bool lt(const T x, const T y) { return !(ge(x, y)); }
+template<typename T> bool neq(const T x, const T y) { return !(eq<T>(x, y)); }
+template<typename T> bool ge(const T x, const T y) { return (eq<T>(x, y) || (x > y)); }
+template<typename T> bool le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }
+template<typename T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }
+template<typename T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }
 constexpr int MODINT998244353 = 998244353;
 constexpr int MODINT1000000007 = 1000000007;
 // 入出力高速化
