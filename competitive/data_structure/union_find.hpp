@@ -12,5 +12,5 @@ ostream& operator<<(ostream& os, atcoder::dsu& uf) {
 using UnionFind = atcoder::dsu;
 /**
  * @brief segtree.hpp
- * @docs docs/data_structure/segtree.md
+ * @docs docs/data_structure/union_find.md
  */
