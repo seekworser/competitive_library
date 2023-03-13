@@ -35,19 +35,19 @@ template <typename... T> void print(const T &...args) { print_sep_end(" ", "\n",
 template <typename... T> void flush() { cout << flush; };
 template <typename... T> void print_and_flush(const T &...args) { print(args...); flush(); };
 #define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) // debug print
-template <typename T> void read(T &a) { cin >> a; };
-template <typename T1, typename... T2> void read(T1&a, T2 &...b) { cin >> a; read(b...); };
-#define input(type, ...) type __VA_ARGS__; read(__VA_ARGS__);
+template <typename T> void input_only(T &a) { cin >> a; };
+template <typename T1, typename... T2> void input_only(T1&a, T2 &...b) { cin >> a; read(b...); };
+#define input(type, ...) type __VA_ARGS__; input_only(__VA_ARGS__);
 #define vec(type, name, ...) vector<type> name(__VA_ARGS__)  // vec(type, name, n, init(optiobal))
 #define vvec(type, name, h, ...) vector name(h, vector<type>(__VA_ARGS__))
 #define vvvec(type, name, h, w, ...) vector name(h, vector(w, vector<type>(__VA_ARGS__)))
 #define vvvvec(type, name, h1, h2, h3, ...) vector name(h1, vector(h2, vector(h3, vector<type>(__VA_ARGS__))))
 #define vvvvvec(type, name, h1, h2, h3, h4, ...) vector name(h1, vector(h2, vector(h3, vector(h4, vector<type>(__VA_ARGS__)))))
-#define input_vec(type, name, ...) vec(type, name, __VA_ARGS__); read(name);
-#define input_vvec(type, name, h, ...) vvec(type, name, h, __VA_ARGS__); read(name);
-#define input_vvvec(type, name, h, w, ...) vvvec(type, name, h, w, __VA_ARGS__); read(name);
-#define input_vvvvec(type, name, h1, h2, h3, ...) vvvvec(type, name, h1, h2, h3, __VA_ARGS__); read(name);
-#define input_vvvvvec(type, name, h1, h2, h3, h4, ...) vvvvvec(type, name, h1, h2, h3, h4, __VA_ARGS__); read(name);
+#define input_vec(type, name, ...) vec(type, name, __VA_ARGS__); input_only(name);
+#define input_vvec(type, name, h, ...) vvec(type, name, h, __VA_ARGS__); input_only(name);
+#define input_vvvec(type, name, h, w, ...) vvvec(type, name, h, w, __VA_ARGS__); input_only(name);
+#define input_vvvvec(type, name, h1, h2, h3, ...) vvvvec(type, name, h1, h2, h3, __VA_ARGS__); input_only(name);
+#define input_vvvvvec(type, name, h1, h2, h3, h4, ...) vvvvvec(type, name, h1, h2, h3, h4, __VA_ARGS__); input_only(name);
 #ifdef LOCAL_TEST
 template <typename T>
 void debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }
