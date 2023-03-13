@@ -1,82 +1,45 @@
 #pragma once
 #include "competitive/std/std.hpp"
-template <class T>
-struct Matrix {
-  vector<vector<T> > A;
+template <typename T> struct Matrix {
+    vector<vector<T> > a;
+    int h, w;
 
-  Matrix() = default;
-  Matrix(int n, int m) : A(n, vector<T>(m, T())) {}
-  Matrix(int n) : A(n, vector<T>(n, T())){};
+    Matrix() = default;
+    Matrix(int h, int w) : a(h, vector<T>(w, T())), h(h), w(w) {}
+    Matrix(int n) : a(n, vector<T>(n, T())), h(n), w(n) {};
+    Matrix(vector<vector<T>> a) : a(a), h(sz(a)), w(sz(a) ? sz(a[0]) : 0) {};
 
-  int H() const { return A.size(); }
+    inline const vector<T> &operator[](int k) const { return a[k]; }
+    inline vector<T> &operator[](int k) { return a[k]; }
+    template<typename T> Matrix<T> &operator+=(const Matrix<T> &b) {
+        assert((*this).h == b.h && (*this).w == b.w);
+        rep(i, (*this).h) rep(j, (*this).w) (*this)[i][j] += b[i][j];
+        return (*this);
+    }
+    template<typename T> Matrix<T> &operator-=(const Matrix<T> &b) {
+        assert((*this).h == b.h && (*this).w == b.w);
+        rep(i, (*this).h) rep(j, (*this).w) (*this)[i][j] -= b[i][j];
+      return (*this);
+    }
+    template<typename T> Matrix<T> &operator*=(const Matrix<T> &b) {
+        assert((*this).w == b.h);
+        vector<vector<T>> c((*this).h, vector<T>(b.w, T()));
+        rep(i, (*this).h) rep(j, b.w) rep(k, (*this).w) {
+            c[i][j] += (*this)[i][k] * b[k][j];
+        }
+        swap((*this).a, c);
+        return (*this);
+    }
+    template<typename T> Matrix<T> operator+(const Matrix<T> &b) const {return (Matrix<T>(*this) += b); }
+    template<typename T> Matrix<T> operator-(const Matrix<T> &b) const {return (Matrix<T>(*this) -= b); }
+    template<typename T> Matrix<T> operator*(const Matrix<T> &b) const {return (Matrix<T>(*this) *= b); }
+    template<typename T> Matrix<T> operator/(const Matrix<T> &b) const {return (Matrix<T>(*this) /= b); }
 
-  int W() const { return A[0].size(); }
-
-  int size() const { return A.size(); }
-
-  inline const vector<T> &operator[](int k) const { return A[k]; }
-
-  inline vector<T> &operator[](int k) { return A[k]; }
-
-  static Matrix I(int n) {
-    Matrix mat(n);
-    for (int i = 0; i < n; i++) mat[i][i] = 1;
-    return (mat);
-  }
-
-  Matrix &operator+=(const Matrix &B) {
-    int n = H(), m = W();
-    assert(n == B.H() && m == B.W());
-    for (int i = 0; i < n; i++)
-      for (int j = 0; j < m; j++) (*this)[i][j] += B[i][j];
-    return (*this);
-  }
-
-  Matrix &operator-=(const Matrix &B) {
-    int n = H(), m = W();
-    assert(n == B.H() && m == B.W());
-    for (int i = 0; i < n; i++)
-      for (int j = 0; j < m; j++) (*this)[i][j] -= B[i][j];
-    return (*this);
-  }
-
-  Matrix &operator*=(const Matrix &B) {
-    int n = H(), m = B.W(), p = W();
-    assert(p == B.H());
-    vector<vector<T> > C(n, vector<T>(m, T{}));
-    for (int i = 0; i < n; i++)
-      for (int k = 0; k < p; k++)
-        for (int j = 0; j < m; j++) C[i][j] += (*this)[i][k] * B[k][j];
-    A.swap(C);
-    return (*this);
-  }
-
-  // Matrix &operator^=(T k) {
-  //   Matrix B = Matrix::I(H());
-  //   while (k > 0) {
-  //     if (k & 1) B *= *this;
-  //     *this *= *this;
-  //     k >>= 1LL;
-  //   }
-  //   A.swap(B.A);
-  //   return (*this);
-  // }
-
-  Matrix operator+(const Matrix &B) const { return (Matrix(*this) += B); }
-
-  Matrix operator-(const Matrix &B) const { return (Matrix(*this) -= B); }
-
-  Matrix operator*(const Matrix &B) const { return (Matrix(*this) *= B); }
-
-  // Matrix operator^(const T k) const { return (Matrix(*this) ^= k); }
-
-  bool operator==(const Matrix &B) const {
-    assert(H() == B.H() && W() == B.W());
-    for (int i = 0; i < H(); i++)
-      for (int j = 0; j < W(); j++)
-        if (A[i][j] != B[i][j]) return false;
-    return true;
-  }
+    bool operator==(const Matrix &b) const {
+      if ((*this).h != b.h || (*this).w != b.w) return false;
+      rep(i, (*this).h) rep(j, (*this).w) if (A[i][j] != B[i][j]) return false;
+      return true;
+    }
 
   bool operator!=(const Matrix &B) const {
     assert(H() == B.H() && W() == B.W());
@@ -132,6 +95,16 @@ struct Matrix {
     return ret;
   }
 };
+template<typename T> Matrix<T> pow(Matrix<T> a, ll n) {
+    assert(a.h == a.w);
+    ll res = 1;
+    while (n > 0) {
+        if (n & 1) res = (res * a) % mod;
+        if (n > 1) a = (a * a) % mod;
+        n >>= 1;
+    }
+    return res;
+}
 /**
  * @brief matrix.hpp
  * @docs docs/matrix/matrix.md

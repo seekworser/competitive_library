@@ -31,7 +31,7 @@ template<typename T> Polygon<T> convex_full(const vector<Point<T>> &p, bool stri
     vector<Point<T>> rev;
     rev.push_back(sorted[0]);
     rev.push_back(sorted[1]);
-    repi(i, 2, n) {
+    rep(i, 2, n) {
         int m = sz(rev);
         if (strict) {
             while (m >= 2 && ccw(rev[m-2], rev[m-1], sorted[i]) != CLOCKWISE) {
@@ -47,7 +47,7 @@ template<typename T> Polygon<T> convex_full(const vector<Point<T>> &p, bool stri
         rev.push_back(sorted[i]);
     }
     int lower_size = sz(rev);
-    repir(i, n-2, -1, -1) {
+    rep(i, n-2, -1, -1) {
         int m = sz(rev);
         if (strict) {
             while (m > lower_size && ccw(rev[m-2], rev[m-1], sorted[i]) != CLOCKWISE) {
