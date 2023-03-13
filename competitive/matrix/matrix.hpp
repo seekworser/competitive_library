@@ -28,6 +28,7 @@ template <typename T> struct Matrix {
             c[i][j] += (*this)[i][k] * b[k][j];
         }
         swap((*this).a, c);
+        (*this).w = b.w;
         return (*this);
     }
     Matrix<T> operator+(const Matrix<T> &b) const {return (Matrix<T>(*this) += b); }
