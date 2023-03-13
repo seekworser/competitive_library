@@ -113,8 +113,8 @@ data:
   path: atcoder/internal_type_traits.hpp
   requiredBy:
   - competitive/math/modint.hpp
-  - atcoder/fenwicktree.hpp
   - atcoder/modint.hpp
+  - atcoder/fenwicktree.hpp
   - atcoder/convolution.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS

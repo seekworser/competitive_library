@@ -46,16 +46,20 @@ data:
     \u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
     \ cout << fixed << setprecision(18); } } nyan;\n// \u6C4E\u7528\u30DE\u30AF\u30ED\
     \u306E\u5B9A\u7FA9\n#define all(a) (a).begin(), (a).end()\n#define sz(x) ((int)(x).size())\n\
-    #define rep(i, n) for(ll i = 0, i##_len = ll(n); i < i##_len; ++i) // 0 \u304B\
-    \u3089 n-1 \u307E\u3067\u6607\u9806\n#define repi(i, s, t) for(ll i = ll(s), i##_end\
-    \ = ll(t); i < i##_end; ++i) // s \u304B\u3089 t \u307E\u3067\u6607\u9806\n#define\
-    \ repis(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i < i##_end; i+=step)\
-    \ // s \u304B\u3089 t \u307E\u3067 step\u305A\u3064\n#define repir(i, s, t, step)\
-    \ for(ll i = ll(s), i##_end = ll(t); i > i##_end; i+=step) // s \u304B\u3089 t\
-    \ \u307E\u3067 step\u305A\u3064\n#define repe(a, v) for(auto& a : (v)) // v \u306E\
-    \u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n, m) ((((n)\
-    \ % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n) - smod(n,\
-    \ m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
+    #define rep1(n) for(ll i = 0LL; i < n; ++i) // 0 \u304B\u3089 n-1 \u307E\u3067\
+    \u6607\u9806\n#define rep2(i, n) for(ll i = 0LL, i##_counter = 0LL; i##_counter\
+    \ < ll(n); ++(i##_counter), (i) = i##_counter) // 0 \u304B\u3089 n-1 \u307E\u3067\
+    \u6607\u9806\n#define rep3(i, s, t) for(ll i = ll(s), i##_counter = ll(s); i##_counter\
+    \ < ll(t); ++(i##_counter), (i) = (i##_counter)) // s \u304B\u3089 t \u307E\u3067\
+    \u6607\u9806\n#define rep4(i, s, t, step) for(ll i##_counter = step > 0 ? ll(s)\
+    \ : -ll(s), i##_end = step > 0 ? ll(t) : -ll(t), i##_step = abs(step), i = ll(s);\
+    \ i##_counter < i##_end; i##_counter += i##_step, i = step > 0 ? i##_counter :\
+    \ -i##_counter) // s \u304B\u3089 t \u307E\u3067 step\u305A\u3064\n#define overload4(a,\
+    \ b, c, d, e, ...) e\n#define rep(...) overload4(__VA_ARGS__, rep4, rep3, rep2,\
+    \ rep1)(__VA_ARGS__)\n#define repe(a, v) for(auto& a : (v)) // v \u306E\u5168\u8981\
+    \u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n, m) ((((n) % (m)) +\
+    \ (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n) - smod(n, m)) / (m))\
+    \ // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
     \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b) { cout << (b ? \"\
     Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b) { cout << (b ? \"YES\\n\"\
     \ : \"NO\\n\"); return; };\ntemplate<typename T, size_t N> T max(array<T, N>&\
@@ -64,41 +68,44 @@ data:
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
     \ a) { return *min_element(all(a)); };\ntemplate<typename T> T sum(vector<T>&\
     \ a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\n\
-    \n// mod\u3067\u306Epow\nll powm(ll a, ll n, ll mod=INFL) {\n    ll res = 1;\n\
-    \    while (n > 0) {\n        if (n & 1) res = (res * a) % mod;\n        if (n\
-    \ > 1) a = (a * a) % mod;\n        n >>= 1;\n    }\n    return res;\n}\n// \u6574\
-    \u6570Sqrt\nll sqrtll(ll x) {\n    assert(x >= 0);\n    ll hi(x), lo(0);\n   \
-    \ while (hi != lo) {\n        ll y = (hi + lo + 1) / 2;\n        if (y <= x/y)\
-    \ lo = y;\n        else hi = y - 1;\n    }\n    return lo;\n}\ntemplate <class\
-    \ T> inline bool chmax(T& M, const T& x) { if (M < x) { M = x; return true; }\
-    \ return false; } // \u6700\u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\
-    \u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool\
-    \ chmin(T& m, const T& x) { if (m > x) { m = x; return true; } return false; }\
-    \ // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089\
-    \ true \u3092\u8FD4\u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while\
-    \ (x > 0) { rev++; x /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\
-    \n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n */\n#line 3 \"competitive/std/io.hpp\"\
-    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
-    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
-    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
-    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
-    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
-    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
-    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
-    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
-    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
-    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
-    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
-    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
-    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
-    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
-    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
-    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ntemplate <class T> inline vector<T>& operator--(vector<T>& v) { repe(x, v) --x;\
+    \ return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>& v) {\
+    \ repe(x, v) ++x; return v; }\n\n// mod\u3067\u306Epow\nll powm(ll a, ll n, ll\
+    \ mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1) res =\
+    \ (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>= 1;\n\
+    \    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
+    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
+    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
+    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
+    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
+    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
+    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
+    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
+    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
+    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
+    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
+    \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
+    \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
+    \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
+    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
+    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
+    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
+    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
+    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
+    template <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
+    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
+    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
+    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
+    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
+    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
+    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
+    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
+    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
     \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
     \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
@@ -113,21 +120,39 @@ data:
     \ &os, stack<T> st) { while (st.size()) { os << st.top() << \" \"; st.pop(); }\
     \ return os; }\ntemplate <class T, class Container, class Compare> ostream &operator<<(ostream\
     \ &os, priority_queue<T, Container, Compare> pq) { while (pq.size()) { os << pq.top()\
-    \ << \" \"; pq.pop(); } return os; }\ntemplate <class T> inline vector<T>& operator--(vector<T>&\
-    \ v) { repe(x, v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
-    \ v) { repe(x, v) ++x; return v; }\n\ntemplate <typename T> void print_sep_end(string\
+    \ << \" \"; pq.pop(); } return os; }\n\ntemplate <typename T> void print_sep_end(string\
     \ sep, string end, const T& val) { (void)sep; cout << val << end; };\ntemplate\
     \ <typename T1, typename... T2> void print_sep_end(string sep, string end, const\
     \ T1 &val, const T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep,\
-    \ end, remain...);\n};\ntemplate <typename... T> void print(const T&...args) {print_sep_end(\"\
-    \ \", \"\\n\", args...);};\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__)\
-    \ // debug print\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int\
-    \ i, T name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
-    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
-    \ T3 &...b) {\n    for ( ; name[i] != ',' && name[i] != '\\0'; i++ ) cerr << name[i];\n\
-    \    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n}\n#endif\n\
-    #ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const T &...) {}\n\
-    #endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 4 \"online_test/AOJ/ITPI_1_A.test.cpp\"\
+    \ end, remain...);\n};\ntemplate <typename... T> void print(const T &...args)\
+    \ { print_sep_end(\" \", \"\\n\", args...); };\ntemplate <typename... T> void\
+    \ flush() { cout << flush; };\ntemplate <typename... T> void print_and_flush(const\
+    \ T &...args) { print(args...); flush(); };\n#define debug(...) debug_func(0,\
+    \ #__VA_ARGS__, __VA_ARGS__) // debug print\ntemplate <typename T> void input_only(T\
+    \ &a) { cin >> a; };\ntemplate <typename T1, typename... T2> void input_only(T1&a,\
+    \ T2 &...b) { cin >> a; read(b...); };\n#define input(type, ...) type __VA_ARGS__;\
+    \ input_only(__VA_ARGS__);\n#define vec(type, name, ...) vector<type> name(__VA_ARGS__)\
+    \  // vec(type, name, n, init(optiobal))\n#define vvec(type, name, h, ...) vector\
+    \ name(h, vector<type>(__VA_ARGS__))\n#define vvvec(type, name, h, w, ...) vector\
+    \ name(h, vector(w, vector<type>(__VA_ARGS__)))\n#define vvvvec(type, name, h1,\
+    \ h2, h3, ...) vector name(h1, vector(h2, vector(h3, vector<type>(__VA_ARGS__))))\n\
+    #define vvvvvec(type, name, h1, h2, h3, h4, ...) vector name(h1, vector(h2, vector(h3,\
+    \ vector(h4, vector<type>(__VA_ARGS__)))))\n#define input_vec(type, name, ...)\
+    \ vec(type, name, __VA_ARGS__); input_only(name);\n#define input_vvec(type, name,\
+    \ h, ...) vvec(type, name, h, __VA_ARGS__); input_only(name);\n#define input_vvvec(type,\
+    \ name, h, w, ...) vvvec(type, name, h, w, __VA_ARGS__); input_only(name);\n#define\
+    \ input_vvvvec(type, name, h1, h2, h3, ...) vvvvec(type, name, h1, h2, h3, __VA_ARGS__);\
+    \ input_only(name);\n#define input_vvvvvec(type, name, h1, h2, h3, h4, ...) vvvvvec(type,\
+    \ name, h1, h2, h3, h4, __VA_ARGS__); input_only(name);\n#ifdef LOCAL_TEST\ntemplate\
+    \ <typename T>\nvoid debug_func(int i, T name) { (void)i; (void)name; cerr <<\
+    \ endl; }\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
+    \ i, const T1 &name, const T2 &a, const T3 &...b) {\n    int scope = 0;\n    for\
+    \ ( ; (scope != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr\
+    \ << name[i];\n        if (name[i] == '(' || name[i] == '{') scope++;\n      \
+    \  if (name[i] == ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" <<\
+    \ a << \" \";\n    debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\n\
+    template <typename... T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief\
+    \ io.hpp\n * @docs docs/std/io.md\n */\n#line 4 \"online_test/AOJ/ITPI_1_A.test.cpp\"\
     \nint main() {\n    cout << \"Hello World\" << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\
     \n#include \"competitive/std/std.hpp\"\n#include \"competitive/std/io.hpp\"\n\
@@ -138,7 +163,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/ITPI_1_A.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 19:42:23+09:00'
+  timestamp: '2023-03-14 01:18:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/ITPI_1_A.test.cpp

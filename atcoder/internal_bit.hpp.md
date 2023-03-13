@@ -61,18 +61,18 @@ data:
   isVerificationFile: false
   path: atcoder/internal_bit.hpp
   requiredBy:
-  - competitive/data_structure/lazysegtree.hpp
   - competitive/data_structure/segtree.hpp
+  - competitive/data_structure/lazysegtree.hpp
+  - atcoder/segtree.hpp
   - atcoder/lazysegtree.hpp
   - atcoder/convolution.hpp
-  - atcoder/segtree.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - online_test/AOJ/DSL_2_H.test.cpp
   - online_test/AOJ/DSL_2_I.test.cpp
   - online_test/AOJ/DSL_2_G.test.cpp
   - online_test/AOJ/DSL_2_F.test.cpp
-  - online_test/AOJ/DSL_2_H.test.cpp
 documentation_of: atcoder/internal_bit.hpp
 layout: document
 redirect_from:
