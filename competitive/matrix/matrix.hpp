@@ -88,16 +88,21 @@ template <typename T> struct Matrix {
         return ret;
     }
 };
+template<typename T> Matrix<T> identity(int n) {
+    vvec(T, rev, n, n, T(0));
+    rep(i, n) rev[i][i] = 1;
+    return Matrix<T>(rev);
+};
 template<typename T> Matrix<T> pow(Matrix<T> a, ll n) {
     assert(a.h == a.w);
-    ll res = 1;
+    Matrix<T> res = identity<T>(a.h);
     while (n > 0) {
         if (n & 1) res = (res * a);
         if (n > 1) a = (a * a);
         n >>= 1;
     }
     return res;
-}
+};
 /**
  * @brief matrix.hpp
  * @docs docs/matrix/matrix.md
