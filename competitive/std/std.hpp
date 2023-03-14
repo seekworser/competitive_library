@@ -16,11 +16,9 @@ using vb = vector<bool>; using vvb = vector<vb>; using vvvb = vector<vvb>;
 using vc = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;
 using vd = vector<double>; using vvd = vector<vd>; using vvvd = vector<vvd>;
 using vs = vector<string>; using vvs = vector<vector<string>>; using vvvs = vector<vector<vector<string>>>;
-#define vec(type, name, ...) vector<type> name(__VA_ARGS__)  // vec(type, name, n, init(optiobal))
-#define vvec(type, name, h, ...) vector name(h, vector<type>(__VA_ARGS__))
-#define vvvec(type, name, h, w, ...) vector name(h, vector(w, vector<type>(__VA_ARGS__)))
-#define vvvvec(type, name, h1, h2, h3, ...) vector name(h1, vector(h2, vector(h3, vector<type>(__VA_ARGS__))))
-#define vvvvvec(type, name, h1, h2, h3, h4, ...) vector name(h1, vector(h2, vector(h3, vector(h4, vector<type>(__VA_ARGS__)))))
+template<typename T> vector<vector<T>> vv(int h, int w, T val = T()) { return vector(h, vector<T>(w, val)); }
+template<typename T> vector<vector<vector<T>>> vvv(int h1, int h2, int h3, T val = T()) { return vector(h1, vector(h2, vector<T>(h3, val))); }
+template<typename T> vector<vector<vector<vector<T>>>> vvvv(int h1, int h2, int h3, int h4, T val = T()) { return vector(h1, vector(h2, vector(h3, vector<T>(h4, val)))); }
 template <class T> using priority_queue_min = priority_queue<T, vector<T>, greater<T>>;
 // 定数の定義
 constexpr double PI = 3.14159265358979323;
