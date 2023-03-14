@@ -14,12 +14,5 @@ for dir in ./competitive/*; do
     for fn in $dir/*.hpp; do
         fbn=$(basename "$fn")
         fbn_without_extension=$(basename -s ".hpp" "$fn")
-        echo touch "./docs/$(basename $dir)/$fbn_without_extension.md"
-        docstr_local=$(echo "$docstr")
-        docstr_local="${docstr_local/"{brief}"/$fbn}"
-        docstr_local="${docstr_local/"{dir}"/$dirb}"
-        docstr_local="${docstr_local/"{filename}"/$fbn_without_extension}"
-        echo "echo \"$docstr_local\" >> $fn"
-        echo "$docstr_local" >> $fn
     done
 done
