@@ -16,6 +16,11 @@ using vb = vector<bool>; using vvb = vector<vb>; using vvvb = vector<vvb>;
 using vc = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;
 using vd = vector<double>; using vvd = vector<vd>; using vvvd = vector<vvd>;
 using vs = vector<string>; using vvs = vector<vector<string>>; using vvvs = vector<vector<vector<string>>>;
+#define vec(type, name, ...) vector<type> name(__VA_ARGS__)  // vec(type, name, n, init(optiobal))
+#define vvec(type, name, h, ...) vector name(h, vector<type>(__VA_ARGS__))
+#define vvvec(type, name, h, w, ...) vector name(h, vector(w, vector<type>(__VA_ARGS__)))
+#define vvvvec(type, name, h1, h2, h3, ...) vector name(h1, vector(h2, vector(h3, vector<type>(__VA_ARGS__))))
+#define vvvvvec(type, name, h1, h2, h3, h4, ...) vector name(h1, vector(h2, vector(h3, vector(h4, vector<type>(__VA_ARGS__)))))
 template <class T> using priority_queue_min = priority_queue<T, vector<T>, greater<T>>;
 // 定数の定義
 constexpr double PI = 3.14159265358979323;
@@ -36,10 +41,12 @@ struct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false); cout << fi
 // 汎用マクロの定義
 #define all(a) (a).begin(), (a).end()
 #define sz(x) ((int)(x).size())
-#define rep(i, n) for(ll i = 0, i##_len = ll(n); i < i##_len; ++i) // 0 から n-1 まで昇順
-#define repi(i, s, t) for(ll i = ll(s), i##_end = ll(t); i < i##_end; ++i) // s から t まで昇順
-#define repis(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i < i##_end; i+=step) // s から t まで stepずつ
-#define repir(i, s, t, step) for(ll i = ll(s), i##_end = ll(t); i > i##_end; i+=step) // s から t まで stepずつ
+#define rep1(n) for(ll i = 0LL; i < n; ++i) // 0 から n-1 まで昇順
+#define rep2(i, n) for(ll i = 0LL, i##_counter = 0LL; i##_counter < ll(n); ++(i##_counter), (i) = i##_counter) // 0 から n-1 まで昇順
+#define rep3(i, s, t) for(ll i = ll(s), i##_counter = ll(s); i##_counter < ll(t); ++(i##_counter), (i) = (i##_counter)) // s から t まで昇順
+#define rep4(i, s, t, step) for(ll i##_counter = step > 0 ? ll(s) : -ll(s), i##_end = step > 0 ? ll(t) : -ll(t), i##_step = abs(step), i = ll(s); i##_counter < i##_end; i##_counter += i##_step, i = step > 0 ? i##_counter : -i##_counter) // s から t まで stepずつ
+#define overload4(a, b, c, d, e, ...) e
+#define rep(...) overload4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)
 #define repe(a, v) for(auto& a : (v)) // v の全要素（変更可能）
 #define smod(n, m) ((((n) % (m)) + (m)) % (m)) // 非負mod
 #define sdiv(n, m) (((n) - smod(n, m)) / (m)) // 非負div
@@ -51,6 +58,9 @@ template<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a
 template<typename T> T max(vector<T>& a) { return *max_element(all(a)); };
 template<typename T> T min(vector<T>& a) { return *min_element(all(a)); };
 template<typename T> T sum(vector<T>& a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };
+
+template <class T> inline vector<T>& operator--(vector<T>& v) { repe(x, v) --x; return v; }
+template <class T> inline vector<T>& operator++(vector<T>& v) { repe(x, v) ++x; return v; }
 
 // modでのpow
 ll powm(ll a, ll n, ll mod=INFL) {
