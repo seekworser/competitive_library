@@ -38,20 +38,25 @@ data:
     \ = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd\
     \ = vector<double>; using vvd = vector<vd>; using vvvd = vector<vvd>;\nusing vs\
     \ = vector<string>; using vvs = vector<vector<string>>; using vvvs = vector<vector<vector<string>>>;\n\
-    template <class T> using priority_queue_min = priority_queue<T, vector<T>, greater<T>>;\n\
-    // \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double PI = 3.14159265358979323;\n\
-    constexpr int INF = 100100111; constexpr ll INFL = 3300300300300300491LL;\nfloat\
-    \ EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const double x, const double y) {\
-    \ return abs(x - y) < EPSL; }\nbool eq(const float x, const float y) { return\
-    \ abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const T x, const T y) { return\
-    \ x == y; }\ntemplate<typename T> bool neq(const T x, const T y) { return !(eq<T>(x,\
-    \ y)); }\ntemplate<typename T> bool ge(const T x, const T y) { return (eq<T>(x,\
-    \ y) || (x > y)); }\ntemplate<typename T> bool le(const T x, const T y) { return\
-    \ (eq<T>(x, y) || (x < y)); }\ntemplate<typename T> bool gt(const T x, const T\
-    \ y) { return !(le<T>(x, y)); }\ntemplate<typename T> bool lt(const T x, const\
-    \ T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353 = 998244353;\n\
-    constexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\u9AD8\u901F\
-    \u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
+    template<typename T> vector<vector<T>> vv(int h, int w, T val = T()) { return\
+    \ vector(h, vector<T>(w, val)); }\ntemplate<typename T> vector<vector<vector<T>>>\
+    \ vvv(int h1, int h2, int h3, T val = T()) { return vector(h1, vector(h2, vector<T>(h3,\
+    \ val))); }\ntemplate<typename T> vector<vector<vector<vector<T>>>> vvvv(int h1,\
+    \ int h2, int h3, int h4, T val = T()) { return vector(h1, vector(h2, vector(h3,\
+    \ vector<T>(h4, val)))); }\ntemplate <class T> using priority_queue_min = priority_queue<T,\
+    \ vector<T>, greater<T>>;\n// \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double\
+    \ PI = 3.14159265358979323;\nconstexpr int INF = 100100111; constexpr ll INFL\
+    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const\
+    \ double x, const double y) { return abs(x - y) < EPSL; }\nbool eq(const float\
+    \ x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const\
+    \ T x, const T y) { return x == y; }\ntemplate<typename T> bool neq(const T x,\
+    \ const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool ge(const T\
+    \ x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename T> bool\
+    \ le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
+    \ T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }\ntemplate<typename\
+    \ T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353\
+    \ = 998244353;\nconstexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\
+    \u9AD8\u901F\u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
     \ cout << fixed << setprecision(18); } } nyan;\n// \u6C4E\u7528\u30DE\u30AF\u30ED\
     \u306E\u5B9A\u7FA9\n#define all(a) (a).begin(), (a).end()\n#define sz(x) ((int)(x).size())\n\
     #define rep1(n) for(ll i = 0LL; i < n; ++i) // 0 \u304B\u3089 n-1 \u307E\u3067\
@@ -260,42 +265,29 @@ data:
     \ { print_sep_end(\" \", \"\\n\", args...); };\ntemplate <typename... T> void\
     \ flush() { cout << flush; };\ntemplate <typename... T> void print_and_flush(const\
     \ T &...args) { print(args...); flush(); };\n#define debug(...) debug_func(0,\
-    \ #__VA_ARGS__, __VA_ARGS__) // debug print\ntemplate <typename T> void input_only(T\
-    \ &a) { cin >> a; };\ntemplate <typename T1, typename... T2> void input_only(T1&a,\
-    \ T2 &...b) { cin >> a; read(b...); };\n#define input(type, ...) type __VA_ARGS__;\
-    \ input_only(__VA_ARGS__);\n#define vec(type, name, ...) vector<type> name(__VA_ARGS__)\
-    \  // vec(type, name, n, init(optiobal))\n#define vvec(type, name, h, ...) vector\
-    \ name(h, vector<type>(__VA_ARGS__))\n#define vvvec(type, name, h, w, ...) vector\
-    \ name(h, vector(w, vector<type>(__VA_ARGS__)))\n#define vvvvec(type, name, h1,\
-    \ h2, h3, ...) vector name(h1, vector(h2, vector(h3, vector<type>(__VA_ARGS__))))\n\
-    #define vvvvvec(type, name, h1, h2, h3, h4, ...) vector name(h1, vector(h2, vector(h3,\
-    \ vector(h4, vector<type>(__VA_ARGS__)))))\n#define input_vec(type, name, ...)\
-    \ vec(type, name, __VA_ARGS__); input_only(name);\n#define input_vvec(type, name,\
-    \ h, ...) vvec(type, name, h, __VA_ARGS__); input_only(name);\n#define input_vvvec(type,\
-    \ name, h, w, ...) vvvec(type, name, h, w, __VA_ARGS__); input_only(name);\n#define\
-    \ input_vvvvec(type, name, h1, h2, h3, ...) vvvvec(type, name, h1, h2, h3, __VA_ARGS__);\
-    \ input_only(name);\n#define input_vvvvvec(type, name, h1, h2, h3, h4, ...) vvvvvec(type,\
-    \ name, h1, h2, h3, h4, __VA_ARGS__); input_only(name);\n#ifdef LOCAL_TEST\ntemplate\
-    \ <typename T>\nvoid debug_func(int i, T name) { (void)i; (void)name; cerr <<\
-    \ endl; }\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
-    \ i, const T1 &name, const T2 &a, const T3 &...b) {\n    int scope = 0;\n    for\
-    \ ( ; (scope != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr\
-    \ << name[i];\n        if (name[i] == '(' || name[i] == '{') scope++;\n      \
-    \  if (name[i] == ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" <<\
-    \ a << \" \";\n    debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\n\
-    template <typename... T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief\
-    \ io.hpp\n * @docs docs/std/io.md\n */\n#line 7 \"online_test/AOJ/CGL_1_C.test.cpp\"\
-    \n\nint main() {\n    using P = Point<Frac>;\n    ll x, y;\n    cin >> x >> y;\n\
-    \    P p1(x, y);\n    cin >> x >> y;\n    P p2(x, y);\n    Segment<Frac> s(p1,\
-    \ p2);\n    int q;\n    cin >> q;\n    rep(_, q) {\n        cin >> x >> y;\n \
-    \       P p3(x, y);\n        debug(s, p3);\n        switch (ccw(s, p3)) {\n  \
-    \      case COUNTER_CLOCKWISE:\n            cout << \"COUNTER_CLOCKWISE\\n\";\n\
-    \            break;\n        case CLOCKWISE:\n            cout << \"CLOCKWISE\\\
-    n\";\n            break;\n        case ONLINE_BACK:\n            cout << \"ONLINE_BACK\\\
-    n\";\n            break;\n        case ONLINE_FRONT:\n            cout << \"ONLINE_FRONT\\\
-    n\";\n            break;\n        case ONSEGMENT:\n            cout << \"ON_SEGMENT\\\
-    n\";\n            break;\n        default:\n            break;\n        }\n  \
-    \  }\n}\n"
+    \ #__VA_ARGS__, __VA_ARGS__) // debug print\ntemplate <typename T> void input(T\
+    \ &a) { cin >> a; };\ntemplate <typename T1, typename... T2> void input(T1&a,\
+    \ T2 &...b) { cin >> a; input(b...); };\n#ifdef LOCAL_TEST\ntemplate <typename\
+    \ T>\nvoid debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }\n\
+    template <typename T1, typename T2, typename... T3> void debug_func(int i, const\
+    \ T1 &name, const T2 &a, const T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs\
+    \ docs/std/io.md\n */\n#line 7 \"online_test/AOJ/CGL_1_C.test.cpp\"\n\nint main()\
+    \ {\n    using P = Point<Frac>;\n    ll x, y;\n    cin >> x >> y;\n    P p1(x,\
+    \ y);\n    cin >> x >> y;\n    P p2(x, y);\n    Segment<Frac> s(p1, p2);\n   \
+    \ int q;\n    cin >> q;\n    rep(_, q) {\n        cin >> x >> y;\n        P p3(x,\
+    \ y);\n        debug(s, p3);\n        switch (ccw(s, p3)) {\n        case COUNTER_CLOCKWISE:\n\
+    \            cout << \"COUNTER_CLOCKWISE\\n\";\n            break;\n        case\
+    \ CLOCKWISE:\n            cout << \"CLOCKWISE\\n\";\n            break;\n    \
+    \    case ONLINE_BACK:\n            cout << \"ONLINE_BACK\\n\";\n            break;\n\
+    \        case ONLINE_FRONT:\n            cout << \"ONLINE_FRONT\\n\";\n      \
+    \      break;\n        case ONSEGMENT:\n            cout << \"ON_SEGMENT\\n\"\
+    ;\n            break;\n        default:\n            break;\n        }\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
     \n#include \"competitive/std/std.hpp\"\n#include \"competitive/math/fraction.hpp\"\
     \n#include \"competitive/geometry/base.hpp\"\n#include \"competitive/geometry/counter_clockwise.hpp\"\
@@ -319,7 +311,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/CGL_1_C.test.cpp
   requiredBy: []
-  timestamp: '2023-03-14 01:18:40+09:00'
+  timestamp: '2023-03-15 06:50:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/CGL_1_C.test.cpp

@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: competitive/data_structure/union_find.hpp
+    title: segtree.hpp
+  - icon: ':warning:'
     path: competitive/tree/kruskal.hpp
     title: kruskal.hpp
   _extendedVerifiedWith: []
@@ -66,6 +69,7 @@ data:
   path: atcoder/dsu.hpp
   requiredBy:
   - competitive/tree/kruskal.hpp
+  - competitive/data_structure/union_find.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

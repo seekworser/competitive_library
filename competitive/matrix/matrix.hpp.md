@@ -24,20 +24,25 @@ data:
     \ = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd\
     \ = vector<double>; using vvd = vector<vd>; using vvvd = vector<vvd>;\nusing vs\
     \ = vector<string>; using vvs = vector<vector<string>>; using vvvs = vector<vector<vector<string>>>;\n\
-    template <class T> using priority_queue_min = priority_queue<T, vector<T>, greater<T>>;\n\
-    // \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double PI = 3.14159265358979323;\n\
-    constexpr int INF = 100100111; constexpr ll INFL = 3300300300300300491LL;\nfloat\
-    \ EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const double x, const double y) {\
-    \ return abs(x - y) < EPSL; }\nbool eq(const float x, const float y) { return\
-    \ abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const T x, const T y) { return\
-    \ x == y; }\ntemplate<typename T> bool neq(const T x, const T y) { return !(eq<T>(x,\
-    \ y)); }\ntemplate<typename T> bool ge(const T x, const T y) { return (eq<T>(x,\
-    \ y) || (x > y)); }\ntemplate<typename T> bool le(const T x, const T y) { return\
-    \ (eq<T>(x, y) || (x < y)); }\ntemplate<typename T> bool gt(const T x, const T\
-    \ y) { return !(le<T>(x, y)); }\ntemplate<typename T> bool lt(const T x, const\
-    \ T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353 = 998244353;\n\
-    constexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\u9AD8\u901F\
-    \u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
+    template<typename T> vector<vector<T>> vv(int h, int w, T val = T()) { return\
+    \ vector(h, vector<T>(w, val)); }\ntemplate<typename T> vector<vector<vector<T>>>\
+    \ vvv(int h1, int h2, int h3, T val = T()) { return vector(h1, vector(h2, vector<T>(h3,\
+    \ val))); }\ntemplate<typename T> vector<vector<vector<vector<T>>>> vvvv(int h1,\
+    \ int h2, int h3, int h4, T val = T()) { return vector(h1, vector(h2, vector(h3,\
+    \ vector<T>(h4, val)))); }\ntemplate <class T> using priority_queue_min = priority_queue<T,\
+    \ vector<T>, greater<T>>;\n// \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double\
+    \ PI = 3.14159265358979323;\nconstexpr int INF = 100100111; constexpr ll INFL\
+    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const\
+    \ double x, const double y) { return abs(x - y) < EPSL; }\nbool eq(const float\
+    \ x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const\
+    \ T x, const T y) { return x == y; }\ntemplate<typename T> bool neq(const T x,\
+    \ const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool ge(const T\
+    \ x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename T> bool\
+    \ le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
+    \ T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }\ntemplate<typename\
+    \ T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353\
+    \ = 998244353;\nconstexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\
+    \u9AD8\u901F\u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
     \ cout << fixed << setprecision(18); } } nyan;\n// \u6C4E\u7528\u30DE\u30AF\u30ED\
     \u306E\u5B9A\u7FA9\n#define all(a) (a).begin(), (a).end()\n#define sz(x) ((int)(x).size())\n\
     #define rep1(n) for(ll i = 0LL; i < n; ++i) // 0 \u304B\u3089 n-1 \u307E\u3067\
@@ -117,11 +122,13 @@ data:
     \            }\n            rep(j, i+1, (*this).h) {\n                T a = b[j][i];\n\
     \                if (a == 0) continue;\n                rep(k, i, (*this).w) {\n\
     \                    b[j][k] -= b[i][k] * a;\n                }\n            }\n\
-    \        }\n        return ret;\n    }\n};\ntemplate<typename T> Matrix<T> pow(Matrix<T>\
-    \ a, ll n) {\n    assert(a.h == a.w);\n    ll res = 1;\n    while (n > 0) {\n\
-    \        if (n & 1) res = (res * a);\n        if (n > 1) a = (a * a);\n      \
-    \  n >>= 1;\n    }\n    return res;\n}\n/**\n * @brief matrix.hpp\n * @docs docs/matrix/matrix.md\n\
-    \ */\n"
+    \        }\n        return ret;\n    }\n};\ntemplate<typename T> Matrix<T> eye(int\
+    \ n) {\n    auto rev = vv<T>(n, n, T(0));\n    rep(i, n) rev[i][i] = 1;\n    return\
+    \ Matrix<T>(rev);\n};\ntemplate<typename T> Matrix<T> pow(Matrix<T> a, ll n) {\n\
+    \    assert(a.h == a.w);\n    Matrix<T> res = eye<T>(a.h);\n    while (n > 0)\
+    \ {\n        if (n & 1) res = (res * a);\n        if (n > 1) a = (a * a);\n  \
+    \      n >>= 1;\n    }\n    return res;\n};\n/**\n * @brief matrix.hpp\n * @docs\
+    \ docs/matrix/matrix.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate <typename T>\
     \ struct Matrix {\n    vector<vector<T> > a;\n    int h, w;\n\n    Matrix() =\
     \ default;\n    Matrix(int h, int w) : a(h, vector<T>(w, T())), h(h), w(w) {}\n\
@@ -161,17 +168,19 @@ data:
     \            }\n            rep(j, i+1, (*this).h) {\n                T a = b[j][i];\n\
     \                if (a == 0) continue;\n                rep(k, i, (*this).w) {\n\
     \                    b[j][k] -= b[i][k] * a;\n                }\n            }\n\
-    \        }\n        return ret;\n    }\n};\ntemplate<typename T> Matrix<T> pow(Matrix<T>\
-    \ a, ll n) {\n    assert(a.h == a.w);\n    ll res = 1;\n    while (n > 0) {\n\
-    \        if (n & 1) res = (res * a);\n        if (n > 1) a = (a * a);\n      \
-    \  n >>= 1;\n    }\n    return res;\n}\n/**\n * @brief matrix.hpp\n * @docs docs/matrix/matrix.md\n\
-    \ */\n"
+    \        }\n        return ret;\n    }\n};\ntemplate<typename T> Matrix<T> eye(int\
+    \ n) {\n    auto rev = vv<T>(n, n, T(0));\n    rep(i, n) rev[i][i] = 1;\n    return\
+    \ Matrix<T>(rev);\n};\ntemplate<typename T> Matrix<T> pow(Matrix<T> a, ll n) {\n\
+    \    assert(a.h == a.w);\n    Matrix<T> res = eye<T>(a.h);\n    while (n > 0)\
+    \ {\n        if (n & 1) res = (res * a);\n        if (n > 1) a = (a * a);\n  \
+    \      n >>= 1;\n    }\n    return res;\n};\n/**\n * @brief matrix.hpp\n * @docs\
+    \ docs/matrix/matrix.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/matrix/matrix.hpp
   requiredBy: []
-  timestamp: '2023-03-14 01:25:54+09:00'
+  timestamp: '2023-03-16 19:22:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/matrix/matrix.hpp

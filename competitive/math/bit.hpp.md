@@ -24,20 +24,25 @@ data:
     \ = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd\
     \ = vector<double>; using vvd = vector<vd>; using vvvd = vector<vvd>;\nusing vs\
     \ = vector<string>; using vvs = vector<vector<string>>; using vvvs = vector<vector<vector<string>>>;\n\
-    template <class T> using priority_queue_min = priority_queue<T, vector<T>, greater<T>>;\n\
-    // \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double PI = 3.14159265358979323;\n\
-    constexpr int INF = 100100111; constexpr ll INFL = 3300300300300300491LL;\nfloat\
-    \ EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const double x, const double y) {\
-    \ return abs(x - y) < EPSL; }\nbool eq(const float x, const float y) { return\
-    \ abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const T x, const T y) { return\
-    \ x == y; }\ntemplate<typename T> bool neq(const T x, const T y) { return !(eq<T>(x,\
-    \ y)); }\ntemplate<typename T> bool ge(const T x, const T y) { return (eq<T>(x,\
-    \ y) || (x > y)); }\ntemplate<typename T> bool le(const T x, const T y) { return\
-    \ (eq<T>(x, y) || (x < y)); }\ntemplate<typename T> bool gt(const T x, const T\
-    \ y) { return !(le<T>(x, y)); }\ntemplate<typename T> bool lt(const T x, const\
-    \ T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353 = 998244353;\n\
-    constexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\u9AD8\u901F\
-    \u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
+    template<typename T> vector<vector<T>> vv(int h, int w, T val = T()) { return\
+    \ vector(h, vector<T>(w, val)); }\ntemplate<typename T> vector<vector<vector<T>>>\
+    \ vvv(int h1, int h2, int h3, T val = T()) { return vector(h1, vector(h2, vector<T>(h3,\
+    \ val))); }\ntemplate<typename T> vector<vector<vector<vector<T>>>> vvvv(int h1,\
+    \ int h2, int h3, int h4, T val = T()) { return vector(h1, vector(h2, vector(h3,\
+    \ vector<T>(h4, val)))); }\ntemplate <class T> using priority_queue_min = priority_queue<T,\
+    \ vector<T>, greater<T>>;\n// \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double\
+    \ PI = 3.14159265358979323;\nconstexpr int INF = 100100111; constexpr ll INFL\
+    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const\
+    \ double x, const double y) { return abs(x - y) < EPSL; }\nbool eq(const float\
+    \ x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const\
+    \ T x, const T y) { return x == y; }\ntemplate<typename T> bool neq(const T x,\
+    \ const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool ge(const T\
+    \ x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename T> bool\
+    \ le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
+    \ T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }\ntemplate<typename\
+    \ T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353\
+    \ = 998244353;\nconstexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\
+    \u9AD8\u901F\u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
     \ cout << fixed << setprecision(18); } } nyan;\n// \u6C4E\u7528\u30DE\u30AF\u30ED\
     \u306E\u5B9A\u7FA9\n#define all(a) (a).begin(), (a).end()\n#define sz(x) ((int)(x).size())\n\
     #define rep1(n) for(ll i = 0LL; i < n; ++i) // 0 \u304B\u3089 n-1 \u307E\u3067\
@@ -84,26 +89,26 @@ data:
     \    ll lsb(ll x) { return -x & x; }\n    int digit(ll x) { int rev=0; while(x)\
     \ { rev++; x >>= 1; } return rev; }\n    ll msb(ll x) { if (x==0) return 0; return\
     \ 1LL << (digit(x) - 1); }\n    int lsbd(ll x) {return digit(lsb(x)); }\n    int\
-    \ count(ll x) { int rev=0; while(x) { if (lb(x)) rev++; x >>= 1; } return rev;\
-    \ }\n    string to_string(ll x, bool rev=true) { stringstream ss; while (x) {\
-    \ ss << lb(x); x >>= 1;} string s(ss.str()); if (rev) reverse(all(s)); return\
-    \ s; }\n}\n/**\n * @brief bit.hpp\n * @docs docs/math/bit.md\n */\n"
+    \ count(ll x) { return __builtin_popcountll(x); }\n    string to_string(ll x,\
+    \ bool rev=true) { stringstream ss; while (x) { ss << lb(x); x >>= 1;} string\
+    \ s(ss.str()); if (rev) reverse(all(s)); return s; }\n}\n/**\n * @brief bit.hpp\n\
+    \ * @docs docs/math/bit.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\nnamespace bit{\n    bool\
     \ lb(ll x) { return (x & 1); }\n    bool get(ll x, int n) { return ((x >> n) &\
     \ 1); }\n    ll update(ll x, int n, bool b) { return (x & ~(1LL << n)) + (b <<\
     \ n); }\n    ll lsb(ll x) { return -x & x; }\n    int digit(ll x) { int rev=0;\
     \ while(x) { rev++; x >>= 1; } return rev; }\n    ll msb(ll x) { if (x==0) return\
     \ 0; return 1LL << (digit(x) - 1); }\n    int lsbd(ll x) {return digit(lsb(x));\
-    \ }\n    int count(ll x) { int rev=0; while(x) { if (lb(x)) rev++; x >>= 1; }\
-    \ return rev; }\n    string to_string(ll x, bool rev=true) { stringstream ss;\
-    \ while (x) { ss << lb(x); x >>= 1;} string s(ss.str()); if (rev) reverse(all(s));\
-    \ return s; }\n}\n/**\n * @brief bit.hpp\n * @docs docs/math/bit.md\n */\n"
+    \ }\n    int count(ll x) { return __builtin_popcountll(x); }\n    string to_string(ll\
+    \ x, bool rev=true) { stringstream ss; while (x) { ss << lb(x); x >>= 1;} string\
+    \ s(ss.str()); if (rev) reverse(all(s)); return s; }\n}\n/**\n * @brief bit.hpp\n\
+    \ * @docs docs/math/bit.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/math/bit.hpp
   requiredBy: []
-  timestamp: '2023-03-13 19:28:31+09:00'
+  timestamp: '2023-03-15 07:18:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/bit.hpp

@@ -1,6 +1,9 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':warning:'
+    path: atcoder/dsu.hpp
+    title: atcoder/dsu.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
@@ -10,12 +13,37 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/helper/board_helper.md
-    document_title: board_helper.hpp
+    _deprecated_at_docs: docs/data_structure/union_find.md
+    document_title: segtree.hpp
     links: []
-  bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
-    \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
-    \ GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
+  bundledCode: "#line 2 \"atcoder/dsu.hpp\"\n#include <algorithm>\n#include <cassert>\n\
+    #include <vector>\n\nnamespace atcoder {\n\n// Implement (union by size) + (path\
+    \ compression)\n// Reference:\n// Zvi Galil and Giuseppe F. Italiano,\n// Data\
+    \ structures and algorithms for disjoint set union problems\nstruct dsu {\n  public:\n\
+    \    dsu() : _n(0) {}\n    explicit dsu(int n) : _n(n), parent_or_size(n, -1)\
+    \ {}\n\n    int merge(int a, int b) {\n        assert(0 <= a && a < _n);\n   \
+    \     assert(0 <= b && b < _n);\n        int x = leader(a), y = leader(b);\n \
+    \       if (x == y) return x;\n        if (-parent_or_size[x] < -parent_or_size[y])\
+    \ std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n        parent_or_size[y]\
+    \ = x;\n        return x;\n    }\n\n    bool same(int a, int b) {\n        assert(0\
+    \ <= a && a < _n);\n        assert(0 <= b && b < _n);\n        return leader(a)\
+    \ == leader(b);\n    }\n\n    int leader(int a) {\n        assert(0 <= a && a\
+    \ < _n);\n        if (parent_or_size[a] < 0) return a;\n        return parent_or_size[a]\
+    \ = leader(parent_or_size[a]);\n    }\n\n    int size(int a) {\n        assert(0\
+    \ <= a && a < _n);\n        return -parent_or_size[leader(a)];\n    }\n\n    std::vector<std::vector<int>>\
+    \ groups() {\n        std::vector<int> leader_buf(_n), group_size(_n);\n     \
+    \   for (int i = 0; i < _n; i++) {\n            leader_buf[i] = leader(i);\n \
+    \           group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
+    \ result(_n);\n        for (int i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n\
+    \        }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
+    \        }\n        result.erase(\n            std::remove_if(result.begin(),\
+    \ result.end(),\n                           [&](const std::vector<int>& v) { return\
+    \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
+    \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
+    \ parent\n    std::vector<int> parent_or_size;\n};\n\n}  // namespace atcoder\n\
+    #line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n\
+    #pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
+    unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
     )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
     \nusing ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\n\
     using vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
@@ -83,74 +111,33 @@ data:
     \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
     \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
     \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/helper/board_helper.hpp\"\nconst vector<pii> DXY =\
-    \ {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\nconst vector<pii> DDXY = {{-1, -1}, {-1,\
-    \ 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};\nconst vector<tuple<int,\
-    \ int, int>> DXYZ = {{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1},\
-    \ {0, 0, 1}};\nclass BoardHelper{\n    private:\n    ll oned_size;\n    vector<ll>\
-    \ mul_for_dim;\n\n    public:\n    int dimension;\n    vector<ll> board_size;\n\
-    \n    BoardHelper (vector<ll> bs) : mul_for_dim(bs.size()), dimension(bs.size()),\
-    \ board_size(bs) {\n        mul_for_dim[dimension-1] = 1;\n        for (int i=dimension\
-    \ - 2; i >= 0; i--) {\n            mul_for_dim[i] = mul_for_dim[i+1] * board_size[i+1];\n\
-    \        }\n        oned_size = mul_for_dim[0] * board_size[0];\n    }\n\n   \
-    \ template<typename... Arg> ll to_1d(Arg... ind) {\n        int count = 0;\n \
-    \       ll rev = 0;\n        for (ll i : initializer_list<ll>{ind...}) {\n   \
-    \         assert(count < dimension);\n            assert(0 <= i && i < board_size[count]);\n\
-    \            rev += i * mul_for_dim[count];\n            count++;\n        }\n\
-    \        assert(count == dimension);\n        return rev;\n    }\n    vector<ll>\
-    \ to_nd(ll ind) {\n        assert(0 <= ind && ind < oned_size);\n        vector<ll>\
-    \ rev;\n        for (int i=0; i<dimension; i++) {\n            rev.push_back(ind\
-    \ / mul_for_dim[i]);\n            ind %= mul_for_dim[i];\n        }\n        return\
-    \ rev;\n    }\n    bool in_board(const vector<ll> &ind) {\n        if (sz(ind)\
-    \ != dimension) return false;\n        bool rev = true;\n        for (int i=0;\
-    \ i<dimension; i++) {\n            if (ind[i] < 0 || board_size[i] <= ind[i])\
-    \ {\n                rev = false;\n                break;\n            }\n   \
-    \     }\n        return rev;\n    }\n    template<typename... Arg> bool in_board(Arg...\
-    \ ind) {\n        int count = 0;\n        for (ll i : initializer_list<ll>{ind...})\
-    \ {\n            if (count >= dimension) return false;\n            if (i < 0\
-    \ || board_size[count] <= i) {\n                return false;\n            }\n\
-    \            count++;\n        }\n        return true;\n    }\n};\n/**\n * @brief\
-    \ board_helper.hpp\n * @docs docs/helper/board_helper.md\n */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\nconst vector<pii> DXY\
-    \ = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\nconst vector<pii> DDXY = {{-1, -1}, {-1,\
-    \ 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};\nconst vector<tuple<int,\
-    \ int, int>> DXYZ = {{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1},\
-    \ {0, 0, 1}};\nclass BoardHelper{\n    private:\n    ll oned_size;\n    vector<ll>\
-    \ mul_for_dim;\n\n    public:\n    int dimension;\n    vector<ll> board_size;\n\
-    \n    BoardHelper (vector<ll> bs) : mul_for_dim(bs.size()), dimension(bs.size()),\
-    \ board_size(bs) {\n        mul_for_dim[dimension-1] = 1;\n        for (int i=dimension\
-    \ - 2; i >= 0; i--) {\n            mul_for_dim[i] = mul_for_dim[i+1] * board_size[i+1];\n\
-    \        }\n        oned_size = mul_for_dim[0] * board_size[0];\n    }\n\n   \
-    \ template<typename... Arg> ll to_1d(Arg... ind) {\n        int count = 0;\n \
-    \       ll rev = 0;\n        for (ll i : initializer_list<ll>{ind...}) {\n   \
-    \         assert(count < dimension);\n            assert(0 <= i && i < board_size[count]);\n\
-    \            rev += i * mul_for_dim[count];\n            count++;\n        }\n\
-    \        assert(count == dimension);\n        return rev;\n    }\n    vector<ll>\
-    \ to_nd(ll ind) {\n        assert(0 <= ind && ind < oned_size);\n        vector<ll>\
-    \ rev;\n        for (int i=0; i<dimension; i++) {\n            rev.push_back(ind\
-    \ / mul_for_dim[i]);\n            ind %= mul_for_dim[i];\n        }\n        return\
-    \ rev;\n    }\n    bool in_board(const vector<ll> &ind) {\n        if (sz(ind)\
-    \ != dimension) return false;\n        bool rev = true;\n        for (int i=0;\
-    \ i<dimension; i++) {\n            if (ind[i] < 0 || board_size[i] <= ind[i])\
-    \ {\n                rev = false;\n                break;\n            }\n   \
-    \     }\n        return rev;\n    }\n    template<typename... Arg> bool in_board(Arg...\
-    \ ind) {\n        int count = 0;\n        for (ll i : initializer_list<ll>{ind...})\
-    \ {\n            if (count >= dimension) return false;\n            if (i < 0\
-    \ || board_size[count] <= i) {\n                return false;\n            }\n\
-    \            count++;\n        }\n        return true;\n    }\n};\n/**\n * @brief\
-    \ board_helper.hpp\n * @docs docs/helper/board_helper.md\n */\n"
+    \ */\n#line 4 \"competitive/data_structure/union_find.hpp\"\nostream& operator<<(ostream&\
+    \ os, atcoder::dsu& uf) {\n    repe(g, uf.groups()) rep(i, sz(g)) {\n        cout\
+    \ << g[i];\n        if (i != sz(g) - 1) cout << \" \";\n        else cout << \"\
+    \\n\";\n    }\n    return os;\n}\nusing UnionFind = atcoder::dsu;\n/**\n * @brief\
+    \ segtree.hpp\n * @docs docs/data_structure/union_find.md\n */\n"
+  code: "#pragma once\n#include \"atcoder/dsu.hpp\"\n#include \"competitive/std/std.hpp\"\
+    \nostream& operator<<(ostream& os, atcoder::dsu& uf) {\n    repe(g, uf.groups())\
+    \ rep(i, sz(g)) {\n        cout << g[i];\n        if (i != sz(g) - 1) cout <<\
+    \ \" \";\n        else cout << \"\\n\";\n    }\n    return os;\n}\nusing UnionFind\
+    \ = atcoder::dsu;\n/**\n * @brief segtree.hpp\n * @docs docs/data_structure/union_find.md\n\
+    \ */"
   dependsOn:
+  - atcoder/dsu.hpp
   - competitive/std/std.hpp
   isVerificationFile: false
-  path: competitive/helper/board_helper.hpp
+  path: competitive/data_structure/union_find.hpp
   requiredBy: []
-  timestamp: '2023-03-15 06:50:34+09:00'
+  timestamp: '2023-03-15 06:56:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: competitive/helper/board_helper.hpp
+documentation_of: competitive/data_structure/union_find.hpp
 layout: document
 redirect_from:
-- /library/competitive/helper/board_helper.hpp
-- /library/competitive/helper/board_helper.hpp.html
-title: board_helper.hpp
+- /library/competitive/data_structure/union_find.hpp
+- /library/competitive/data_structure/union_find.hpp.html
+title: segtree.hpp
 ---
+ACL利用UnionFindライブラリ
+出力用関数でデバッグできるようにする。
+現状ACLの`group()`がconst methodではないため、constの`group_const()`methodを作りdebug出力に対応する。
