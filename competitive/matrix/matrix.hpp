@@ -89,7 +89,7 @@ template <typename T> struct Matrix {
     }
 };
 template<typename T> Matrix<T> eye(int n) {
-    vvec(T, rev, n, n, T(0));
+    auto rev = vv<T>(n, n, T(0));
     rep(i, n) rev[i][i] = 1;
     return Matrix<T>(rev);
 };
