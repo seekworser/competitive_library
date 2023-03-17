@@ -89,33 +89,37 @@ data:
     \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
     \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
     \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/math/euler_phi.hpp\"\nll euler_phi(ll n) {\n  ll ret\
-    \ = n;\n  for(ll i = 2; i * i <= n; i++) {\n    if(n % i == 0) {\n      ret -=\
-    \ ret / i;\n      while(n % i == 0) n /= i;\n    }\n  }\n  if(n > 1) ret -= ret\
-    \ / n;\n  return ret;\n}\nll inv(ll x, ll mod) {\n    return powm(x, euler_phi(mod)-1,\
-    \ mod);\n}\n/**\n * @brief euler_phi.hpp\n * @docs docs/math/euler_phi.md\n */\n\
-    #line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\
-    \u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\
-    \ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
-    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
-    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
-    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
-    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
-    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
-    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
-    \ queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
-    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
-    template <class T, class Container, class Compare> ostream &operator<<(ostream\
-    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
-    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
-    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
-    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
-    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
-    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
-    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
-    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
-    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ */\n#line 3 \"competitive/math/euler_phi.hpp\"\nll euler_phi(ll n) {\n    ll\
+    \ ret = n;\n    for(ll i = 2; i * i <= n; i++) {\n        if(n % i == 0) {\n \
+    \           ret -= ret / i;\n            while(n % i == 0) n /= i;\n        }\n\
+    \    }\n    if(n > 1) ret -= ret / n;\n    return ret;\n}\nll inv(ll x, ll mod)\
+    \ {\n    return powm(x, euler_phi(mod)-1, mod);\n}\nvector<ll> euler_phi_table(ll\
+    \ n) {\n    vector<ll> euler(n + 1);\n    rep(i, n+1) {\n        euler[i] = i;\n\
+    \    }\n    rep(i, 2, n+1) {\n        if(euler[i] == i) {\n            rep(j,\
+    \ i, n+1, i) {\n                euler[j] /= i;\n                euler[j] *= (i\
+    \ - 1);\n            }\n        }\n    }\n    return euler;\n}\n/**\n * @brief\
+    \ euler_phi.hpp\n * @docs docs/math/euler_phi.md\n */\n#line 3 \"competitive/std/io.hpp\"\
+    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
+    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
+    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
+    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
+    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
+    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
+    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
+    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
+    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
+    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
+    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
+    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
+    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
+    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
+    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
+    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
+    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
     \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
     \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
@@ -162,7 +166,7 @@ data:
   isVerificationFile: false
   path: online_test/AOJ/NTL_1_D.cpp
   requiredBy: []
-  timestamp: '2023-03-15 06:50:34+09:00'
+  timestamp: '2023-03-18 00:31:50+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: online_test/AOJ/NTL_1_D.cpp

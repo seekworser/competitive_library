@@ -86,24 +86,33 @@ data:
     \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
     \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
     \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/math/euler_phi.hpp\"\nll euler_phi(ll n) {\n  ll ret\
-    \ = n;\n  for(ll i = 2; i * i <= n; i++) {\n    if(n % i == 0) {\n      ret -=\
-    \ ret / i;\n      while(n % i == 0) n /= i;\n    }\n  }\n  if(n > 1) ret -= ret\
-    \ / n;\n  return ret;\n}\nll inv(ll x, ll mod) {\n    return powm(x, euler_phi(mod)-1,\
-    \ mod);\n}\n/**\n * @brief euler_phi.hpp\n * @docs docs/math/euler_phi.md\n */\n"
+    \ */\n#line 3 \"competitive/math/euler_phi.hpp\"\nll euler_phi(ll n) {\n    ll\
+    \ ret = n;\n    for(ll i = 2; i * i <= n; i++) {\n        if(n % i == 0) {\n \
+    \           ret -= ret / i;\n            while(n % i == 0) n /= i;\n        }\n\
+    \    }\n    if(n > 1) ret -= ret / n;\n    return ret;\n}\nll inv(ll x, ll mod)\
+    \ {\n    return powm(x, euler_phi(mod)-1, mod);\n}\nvector<ll> euler_phi_table(ll\
+    \ n) {\n    vector<ll> euler(n + 1);\n    rep(i, n+1) {\n        euler[i] = i;\n\
+    \    }\n    rep(i, 2, n+1) {\n        if(euler[i] == i) {\n            rep(j,\
+    \ i, n+1, i) {\n                euler[j] /= i;\n                euler[j] *= (i\
+    \ - 1);\n            }\n        }\n    }\n    return euler;\n}\n/**\n * @brief\
+    \ euler_phi.hpp\n * @docs docs/math/euler_phi.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\nll euler_phi(ll n) {\n\
-    \  ll ret = n;\n  for(ll i = 2; i * i <= n; i++) {\n    if(n % i == 0) {\n   \
-    \   ret -= ret / i;\n      while(n % i == 0) n /= i;\n    }\n  }\n  if(n > 1)\
-    \ ret -= ret / n;\n  return ret;\n}\nll inv(ll x, ll mod) {\n    return powm(x,\
-    \ euler_phi(mod)-1, mod);\n}\n/**\n * @brief euler_phi.hpp\n * @docs docs/math/euler_phi.md\n\
-    \ */\n"
+    \    ll ret = n;\n    for(ll i = 2; i * i <= n; i++) {\n        if(n % i == 0)\
+    \ {\n            ret -= ret / i;\n            while(n % i == 0) n /= i;\n    \
+    \    }\n    }\n    if(n > 1) ret -= ret / n;\n    return ret;\n}\nll inv(ll x,\
+    \ ll mod) {\n    return powm(x, euler_phi(mod)-1, mod);\n}\nvector<ll> euler_phi_table(ll\
+    \ n) {\n    vector<ll> euler(n + 1);\n    rep(i, n+1) {\n        euler[i] = i;\n\
+    \    }\n    rep(i, 2, n+1) {\n        if(euler[i] == i) {\n            rep(j,\
+    \ i, n+1, i) {\n                euler[j] /= i;\n                euler[j] *= (i\
+    \ - 1);\n            }\n        }\n    }\n    return euler;\n}\n/**\n * @brief\
+    \ euler_phi.hpp\n * @docs docs/math/euler_phi.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/math/euler_phi.hpp
   requiredBy:
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-03-15 06:50:34+09:00'
+  timestamp: '2023-03-18 00:31:50+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/euler_phi.hpp
@@ -113,3 +122,20 @@ redirect_from:
 - /library/competitive/math/euler_phi.hpp.html
 title: euler_phi.hpp
 ---
+## `euler_phi`
+
+オイラーのトーシェント関数（n以下のnと互いに疎な自然数の個数）を計算する。
+計算量$O(\sqru{N})$
+
+## `inv`
+
+素数でないmodに対する逆元を計算する。
+`x`と`mod`は互いに素である必要がある。
+
+## `euler_phi_table`
+
+$n$以下の整数について、トーシェント関数を列挙する。
+計算量$O(n\log \log n)$
+
+参考：
+https://manabitimes.jp/math/667
