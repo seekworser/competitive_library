@@ -125,7 +125,7 @@ title: euler_phi.hpp
 ## `euler_phi`
 
 オイラーのトーシェント関数（n以下のnと互いに疎な自然数の個数）を計算する。
-計算量$O(\sqru{N})$
+計算量$O(\sqrt{N})$
 
 ## `inv`
 
