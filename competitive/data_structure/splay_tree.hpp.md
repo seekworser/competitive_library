@@ -100,44 +100,50 @@ data:
     \                root = rootn;\n            }\n            return;\n        }\n\
     \n        void erase(T x) {\n            if (root == &NIL) {\n               \
     \ return;\n            }\n            root = splay(x, root);\n            if (x\
-    \ != root->val) return;\n            node* newroot = splay(x, root->left);\n \
-    \           newroot->right = root->right;\n            delete root;\n        \
-    \    root = newroot;\n            return;\n        }\n\n        bool contains(T\
-    \ x) {\n            if (root == &NIL) {\n                return false;\n     \
-    \       }\n            root = splay(x, root);\n            return root->val ==\
-    \ x;\n        }\n\n        void clear() {\n            clear_subtree(root);\n\
-    \            size = 0;\n            root = &NIL;\n            return;\n      \
-    \  }\n\n        friend std::ostream& operator<<(std::ostream& os, const SplayTree<T>&\
-    \ st) {\n            auto dfs = [&] (auto self, node* n, T par) -> void {\n  \
-    \              if (n == &st.NIL) return;\n                os << par << \"->\"\
-    \ << n->val << '\\n';\n                self(self, n->left, n->val);\n        \
-    \        self(self, n->right, n->val);\n                return;\n            };\n\
-    \            dfs(dfs, st.root, T());\n            return os;\n        };\n\n \
-    \       private:\n        node NIL;\n        node* rotate_right(node* n) {\n \
-    \           node* lnode = n->left;\n            n->left = lnode->right;\n    \
-    \        lnode->right = n;\n            return lnode;\n        };\n        node*\
-    \ rotate_left(node* n) {\n            node* rnode = n->right;\n            n->right\
-    \ = rnode->left;\n            rnode->left = n;\n            return rnode;\n  \
-    \      };\n        node* splay(T x, node* n) {\n            node newwnode(T(),\
-    \ &NIL, &NIL);\n            node* wnode = &newwnode;\n            node* rnode\
-    \ = &newwnode;\n            node* lnode = &newwnode;\n            while (true)\
-    \ {\n                if (n->val == x) {break;}\n                else if (x < n->val)\
-    \ {\n                    if (n->left == &NIL) break;\n                    if (x\
-    \ < n->left->val) {\n                        n = rotate_right(n);\n          \
-    \              if (n->left == &NIL) break;\n                    }\n          \
-    \          rnode->left = n;\n                    rnode = n;\n                \
-    \    n = n->left;\n                } else {\n                    if (n->right\
-    \ == &NIL) break;\n                    if (x > n->right->val) {\n            \
-    \            n = rotate_left(n);\n                        if (n->right == &NIL)\
-    \ break;\n                    }\n                    lnode->right = n;\n     \
-    \               lnode = n;\n                    n = n->right;\n              \
-    \  }\n            }\n            rnode->left = n->right;\n            lnode->right\
-    \ = n->left;\n            n->left = wnode->right;\n            n->right = wnode->left;\n\
-    \            return n;\n        }\n        void clear_subtree(node* n) {\n   \
-    \         if (n == &NIL) return;\n            clear_subtree(n->left);\n      \
-    \      clear_subtree(n->right);\n            delete n;\n            return;\n\
-    \        }\n    };\n};\ntemplate<typename T> using SplayTree = splay::SplayTree<T>;\n\
-    /**\n * @brief splay\u6728\n * @docs docs/data_structure/splay_tree.md\n */\n"
+    \ != root->val) return;\n            size--;\n            if (root->left == &NIL)\
+    \ {\n                node* newroot = root->right;\n                delete root;\n\
+    \                root = newroot;\n                return;\n            }\n   \
+    \         node* newroot = splay(x, root->left);\n            newroot->right =\
+    \ root->right;\n            delete root;\n            root = newroot;\n      \
+    \      return;\n        }\n\n        bool contains(T x) {\n            if (root\
+    \ == &NIL) {\n                return false;\n            }\n            root =\
+    \ splay(x, root);\n            return root->val == x;\n        }\n\n        void\
+    \ clear() {\n            clear_subtree(root);\n            size = 0;\n       \
+    \     root = &NIL;\n            return;\n        }\n\n        friend std::ostream&\
+    \ operator<<(std::ostream& os, const SplayTree<T>& st) {\n            auto dfs\
+    \ = [&] (auto self, SplayTree<T>::node* n, T par) -> void {\n                if\
+    \ (n == &st.NIL) return;\n                T lval = T();\n                T rval\
+    \ = T();\n                if (n->left != &st.NIL) lval = n->left->val;\n     \
+    \           if (n->right != &st.NIL) rval = n->right->val;\n                os\
+    \ << n->val << \" -> [\" << lval << ',' << rval << ']' << '\\n';\n           \
+    \     self(self, n->left, n->val);\n                self(self, n->right, n->val);\n\
+    \                return;\n            };\n            dfs(dfs, st.root, T());\n\
+    \            return os;\n        };\n\n        private:\n        node NIL;\n \
+    \       node* rotate_right(node* n) {\n            node* lnode = n->left;\n  \
+    \          n->left = lnode->right;\n            lnode->right = n;\n          \
+    \  return lnode;\n        };\n        node* rotate_left(node* n) {\n         \
+    \   node* rnode = n->right;\n            n->right = rnode->left;\n           \
+    \ rnode->left = n;\n            return rnode;\n        };\n        node* splay(T\
+    \ x, node* n) {\n            node newwnode(T(), &NIL, &NIL);\n            node*\
+    \ wnode = &newwnode;\n            node* rnode = &newwnode;\n            node*\
+    \ lnode = &newwnode;\n            while (true) {\n                if (n->val ==\
+    \ x) {break;}\n                else if (x < n->val) {\n                    if\
+    \ (n->left == &NIL) break;\n                    if (x < n->left->val) {\n    \
+    \                    n = rotate_right(n);\n                        if (n->left\
+    \ == &NIL) break;\n                    }\n                    rnode->left = n;\n\
+    \                    rnode = n;\n                    n = n->left;\n          \
+    \      } else {\n                    if (n->right == &NIL) break;\n          \
+    \          if (x > n->right->val) {\n                        n = rotate_left(n);\n\
+    \                        if (n->right == &NIL) break;\n                    }\n\
+    \                    lnode->right = n;\n                    lnode = n;\n     \
+    \               n = n->right;\n                }\n            }\n            rnode->left\
+    \ = n->right;\n            lnode->right = n->left;\n            n->left = wnode->right;\n\
+    \            n->right = wnode->left;\n            return n;\n        }\n     \
+    \   void clear_subtree(node* n) {\n            if (n == &NIL) return;\n      \
+    \      clear_subtree(n->left);\n            clear_subtree(n->right);\n       \
+    \     delete n;\n            return;\n        }\n    };\n};\ntemplate<typename\
+    \ T> using SplayTree = splay::SplayTree<T>;\n/**\n * @brief splay\u6728\n * @docs\
+    \ docs/data_structure/splay_tree.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\nnamespace splay {\n \
     \   template <typename T> struct SplayTree {\n        struct node {\n        \
     \    T val;\n            node* left;\n            node* right;\n            node()\
@@ -155,50 +161,56 @@ data:
     \                root = rootn;\n            }\n            return;\n        }\n\
     \n        void erase(T x) {\n            if (root == &NIL) {\n               \
     \ return;\n            }\n            root = splay(x, root);\n            if (x\
-    \ != root->val) return;\n            node* newroot = splay(x, root->left);\n \
-    \           newroot->right = root->right;\n            delete root;\n        \
-    \    root = newroot;\n            return;\n        }\n\n        bool contains(T\
-    \ x) {\n            if (root == &NIL) {\n                return false;\n     \
-    \       }\n            root = splay(x, root);\n            return root->val ==\
-    \ x;\n        }\n\n        void clear() {\n            clear_subtree(root);\n\
-    \            size = 0;\n            root = &NIL;\n            return;\n      \
-    \  }\n\n        friend std::ostream& operator<<(std::ostream& os, const SplayTree<T>&\
-    \ st) {\n            auto dfs = [&] (auto self, node* n, T par) -> void {\n  \
-    \              if (n == &st.NIL) return;\n                os << par << \"->\"\
-    \ << n->val << '\\n';\n                self(self, n->left, n->val);\n        \
-    \        self(self, n->right, n->val);\n                return;\n            };\n\
-    \            dfs(dfs, st.root, T());\n            return os;\n        };\n\n \
-    \       private:\n        node NIL;\n        node* rotate_right(node* n) {\n \
-    \           node* lnode = n->left;\n            n->left = lnode->right;\n    \
-    \        lnode->right = n;\n            return lnode;\n        };\n        node*\
-    \ rotate_left(node* n) {\n            node* rnode = n->right;\n            n->right\
-    \ = rnode->left;\n            rnode->left = n;\n            return rnode;\n  \
-    \      };\n        node* splay(T x, node* n) {\n            node newwnode(T(),\
-    \ &NIL, &NIL);\n            node* wnode = &newwnode;\n            node* rnode\
-    \ = &newwnode;\n            node* lnode = &newwnode;\n            while (true)\
-    \ {\n                if (n->val == x) {break;}\n                else if (x < n->val)\
-    \ {\n                    if (n->left == &NIL) break;\n                    if (x\
-    \ < n->left->val) {\n                        n = rotate_right(n);\n          \
-    \              if (n->left == &NIL) break;\n                    }\n          \
-    \          rnode->left = n;\n                    rnode = n;\n                \
-    \    n = n->left;\n                } else {\n                    if (n->right\
-    \ == &NIL) break;\n                    if (x > n->right->val) {\n            \
-    \            n = rotate_left(n);\n                        if (n->right == &NIL)\
-    \ break;\n                    }\n                    lnode->right = n;\n     \
-    \               lnode = n;\n                    n = n->right;\n              \
-    \  }\n            }\n            rnode->left = n->right;\n            lnode->right\
-    \ = n->left;\n            n->left = wnode->right;\n            n->right = wnode->left;\n\
-    \            return n;\n        }\n        void clear_subtree(node* n) {\n   \
-    \         if (n == &NIL) return;\n            clear_subtree(n->left);\n      \
-    \      clear_subtree(n->right);\n            delete n;\n            return;\n\
-    \        }\n    };\n};\ntemplate<typename T> using SplayTree = splay::SplayTree<T>;\n\
-    /**\n * @brief splay\u6728\n * @docs docs/data_structure/splay_tree.md\n */"
+    \ != root->val) return;\n            size--;\n            if (root->left == &NIL)\
+    \ {\n                node* newroot = root->right;\n                delete root;\n\
+    \                root = newroot;\n                return;\n            }\n   \
+    \         node* newroot = splay(x, root->left);\n            newroot->right =\
+    \ root->right;\n            delete root;\n            root = newroot;\n      \
+    \      return;\n        }\n\n        bool contains(T x) {\n            if (root\
+    \ == &NIL) {\n                return false;\n            }\n            root =\
+    \ splay(x, root);\n            return root->val == x;\n        }\n\n        void\
+    \ clear() {\n            clear_subtree(root);\n            size = 0;\n       \
+    \     root = &NIL;\n            return;\n        }\n\n        friend std::ostream&\
+    \ operator<<(std::ostream& os, const SplayTree<T>& st) {\n            auto dfs\
+    \ = [&] (auto self, SplayTree<T>::node* n, T par) -> void {\n                if\
+    \ (n == &st.NIL) return;\n                T lval = T();\n                T rval\
+    \ = T();\n                if (n->left != &st.NIL) lval = n->left->val;\n     \
+    \           if (n->right != &st.NIL) rval = n->right->val;\n                os\
+    \ << n->val << \" -> [\" << lval << ',' << rval << ']' << '\\n';\n           \
+    \     self(self, n->left, n->val);\n                self(self, n->right, n->val);\n\
+    \                return;\n            };\n            dfs(dfs, st.root, T());\n\
+    \            return os;\n        };\n\n        private:\n        node NIL;\n \
+    \       node* rotate_right(node* n) {\n            node* lnode = n->left;\n  \
+    \          n->left = lnode->right;\n            lnode->right = n;\n          \
+    \  return lnode;\n        };\n        node* rotate_left(node* n) {\n         \
+    \   node* rnode = n->right;\n            n->right = rnode->left;\n           \
+    \ rnode->left = n;\n            return rnode;\n        };\n        node* splay(T\
+    \ x, node* n) {\n            node newwnode(T(), &NIL, &NIL);\n            node*\
+    \ wnode = &newwnode;\n            node* rnode = &newwnode;\n            node*\
+    \ lnode = &newwnode;\n            while (true) {\n                if (n->val ==\
+    \ x) {break;}\n                else if (x < n->val) {\n                    if\
+    \ (n->left == &NIL) break;\n                    if (x < n->left->val) {\n    \
+    \                    n = rotate_right(n);\n                        if (n->left\
+    \ == &NIL) break;\n                    }\n                    rnode->left = n;\n\
+    \                    rnode = n;\n                    n = n->left;\n          \
+    \      } else {\n                    if (n->right == &NIL) break;\n          \
+    \          if (x > n->right->val) {\n                        n = rotate_left(n);\n\
+    \                        if (n->right == &NIL) break;\n                    }\n\
+    \                    lnode->right = n;\n                    lnode = n;\n     \
+    \               n = n->right;\n                }\n            }\n            rnode->left\
+    \ = n->right;\n            lnode->right = n->left;\n            n->left = wnode->right;\n\
+    \            n->right = wnode->left;\n            return n;\n        }\n     \
+    \   void clear_subtree(node* n) {\n            if (n == &NIL) return;\n      \
+    \      clear_subtree(n->left);\n            clear_subtree(n->right);\n       \
+    \     delete n;\n            return;\n        }\n    };\n};\ntemplate<typename\
+    \ T> using SplayTree = splay::SplayTree<T>;\n/**\n * @brief splay\u6728\n * @docs\
+    \ docs/data_structure/splay_tree.md\n */"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/data_structure/splay_tree.hpp
   requiredBy: []
-  timestamp: '2023-03-20 23:43:10+09:00'
+  timestamp: '2023-03-21 01:05:10+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/data_structure/splay_tree.hpp
