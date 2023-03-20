@@ -43,6 +43,13 @@ namespace splay {
             }
             root = splay(x, root);
             if (x != root->val) return;
+            size--;
+            if (root->left == &NIL) {
+                node* newroot = root->right;
+                delete root;
+                root = newroot;
+                return;
+            }
             node* newroot = splay(x, root->left);
             newroot->right = root->right;
             delete root;
@@ -66,9 +73,13 @@ namespace splay {
         }
 
         friend std::ostream& operator<<(std::ostream& os, const SplayTree<T>& st) {
-            auto dfs = [&] (auto self, node* n, T par) -> void {
+            auto dfs = [&] (auto self, SplayTree<T>::node* n, T par) -> void {
                 if (n == &st.NIL) return;
-                os << par << "->" << n->val << '\n';
+                T lval = T();
+                T rval = T();
+                if (n->left != &st.NIL) lval = n->left->val;
+                if (n->right != &st.NIL) rval = n->right->val;
+                os << n->val << " -> [" << lval << ',' << rval << ']' << '\n';
                 self(self, n->left, n->val);
                 self(self, n->right, n->val);
                 return;
