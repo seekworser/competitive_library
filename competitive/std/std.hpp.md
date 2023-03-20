@@ -24,6 +24,9 @@ data:
     path: competitive/data_structure/segtree.hpp
     title: segtree.hpp
   - icon: ':warning:'
+    path: competitive/data_structure/splay_tree.hpp
+    title: "splay\u6728"
+  - icon: ':warning:'
     path: competitive/data_structure/union_find.hpp
     title: segtree.hpp
   - icon: ':heavy_check_mark:'
@@ -381,6 +384,7 @@ data:
   - competitive/data_structure/bit.hpp
   - competitive/data_structure/segtree.hpp
   - competitive/data_structure/union_find.hpp
+  - competitive/data_structure/splay_tree.hpp
   - online_test/AOJ/NTL_1_D.cpp
   timestamp: '2023-03-15 06:50:34+09:00'
   verificationStatus: LIBRARY_ALL_AC

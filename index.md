@@ -86,6 +86,9 @@ data:
       path: competitive/data_structure/segtree.hpp
       title: segtree.hpp
     - icon: ':warning:'
+      path: competitive/data_structure/splay_tree.hpp
+      title: "splay\u6728"
+    - icon: ':warning:'
       path: competitive/data_structure/union_find.hpp
       title: segtree.hpp
   - name: competitive/geometry
