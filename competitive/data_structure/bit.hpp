@@ -26,6 +26,6 @@ template<class T> struct BIT {
         }
 };
 /**
- * @brief bit.hpp
+ * @brief BIT（Binary Index Tree）
  * @docs docs/data_structure/bit.md
  */

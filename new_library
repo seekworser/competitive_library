@@ -1,0 +1,29 @@
+#!/bin/bash
+# usage: new {dirname}/{filename}.hpp
+docstr=$(cat <<EOS
+#pragma once
+#include "competitive/std/std.hpp"
+/**
+ * @brief {brief}
+ * @docs docs/{dir}/{filename}.md
+ */
+EOS
+)
+
+path=$1
+filename=$(echo "$path" | grep -o '[^/]*$')
+filename_without_extension=$(basename -s ".hpp" "$filename")
+dirname=$(echo "$path" | grep -o '^[^/]*/[^/]*')
+dirbasename=$(basename "$dirname")
+
+docstr="${docstr/"{brief}"/$filename_without_extension}"
+docstr="${docstr/"{dir}"/$dirbasename}"
+docstr="${docstr/"{filename}"/$filename_without_extension}"
+
+mkdir -p "$dirname"
+touch $path
+echo "$docstr" >> $path
+mkdir -p "$dirname"
+
+mkdir -p "docs/$dirbasename"
+touch "docs/$dirbasename/$filename_without_extension.md"

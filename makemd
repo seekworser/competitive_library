@@ -1,4 +1,5 @@
 #!/bin/bash
+# usage: new {dirname}/{filename}.hpp
 docstr=$(cat <<EOS
 /**
  * @brief {brief}
@@ -6,13 +7,22 @@ docstr=$(cat <<EOS
  */
 EOS
 )
-echo "$docstr"
 
-for dir in ./competitive/*; do
-    dirb=$(basename "$dir")
-    echo $dirb
-    for fn in $dir/*.hpp; do
-        fbn=$(basename "$fn")
-        fbn_without_extension=$(basename -s ".hpp" "$fn")
-    done
-done
+path=$1
+filename=$(echo "$path" | grep -o '[^/]*$')
+dirname=$(echo "$path" | grep -o '^[^/]*')
+echo "$filename"
+echo "$dirname"
+exit
+
+docstr="${docstr/"{brief}"/$filebasename}"
+docstr="${docstr/"{dir}"/$dirb}"
+echo "$docstr"
+# for dir in ./competitive/*; do
+#     dirb=$(basename "$dir")
+#     echo $dirb
+#     for fn in $dir/*.hpp; do
+#         fbn=$(basename "$fn")
+#         fbn_without_extension=$(basename -s ".hpp" "$fn")
+#     done
+# done
