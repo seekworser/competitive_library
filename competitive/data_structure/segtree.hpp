@@ -20,6 +20,6 @@ template<typename T> using seg_add = atcoder::segtree<T, op_add<T>, e_add<T>>;
 template<typename T> using seg_max = atcoder::segtree<T, op_max<T>, e_max<T>>;
 template<typename T> using seg_min = atcoder::segtree<T, op_min<T>, e_min<T>>;
 /**
- * @brief segtree.hpp
+ * @brief セグメント木（ラッパー）
  * @docs docs/data_structure/segtree.md
  */

@@ -1,5 +1,3 @@
-// #ifndef ATCODER_CONVOLUTION_HPP
-// #define ATCODER_CONVOLUTION_HPP 1
 #pragma once
 
 #include <algorithm>
@@ -316,5 +314,3 @@ std::vector<long long> convolution_ll(const std::vector<long long>& a,
 }
 
 }  // namespace atcoder
-
-// #endif  // ATCODER_CONVOLUTION_HPP

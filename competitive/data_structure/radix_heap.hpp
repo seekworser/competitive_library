@@ -47,6 +47,6 @@ struct RadixHeap {
   }
 };
 /**
- * @brief radix_heap.hpp
+ * @brief Radix Heap
  * @docs docs/data_structure/radix_heap.md
  */

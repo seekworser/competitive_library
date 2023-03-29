@@ -146,6 +146,6 @@ namespace splay {
 };
 template<typename T> using SplayTree = splay::SplayTree<T>;
 /**
- * @brief splay木
+ * @brief Splay木
  * @docs docs/data_structure/splay_tree.md
  */

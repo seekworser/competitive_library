@@ -15,7 +15,7 @@ template <class T, class F> T binsearch(T s, T e, F le) {
 template <class F> double binsearch_double(double s, double e, F le, double eps=1e-10) {
     double cmin = s;
     double cmax = e;
-    while (abs(cmax - cmin) > eps) {
+    while (abs(cmax - cmin) > eps * cmax && abs(cmax - cmin) > eps) {
         double p = (cmin + cmax) / 2;
         if (le(p)) cmin = p;
         else cmax = p;

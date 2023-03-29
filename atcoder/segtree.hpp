@@ -109,7 +109,7 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree {
         return 0;
     }
 
-    int n() {return (*this)._n;}
+    int n() const {return (*this)._n;}
 
   private:
     int _n, size, log;

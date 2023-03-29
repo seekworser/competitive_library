@@ -49,6 +49,6 @@ template<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<AddNode<T>, 
 template<typename T> using lseg_min_rupdate = atcoder::lazy_segtree<T, op_min<T>, e_min<T>, T, mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;
 template<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T, op_max<T>, e_max<T>, T, mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;
 /**
- * @brief lazysegtree.hpp
+ * @brief 遅延セグメント木（ラッパー）
  * @docs docs/data_structure/lazysegtree.md
  */
