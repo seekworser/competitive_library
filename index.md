@@ -75,7 +75,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/bit.hpp
-      title: bit.hpp
+      title: "BIT\uFF08Binary Index Tree\uFF09"
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/lazysegtree.hpp
       title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
@@ -144,6 +144,9 @@ data:
       title: permutation.hpp
   - name: competitive/math
     pages:
+    - icon: ':warning:'
+      path: competitive/math/baby_step_giant_step.hpp
+      title: baby_step_giant_step
     - icon: ':warning:'
       path: competitive/math/binsearch.hpp
       title: binsearch.hpp

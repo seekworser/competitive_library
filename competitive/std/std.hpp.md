@@ -16,7 +16,7 @@ data:
     title: mo.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
-    title: bit.hpp
+    title: "BIT\uFF08Binary Index Tree\uFF09"
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
@@ -69,6 +69,9 @@ data:
   - icon: ':warning:'
     path: competitive/helper/board_helper.hpp
     title: board_helper.hpp
+  - icon: ':warning:'
+    path: competitive/math/baby_step_giant_step.hpp
+    title: baby_step_giant_step
   - icon: ':warning:'
     path: competitive/math/bit.hpp
     title: bit.hpp
@@ -373,6 +376,7 @@ data:
   - competitive/math/euler_phi.hpp
   - competitive/math/distance.hpp
   - competitive/math/inversion_num.hpp
+  - competitive/math/baby_step_giant_step.hpp
   - competitive/math/f2.hpp
   - competitive/math/bit.hpp
   - competitive/math/fraction.hpp

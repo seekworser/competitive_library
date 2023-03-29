@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
-    title: bit.hpp
+    title: "BIT\uFF08Binary Index Tree\uFF09"
   - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
@@ -102,29 +102,29 @@ data:
     \ && p <= _n);\n            T ret = 0;\n            for (int i = p; i > 0; i -=\
     \ i & -i){\n                ret += bit[i];\n            }\n            return\
     \ ret;\n        }\n        T sum(int ps, int pt) {\n            return sum_from_left(pt)\
-    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief bit.hpp\n * @docs docs/data_structure/bit.md\n\
-    \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
-    \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
-    \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
-    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
-    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
-    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
-    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
-    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
-    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
-    \ queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
-    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
-    template <class T, class Container, class Compare> ostream &operator<<(ostream\
-    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
-    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
-    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
-    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
-    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
-    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
-    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
-    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
-    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\
+    \n * @docs docs/data_structure/bit.md\n */\n#line 3 \"competitive/std/io.hpp\"\
+    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
+    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
+    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
+    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
+    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
+    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
+    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
+    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
+    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
+    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
+    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
+    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
+    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
+    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
+    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
+    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
+    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
     \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
     \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
@@ -176,7 +176,7 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/static_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-29 19:11:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/static_range_sum.test.cpp

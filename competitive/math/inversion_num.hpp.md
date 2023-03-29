@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
-    title: bit.hpp
+    title: "BIT\uFF08Binary Index Tree\uFF09"
   - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
@@ -96,12 +96,13 @@ data:
     \ && p <= _n);\n            T ret = 0;\n            for (int i = p; i > 0; i -=\
     \ i & -i){\n                ret += bit[i];\n            }\n            return\
     \ ret;\n        }\n        T sum(int ps, int pt) {\n            return sum_from_left(pt)\
-    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief bit.hpp\n * @docs docs/data_structure/bit.md\n\
-    \ */\n#line 4 \"competitive/math/inversion_num.hpp\"\ntemplate<class T> ll inversion_number(vector<T>\
-    \ &a) {\n    ll ans = 0;\n    BIT<ll> b(a.size());\n    vector<T> sorted_a = a;\n\
-    \    sort(all(sorted_a));\n    map<T, ll> ind_map;\n    rep(i, a.size()) ind_map[sorted_a[i]]\
-    \ = i;\n    rep(i, a.size()) {\n        ans += i - b.sum_from_left(ind_map[a[i]]);\n\
-    \        b.add(ind_map[a[i]], 1);\n    }\n    return ans;\n}\n/**\n * @brief inversion_num.hpp\n\
+    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\
+    \n * @docs docs/data_structure/bit.md\n */\n#line 4 \"competitive/math/inversion_num.hpp\"\
+    \ntemplate<class T> ll inversion_number(vector<T> &a) {\n    ll ans = 0;\n   \
+    \ BIT<ll> b(a.size());\n    vector<T> sorted_a = a;\n    sort(all(sorted_a));\n\
+    \    map<T, ll> ind_map;\n    rep(i, a.size()) ind_map[sorted_a[i]] = i;\n   \
+    \ rep(i, a.size()) {\n        ans += i - b.sum_from_left(ind_map[a[i]]);\n   \
+    \     b.add(ind_map[a[i]], 1);\n    }\n    return ans;\n}\n/**\n * @brief inversion_num.hpp\n\
     \ * @docs docs/math/inversion_num.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/data_structure/bit.hpp\"\
     \ntemplate<class T> ll inversion_number(vector<T> &a) {\n    ll ans = 0;\n   \
@@ -116,7 +117,7 @@ data:
   isVerificationFile: false
   path: competitive/math/inversion_num.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-29 19:11:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/inversion_num.hpp

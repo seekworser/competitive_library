@@ -4,20 +4,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: competitive/math/inversion_num.hpp
-    title: inversion_num.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: online_test/library-checker/static_range_sum.test.cpp
-    title: online_test/library-checker/static_range_sum.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/bit.md
-    document_title: "BIT\uFF08Binary Index Tree\uFF09"
+    _deprecated_at_docs: docs/math/baby_step_giant_step.md
+    document_title: baby_step_giant_step
     links: []
   bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
     \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
@@ -90,42 +84,22 @@ data:
     \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
     \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
     \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/data_structure/bit.hpp\"\ntemplate<class T> struct\
-    \ BIT {\n    private:\n        vector<T> bit;\n        int _n;\n    public:\n\
-    \        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int p, T x)\
-    \ {\n            assert(0 <= p && p <= _n);\n            p++;\n            for\
-    \ (int i = p; i <= _n; i += i & -i) {\n                bit[i] += x;\n        \
-    \    }\n        }\n        T sum_from_left(int p) {\n            assert(0 <= p\
-    \ && p <= _n);\n            T ret = 0;\n            for (int i = p; i > 0; i -=\
-    \ i & -i){\n                ret += bit[i];\n            }\n            return\
-    \ ret;\n        }\n        T sum(int ps, int pt) {\n            return sum_from_left(pt)\
-    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\
-    \n * @docs docs/data_structure/bit.md\n */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<class T> struct\
-    \ BIT {\n    private:\n        vector<T> bit;\n        int _n;\n    public:\n\
-    \        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int p, T x)\
-    \ {\n            assert(0 <= p && p <= _n);\n            p++;\n            for\
-    \ (int i = p; i <= _n; i += i & -i) {\n                bit[i] += x;\n        \
-    \    }\n        }\n        T sum_from_left(int p) {\n            assert(0 <= p\
-    \ && p <= _n);\n            T ret = 0;\n            for (int i = p; i > 0; i -=\
-    \ i & -i){\n                ret += bit[i];\n            }\n            return\
-    \ ret;\n        }\n        T sum(int ps, int pt) {\n            return sum_from_left(pt)\
-    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\
-    \n * @docs docs/data_structure/bit.md\n */\n"
+    \ */\n#line 3 \"competitive/math/baby_step_giant_step.hpp\"\n/**\n * @brief baby_step_giant_step\n\
+    \ * @docs docs/math/baby_step_giant_step.md\n */\n"
+  code: "#pragma once\n#include \"competitive/std/std.hpp\"\n/**\n * @brief baby_step_giant_step\n\
+    \ * @docs docs/math/baby_step_giant_step.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
-  path: competitive/data_structure/bit.hpp
-  requiredBy:
-  - competitive/math/inversion_num.hpp
+  path: competitive/math/baby_step_giant_step.hpp
+  requiredBy: []
   timestamp: '2023-03-29 19:11:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - online_test/library-checker/static_range_sum.test.cpp
-documentation_of: competitive/data_structure/bit.hpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: competitive/math/baby_step_giant_step.hpp
 layout: document
 redirect_from:
-- /library/competitive/data_structure/bit.hpp
-- /library/competitive/data_structure/bit.hpp.html
-title: "BIT\uFF08Binary Index Tree\uFF09"
+- /library/competitive/math/baby_step_giant_step.hpp
+- /library/competitive/math/baby_step_giant_step.hpp.html
+title: baby_step_giant_step
 ---
