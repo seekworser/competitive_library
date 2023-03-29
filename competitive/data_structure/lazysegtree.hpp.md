@@ -29,7 +29,8 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/lazysegtree.md
-    document_title: lazysegtree.hpp
+    document_title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\
+      \u30D1\u30FC\uFF09"
     links: []
   bundledCode: "#line 2 \"atcoder/lazysegtree.hpp\"\n#include <algorithm>\n#include\
     \ <cassert>\n#include <iostream>\n#include <vector>\n\n#line 2 \"atcoder/internal_bit.hpp\"\
@@ -140,20 +141,20 @@ data:
     \u9AD8\u901F\u5316\nstruct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false);\
     \ cout << fixed << setprecision(18); } } nyan;\n// \u6C4E\u7528\u30DE\u30AF\u30ED\
     \u306E\u5B9A\u7FA9\n#define all(a) (a).begin(), (a).end()\n#define sz(x) ((int)(x).size())\n\
-    #define rep1(n) for(ll i = 0LL; i < n; ++i) // 0 \u304B\u3089 n-1 \u307E\u3067\
-    \u6607\u9806\n#define rep2(i, n) for(ll i = 0LL, i##_counter = 0LL; i##_counter\
-    \ < ll(n); ++(i##_counter), (i) = i##_counter) // 0 \u304B\u3089 n-1 \u307E\u3067\
-    \u6607\u9806\n#define rep3(i, s, t) for(ll i = ll(s), i##_counter = ll(s); i##_counter\
-    \ < ll(t); ++(i##_counter), (i) = (i##_counter)) // s \u304B\u3089 t \u307E\u3067\
-    \u6607\u9806\n#define rep4(i, s, t, step) for(ll i##_counter = step > 0 ? ll(s)\
-    \ : -ll(s), i##_end = step > 0 ? ll(t) : -ll(t), i##_step = abs(step), i = ll(s);\
-    \ i##_counter < i##_end; i##_counter += i##_step, i = step > 0 ? i##_counter :\
-    \ -i##_counter) // s \u304B\u3089 t \u307E\u3067 step\u305A\u3064\n#define overload4(a,\
-    \ b, c, d, e, ...) e\n#define rep(...) overload4(__VA_ARGS__, rep4, rep3, rep2,\
-    \ rep1)(__VA_ARGS__)\n#define repe(a, v) for(auto& a : (v)) // v \u306E\u5168\u8981\
-    \u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n, m) ((((n) % (m)) +\
-    \ (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n) - smod(n, m)) / (m))\
-    \ // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
+    #define rep1(n) for(ll dummy_iter = 0LL; dummy_iter < n; ++dummy_iter) // 0 \u304B\
+    \u3089 n-1 \u307E\u3067\u6607\u9806\n#define rep2(i, n) for(ll i = 0LL, i##_counter\
+    \ = 0LL; i##_counter < ll(n); ++(i##_counter), (i) = i##_counter) // 0 \u304B\u3089\
+    \ n-1 \u307E\u3067\u6607\u9806\n#define rep3(i, s, t) for(ll i = ll(s), i##_counter\
+    \ = ll(s); i##_counter < ll(t); ++(i##_counter), (i) = (i##_counter)) // s \u304B\
+    \u3089 t \u307E\u3067\u6607\u9806\n#define rep4(i, s, t, step) for(ll i##_counter\
+    \ = step > 0 ? ll(s) : -ll(s), i##_end = step > 0 ? ll(t) : -ll(t), i##_step =\
+    \ abs(step), i = ll(s); i##_counter < i##_end; i##_counter += i##_step, i = step\
+    \ > 0 ? i##_counter : -i##_counter) // s \u304B\u3089 t \u307E\u3067 step\u305A\
+    \u3064\n#define overload4(a, b, c, d, e, ...) e\n#define rep(...) overload4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define repe(a, v) for(auto& a : (v))\
+    \ // v \u306E\u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n,\
+    \ m) ((((n) % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n)\
+    \ - smod(n, m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
     \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b) { cout << (b ? \"\
     Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b) { cout << (b ? \"YES\\n\"\
     \ : \"NO\\n\"); return; };\ntemplate<typename T, size_t N> T max(array<T, N>&\
@@ -162,12 +163,13 @@ data:
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
     \ a) { return *min_element(all(a)); };\ntemplate<typename T> T sum(vector<T>&\
     \ a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\n\
-    \ntemplate <class T> inline vector<T>& operator--(vector<T>& v) { repe(x, v) --x;\
-    \ return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>& v) {\
-    \ repe(x, v) ++x; return v; }\n\n// mod\u3067\u306Epow\nll powm(ll a, ll n, ll\
-    \ mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1) res =\
-    \ (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>= 1;\n\
-    \    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
+    template<typename T> bool in_range(const T& val, const T& s, const T& t) { return\
+    \ s <= val && val < t; };\n\ntemplate <class T> inline vector<T>& operator--(vector<T>&\
+    \ v) { repe(x, v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
+    \ v) { repe(x, v) ++x; return v; }\n\n// mod\u3067\u306Epow\nll powm(ll a, ll\
+    \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
+    \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
+    \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
     \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
     \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
     \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
@@ -213,7 +215,8 @@ data:
     \ e_min<T>, T, mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;\ntemplate<typename\
     \ T> using lseg_max_rupdate = atcoder::lazy_segtree<T, op_max<T>, e_max<T>, T,\
     \ mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;\n/**\n * @brief\
-    \ lazysegtree.hpp\n * @docs docs/data_structure/lazysegtree.md\n */\n"
+    \ \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
+    \uFF09\n * @docs docs/data_structure/lazysegtree.md\n */\n"
   code: "#pragma once\n#include \"atcoder/lazysegtree.hpp\"\n#include \"competitive/std/std.hpp\"\
     \ntemplate <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F,\
     \ F), F (*id)()>\nstd::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S,\
@@ -249,7 +252,8 @@ data:
     \ e_min<T>, T, mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;\ntemplate<typename\
     \ T> using lseg_max_rupdate = atcoder::lazy_segtree<T, op_max<T>, e_max<T>, T,\
     \ mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;\n/**\n * @brief\
-    \ lazysegtree.hpp\n * @docs docs/data_structure/lazysegtree.md\n */\n"
+    \ \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
+    \uFF09\n * @docs docs/data_structure/lazysegtree.md\n */\n"
   dependsOn:
   - atcoder/lazysegtree.hpp
   - atcoder/internal_bit.hpp
@@ -257,7 +261,7 @@ data:
   isVerificationFile: false
   path: competitive/data_structure/lazysegtree.hpp
   requiredBy: []
-  timestamp: '2023-03-15 06:50:34+09:00'
+  timestamp: '2023-03-29 18:12:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/DSL_2_F.test.cpp
@@ -269,5 +273,6 @@ layout: document
 redirect_from:
 - /library/competitive/data_structure/lazysegtree.hpp
 - /library/competitive/data_structure/lazysegtree.hpp.html
-title: lazysegtree.hpp
+title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
+  \uFF09"
 ---

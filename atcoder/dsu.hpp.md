@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: competitive/data_structure/union_find.hpp
-    title: segtree.hpp
+    title: Union Find
   - icon: ':warning:'
     path: competitive/tree/kruskal.hpp
     title: kruskal.hpp

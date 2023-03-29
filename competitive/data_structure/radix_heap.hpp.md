@@ -14,7 +14,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/radix_heap.md
-    document_title: radix_heap.hpp
+    document_title: Radix Heap
     links: []
   bundledCode: "#line 2 \"competitive/data_structure/radix_heap.hpp\"\ntemplate <typename\
     \ Key, typename Val>\nstruct RadixHeap {\n  using uint = typename make_unsigned<Key>::type;\n\
@@ -31,7 +31,7 @@ data:
     \        ms[b] = min(p.first, ms[b]);\n      }\n      vs[idx].clear();\n     \
     \ ms[idx] = uint(-1);\n    }\n    --s;\n    auto res = vs[0].back();\n    vs[0].pop_back();\n\
     \    if (vs[0].empty()) ms[0] = uint(-1);\n    return res;\n  }\n};\n/**\n * @brief\
-    \ radix_heap.hpp\n * @docs docs/data_structure/radix_heap.md\n */\n"
+    \ Radix Heap\n * @docs docs/data_structure/radix_heap.md\n */\n"
   code: "#pragma once\ntemplate <typename Key, typename Val>\nstruct RadixHeap {\n\
     \  using uint = typename make_unsigned<Key>::type;\n  static constexpr int bit\
     \ = sizeof(Key) * 8;\n  array<vector<pair<uint, Val> >, bit + 1> vs;\n  array<uint,\
@@ -47,13 +47,13 @@ data:
     \ min(p.first, ms[b]);\n      }\n      vs[idx].clear();\n      ms[idx] = uint(-1);\n\
     \    }\n    --s;\n    auto res = vs[0].back();\n    vs[0].pop_back();\n    if\
     \ (vs[0].empty()) ms[0] = uint(-1);\n    return res;\n  }\n};\n/**\n * @brief\
-    \ radix_heap.hpp\n * @docs docs/data_structure/radix_heap.md\n */\n"
+    \ Radix Heap\n * @docs docs/data_structure/radix_heap.md\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: competitive/data_structure/radix_heap.hpp
   requiredBy:
   - competitive/graph/fast_dijkstra.hpp
-  timestamp: '2023-02-28 16:59:41+09:00'
+  timestamp: '2023-03-29 18:12:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
@@ -62,5 +62,5 @@ layout: document
 redirect_from:
 - /library/competitive/data_structure/radix_heap.hpp
 - /library/competitive/data_structure/radix_heap.hpp.html
-title: radix_heap.hpp
+title: Radix Heap
 ---

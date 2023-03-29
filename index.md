@@ -78,19 +78,20 @@ data:
       title: bit.hpp
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/lazysegtree.hpp
-      title: lazysegtree.hpp
+      title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
+        \u30FC\uFF09"
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/radix_heap.hpp
-      title: radix_heap.hpp
+      title: Radix Heap
     - icon: ':warning:'
       path: competitive/data_structure/segtree.hpp
-      title: segtree.hpp
+      title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
     - icon: ':warning:'
       path: competitive/data_structure/splay_tree.hpp
-      title: "splay\u6728"
+      title: "Splay\u6728"
     - icon: ':warning:'
       path: competitive/data_structure/union_find.hpp
-      title: segtree.hpp
+      title: Union Find
   - name: competitive/geometry
     pages:
     - icon: ':heavy_check_mark:'

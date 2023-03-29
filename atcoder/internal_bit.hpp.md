@@ -13,10 +13,11 @@ data:
     title: atcoder/segtree.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/lazysegtree.hpp
-    title: lazysegtree.hpp
+    title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
+      \u30FC\uFF09"
   - icon: ':warning:'
     path: competitive/data_structure/segtree.hpp
-    title: segtree.hpp
+    title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_F.test.cpp

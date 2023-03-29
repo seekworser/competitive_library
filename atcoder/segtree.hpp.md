@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: competitive/data_structure/segtree.hpp
-    title: segtree.hpp
+    title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -63,7 +63,7 @@ data:
     \ sm))) {\n                        sm = op(d[r], sm);\n                      \
     \  r--;\n                    }\n                }\n                return r +\
     \ 1 - size;\n            }\n            sm = op(d[r], sm);\n        } while ((r\
-    \ & -r) != r);\n        return 0;\n    }\n\n    int n() {return (*this)._n;}\n\
+    \ & -r) != r);\n        return 0;\n    }\n\n    int n() const {return (*this)._n;}\n\
     \n  private:\n    int _n, size, log;\n    std::vector<S> d;\n\n    void update(int\
     \ k) { d[k] = op(d[2 * k], d[2 * k + 1]); }\n};\n\n}  // namespace atcoder\n"
   code: "#pragma once\n#include <algorithm>\n#include <cassert>\n#include <vector>\n\
@@ -104,7 +104,7 @@ data:
     \ sm))) {\n                        sm = op(d[r], sm);\n                      \
     \  r--;\n                    }\n                }\n                return r +\
     \ 1 - size;\n            }\n            sm = op(d[r], sm);\n        } while ((r\
-    \ & -r) != r);\n        return 0;\n    }\n\n    int n() {return (*this)._n;}\n\
+    \ & -r) != r);\n        return 0;\n    }\n\n    int n() const {return (*this)._n;}\n\
     \n  private:\n    int _n, size, log;\n    std::vector<S> d;\n\n    void update(int\
     \ k) { d[k] = op(d[2 * k], d[2 * k + 1]); }\n};\n\n}  // namespace atcoder\n"
   dependsOn:
@@ -113,7 +113,7 @@ data:
   path: atcoder/segtree.hpp
   requiredBy:
   - competitive/data_structure/segtree.hpp
-  timestamp: '2023-02-28 16:59:41+09:00'
+  timestamp: '2023-03-29 18:12:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: atcoder/segtree.hpp
