@@ -71,7 +71,7 @@ data:
     title: board_helper.hpp
   - icon: ':warning:'
     path: competitive/math/baby_step_giant_step.hpp
-    title: baby_step_giant_step
+    title: Baby Step Giant Step
   - icon: ':warning:'
     path: competitive/math/bit.hpp
     title: bit.hpp

@@ -146,7 +146,7 @@ data:
     pages:
     - icon: ':warning:'
       path: competitive/math/baby_step_giant_step.hpp
-      title: baby_step_giant_step
+      title: Baby Step Giant Step
     - icon: ':warning:'
       path: competitive/math/binsearch.hpp
       title: binsearch.hpp

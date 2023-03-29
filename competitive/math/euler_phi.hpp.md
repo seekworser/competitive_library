@@ -6,6 +6,9 @@ data:
     title: std.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: competitive/math/baby_step_giant_step.hpp
+    title: Baby Step Giant Step
+  - icon: ':warning:'
     path: online_test/AOJ/NTL_1_D.cpp
     title: online_test/AOJ/NTL_1_D.cpp
   _extendedVerifiedWith: []
@@ -112,6 +115,7 @@ data:
   isVerificationFile: false
   path: competitive/math/euler_phi.hpp
   requiredBy:
+  - competitive/math/baby_step_giant_step.hpp
   - online_test/AOJ/NTL_1_D.cpp
   timestamp: '2023-03-29 18:12:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
