@@ -74,13 +74,10 @@ ll powm(ll a, ll n, ll mod=INFL) {
 // 整数Sqrt
 ll sqrtll(ll x) {
     assert(x >= 0);
-    ll hi(x), lo(0);
-    while (hi != lo) {
-        ll y = (hi + lo + 1) / 2;
-        if (y <= x/y) lo = y;
-        else hi = y - 1;
-    }
-    return lo;
+    ll rev = sqrt(x);
+    while(rev * rev > x) --rev;
+    while((rev+1) * (rev+1)<=x) ++rev;
+    return rev;
 }
 template <class T> inline bool chmax(T& M, const T& x) { if (M < x) { M = x; return true; } return false; } // 最大値を更新（更新されたら true を返す）
 template <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x; return true; } return false; } // 最小値を更新（更新されたら true を返す）

@@ -17,8 +17,8 @@ template<typename T> T e_min() { return INFL; }
 template<typename T> T e_add() { return 0; }
 
 template<typename T> using seg_add = atcoder::segtree<T, op_add<T>, e_add<T>>;
-template<typename T> using seg_max = atcoder::segtree<T, op_max<T>, e_max<T>>;
-template<typename T> using seg_min = atcoder::segtree<T, op_min<T>, e_min<T>>;
+template<typename T> using seg_max = atcoder::segtree<T, op_max<T>, e_max>;
+template<typename T> using seg_min = atcoder::segtree<T, op_min<T>, e_min>;
 /**
  * @brief セグメント木（ラッパー）
  * @docs docs/data_structure/segtree.md

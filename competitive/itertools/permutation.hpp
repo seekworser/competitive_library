@@ -111,7 +111,7 @@ template<class T> bool next_permutation_(vector<T> &cur, vector<T> &a, vector<ll
     return false;
 };
 // #define rep_perm(i, a) auto i = a; sort(all(i)); for(bool i##_perm = true; i##_perm; i##_perm = next_permutation(all(i)))
-#define rep_perm(i, a, r) decltype(a) i(r); vector<long long> i##_ind_comb(r, -1); vector<long long> i##_ind(r, -1); vector<long long> i##_all_index(a.size(), -1); vector<long long> i##_ind_ind_comb(n, -1); init_permutation(i, a, i##_ind, i##_all_index); init_combination(i##_ind_comb, i##_all_index, i##_ind_ind_comb); for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_permutation_(i, a, i##_ind, i##_ind_comb, i##_all_index))
+#define rep_perm(i, a, r) decltype(a) i(r); vector<long long> i##_ind_comb(r, -1); vector<long long> i##_ind(r, -1); vector<long long> i##_all_index(a.size(), -1); vector<long long> i##_ind_ind_comb(a.size(), -1); init_permutation(i, a, i##_ind, i##_all_index); init_combination(i##_ind_comb, i##_all_index, i##_ind_ind_comb); for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_permutation_(i, a, i##_ind, i##_ind_comb, i##_all_index))
 #define rep_perm_dup(i, a, r) decltype(a) i(r); vector<long long> i##_ind(r, -1); init_permutation_dup(i, a, i##_ind); for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_permutation_dup(i, a, i##_ind))
 #define rep_comb(i, a, r) decltype(a) i(r); vector<long long> i##_ind(r, -1); init_combination(i, a, i##_ind); for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_combination(i, a, i##_ind))
 #define rep_comb_dup(i, a, r) decltype(a) i(r); vector<long long> i##_ind(r, -1); init_combination_dup(i, a, i##_ind); for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_combination_dup(i, a, i##_ind))
