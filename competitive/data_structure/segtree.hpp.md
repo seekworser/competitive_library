@@ -133,30 +133,29 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 4 \"competitive/data_structure/segtree.hpp\"\ntemplate <class S, S\
-    \ (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream& os, const atcoder::segtree<S,\
-    \ op, e> seg) {\n    int n = seg.n();\n    rep(i, n) { os << seg.get(i); if (i\
-    \ != n-1) os << \" \"; }\n    return os;\n};\ntemplate<typename T> T op_max(T\
-    \ x, T y) { return x > y? x : y; }\ntemplate<typename T> T op_min(T x, T y) {\
-    \ return x < y? x : y; }\ntemplate<typename T> T op_add(T x, T y) { return x +\
-    \ y; }\n\nint e_max() { return -INF; }\ntemplate<typename T> T e_max() { return\
-    \ -INFL; }\nint e_min() { return INF; }\ntemplate<typename T> T e_min() { return\
-    \ INFL; }\ntemplate<typename T> T e_add() { return 0; }\n\ntemplate<typename T>\
-    \ using seg_add = atcoder::segtree<T, op_add<T>, e_add<T>>;\ntemplate<typename\
-    \ T> using seg_max = atcoder::segtree<T, op_max<T>, e_max<T>>;\ntemplate<typename\
-    \ T> using seg_min = atcoder::segtree<T, op_min<T>, e_min<T>>;\n/**\n * @brief\
-    \ \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n *\
-    \ @docs docs/data_structure/segtree.md\n */\n"
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 4 \"competitive/data_structure/segtree.hpp\"\
+    \ntemplate <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
+    \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
+    \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\ntemplate<typename\
+    \ T> T op_max(T x, T y) { return x > y? x : y; }\ntemplate<typename T> T op_min(T\
+    \ x, T y) { return x < y? x : y; }\ntemplate<typename T> T op_add(T x, T y) {\
+    \ return x + y; }\n\nint e_max() { return -INF; }\ntemplate<typename T> T e_max()\
+    \ { return -INFL; }\nint e_min() { return INF; }\ntemplate<typename T> T e_min()\
+    \ { return INFL; }\ntemplate<typename T> T e_add() { return 0; }\n\ntemplate<typename\
+    \ T> using seg_add = atcoder::segtree<T, op_add<T>, e_add<T>>;\ntemplate<typename\
+    \ T> using seg_max = atcoder::segtree<T, op_max<T>, e_max>;\ntemplate<typename\
+    \ T> using seg_min = atcoder::segtree<T, op_min<T>, e_min>;\n/**\n * @brief \u30BB\
+    \u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/segtree.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"atcoder/segtree.hpp\"\n#include \"competitive/std/std.hpp\"\
     \ntemplate <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
     \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
@@ -167,10 +166,10 @@ data:
     \ { return -INFL; }\nint e_min() { return INF; }\ntemplate<typename T> T e_min()\
     \ { return INFL; }\ntemplate<typename T> T e_add() { return 0; }\n\ntemplate<typename\
     \ T> using seg_add = atcoder::segtree<T, op_add<T>, e_add<T>>;\ntemplate<typename\
-    \ T> using seg_max = atcoder::segtree<T, op_max<T>, e_max<T>>;\ntemplate<typename\
-    \ T> using seg_min = atcoder::segtree<T, op_min<T>, e_min<T>>;\n/**\n * @brief\
-    \ \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n *\
-    \ @docs docs/data_structure/segtree.md\n */\n"
+    \ T> using seg_max = atcoder::segtree<T, op_max<T>, e_max>;\ntemplate<typename\
+    \ T> using seg_min = atcoder::segtree<T, op_min<T>, e_min>;\n/**\n * @brief \u30BB\
+    \u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/segtree.md\n\
+    \ */\n"
   dependsOn:
   - atcoder/segtree.hpp
   - atcoder/internal_bit.hpp
@@ -178,7 +177,7 @@ data:
   isVerificationFile: false
   path: competitive/data_structure/segtree.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/data_structure/segtree.hpp

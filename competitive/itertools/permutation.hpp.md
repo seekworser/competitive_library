@@ -57,19 +57,19 @@ data:
     \ a) auto i = a; sort(all(i)); for(bool i##_perm = true; i##_perm; i##_perm =\
     \ next_permutation(all(i)))\n#define rep_perm(i, a, r) decltype(a) i(r); vector<long\
     \ long> i##_ind_comb(r, -1); vector<long long> i##_ind(r, -1); vector<long long>\
-    \ i##_all_index(a.size(), -1); vector<long long> i##_ind_ind_comb(n, -1); init_permutation(i,\
-    \ a, i##_ind, i##_all_index); init_combination(i##_ind_comb, i##_all_index, i##_ind_ind_comb);\
-    \ for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_permutation_(i,\
-    \ a, i##_ind, i##_ind_comb, i##_all_index))\n#define rep_perm_dup(i, a, r) decltype(a)\
-    \ i(r); vector<long long> i##_ind(r, -1); init_permutation_dup(i, a, i##_ind);\
-    \ for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_permutation_dup(i,\
-    \ a, i##_ind))\n#define rep_comb(i, a, r) decltype(a) i(r); vector<long long>\
-    \ i##_ind(r, -1); init_combination(i, a, i##_ind); for(bool i##_next_comb = true;\
-    \ i##_next_comb; i##_next_comb=next_combination(i, a, i##_ind))\n#define rep_comb_dup(i,\
-    \ a, r) decltype(a) i(r); vector<long long> i##_ind(r, -1); init_combination_dup(i,\
-    \ a, i##_ind); for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_combination_dup(i,\
-    \ a, i##_ind))\n/**\n * @brief permutation.hpp\n * @docs docs/itertools/permutation.md\n\
-    \ */\n"
+    \ i##_all_index(a.size(), -1); vector<long long> i##_ind_ind_comb(a.size(), -1);\
+    \ init_permutation(i, a, i##_ind, i##_all_index); init_combination(i##_ind_comb,\
+    \ i##_all_index, i##_ind_ind_comb); for(bool i##_next_comb = true; i##_next_comb;\
+    \ i##_next_comb=next_permutation_(i, a, i##_ind, i##_ind_comb, i##_all_index))\n\
+    #define rep_perm_dup(i, a, r) decltype(a) i(r); vector<long long> i##_ind(r, -1);\
+    \ init_permutation_dup(i, a, i##_ind); for(bool i##_next_comb = true; i##_next_comb;\
+    \ i##_next_comb=next_permutation_dup(i, a, i##_ind))\n#define rep_comb(i, a, r)\
+    \ decltype(a) i(r); vector<long long> i##_ind(r, -1); init_combination(i, a, i##_ind);\
+    \ for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_combination(i,\
+    \ a, i##_ind))\n#define rep_comb_dup(i, a, r) decltype(a) i(r); vector<long long>\
+    \ i##_ind(r, -1); init_combination_dup(i, a, i##_ind); for(bool i##_next_comb\
+    \ = true; i##_next_comb; i##_next_comb=next_combination_dup(i, a, i##_ind))\n\
+    /**\n * @brief permutation.hpp\n * @docs docs/itertools/permutation.md\n */\n"
   code: "#pragma once\ntemplate<class T> void init_permutation_dup(vector<T> &cur,\
     \ vector<T> &a, vector<ll> &ind) {\n    long long n = a.size();\n    long long\
     \ r = cur.size();\n    for (long long i = 0; i < r; i++) {\n        ind[i] = 0;\n\
@@ -116,24 +116,24 @@ data:
     \ a) auto i = a; sort(all(i)); for(bool i##_perm = true; i##_perm; i##_perm =\
     \ next_permutation(all(i)))\n#define rep_perm(i, a, r) decltype(a) i(r); vector<long\
     \ long> i##_ind_comb(r, -1); vector<long long> i##_ind(r, -1); vector<long long>\
-    \ i##_all_index(a.size(), -1); vector<long long> i##_ind_ind_comb(n, -1); init_permutation(i,\
-    \ a, i##_ind, i##_all_index); init_combination(i##_ind_comb, i##_all_index, i##_ind_ind_comb);\
-    \ for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_permutation_(i,\
-    \ a, i##_ind, i##_ind_comb, i##_all_index))\n#define rep_perm_dup(i, a, r) decltype(a)\
-    \ i(r); vector<long long> i##_ind(r, -1); init_permutation_dup(i, a, i##_ind);\
-    \ for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_permutation_dup(i,\
-    \ a, i##_ind))\n#define rep_comb(i, a, r) decltype(a) i(r); vector<long long>\
-    \ i##_ind(r, -1); init_combination(i, a, i##_ind); for(bool i##_next_comb = true;\
-    \ i##_next_comb; i##_next_comb=next_combination(i, a, i##_ind))\n#define rep_comb_dup(i,\
-    \ a, r) decltype(a) i(r); vector<long long> i##_ind(r, -1); init_combination_dup(i,\
-    \ a, i##_ind); for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_combination_dup(i,\
-    \ a, i##_ind))\n/**\n * @brief permutation.hpp\n * @docs docs/itertools/permutation.md\n\
-    \ */\n"
+    \ i##_all_index(a.size(), -1); vector<long long> i##_ind_ind_comb(a.size(), -1);\
+    \ init_permutation(i, a, i##_ind, i##_all_index); init_combination(i##_ind_comb,\
+    \ i##_all_index, i##_ind_ind_comb); for(bool i##_next_comb = true; i##_next_comb;\
+    \ i##_next_comb=next_permutation_(i, a, i##_ind, i##_ind_comb, i##_all_index))\n\
+    #define rep_perm_dup(i, a, r) decltype(a) i(r); vector<long long> i##_ind(r, -1);\
+    \ init_permutation_dup(i, a, i##_ind); for(bool i##_next_comb = true; i##_next_comb;\
+    \ i##_next_comb=next_permutation_dup(i, a, i##_ind))\n#define rep_comb(i, a, r)\
+    \ decltype(a) i(r); vector<long long> i##_ind(r, -1); init_combination(i, a, i##_ind);\
+    \ for(bool i##_next_comb = true; i##_next_comb; i##_next_comb=next_combination(i,\
+    \ a, i##_ind))\n#define rep_comb_dup(i, a, r) decltype(a) i(r); vector<long long>\
+    \ i##_ind(r, -1); init_combination_dup(i, a, i##_ind); for(bool i##_next_comb\
+    \ = true; i##_next_comb; i##_next_comb=next_combination_dup(i, a, i##_ind))\n\
+    /**\n * @brief permutation.hpp\n * @docs docs/itertools/permutation.md\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: competitive/itertools/permutation.hpp
   requiredBy: []
-  timestamp: '2023-02-28 17:22:26+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/itertools/permutation.hpp

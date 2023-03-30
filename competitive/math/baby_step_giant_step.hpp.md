@@ -77,36 +77,35 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/math/euler_phi.hpp\"\nll euler_phi(ll n) {\n    ll\
-    \ ret = n;\n    for(ll i = 2; i * i <= n; i++) {\n        if(n % i == 0) {\n \
-    \           ret -= ret / i;\n            while(n % i == 0) n /= i;\n        }\n\
-    \    }\n    if(n > 1) ret -= ret / n;\n    return ret;\n}\nll inv(ll x, ll mod)\
-    \ {\n    return powm(x, euler_phi(mod)-1, mod);\n}\nvector<ll> euler_phi_table(ll\
-    \ n) {\n    vector<ll> euler(n + 1);\n    rep(i, n+1) {\n        euler[i] = i;\n\
-    \    }\n    rep(i, 2, n+1) {\n        if(euler[i] == i) {\n            rep(j,\
-    \ i, n+1, i) {\n                euler[j] /= i;\n                euler[j] *= (i\
-    \ - 1);\n            }\n        }\n    }\n    return euler;\n}\n/**\n * @brief\
-    \ euler_phi.hpp\n * @docs docs/math/euler_phi.md\n */\n#line 4 \"competitive/math/baby_step_giant_step.hpp\"\
-    \n// Find k where x^k = y (mod p)\nll baby_step_giant_step(ll x, ll y, ll p) {\n\
-    \    assert(gcd(x, p) == 1);\n    ll m = sqrtll(p);\n    unordered_map<ll, int>\
-    \ xpow_pos;\n    ll r = 1;\n    int cnt = 0;\n    auto insert_xp = [&](){\n  \
-    \      if (!xpow_pos.count(r)) xpow_pos[r] = cnt++;\n        r = (r * x);\n  \
-    \      r %= p;\n    };\n    rep(i, m) { insert_xp(); }\n    while (gcd(r, p) !=\
-    \ 1) {\n        m++;\n        insert_xp();\n    }\n    r = powm(r, euler_phi(p)-1,\
-    \ p);\n    ll rp = y % p;\n    rep(i, m+1) {\n        if (xpow_pos.count(rp))\
-    \ return i * m + xpow_pos[rp];\n        rp *= r;\n        rp %= p;\n    }\n  \
-    \  return -1;\n}\n/**\n * @brief Baby Step Giant Step\n * @docs docs/math/baby_step_giant_step.md\n\
-    \ */\n"
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/math/euler_phi.hpp\"\nll\
+    \ euler_phi(ll n) {\n    ll ret = n;\n    for(ll i = 2; i * i <= n; i++) {\n \
+    \       if(n % i == 0) {\n            ret -= ret / i;\n            while(n % i\
+    \ == 0) n /= i;\n        }\n    }\n    if(n > 1) ret -= ret / n;\n    return ret;\n\
+    }\nll inv(ll x, ll mod) {\n    return powm(x, euler_phi(mod)-1, mod);\n}\nvector<ll>\
+    \ euler_phi_table(ll n) {\n    vector<ll> euler(n + 1);\n    rep(i, n+1) {\n \
+    \       euler[i] = i;\n    }\n    rep(i, 2, n+1) {\n        if(euler[i] == i)\
+    \ {\n            rep(j, i, n+1, i) {\n                euler[j] /= i;\n       \
+    \         euler[j] *= (i - 1);\n            }\n        }\n    }\n    return euler;\n\
+    }\n/**\n * @brief euler_phi.hpp\n * @docs docs/math/euler_phi.md\n */\n#line 4\
+    \ \"competitive/math/baby_step_giant_step.hpp\"\n// Find k where x^k = y (mod\
+    \ p)\nll baby_step_giant_step(ll x, ll y, ll p) {\n    assert(gcd(x, p) == 1);\n\
+    \    ll m = sqrtll(p);\n    unordered_map<ll, int> xpow_pos;\n    ll r = 1;\n\
+    \    int cnt = 0;\n    auto insert_xp = [&](){\n        if (!xpow_pos.count(r))\
+    \ xpow_pos[r] = cnt++;\n        r = (r * x);\n        r %= p;\n    };\n    rep(i,\
+    \ m) { insert_xp(); }\n    while (gcd(r, p) != 1) {\n        m++;\n        insert_xp();\n\
+    \    }\n    r = powm(r, euler_phi(p)-1, p);\n    ll rp = y % p;\n    rep(i, m+1)\
+    \ {\n        if (xpow_pos.count(rp)) return i * m + xpow_pos[rp];\n        rp\
+    \ *= r;\n        rp %= p;\n    }\n    return -1;\n}\n/**\n * @brief Baby Step\
+    \ Giant Step\n * @docs docs/math/baby_step_giant_step.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/math/euler_phi.hpp\"\
     \n// Find k where x^k = y (mod p)\nll baby_step_giant_step(ll x, ll y, ll p) {\n\
     \    assert(gcd(x, p) == 1);\n    ll m = sqrtll(p);\n    unordered_map<ll, int>\
@@ -124,7 +123,7 @@ data:
   isVerificationFile: false
   path: competitive/math/baby_step_giant_step.hpp
   requiredBy: []
-  timestamp: '2023-03-30 02:13:01+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/baby_step_giant_step.hpp

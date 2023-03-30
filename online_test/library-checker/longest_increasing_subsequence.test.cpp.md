@@ -83,18 +83,17 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/algorithm/longest_increasing_subsequence.hpp\"\n//\
-    \ return index_of longest increasing subsequence of a\ntemplate <class T> vector<int>\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/algorithm/longest_increasing_subsequence.hpp\"\
+    \n// return index_of longest increasing subsequence of a\ntemplate <class T> vector<int>\
     \ lis(vector<T> const &a, bool const strict=true) {\n    vector<T> dp;\n    vector<int>\
     \ pos(sz(a));\n    auto iter = dp.begin();\n    rep(i, sz(a)) {\n        if (strict)\
     \ iter = lower_bound(all(dp), a[i]);\n        else iter = upper_bound(all(dp),\
@@ -176,7 +175,7 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/longest_increasing_subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/longest_increasing_subsequence.test.cpp

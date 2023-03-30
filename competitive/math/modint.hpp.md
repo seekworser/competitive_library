@@ -83,34 +83,34 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 4 \"atcoder/modint.hpp\"\n#include <type_traits>\n\n#ifdef _MSC_VER\n\
-    #include <intrin.h>\n#endif\n\n#line 3 \"atcoder/internal_math.hpp\"\n\n#ifdef\
-    \ _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace internal\
-    \ {\n\n// @param m `1 <= m`\n// @return x mod m\nconstexpr long long safe_mod(long\
-    \ long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n\
-    }\n\n// Fast modular multiplication by barrett reduction\n// Reference: https://en.wikipedia.org/wiki/Barrett_reduction\n\
-    // NOTE: reconsider after Ice Lake\nstruct barrett {\n    unsigned int _m;\n \
-    \   unsigned long long im;\n\n    // @param m `1 <= m < 2^31`\n    explicit barrett(unsigned\
-    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n\
-    \    unsigned int umod() const { return _m; }\n\n    // @param a `0 <= a < m`\n\
-    \    // @param b `0 <= b < m`\n    // @return `a * b % m`\n    unsigned int mul(unsigned\
-    \ int a, unsigned int b) const {\n        // [1] m = 1\n        // a = b = im\
-    \ = 0, so okay\n\n        // [2] m >= 2\n        // im = ceil(2^64 / m)\n    \
-    \    // -> im * m = 2^64 + r (0 <= r < m)\n        // let z = a*b = c*m + d (0\
-    \ <= c, d < m)\n        // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64\
-    \ + c*r + d*im\n        // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64\
-    \ + m * (m + 1) < 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n     \
-    \   unsigned long long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 4 \"atcoder/modint.hpp\"\n#include <type_traits>\n\
+    \n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#line 3 \"atcoder/internal_math.hpp\"\
+    \n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
+    \ internal {\n\n// @param m `1 <= m`\n// @return x mod m\nconstexpr long long\
+    \ safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n\
+    \    return x;\n}\n\n// Fast modular multiplication by barrett reduction\n// Reference:\
+    \ https://en.wikipedia.org/wiki/Barrett_reduction\n// NOTE: reconsider after Ice\
+    \ Lake\nstruct barrett {\n    unsigned int _m;\n    unsigned long long im;\n\n\
+    \    // @param m `1 <= m < 2^31`\n    explicit barrett(unsigned int m) : _m(m),\
+    \ im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n    unsigned int\
+    \ umod() const { return _m; }\n\n    // @param a `0 <= a < m`\n    // @param b\
+    \ `0 <= b < m`\n    // @return `a * b % m`\n    unsigned int mul(unsigned int\
+    \ a, unsigned int b) const {\n        // [1] m = 1\n        // a = b = im = 0,\
+    \ so okay\n\n        // [2] m >= 2\n        // im = ceil(2^64 / m)\n        //\
+    \ -> im * m = 2^64 + r (0 <= r < m)\n        // let z = a*b = c*m + d (0 <= c,\
+    \ d < m)\n        // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64 + c*r\
+    \ + d*im\n        // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64 +\
+    \ m * (m + 1) < 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n       \
+    \ unsigned long long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned\
     \ long long x;\n        _umul128(z, im, &x);\n#else\n        unsigned long long\
     \ x =\n            (unsigned long long)(((unsigned __int128)(z)*im) >> 64);\n\
     #endif\n        unsigned int v = (unsigned int)(z - x * _m);\n        if (_m <=\
@@ -343,7 +343,7 @@ data:
   isVerificationFile: false
   path: competitive/math/modint.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/modint.hpp

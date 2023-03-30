@@ -74,49 +74,48 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/algorithm/mo.hpp\"\ntemplate<typename Rev_t> struct\
-    \ Mo {\n    int range_min, range_max;\n    using query_t = tuple<int, int, int>;\n\
-    \    vector<query_t> query;\n    Mo() {};\n    Mo(const vector<pii>& lr) : range_min(INF),\
-    \ range_max(-INF) {\n        rep(i, sz(lr)) {\n            assert(lr[i].first\
-    \ <= lr[i].second);\n            query.emplace_back(lr[i].first, lr[i].second,\
-    \ i);\n            chmin((*this).range_min, lr[i].first);\n            chmax((*this).range_max,\
-    \ lr[i].second);\n        }\n    }\n    Mo(const vi& l, const vi& r) : range_min(INF),\
-    \ range_max(-INF) {\n        assert(sz(l) == sz(r));\n        rep(i, sz(l)) {\n\
-    \            assert(l[i] <= r[i]);\n            query.emplace_back(l[i], r[i],\
-    \ i);\n            chmin((*this).range_min, l[i]);\n            chmax((*this).range_max,\
-    \ r[i]);\n        }\n    }\n    void add_query(int l, int r) {\n        (*this).query.emplace_back(l,\
-    \ r, sz((*this).query));\n    }\n    template<typename AL, typename AR, typename\
-    \ DL, typename DR, typename GET>\n    vector<Rev_t> answer(\n        const AL&\
-    \ add_left,\n        const AR& add_right,\n        const DL& delete_left,\n  \
-    \      const DR& delete_right,\n        const GET& get,\n        int init_l =\
-    \ 0,\n        int init_r = 0\n    ) {\n        assert(range_max >= range_min);\n\
-    \        int q = sz(query);\n        int range = range_max - range_min;\n    \
-    \    int width = max<int>(1, 1.0 * range / max<double>(1.0, sqrt(q * 2.0 / 3.0)));\n\
-    \        sort(all((*this).query), [&](query_t a, query_t b) {\n            auto\
-    \ [la, ra, ida] = a;\n            auto [lb, rb, idb] = b;\n            int ablock\
-    \ = la / width, bblock = lb / width;\n            if (ablock != bblock) return\
-    \ ablock < bblock;\n            if (ablock & 1) return ra < rb;\n            return\
-    \ ra > rb;\n        });\n        vector<Rev_t> rev(q);\n        int cl(init_l),\
-    \ cr(init_r);\n        rep(i, q) {\n            auto [l, r, id] = query[i];\n\
-    \            while (cl > l) { cl--; add_left(cl); }\n            while (cr < r)\
-    \ { add_right(cr); cr++;}\n            while (cl < l) { delete_left(cl); cl++;\
-    \ }\n            while (cr > r) { cr--; delete_right(cr); }\n            rev[id]\
-    \ = get();\n        }\n        return rev;\n    };\n    template<typename A, typename\
-    \ D, typename GET>\n    vector<Rev_t> answer(\n        const A& add,\n       \
-    \ const D& del,\n        const GET& get,\n        int init_l = 0,\n        int\
-    \ init_r = 0\n    ) {\n        return (*this).answer(add, add, del, del, get,\
-    \ init_l, init_r);\n    }\n};\n/**\n * @brief mo.hpp\n * @docs docs/algorithm/mo.md\n\
-    \ */\n"
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/algorithm/mo.hpp\"\ntemplate<typename\
+    \ Rev_t> struct Mo {\n    int range_min, range_max;\n    using query_t = tuple<int,\
+    \ int, int>;\n    vector<query_t> query;\n    Mo() {};\n    Mo(const vector<pii>&\
+    \ lr) : range_min(INF), range_max(-INF) {\n        rep(i, sz(lr)) {\n        \
+    \    assert(lr[i].first <= lr[i].second);\n            query.emplace_back(lr[i].first,\
+    \ lr[i].second, i);\n            chmin((*this).range_min, lr[i].first);\n    \
+    \        chmax((*this).range_max, lr[i].second);\n        }\n    }\n    Mo(const\
+    \ vi& l, const vi& r) : range_min(INF), range_max(-INF) {\n        assert(sz(l)\
+    \ == sz(r));\n        rep(i, sz(l)) {\n            assert(l[i] <= r[i]);\n   \
+    \         query.emplace_back(l[i], r[i], i);\n            chmin((*this).range_min,\
+    \ l[i]);\n            chmax((*this).range_max, r[i]);\n        }\n    }\n    void\
+    \ add_query(int l, int r) {\n        (*this).query.emplace_back(l, r, sz((*this).query));\n\
+    \    }\n    template<typename AL, typename AR, typename DL, typename DR, typename\
+    \ GET>\n    vector<Rev_t> answer(\n        const AL& add_left,\n        const\
+    \ AR& add_right,\n        const DL& delete_left,\n        const DR& delete_right,\n\
+    \        const GET& get,\n        int init_l = 0,\n        int init_r = 0\n  \
+    \  ) {\n        assert(range_max >= range_min);\n        int q = sz(query);\n\
+    \        int range = range_max - range_min;\n        int width = max<int>(1, 1.0\
+    \ * range / max<double>(1.0, sqrt(q * 2.0 / 3.0)));\n        sort(all((*this).query),\
+    \ [&](query_t a, query_t b) {\n            auto [la, ra, ida] = a;\n         \
+    \   auto [lb, rb, idb] = b;\n            int ablock = la / width, bblock = lb\
+    \ / width;\n            if (ablock != bblock) return ablock < bblock;\n      \
+    \      if (ablock & 1) return ra < rb;\n            return ra > rb;\n        });\n\
+    \        vector<Rev_t> rev(q);\n        int cl(init_l), cr(init_r);\n        rep(i,\
+    \ q) {\n            auto [l, r, id] = query[i];\n            while (cl > l) {\
+    \ cl--; add_left(cl); }\n            while (cr < r) { add_right(cr); cr++;}\n\
+    \            while (cl < l) { delete_left(cl); cl++; }\n            while (cr\
+    \ > r) { cr--; delete_right(cr); }\n            rev[id] = get();\n        }\n\
+    \        return rev;\n    };\n    template<typename A, typename D, typename GET>\n\
+    \    vector<Rev_t> answer(\n        const A& add,\n        const D& del,\n   \
+    \     const GET& get,\n        int init_l = 0,\n        int init_r = 0\n    )\
+    \ {\n        return (*this).answer(add, add, del, del, get, init_l, init_r);\n\
+    \    }\n};\n/**\n * @brief mo.hpp\n * @docs docs/algorithm/mo.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<typename Rev_t>\
     \ struct Mo {\n    int range_min, range_max;\n    using query_t = tuple<int, int,\
     \ int>;\n    vector<query_t> query;\n    Mo() {};\n    Mo(const vector<pii>& lr)\
@@ -155,7 +154,7 @@ data:
   isVerificationFile: false
   path: competitive/algorithm/mo.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/algorithm/mo.hpp

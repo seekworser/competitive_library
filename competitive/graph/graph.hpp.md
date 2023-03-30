@@ -107,29 +107,29 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate <class Cost> struct Graph{\n\
-    public:\n    struct Edge {\n        int to;\n        Cost cost;\n        Edge()\
-    \ {};\n        Edge(int _to, Cost _cost) : to(_to), cost(_cost) {};\n    };\n\
-    \    struct AdjacencyListRange{\n        using iterator = typename std::vector<Edge>::const_iterator;\n\
-    \        iterator begi, endi;\n        iterator begin() const { return begi; }\n\
-    \        iterator end() const { return endi; }\n        int size() const { return\
-    \ (int)distance(begi, endi); }\n        const Edge& operator[](int i) const {\
-    \ return begi[i]; }\n    };\nprivate:\npublic:\n    vector<Edge> E;\n    vector<int>\
-    \ I;\n    int n;\n    Graph() : n(0) {}\n    Graph(int _n) : n(_n) {}\n    Graph(int\
-    \ _n, const vector<int>& from, vector<int>& to, vector<Cost>& cost, bool rev =\
-    \ false) : n(_n) {\n        vector<int> buf(n+1, 0);\n        for(int i=0; i<(int)from.size();\
-    \ i++){\n            ++buf[from[i]];\n            if (rev) ++buf[to[i]];\n   \
-    \     }\n        for(int i=1; i<=_n; i++) buf[i] += buf[i-1];\n        E.resize(buf[n]);\n\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate\
+    \ <class Cost> struct Graph{\npublic:\n    struct Edge {\n        int to;\n  \
+    \      Cost cost;\n        Edge() {};\n        Edge(int _to, Cost _cost) : to(_to),\
+    \ cost(_cost) {};\n    };\n    struct AdjacencyListRange{\n        using iterator\
+    \ = typename std::vector<Edge>::const_iterator;\n        iterator begi, endi;\n\
+    \        iterator begin() const { return begi; }\n        iterator end() const\
+    \ { return endi; }\n        int size() const { return (int)distance(begi, endi);\
+    \ }\n        const Edge& operator[](int i) const { return begi[i]; }\n    };\n\
+    private:\npublic:\n    vector<Edge> E;\n    vector<int> I;\n    int n;\n    Graph()\
+    \ : n(0) {}\n    Graph(int _n) : n(_n) {}\n    Graph(int _n, const vector<int>&\
+    \ from, vector<int>& to, vector<Cost>& cost, bool rev = false) : n(_n) {\n   \
+    \     vector<int> buf(n+1, 0);\n        for(int i=0; i<(int)from.size(); i++){\n\
+    \            ++buf[from[i]];\n            if (rev) ++buf[to[i]];\n        }\n\
+    \        for(int i=1; i<=_n; i++) buf[i] += buf[i-1];\n        E.resize(buf[n]);\n\
     \        for(int i=(int)from.size()-1; i>=0; i--){\n            int u = from[i];\n\
     \            int v = to[i];\n            Cost c = cost[i];\n            E[--buf[u]]\
     \ = Edge(v, c);\n            if(rev) E[--buf[v]] = Edge(u, c);\n        }\n  \
@@ -189,7 +189,7 @@ data:
   - competitive/graph/max_k_dijkstra.hpp
   - competitive/graph/warshall_floyd.hpp
   - competitive/graph/fast_dijkstra.hpp
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp

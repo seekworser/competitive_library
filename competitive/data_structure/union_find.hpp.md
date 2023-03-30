@@ -102,21 +102,21 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 4 \"competitive/data_structure/union_find.hpp\"\nostream& operator<<(ostream&\
-    \ os, atcoder::dsu& uf) {\n    repe(g, uf.groups()) rep(i, sz(g)) {\n        cout\
-    \ << g[i];\n        if (i != sz(g) - 1) cout << \" \";\n        else cout << \"\
-    \\n\";\n    }\n    return os;\n}\nusing UnionFind = atcoder::dsu;\n/**\n * @brief\
-    \ Union Find\n * @docs docs/data_structure/union_find.md\n */\n"
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 4 \"competitive/data_structure/union_find.hpp\"\
+    \nostream& operator<<(ostream& os, atcoder::dsu& uf) {\n    repe(g, uf.groups())\
+    \ rep(i, sz(g)) {\n        cout << g[i];\n        if (i != sz(g) - 1) cout <<\
+    \ \" \";\n        else cout << \"\\n\";\n    }\n    return os;\n}\nusing UnionFind\
+    \ = atcoder::dsu;\n/**\n * @brief Union Find\n * @docs docs/data_structure/union_find.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"atcoder/dsu.hpp\"\n#include \"competitive/std/std.hpp\"\
     \nostream& operator<<(ostream& os, atcoder::dsu& uf) {\n    repe(g, uf.groups())\
     \ rep(i, sz(g)) {\n        cout << g[i];\n        if (i != sz(g) - 1) cout <<\
@@ -129,7 +129,7 @@ data:
   isVerificationFile: false
   path: competitive/data_structure/union_find.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/data_structure/union_find.hpp

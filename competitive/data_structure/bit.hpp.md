@@ -80,27 +80,27 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/data_structure/bit.hpp\"\ntemplate<class T> struct\
-    \ BIT {\n    private:\n        vector<T> bit;\n        int _n;\n    public:\n\
-    \        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int p, T x)\
-    \ {\n            assert(0 <= p && p <= _n);\n            p++;\n            for\
-    \ (int i = p; i <= _n; i += i & -i) {\n                bit[i] += x;\n        \
-    \    }\n        }\n        T sum_from_left(int p) {\n            assert(0 <= p\
-    \ && p <= _n);\n            T ret = 0;\n            for (int i = p; i > 0; i -=\
-    \ i & -i){\n                ret += bit[i];\n            }\n            return\
-    \ ret;\n        }\n        T sum(int ps, int pt) {\n            return sum_from_left(pt)\
-    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\
-    \n * @docs docs/data_structure/bit.md\n */\n"
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/data_structure/bit.hpp\"\
+    \ntemplate<class T> struct BIT {\n    private:\n        vector<T> bit;\n     \
+    \   int _n;\n    public:\n        BIT(int size):_n(size),bit(size+1, 0) {}\n \
+    \       void add(int p, T x) {\n            assert(0 <= p && p <= _n);\n     \
+    \       p++;\n            for (int i = p; i <= _n; i += i & -i) {\n          \
+    \      bit[i] += x;\n            }\n        }\n        T sum_from_left(int p)\
+    \ {\n            assert(0 <= p && p <= _n);\n            T ret = 0;\n        \
+    \    for (int i = p; i > 0; i -= i & -i){\n                ret += bit[i];\n  \
+    \          }\n            return ret;\n        }\n        T sum(int ps, int pt)\
+    \ {\n            return sum_from_left(pt) - sum_from_left(ps);\n        }\n};\n\
+    /**\n * @brief BIT\uFF08Binary Index Tree\uFF09\n * @docs docs/data_structure/bit.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<class T> struct\
     \ BIT {\n    private:\n        vector<T> bit;\n        int _n;\n    public:\n\
     \        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int p, T x)\
@@ -118,7 +118,7 @@ data:
   path: competitive/data_structure/bit.hpp
   requiredBy:
   - competitive/math/inversion_num.hpp
-  timestamp: '2023-03-29 19:11:14+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/static_range_sum.test.cpp

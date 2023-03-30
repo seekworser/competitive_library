@@ -77,35 +77,34 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/string/rolling_hash.hpp\"\nusing hash_t = unsigned\
-    \ long long;\nusing hash_vector_t = vector<hash_t>;\nconstexpr hash_t RHMOD =\
-    \ (1UL << 61) - 1;\nconstexpr hash_t RHR = 37;\n\nnamespace internal {\n    const\
-    \ hash_t MASK30 = (1UL << 30) - 1;\n    const hash_t MASK31 = (1UL << 31) - 1;\n\
-    \    const hash_t MASK61 = RHMOD;\n\n    //mod 2^61-1\u3092\u8A08\u7B97\u3059\u308B\
-    \u95A2\u6570\n    hash_t CalcMod(hash_t x) {\n        hash_t xu = x >> 61;\n \
-    \       hash_t xd = x & MASK61;\n        hash_t res = xu + xd;\n        if (res\
-    \ >= RHMOD) res -= RHMOD;\n        return res;\n    }\n\n    //a*b mod 2^61-1\u3092\
-    \u8FD4\u3059\u95A2\u6570(\u6700\u5F8C\u306BMod\u3092\u53D6\u308B)\n    hash_t\
-    \ Mul(hash_t a, hash_t b) {\n        hash_t au = a >> 31;\n        hash_t ad =\
-    \ a & MASK31;\n        hash_t bu = b >> 31;\n        hash_t bd = b & MASK31;\n\
-    \        hash_t mid = ad * bu + au * bd;\n        hash_t midu = mid >> 30;\n \
-    \       hash_t midd = mid & MASK30;\n        return CalcMod(au * bu * 2 + midu\
-    \ + (midd << 31) + ad * bd);\n    }\n\n    hash_t Pow(hash_t a, hash_t n) {\n\
-    \        hash_t res = 1;\n        while (n > 0) {\n            if (n & 1) res\
-    \ = Mul(res, a);\n            a = Mul(a, a);\n            n >>= 1;\n        }\n\
-    \        return res;\n    }\n}\n\nstruct RollingHash {\n    private:\n    static\
-    \ bool initialized;\n    static int hash_size;\n    static vector<hash_t> base;\n\
-    \    static vector<hash_t> base_inv;\n\n    public:\n    vector<hash_vector_t>\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/string/rolling_hash.hpp\"\
+    \nusing hash_t = unsigned long long;\nusing hash_vector_t = vector<hash_t>;\n\
+    constexpr hash_t RHMOD = (1UL << 61) - 1;\nconstexpr hash_t RHR = 37;\n\nnamespace\
+    \ internal {\n    const hash_t MASK30 = (1UL << 30) - 1;\n    const hash_t MASK31\
+    \ = (1UL << 31) - 1;\n    const hash_t MASK61 = RHMOD;\n\n    //mod 2^61-1\u3092\
+    \u8A08\u7B97\u3059\u308B\u95A2\u6570\n    hash_t CalcMod(hash_t x) {\n       \
+    \ hash_t xu = x >> 61;\n        hash_t xd = x & MASK61;\n        hash_t res =\
+    \ xu + xd;\n        if (res >= RHMOD) res -= RHMOD;\n        return res;\n   \
+    \ }\n\n    //a*b mod 2^61-1\u3092\u8FD4\u3059\u95A2\u6570(\u6700\u5F8C\u306BMod\u3092\
+    \u53D6\u308B)\n    hash_t Mul(hash_t a, hash_t b) {\n        hash_t au = a >>\
+    \ 31;\n        hash_t ad = a & MASK31;\n        hash_t bu = b >> 31;\n       \
+    \ hash_t bd = b & MASK31;\n        hash_t mid = ad * bu + au * bd;\n        hash_t\
+    \ midu = mid >> 30;\n        hash_t midd = mid & MASK30;\n        return CalcMod(au\
+    \ * bu * 2 + midu + (midd << 31) + ad * bd);\n    }\n\n    hash_t Pow(hash_t a,\
+    \ hash_t n) {\n        hash_t res = 1;\n        while (n > 0) {\n            if\
+    \ (n & 1) res = Mul(res, a);\n            a = Mul(a, a);\n            n >>= 1;\n\
+    \        }\n        return res;\n    }\n}\n\nstruct RollingHash {\n    private:\n\
+    \    static bool initialized;\n    static int hash_size;\n    static vector<hash_t>\
+    \ base;\n    static vector<hash_t> base_inv;\n\n    public:\n    vector<hash_vector_t>\
     \ cum;\n    template<typename T> RollingHash(vector<T> &a, int hash_size=3, ll\
     \ maxa=1e9) {\n        if(!initialized) (*this).init_base(hash_size, maxa);\n\
     \        (*this).calc(a);\n    };\n    RollingHash(string &a, int hash_size=3,\
@@ -208,7 +207,7 @@ data:
   isVerificationFile: false
   path: competitive/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/ALDS_1_14_B.test.cpp

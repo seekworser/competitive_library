@@ -95,58 +95,58 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/math/fraction.hpp\"\nstruct Frac {\n    ll num;\n\
-    \    ll den;\n    Frac (ll _num, ll _den, bool reduce = true) : num(_num), den(_den)\
-    \ {\n        if (reduce) (*this).reduce();\n    }\n    Frac (ll _num) : Frac(_num,\
-    \ 1) {}\n    static ll redcue_limit;\n\n    Frac inv() const { return Frac((*this).den,\
-    \ (*this).num); }\n    Frac &operator+=(const Frac &x) {\n        (*this).num\
-    \ = (*this).num * x.den + x.num * (*this).den;\n        (*this).den = (*this).den\
-    \ * x.den;\n        if ((*this).den > redcue_limit || (*this).num > redcue_limit)\
-    \ (*this).reduce();\n        return (*this);\n    }\n    Frac &operator-=(const\
-    \ Frac &x) {\n        (*this).num = (*this).num * x.den - x.num * (*this).den;\n\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/math/fraction.hpp\"\nstruct\
+    \ Frac {\n    ll num;\n    ll den;\n    Frac (ll _num, ll _den, bool reduce =\
+    \ true) : num(_num), den(_den) {\n        if (reduce) (*this).reduce();\n    }\n\
+    \    Frac (ll _num) : Frac(_num, 1) {}\n    static ll redcue_limit;\n\n    Frac\
+    \ inv() const { return Frac((*this).den, (*this).num); }\n    Frac &operator+=(const\
+    \ Frac &x) {\n        (*this).num = (*this).num * x.den + x.num * (*this).den;\n\
     \        (*this).den = (*this).den * x.den;\n        if ((*this).den > redcue_limit\
     \ || (*this).num > redcue_limit) (*this).reduce();\n        return (*this);\n\
-    \    }\n    Frac &operator*=(const Frac &x) {\n        (*this).num = (*this).num\
-    \ * x.num;\n        (*this).den = (*this).den * x.den;\n        if ((*this).den\
-    \ > redcue_limit || (*this).num > redcue_limit) (*this).reduce();\n        return\
-    \ (*this);\n    }\n    Frac &operator/=(const Frac &x) {\n        (*this) *= x.inv();\n\
+    \    }\n    Frac &operator-=(const Frac &x) {\n        (*this).num = (*this).num\
+    \ * x.den - x.num * (*this).den;\n        (*this).den = (*this).den * x.den;\n\
     \        if ((*this).den > redcue_limit || (*this).num > redcue_limit) (*this).reduce();\n\
-    \        return (*this);\n    }\n    Frac operator+(const Frac &x) const { return\
-    \ (Frac(*this) += x); }\n    Frac operator-(const Frac &x) const { return (Frac(*this)\
-    \ -= x); }\n    Frac operator*(const Frac &x) const { return (Frac(*this) *= x);\
-    \ }\n    Frac operator/(const Frac &x) const { return (Frac(*this) /= x); }\n\n\
-    \    Frac operator+() const { return *this; }\n    Frac operator-() const { Frac\
-    \ x(-(*this).num, (*this).den); return x; }\n    friend bool operator==(const\
-    \ Frac& lhs, const Frac& rhs) {\n        return lhs.num * rhs.den == lhs.den *\
-    \ rhs.num;\n    }\n    friend bool operator!=(const Frac& lhs, const Frac& rhs)\
-    \ {\n        return lhs.num * rhs.den != lhs.den * rhs.num;\n    }\n    friend\
-    \ bool operator>=(const Frac& lhs, const Frac& rhs) {\n        return lhs.num\
-    \ * rhs.den >= lhs.den * rhs.num;\n    }\n    friend bool operator<=(const Frac&\
-    \ lhs, const Frac& rhs) {\n        return lhs.num * rhs.den <= lhs.den * rhs.num;\n\
-    \    }\n    friend bool operator>(const Frac& lhs, const Frac& rhs) {\n      \
-    \  return lhs.num * rhs.den > lhs.den * rhs.num;\n    }\n    friend bool operator<(const\
-    \ Frac& lhs, const Frac& rhs) {\n        return lhs.num * rhs.den < lhs.den *\
-    \ rhs.num;\n    }\n\n    double val() const {return (double)((*this).num) / (double)((*this).den);\
-    \ }\n    friend ostream& operator<<(ostream& os, const Frac &x) { os << x.val();\
-    \ return os; }\n    void reduce() {\n        assert((*this).den != 0 || (*this).num\
-    \ != 0);\n        if ((*this).den == 0) { (*this).num = 1; return; }\n       \
-    \ if ((*this).num == 0) { (*this).den = 1; return; }\n        ll g = gcd((*this).num,\
-    \ (*this).den);\n        (*this).num /= g;\n        (*this).den /= g;\n      \
-    \  if ((*this).den < 0) {\n            (*this).num *= -1;\n            (*this).den\
-    \ *= -1;\n        }\n        return;\n    }\n};\nll Frac::redcue_limit = 1000000000;\n\
-    Frac pow(const Frac &a, ll n) {\n    Frac res(1); Frac cur(a);\n    while (n >\
-    \ 0) {\n        if (n & 1) res *= cur;\n        cur *= cur;\n        n >>= 1;\n\
-    \    }\n    return res;\n}\nFrac abs(const Frac &f) {\n    Frac rev(f);\n    if\
+    \        return (*this);\n    }\n    Frac &operator*=(const Frac &x) {\n     \
+    \   (*this).num = (*this).num * x.num;\n        (*this).den = (*this).den * x.den;\n\
+    \        if ((*this).den > redcue_limit || (*this).num > redcue_limit) (*this).reduce();\n\
+    \        return (*this);\n    }\n    Frac &operator/=(const Frac &x) {\n     \
+    \   (*this) *= x.inv();\n        if ((*this).den > redcue_limit || (*this).num\
+    \ > redcue_limit) (*this).reduce();\n        return (*this);\n    }\n    Frac\
+    \ operator+(const Frac &x) const { return (Frac(*this) += x); }\n    Frac operator-(const\
+    \ Frac &x) const { return (Frac(*this) -= x); }\n    Frac operator*(const Frac\
+    \ &x) const { return (Frac(*this) *= x); }\n    Frac operator/(const Frac &x)\
+    \ const { return (Frac(*this) /= x); }\n\n    Frac operator+() const { return\
+    \ *this; }\n    Frac operator-() const { Frac x(-(*this).num, (*this).den); return\
+    \ x; }\n    friend bool operator==(const Frac& lhs, const Frac& rhs) {\n     \
+    \   return lhs.num * rhs.den == lhs.den * rhs.num;\n    }\n    friend bool operator!=(const\
+    \ Frac& lhs, const Frac& rhs) {\n        return lhs.num * rhs.den != lhs.den *\
+    \ rhs.num;\n    }\n    friend bool operator>=(const Frac& lhs, const Frac& rhs)\
+    \ {\n        return lhs.num * rhs.den >= lhs.den * rhs.num;\n    }\n    friend\
+    \ bool operator<=(const Frac& lhs, const Frac& rhs) {\n        return lhs.num\
+    \ * rhs.den <= lhs.den * rhs.num;\n    }\n    friend bool operator>(const Frac&\
+    \ lhs, const Frac& rhs) {\n        return lhs.num * rhs.den > lhs.den * rhs.num;\n\
+    \    }\n    friend bool operator<(const Frac& lhs, const Frac& rhs) {\n      \
+    \  return lhs.num * rhs.den < lhs.den * rhs.num;\n    }\n\n    double val() const\
+    \ {return (double)((*this).num) / (double)((*this).den); }\n    friend ostream&\
+    \ operator<<(ostream& os, const Frac &x) { os << x.val(); return os; }\n    void\
+    \ reduce() {\n        assert((*this).den != 0 || (*this).num != 0);\n        if\
+    \ ((*this).den == 0) { (*this).num = 1; return; }\n        if ((*this).num ==\
+    \ 0) { (*this).den = 1; return; }\n        ll g = gcd((*this).num, (*this).den);\n\
+    \        (*this).num /= g;\n        (*this).den /= g;\n        if ((*this).den\
+    \ < 0) {\n            (*this).num *= -1;\n            (*this).den *= -1;\n   \
+    \     }\n        return;\n    }\n};\nll Frac::redcue_limit = 1000000000;\nFrac\
+    \ pow(const Frac &a, ll n) {\n    Frac res(1); Frac cur(a);\n    while (n > 0)\
+    \ {\n        if (n & 1) res *= cur;\n        cur *= cur;\n        n >>= 1;\n \
+    \   }\n    return res;\n}\nFrac abs(const Frac &f) {\n    Frac rev(f);\n    if\
     \ (rev.den * rev.num < 0) return -rev;\n    return rev;\n}\n/**\n * @brief fraction.hpp\n\
     \ * @docs docs/math/fraction.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\nstruct Frac {\n    ll\
@@ -199,7 +199,7 @@ data:
   isVerificationFile: false
   path: competitive/math/fraction.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_2_A.test.cpp

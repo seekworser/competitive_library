@@ -89,31 +89,31 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 6 \"atcoder/lazysegtree.hpp\"\n\n#line 2 \"atcoder/internal_bit.hpp\"\
-    \n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
-    \ internal {\n\n// @param n `0 <= n`\n// @return minimum non-negative `x` s.t.\
-    \ `n <= 2**x`\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\n// @param n `1 <= n`\n// @return\
-    \ minimum non-negative `x` s.t. `(n & (1 << x)) != 0`\nconstexpr int bsf_constexpr(unsigned\
-    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
-    }\n\n// @param n `1 <= n`\n// @return minimum non-negative `x` s.t. `(n & (1 <<\
-    \ x)) != 0`\nint bsf(unsigned int n) {\n#ifdef _MSC_VER\n    unsigned long index;\n\
-    \    _BitScanForward(&index, n);\n    return index;\n#else\n    return __builtin_ctz(n);\n\
-    #endif\n}\n\n}  // namespace internal\n\n}  // namespace atcoder\n#line 8 \"atcoder/lazysegtree.hpp\"\
-    \n\nnamespace atcoder {\n\ntemplate <class S,\n          S (*op)(S, S),\n    \
-    \      S (*e)(),\n          class F,\n          S (*mapping)(F, S),\n        \
-    \  F (*composition)(F, F),\n          F (*id)()>\nstruct lazy_segtree {\n  public:\n\
-    \    lazy_segtree() : lazy_segtree(0) {}\n    explicit lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 6 \"atcoder/lazysegtree.hpp\"\n\n#line 2\
+    \ \"atcoder/internal_bit.hpp\"\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\
+    \nnamespace atcoder {\n\nnamespace internal {\n\n// @param n `0 <= n`\n// @return\
+    \ minimum non-negative `x` s.t. `n <= 2**x`\nint ceil_pow2(int n) {\n    int x\
+    \ = 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return x;\n}\n\n//\
+    \ @param n `1 <= n`\n// @return minimum non-negative `x` s.t. `(n & (1 << x))\
+    \ != 0`\nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while\
+    \ (!(n & (1 << x))) x++;\n    return x;\n}\n\n// @param n `1 <= n`\n// @return\
+    \ minimum non-negative `x` s.t. `(n & (1 << x)) != 0`\nint bsf(unsigned int n)\
+    \ {\n#ifdef _MSC_VER\n    unsigned long index;\n    _BitScanForward(&index, n);\n\
+    \    return index;\n#else\n    return __builtin_ctz(n);\n#endif\n}\n\n}  // namespace\
+    \ internal\n\n}  // namespace atcoder\n#line 8 \"atcoder/lazysegtree.hpp\"\n\n\
+    namespace atcoder {\n\ntemplate <class S,\n          S (*op)(S, S),\n        \
+    \  S (*e)(),\n          class F,\n          S (*mapping)(F, S),\n          F (*composition)(F,\
+    \ F),\n          F (*id)()>\nstruct lazy_segtree {\n  public:\n    lazy_segtree()\
+    \ : lazy_segtree(0) {}\n    explicit lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
     \ e())) {}\n    explicit lazy_segtree(const std::vector<S>& v) : _n(int(v.size()))\
     \ {\n        log = internal::ceil_pow2(_n);\n        size = 1 << log;\n      \
     \  d = std::vector<S>(2 * size, e());\n        lz = std::vector<F>(size, id());\n\
@@ -289,7 +289,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/DSL_2_H.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/DSL_2_H.test.cpp

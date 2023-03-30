@@ -74,39 +74,38 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/data_structure/splay_tree.hpp\"\nnamespace splay {\n\
-    \    template <typename T> struct SplayTree {\n        struct node {\n       \
-    \     T val;\n            node* left;\n            node* right;\n            node()\
-    \ = default;\n            node(T val, node* left, node* right) : val(val), left(left),\
-    \ right(right) {};\n        };\n        node* root;\n        int size;\n     \
-    \   SplayTree() : root(&NIL), size(0) {};\n        ~SplayTree() { clear(); }\n\
-    \n        void insert(T x) {\n            size++;\n            if (root == &NIL)\
-    \ {\n                root = new node(x, &NIL, &NIL);\n                return;\n\
-    \            }\n            root = splay(x, root);\n            node* rootn =\
-    \ new node(x, &NIL, &NIL);\n            if (x == root->val) return;\n        \
-    \    if (x < root->val) {\n                rootn->right = root;\n            \
-    \    rootn->left = root->left;\n                root->left = &NIL;\n         \
-    \       root = rootn;\n            } else {\n                rootn->left = root;\n\
-    \                rootn->right = root->right;\n                root->right = &NIL;\n\
-    \                root = rootn;\n            }\n            return;\n        }\n\
-    \n        void erase(T x) {\n            if (root == &NIL) {\n               \
-    \ return;\n            }\n            root = splay(x, root);\n            if (x\
-    \ != root->val) return;\n            size--;\n            if (root->left == &NIL)\
-    \ {\n                node* newroot = root->right;\n                delete root;\n\
-    \                root = newroot;\n                return;\n            }\n   \
-    \         node* newroot = splay(x, root->left);\n            newroot->right =\
-    \ root->right;\n            delete root;\n            root = newroot;\n      \
-    \      return;\n        }\n\n        bool contains(T x) {\n            if (root\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/data_structure/splay_tree.hpp\"\
+    \nnamespace splay {\n    template <typename T> struct SplayTree {\n        struct\
+    \ node {\n            T val;\n            node* left;\n            node* right;\n\
+    \            node() = default;\n            node(T val, node* left, node* right)\
+    \ : val(val), left(left), right(right) {};\n        };\n        node* root;\n\
+    \        int size;\n        SplayTree() : root(&NIL), size(0) {};\n        ~SplayTree()\
+    \ { clear(); }\n\n        void insert(T x) {\n            size++;\n          \
+    \  if (root == &NIL) {\n                root = new node(x, &NIL, &NIL);\n    \
+    \            return;\n            }\n            root = splay(x, root);\n    \
+    \        node* rootn = new node(x, &NIL, &NIL);\n            if (x == root->val)\
+    \ return;\n            if (x < root->val) {\n                rootn->right = root;\n\
+    \                rootn->left = root->left;\n                root->left = &NIL;\n\
+    \                root = rootn;\n            } else {\n                rootn->left\
+    \ = root;\n                rootn->right = root->right;\n                root->right\
+    \ = &NIL;\n                root = rootn;\n            }\n            return;\n\
+    \        }\n\n        void erase(T x) {\n            if (root == &NIL) {\n   \
+    \             return;\n            }\n            root = splay(x, root);\n   \
+    \         if (x != root->val) return;\n            size--;\n            if (root->left\
+    \ == &NIL) {\n                node* newroot = root->right;\n                delete\
+    \ root;\n                root = newroot;\n                return;\n          \
+    \  }\n            node* newroot = splay(x, root->left);\n            newroot->right\
+    \ = root->right;\n            delete root;\n            root = newroot;\n    \
+    \        return;\n        }\n\n        bool contains(T x) {\n            if (root\
     \ == &NIL) {\n                return false;\n            }\n            root =\
     \ splay(x, root);\n            return root->val == x;\n        }\n\n        void\
     \ clear() {\n            clear_subtree(root);\n            size = 0;\n       \
@@ -211,7 +210,7 @@ data:
   isVerificationFile: false
   path: competitive/data_structure/splay_tree.hpp
   requiredBy: []
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/data_structure/splay_tree.hpp

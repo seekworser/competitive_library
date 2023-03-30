@@ -122,58 +122,58 @@ data:
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
     \ 1;\n    }\n    return res;\n}\n// \u6574\u6570Sqrt\nll sqrtll(ll x) {\n    assert(x\
-    \ >= 0);\n    ll hi(x), lo(0);\n    while (hi != lo) {\n        ll y = (hi + lo\
-    \ + 1) / 2;\n        if (y <= x/y) lo = y;\n        else hi = y - 1;\n    }\n\
-    \    return lo;\n}\ntemplate <class T> inline bool chmax(T& M, const T& x) { if\
-    \ (M < x) { M = x; return true; } return false; } // \u6700\u5927\u5024\u3092\u66F4\
-    \u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\
-    \ntemplate <class T> inline bool chmin(T& m, const T& x) { if (m > x) { m = x;\
-    \ return true; } return false; } // \u6700\u5C0F\u5024\u3092\u66F4\u65B0\uFF08\
-    \u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\u3059\uFF09\nint digit(ll\
-    \ x, int d=10) { int rev=0; while (x > 0) { rev++; x /= d;}; return rev; } //\
-    \ x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n * @docs docs/std/std.md\n\
-    \ */\n#line 3 \"competitive/geometry/base.hpp\"\n/**\n * @brief Point\u30AF\u30E9\
-    \u30B9\n * @details\n * Point : 2\u6B21\u5143\u7A7A\u9593\u4E0A\u306E\u70B9\u30FB\
-    \u30D9\u30AF\u30C8\u30EB\u3092\u6271\u3046\u305F\u3081\u306E\u30AF\u30E9\u30B9\
-    \n * abs\u3082\u3057\u304F\u306F\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB\u3092\u4F7F\
-    \u3046\u5834\u5408\u306Fdouble\u3092\u4F7F\u3044\u3001\u305D\u306E\u4ED6\u306E\
-    \u5834\u5408\u306FFrac\u3092\u4F7F\u3046\n*/\ntemplate<typename T> struct Point\
-    \ {\n    T x, y;\n    Point(T x, T y) : x(x), y(y) {\n    };\n    Point() : Point(0,\
-    \ 0) {};\n\n    Point<T> &operator+=(const Point<T>& p) { (*this).x += p.x; (*this).y\
-    \ += p.y; return *this; }\n    Point<T> &operator-=(const Point<T>& p) { (*this).x\
-    \ -= p.x; (*this).y -= p.y; return *this; }\n    friend Point<T> operator+(const\
-    \ Point<T>& lhs, const Point<T>& rhs) { return Point(lhs) += rhs; }\n    friend\
-    \ Point<T> operator-(const Point<T>& lhs, const Point<T>& rhs) { return Point(lhs)\
-    \ -= rhs; }\n    Point<T> &operator+() { return *this; }\n    Point<T> &operator-()\
-    \ { (*this).x *= -1; (*this).y *= -1; return *this; }\n\n    Point<T> &operator*=(const\
-    \ T &x) { (*this).x *= x; (*this).y *= x; return *this; }\n    Point<T> &operator/=(const\
-    \ T &x) { (*this).x /= x; (*this).y /= x; return *this; }\n    friend Point<T>\
-    \ operator*(const Point<T>& lhs, const T& rhs) { return Point(lhs) *= rhs; }\n\
-    \    friend Point<T> operator/(const Point<T>& lhs, const T& rhs) { return Point(lhs)\
-    \ /= rhs; }\n    friend Point<T> operator*(const T& lhs, const Point<T>& rhs)\
-    \ { return Point(rhs) *= lhs; }\n    friend Point<T> operator/(const T& lhs, const\
-    \ Point<T>& rhs) { return Point(rhs) /= lhs; }\n\n    friend bool operator==(const\
-    \ Point<T> &lhs, const Point<T> &rhs) {\n        return eq<T>(lhs.x, rhs.x) &&\
-    \ eq<T>(lhs.y, rhs.y);\n    }\n    friend bool operator!=(const Point<T> &lhs,\
-    \ const Point<T> &rhs) {\n        return !(lhs == rhs);\n    }\n    friend bool\
-    \ operator>(const Point<T>& lhs, const Point<T>& rhs) {\n        if (eq<T>(lhs.x,\
-    \ rhs.x)) return gt<T>(lhs.y, rhs.y);\n        return gt<T>(lhs.x, rhs.x);\n \
-    \   }\n    friend bool operator<(const Point<T>& lhs, const Point<T>& rhs) {\n\
-    \        if (eq<T>(lhs.x, rhs.x)) return lt<T>(lhs.y, rhs.y);\n        return\
-    \ lt<T>(lhs.x, rhs.x);\n    }\n    friend bool operator>=(const Point<T>& lhs,\
-    \ const Point<T>& rhs) { return !(lhs < rhs); }\n    friend bool operator<=(const\
-    \ Point<T>& lhs, const Point<T>& rhs) { return !(lhs > rhs); }\n    T dot(const\
-    \ Point<T> &p) const {return (*this).x * p.x + (*this).y * p.y; };\n    T cross(const\
-    \ Point<T> &p) const {return (*this).x * p.y - (*this).y * p.x; };\n    T norm()\
-    \ const {return (*this).dot(*this); };\n    T abs() const {return sqrt((*this).norm());\
-    \ };\n    T arg() const {return atan((*this).y / (*this).x); };\n    Point<T>\
-    \ rotate(const double &theta) {\n        (*this).x = cos(theta) * (*this).x -\
-    \ sin(theta) * (*this).y;\n        (*this).y = sin(theta) * (*this).x + cos(theta)\
-    \ * (*this).y;\n        return (*this);\n    };\n\n    T operator*=(const Point<T>&\
-    \ p) const { return (*this).dot(p); }\n    friend const T operator*(const Point<T>&\
-    \ lhs, const Point<T>& rhs) { return lhs *= rhs; }\n    friend ostream& operator<<(ostream&\
-    \ os, const Point<T> &p) { os << p.x << \" \" << p.y; return os; }\n};\n\ntemplate<typename\
-    \ T> T dot(const Point<T> &p1, const Point<T> &p2) { return p1.dot(p2); }\ntemplate<typename\
+    \ >= 0);\n    ll rev = sqrt(x);\n    while(rev * rev > x) --rev;\n    while((rev+1)\
+    \ * (rev+1)<=x) ++rev;\n    return rev;\n}\ntemplate <class T> inline bool chmax(T&\
+    \ M, const T& x) { if (M < x) { M = x; return true; } return false; } // \u6700\
+    \u5927\u5024\u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true\
+    \ \u3092\u8FD4\u3059\uFF09\ntemplate <class T> inline bool chmin(T& m, const T&\
+    \ x) { if (m > x) { m = x; return true; } return false; } // \u6700\u5C0F\u5024\
+    \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
+    \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
+    \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/geometry/base.hpp\"\n/**\n\
+    \ * @brief Point\u30AF\u30E9\u30B9\n * @details\n * Point : 2\u6B21\u5143\u7A7A\
+    \u9593\u4E0A\u306E\u70B9\u30FB\u30D9\u30AF\u30C8\u30EB\u3092\u6271\u3046\u305F\
+    \u3081\u306E\u30AF\u30E9\u30B9\n * abs\u3082\u3057\u304F\u306F\u5358\u4F4D\u30D9\
+    \u30AF\u30C8\u30EB\u3092\u4F7F\u3046\u5834\u5408\u306Fdouble\u3092\u4F7F\u3044\
+    \u3001\u305D\u306E\u4ED6\u306E\u5834\u5408\u306FFrac\u3092\u4F7F\u3046\n*/\ntemplate<typename\
+    \ T> struct Point {\n    T x, y;\n    Point(T x, T y) : x(x), y(y) {\n    };\n\
+    \    Point() : Point(0, 0) {};\n\n    Point<T> &operator+=(const Point<T>& p)\
+    \ { (*this).x += p.x; (*this).y += p.y; return *this; }\n    Point<T> &operator-=(const\
+    \ Point<T>& p) { (*this).x -= p.x; (*this).y -= p.y; return *this; }\n    friend\
+    \ Point<T> operator+(const Point<T>& lhs, const Point<T>& rhs) { return Point(lhs)\
+    \ += rhs; }\n    friend Point<T> operator-(const Point<T>& lhs, const Point<T>&\
+    \ rhs) { return Point(lhs) -= rhs; }\n    Point<T> &operator+() { return *this;\
+    \ }\n    Point<T> &operator-() { (*this).x *= -1; (*this).y *= -1; return *this;\
+    \ }\n\n    Point<T> &operator*=(const T &x) { (*this).x *= x; (*this).y *= x;\
+    \ return *this; }\n    Point<T> &operator/=(const T &x) { (*this).x /= x; (*this).y\
+    \ /= x; return *this; }\n    friend Point<T> operator*(const Point<T>& lhs, const\
+    \ T& rhs) { return Point(lhs) *= rhs; }\n    friend Point<T> operator/(const Point<T>&\
+    \ lhs, const T& rhs) { return Point(lhs) /= rhs; }\n    friend Point<T> operator*(const\
+    \ T& lhs, const Point<T>& rhs) { return Point(rhs) *= lhs; }\n    friend Point<T>\
+    \ operator/(const T& lhs, const Point<T>& rhs) { return Point(rhs) /= lhs; }\n\
+    \n    friend bool operator==(const Point<T> &lhs, const Point<T> &rhs) {\n   \
+    \     return eq<T>(lhs.x, rhs.x) && eq<T>(lhs.y, rhs.y);\n    }\n    friend bool\
+    \ operator!=(const Point<T> &lhs, const Point<T> &rhs) {\n        return !(lhs\
+    \ == rhs);\n    }\n    friend bool operator>(const Point<T>& lhs, const Point<T>&\
+    \ rhs) {\n        if (eq<T>(lhs.x, rhs.x)) return gt<T>(lhs.y, rhs.y);\n     \
+    \   return gt<T>(lhs.x, rhs.x);\n    }\n    friend bool operator<(const Point<T>&\
+    \ lhs, const Point<T>& rhs) {\n        if (eq<T>(lhs.x, rhs.x)) return lt<T>(lhs.y,\
+    \ rhs.y);\n        return lt<T>(lhs.x, rhs.x);\n    }\n    friend bool operator>=(const\
+    \ Point<T>& lhs, const Point<T>& rhs) { return !(lhs < rhs); }\n    friend bool\
+    \ operator<=(const Point<T>& lhs, const Point<T>& rhs) { return !(lhs > rhs);\
+    \ }\n    T dot(const Point<T> &p) const {return (*this).x * p.x + (*this).y *\
+    \ p.y; };\n    T cross(const Point<T> &p) const {return (*this).x * p.y - (*this).y\
+    \ * p.x; };\n    T norm() const {return (*this).dot(*this); };\n    T abs() const\
+    \ {return sqrt((*this).norm()); };\n    T arg() const {return atan((*this).y /\
+    \ (*this).x); };\n    Point<T> rotate(const double &theta) {\n        (*this).x\
+    \ = cos(theta) * (*this).x - sin(theta) * (*this).y;\n        (*this).y = sin(theta)\
+    \ * (*this).x + cos(theta) * (*this).y;\n        return (*this);\n    };\n\n \
+    \   T operator*=(const Point<T>& p) const { return (*this).dot(p); }\n    friend\
+    \ const T operator*(const Point<T>& lhs, const Point<T>& rhs) { return lhs *=\
+    \ rhs; }\n    friend ostream& operator<<(ostream& os, const Point<T> &p) { os\
+    \ << p.x << \" \" << p.y; return os; }\n};\n\ntemplate<typename T> T dot(const\
+    \ Point<T> &p1, const Point<T> &p2) { return p1.dot(p2); }\ntemplate<typename\
     \ T> T cross(const Point<T> &p1, const Point<T> &p2) { return p1.cross(p2); }\n\
     template<typename T> T norm(const Point<T> &p) { return p.norm(); }\ndouble abs(const\
     \ Point<double> &p) { return p.abs(); }\nPoint<double> unit_vector(const Point<double>\
@@ -274,7 +274,7 @@ data:
   - competitive/geometry/projection.hpp
   - competitive/geometry/counter_clockwise.hpp
   - competitive/geometry/polygon.hpp
-  timestamp: '2023-03-29 18:12:07+09:00'
+  timestamp: '2023-03-30 09:29:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_2_A.test.cpp
