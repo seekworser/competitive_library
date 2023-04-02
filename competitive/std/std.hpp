@@ -38,7 +38,7 @@ constexpr int MODINT1000000007 = 1000000007;
 struct Nyan { Nyan() { cin.tie(nullptr); ios::sync_with_stdio(false); cout << fixed << setprecision(18); } } nyan;
 // 汎用マクロの定義
 #define all(a) (a).begin(), (a).end()
-#define sz(x) ((int)(x).size())
+#define sz(x) ((ll)(x).size())
 #define rep1(n) for(ll dummy_iter = 0LL; dummy_iter < n; ++dummy_iter) // 0 から n-1 まで昇順
 #define rep2(i, n) for(ll i = 0LL, i##_counter = 0LL; i##_counter < ll(n); ++(i##_counter), (i) = i##_counter) // 0 から n-1 まで昇順
 #define rep3(i, s, t) for(ll i = ll(s), i##_counter = ll(s); i##_counter < ll(t); ++(i##_counter), (i) = (i##_counter)) // s から t まで昇順

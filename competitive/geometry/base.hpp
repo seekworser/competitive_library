@@ -73,11 +73,11 @@ template<typename T> struct Line {
     Line(Point<T> s, Point<T> t) : s(s), t(t) {assert(s != t);};
     // ax+by+c=0;
     Line(T a, T b, T c) {
-        assert(neq<T>(a, 0) || neq<T>(b, 0));
-        if(eq<T>(b, 0)) {
+        assert(neq<T>(a, T(0)) || neq<T>(b, T(0)));
+        if(eq<T>(b, T(0))) {
             s = Point(-c / a, T(0)); t = Point(-c / a, T(1));
         } else {
-            s = Point(T(0), -c / b); t = Point(-c / a, T(1));
+            s = Point(T(0), -c / b); t = Point(T(1), (-a-c)/b);
         }
     };
     Point<T> vec() const { return (*this).t - (*this).s; }
