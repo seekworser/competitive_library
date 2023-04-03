@@ -46,17 +46,17 @@ public:
     int num_vertices() const { return n; }
     int size() const { return num_vertices(); }
     int num_edges() const { return E.size(); }
-    // Graph reversed_edges() const {
-    //     Graph res;
-    //     int _n = res.n = n;
-    //     std::vector<int> buf(n+1, 0);
-    //     for(int v : E) ++buf[v];
-    //     for(int i=1; i<=n; i++) buf[i] += buf[i-1];
-    //     res.E.resize(buf[n]);
-    //     for(int u=0; u<n; u++) for(int v : operator[](u)) res.E[--buf[v]] = u;
-    //     res.I = std::move(buf);
-    //     return res;
-    // }
+    Graph<Cost> reversed_edges() const {
+        Graph<Cost> res;
+        int _n = res.n = n;
+        vi buf(n+1, 0);
+        for(auto v : E) ++buf[v.to];
+        for(int i=1; i<=n; i++) buf[i] += buf[i-1];
+        res.E.resize(buf[n]);
+        for(int u=0; u<n; u++) for(auto v : operator[](u)) res.E[--buf[v.to]] = {u, v.cost};
+        res.I = std::move(buf);
+        return res;
+    }
 };
 template <class T> ostream& operator<<(ostream& os, Graph<T> g) {
     bool first = true;
