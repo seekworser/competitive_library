@@ -220,6 +220,11 @@ data:
     - icon: ':warning:'
       path: competitive/python/union_find.py
       title: competitive/python/union_find.py
+  - name: competitive/random
+    pages:
+    - icon: ':warning:'
+      path: competitive/random/random_base.hpp
+      title: "Random \u30D9\u30FC\u30B9\u30E9\u30A4\u30D6\u30E9\u30EA"
   - name: competitive/std
     pages:
     - icon: ':heavy_check_mark:'
