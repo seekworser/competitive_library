@@ -105,6 +105,9 @@ data:
   - icon: ':warning:'
     path: competitive/random/random_base.hpp
     title: "Random \u30D9\u30FC\u30B9\u30E9\u30A4\u30D6\u30E9\u30EA"
+  - icon: ':warning:'
+    path: competitive/random/tree.hpp
+    title: tree
   - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
@@ -367,6 +370,7 @@ data:
   - competitive/graph/warshall_floyd.hpp
   - competitive/graph/fast_dijkstra.hpp
   - competitive/random/random_base.hpp
+  - competitive/random/tree.hpp
   - competitive/geometry/distance.hpp
   - competitive/geometry/base.hpp
   - competitive/geometry/angle.hpp

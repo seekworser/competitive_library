@@ -225,6 +225,9 @@ data:
     - icon: ':warning:'
       path: competitive/random/random_base.hpp
       title: "Random \u30D9\u30FC\u30B9\u30E9\u30A4\u30D6\u30E9\u30EA"
+    - icon: ':warning:'
+      path: competitive/random/tree.hpp
+      title: tree
   - name: competitive/std
     pages:
     - icon: ':heavy_check_mark:'

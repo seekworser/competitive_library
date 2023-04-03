@@ -1,20 +1,23 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':warning:'
+    path: atcoder/dsu.hpp
+    title: atcoder/dsu.hpp
+  - icon: ':warning:'
+    path: competitive/random/random_base.hpp
+    title: "Random \u30D9\u30FC\u30B9\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: competitive/random/tree.hpp
-    title: tree
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/random/random_base.md
-    document_title: "Random \u30D9\u30FC\u30B9\u30E9\u30A4\u30D6\u30E9\u30EA"
+    _deprecated_at_docs: docs/random/tree.md
+    document_title: tree
     links: []
   bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
     \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
@@ -92,27 +95,64 @@ data:
     \ min;\n}\nvl randvec(int n, ll min, ll max) {\n    vl rev(n);\n    rep(i, n)\
     \ rev[i] = randint(min, max);\n    return rev;\n}\n/**\n * @brief Random \u30D9\
     \u30FC\u30B9\u30E9\u30A4\u30D6\u30E9\u30EA\n * @docs docs/random/random_base.md\n\
+    \ */\n#line 5 \"atcoder/dsu.hpp\"\n\nnamespace atcoder {\n\n// Implement (union\
+    \ by size) + (path compression)\n// Reference:\n// Zvi Galil and Giuseppe F. Italiano,\n\
+    // Data structures and algorithms for disjoint set union problems\nstruct dsu\
+    \ {\n  public:\n    dsu() : _n(0) {}\n    explicit dsu(int n) : _n(n), parent_or_size(n,\
+    \ -1) {}\n\n    int merge(int a, int b) {\n        assert(0 <= a && a < _n);\n\
+    \        assert(0 <= b && b < _n);\n        int x = leader(a), y = leader(b);\n\
+    \        if (x == y) return x;\n        if (-parent_or_size[x] < -parent_or_size[y])\
+    \ std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n        parent_or_size[y]\
+    \ = x;\n        return x;\n    }\n\n    bool same(int a, int b) {\n        assert(0\
+    \ <= a && a < _n);\n        assert(0 <= b && b < _n);\n        return leader(a)\
+    \ == leader(b);\n    }\n\n    int leader(int a) {\n        assert(0 <= a && a\
+    \ < _n);\n        if (parent_or_size[a] < 0) return a;\n        return parent_or_size[a]\
+    \ = leader(parent_or_size[a]);\n    }\n\n    int size(int a) {\n        assert(0\
+    \ <= a && a < _n);\n        return -parent_or_size[leader(a)];\n    }\n\n    std::vector<std::vector<int>>\
+    \ groups() {\n        std::vector<int> leader_buf(_n), group_size(_n);\n     \
+    \   for (int i = 0; i < _n; i++) {\n            leader_buf[i] = leader(i);\n \
+    \           group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
+    \ result(_n);\n        for (int i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n\
+    \        }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
+    \        }\n        result.erase(\n            std::remove_if(result.begin(),\
+    \ result.end(),\n                           [&](const std::vector<int>& v) { return\
+    \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
+    \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
+    \ parent\n    std::vector<int> parent_or_size;\n};\n\n}  // namespace atcoder\n\
+    #line 5 \"competitive/random/tree.hpp\"\nvector<pii> random_tree(int n) {\n  \
+    \  auto rev = vector<pii>(n-1);\n    int cnt = 0;\n    atcoder::dsu uf(n+1);\n\
+    \    while (cnt < n-1) {\n        int u = randint(1, n);\n        int v = randint(1,\
+    \ n);\n        if (!uf.same(u, v)) {\n            if (u > v) swap(u, v);\n   \
+    \         rev[cnt++] = {u, v};\n            uf.merge(u, v);\n        }\n    }\n\
+    \    return rev;\n}\n// return tree by parent form: [p2, p3, ..., pn]\nvi random_treep(int\
+    \ n) {\n    vi rev(n-1);\n    rep(i, n-1) {\n        rev[i] = randint(1, i+1);\n\
+    \    }\n    return rev;\n}\n/**\n * @brief tree\n * @docs docs/random/tree.md\n\
     \ */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\nrandom_device seed_gen;\n\
-    mt19937_64 engine(seed_gen());\nll randint(ll min, ll max) {\n    assert(min <=\
-    \ max);\n    return engine() % (max - min + 1) + min;\n}\nvl randvec(int n, ll\
-    \ min, ll max) {\n    vl rev(n);\n    rep(i, n) rev[i] = randint(min, max);\n\
-    \    return rev;\n}\n/**\n * @brief Random \u30D9\u30FC\u30B9\u30E9\u30A4\u30D6\
-    \u30E9\u30EA\n * @docs docs/random/random_base.md\n */\n"
+  code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/random/random_base.hpp\"\
+    \n#include \"atcoder/dsu.hpp\"\nvector<pii> random_tree(int n) {\n    auto rev\
+    \ = vector<pii>(n-1);\n    int cnt = 0;\n    atcoder::dsu uf(n+1);\n    while\
+    \ (cnt < n-1) {\n        int u = randint(1, n);\n        int v = randint(1, n);\n\
+    \        if (!uf.same(u, v)) {\n            if (u > v) swap(u, v);\n         \
+    \   rev[cnt++] = {u, v};\n            uf.merge(u, v);\n        }\n    }\n    return\
+    \ rev;\n}\n// return tree by parent form: [p2, p3, ..., pn]\nvi random_treep(int\
+    \ n) {\n    vi rev(n-1);\n    rep(i, n-1) {\n        rev[i] = randint(1, i+1);\n\
+    \    }\n    return rev;\n}\n/**\n * @brief tree\n * @docs docs/random/tree.md\n\
+    \ */\n"
   dependsOn:
   - competitive/std/std.hpp
+  - competitive/random/random_base.hpp
+  - atcoder/dsu.hpp
   isVerificationFile: false
-  path: competitive/random/random_base.hpp
-  requiredBy:
-  - competitive/random/tree.hpp
-  timestamp: '2023-04-03 17:52:22+09:00'
+  path: competitive/random/tree.hpp
+  requiredBy: []
+  timestamp: '2023-04-03 18:11:57+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: competitive/random/random_base.hpp
+documentation_of: competitive/random/tree.hpp
 layout: document
 redirect_from:
-- /library/competitive/random/random_base.hpp
-- /library/competitive/random/random_base.hpp.html
-title: "Random \u30D9\u30FC\u30B9\u30E9\u30A4\u30D6\u30E9\u30EA"
+- /library/competitive/random/tree.hpp
+- /library/competitive/random/tree.hpp.html
+title: tree
 ---
-ランダムテスト用のベースライブラリ
+ランダムな木の生成
