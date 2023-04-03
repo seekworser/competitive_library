@@ -112,14 +112,14 @@ data:
     \      I = move(buf);\n    }\n    AdjacencyListRange operator[](int u) const {\n\
     \        return AdjacencyListRange{ E.begin() + I[u], E.begin() + I[u+1] };\n\
     \    }\n    int num_vertices() const { return n; }\n    int size() const { return\
-    \ num_vertices(); }\n    int num_edges() const { return E.size(); }\n    // Graph\
-    \ reversed_edges() const {\n    //     Graph res;\n    //     int _n = res.n =\
-    \ n;\n    //     std::vector<int> buf(n+1, 0);\n    //     for(int v : E) ++buf[v];\n\
-    \    //     for(int i=1; i<=n; i++) buf[i] += buf[i-1];\n    //     res.E.resize(buf[n]);\n\
-    \    //     for(int u=0; u<n; u++) for(int v : operator[](u)) res.E[--buf[v]]\
-    \ = u;\n    //     res.I = std::move(buf);\n    //     return res;\n    // }\n\
-    };\ntemplate <class T> ostream& operator<<(ostream& os, Graph<T> g) {\n    bool\
-    \ first = true;\n    rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n\
+    \ num_vertices(); }\n    int num_edges() const { return E.size(); }\n    Graph<Cost>\
+    \ reversed_edges() const {\n        Graph<Cost> res;\n        int _n = res.n =\
+    \ n;\n        vi buf(n+1, 0);\n        for(auto v : E) ++buf[v.to];\n        for(int\
+    \ i=1; i<=n; i++) buf[i] += buf[i-1];\n        res.E.resize(buf[n]);\n       \
+    \ for(int u=0; u<n; u++) for(auto v : operator[](u)) res.E[--buf[v.to]] = {u,\
+    \ v.cost};\n        res.I = std::move(buf);\n        return res;\n    }\n};\n\
+    template <class T> ostream& operator<<(ostream& os, Graph<T> g) {\n    bool first\
+    \ = true;\n    rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n\
     \        else os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n\
     \    }\n    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n\
     \ */\n#line 2 \"competitive/data_structure/radix_heap.hpp\"\ntemplate <typename\
@@ -169,7 +169,7 @@ data:
   isVerificationFile: false
   path: competitive/graph/fast_dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-04-02 18:31:43+09:00'
+  timestamp: '2023-04-03 20:00:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp

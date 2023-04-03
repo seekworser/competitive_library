@@ -63,6 +63,9 @@ data:
   - icon: ':warning:'
     path: competitive/graph/max_k_dijkstra.hpp
     title: max_k_dijkstra.hpp
+  - icon: ':warning:'
+    path: competitive/graph/scc.hpp
+    title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
   - icon: ':heavy_check_mark:'
     path: competitive/graph/warshall_floyd.hpp
     title: warshall_floyd.hpp
@@ -367,6 +370,7 @@ data:
   - competitive/graph/dijkstra.hpp
   - competitive/graph/graph.hpp
   - competitive/graph/max_k_dijkstra.hpp
+  - competitive/graph/scc.hpp
   - competitive/graph/warshall_floyd.hpp
   - competitive/graph/fast_dijkstra.hpp
   - competitive/random/random_base.hpp
