@@ -24,9 +24,9 @@ template <class T> using priority_queue_min = priority_queue<T, vector<T>, great
 constexpr double PI = 3.14159265358979323;
 constexpr int INF = 100100111; constexpr ll INFL = 3300300300300300491LL;
 float EPS = 1e-8; double EPSL = 1e-16;
-bool eq(const double x, const double y) { return abs(x - y) < EPSL; }
-bool eq(const float x, const float y) { return abs(x - y) < EPS; }
 template<typename T> bool eq(const T x, const T y) { return x == y; }
+template<> bool eq<double>(const double x, const double y) { return abs(x - y) < EPSL; }
+template<> bool eq<float>(const float x, const float y) { return abs(x - y) < EPS; }
 template<typename T> bool neq(const T x, const T y) { return !(eq<T>(x, y)); }
 template<typename T> bool ge(const T x, const T y) { return (eq<T>(x, y) || (x > y)); }
 template<typename T> bool le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }
