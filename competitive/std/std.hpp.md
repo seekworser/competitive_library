@@ -63,7 +63,7 @@ data:
   - icon: ':warning:'
     path: competitive/graph/max_k_dijkstra.hpp
     title: max_k_dijkstra.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/scc.hpp
     title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
   - icon: ':heavy_check_mark:'
@@ -187,6 +187,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_1_C.test.cpp
     title: online_test/AOJ/GRL_1_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/GRL_3_C.test.cpp
+    title: online_test/AOJ/GRL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ITPI_1_A.test.cpp
     title: online_test/AOJ/ITPI_1_A.test.cpp
@@ -426,6 +429,7 @@ data:
   - online_test/AOJ/DSL_2_I.test.cpp
   - online_test/AOJ/ALDS_1_14_B.test.cpp
   - online_test/AOJ/CGL_3_B.test.cpp
+  - online_test/AOJ/GRL_3_C.test.cpp
   - online_test/AOJ/ALDS_1_10_C.test.cpp
   - online_test/AOJ/GRL_1_C.test.cpp
   - online_test/AOJ/DSL_2_H.test.cpp

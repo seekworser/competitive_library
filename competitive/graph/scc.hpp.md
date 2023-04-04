@@ -8,10 +8,13 @@ data:
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/GRL_3_C.test.cpp
+    title: online_test/AOJ/GRL_3_C.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/graph/scc.md
     document_title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
@@ -148,8 +151,9 @@ data:
   path: competitive/graph/scc.hpp
   requiredBy: []
   timestamp: '2023-04-03 20:00:04+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - online_test/AOJ/GRL_3_C.test.cpp
 documentation_of: competitive/graph/scc.hpp
 layout: document
 redirect_from:

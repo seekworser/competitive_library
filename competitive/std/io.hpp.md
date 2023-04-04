@@ -67,6 +67,9 @@ data:
     path: online_test/AOJ/GRL_1_C.test.cpp
     title: online_test/AOJ/GRL_1_C.test.cpp
   - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/GRL_3_C.test.cpp
+    title: online_test/AOJ/GRL_3_C.test.cpp
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ITPI_1_A.test.cpp
     title: online_test/AOJ/ITPI_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -305,6 +308,7 @@ data:
   - online_test/AOJ/DSL_2_I.test.cpp
   - online_test/AOJ/ALDS_1_14_B.test.cpp
   - online_test/AOJ/CGL_3_B.test.cpp
+  - online_test/AOJ/GRL_3_C.test.cpp
   - online_test/AOJ/ALDS_1_10_C.test.cpp
   - online_test/AOJ/GRL_1_C.test.cpp
   - online_test/AOJ/DSL_2_H.test.cpp
