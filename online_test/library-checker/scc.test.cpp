@@ -1,4 +1,4 @@
-#define PROBLEM ""
+#define PROBLEM "https://judge.yosupo.jp/problem/scc"
 #include "competitive/std/std.hpp"
 #include "competitive/graph/scc.hpp"
 #include "competitive/std/io.hpp"
