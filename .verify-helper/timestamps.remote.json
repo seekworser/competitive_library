@@ -24,6 +24,7 @@
 "online_test/AOJ/ITPI_1_A.test.cpp": "2023-04-04 12:00:09 +0900",
 "online_test/library-checker/aplusb.test.cpp": "2023-04-04 12:00:09 +0900",
 "online_test/library-checker/longest_increasing_subsequence.test.cpp": "2023-04-04 16:11:57 +0900",
+"online_test/library-checker/scc.test.cpp": "2023-04-04 17:43:45 +0900",
 "online_test/library-checker/shortest_path_dijkstra.test.cpp": "2023-04-04 12:00:09 +0900",
 "online_test/library-checker/shortest_path_fast_dijkstra.test.cpp": "2023-04-04 12:00:09 +0900",
 "online_test/library-checker/static_range_sum.test.cpp": "2023-04-04 12:00:09 +0900",
