@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
     title: "BIT\uFF08Binary Index Tree\uFF09"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -171,16 +171,16 @@ data:
     \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
     \ T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs\
     \ docs/std/io.md\n */\n#line 5 \"online_test/library-checker/static_range_sum.test.cpp\"\
-    \nint main() {\n    int n,q;\n    cin >> n >> q;\n    BIT<ll> b(n);\n    rep(i,\
-    \ n) {\n        ll x;\n        cin >> x;\n        b.add(i, x);\n    }\n    rep(i,\
-    \ q) {\n        int l,r;\n        cin >> l >> r;\n        cout << b.sum(l, r)\
-    \ << \"\\n\";\n    }\n}\n"
+    \nint main() {\n    int n,q;\n    input(n, q);\n    Bit<ll> b(n);\n    rep(i,\
+    \ n) {\n        ll x;\n        input(x);\n        b.add(i, x);\n    }\n    rep(i,\
+    \ q) {\n        int l,r;\n        input(l, r);\n        print(b.sum(l, r));\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
     \ \"competitive/std/std.hpp\"\n#include \"competitive/data_structure/bit.hpp\"\
-    \n#include \"competitive/std/io.hpp\"\nint main() {\n    int n,q;\n    cin >>\
-    \ n >> q;\n    BIT<ll> b(n);\n    rep(i, n) {\n        ll x;\n        cin >> x;\n\
-    \        b.add(i, x);\n    }\n    rep(i, q) {\n        int l,r;\n        cin >>\
-    \ l >> r;\n        cout << b.sum(l, r) << \"\\n\";\n    }\n}"
+    \n#include \"competitive/std/io.hpp\"\nint main() {\n    int n,q;\n    input(n,\
+    \ q);\n    Bit<ll> b(n);\n    rep(i, n) {\n        ll x;\n        input(x);\n\
+    \        b.add(i, x);\n    }\n    rep(i, q) {\n        int l,r;\n        input(l,\
+    \ r);\n        print(b.sum(l, r));\n    }\n}"
   dependsOn:
   - competitive/std/std.hpp
   - competitive/data_structure/bit.hpp
@@ -188,8 +188,8 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/static_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-04 18:59:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-04 19:10:57+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/static_range_sum.test.cpp
 layout: document

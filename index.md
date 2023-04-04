@@ -73,7 +73,7 @@ data:
       title: mo.hpp
   - name: competitive/data_structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/data_structure/bit.hpp
       title: "BIT\uFF08Binary Index Tree\uFF09"
     - icon: ':heavy_check_mark:'
@@ -236,10 +236,10 @@ data:
       title: tree
   - name: competitive/std
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/std/io.hpp
       title: io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/std/std.hpp
       title: std.hpp
   - name: competitive/string
@@ -352,7 +352,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
       title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/library-checker/static_range_sum.test.cpp
       title: online_test/library-checker/static_range_sum.test.cpp
   - name: online_test/yukicoder

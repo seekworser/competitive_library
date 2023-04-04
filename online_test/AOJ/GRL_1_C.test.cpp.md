@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/warshall_floyd.hpp
     title: warshall_floyd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []

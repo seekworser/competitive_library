@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy:
@@ -93,7 +93,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -102,9 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-hello-world.test.cpp
     title: online_test/yukicoder/yuki-hello-world.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/std/io.md
     document_title: io.hpp
@@ -298,7 +298,7 @@ data:
   requiredBy:
   - online_test/AOJ/NTL_1_D.cpp
   timestamp: '2023-04-04 12:00:09+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
   - online_test/library-checker/scc.test.cpp

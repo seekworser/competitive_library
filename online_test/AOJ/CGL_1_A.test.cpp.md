@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/math/fraction.hpp
     title: fraction.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []

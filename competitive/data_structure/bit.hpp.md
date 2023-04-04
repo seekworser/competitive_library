@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy:
@@ -9,15 +9,15 @@ data:
     path: competitive/math/inversion_num.hpp
     title: inversion_num.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-649.test.cpp
     title: online_test/yukicoder/yuki-649.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/bit.md
     document_title: "BIT\uFF08Binary Index Tree\uFF09"
@@ -147,7 +147,7 @@ data:
   requiredBy:
   - competitive/math/inversion_num.hpp
   timestamp: '2023-04-04 18:59:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/static_range_sum.test.cpp
   - online_test/yukicoder/yuki-649.test.cpp
