@@ -123,13 +123,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/graph/fast_dijkstra.hpp
       title: fast_dijkstra.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/graph/graph.hpp
       title: graph.hpp
     - icon: ':warning:'
       path: competitive/graph/max_k_dijkstra.hpp
       title: max_k_dijkstra.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/graph/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
     - icon: ':heavy_check_mark:'
@@ -236,10 +236,10 @@ data:
       title: tree
   - name: competitive/std
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/std/io.hpp
       title: io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/std/std.hpp
       title: std.hpp
   - name: competitive/string
@@ -343,7 +343,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/longest_increasing_subsequence.test.cpp
       title: online_test/library-checker/longest_increasing_subsequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/library-checker/scc.test.cpp
       title: online_test/library-checker/scc.test.cpp
     - icon: ':heavy_check_mark:'

@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: competitive/math/euler_phi.hpp
     title: euler_phi.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []

@@ -1,34 +1,36 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/scc.hpp
     title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: ''
-    links: []
+    PROBLEM: https://judge.yosupo.jp/problem/scc
+    links:
+    - https://judge.yosupo.jp/problem/scc
   bundledCode: "#line 1 \"online_test/library-checker/scc.test.cpp\"\n#define PROBLEM\
-    \ \"\"\n#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
-    \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
-    \ GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
-    )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
-    \nusing ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\n\
-    using vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
+    \ \"https://judge.yosupo.jp/problem/scc\"\n#line 2 \"competitive/std/std.hpp\"\
+    \n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n#pragma GCC target (\"avx\")\n\
+    #pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\")\n#pragma\
+    \ GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n#endif\
+    \ // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\nusing\
+    \ ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\nusing\
+    \ vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
     \ vl = vector<ll>;  using vvl = vector<vl>; using vvvl = vector<vvl>;\nusing vb\
     \ = vector<bool>; using vvb = vector<vb>; using vvvb = vector<vvb>;\nusing vc\
     \ = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd\
@@ -194,12 +196,12 @@ data:
     \    rep(i, m) input(from[i], to[i]);\n    Graph g(n, from, to, cost);\n    auto\
     \ scc = scc_decompose(g);\n    print(sz(scc));\n    repe(e, scc) {\n        print_sep_end(\"\
     \", \" \", sz(e));\n        print(e);\n    }\n}\n"
-  code: "#define PROBLEM \"\"\n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/scc.hpp\"\
-    \n#include \"competitive/std/io.hpp\"\nint main() {\n    ll n,m;\n    input(n,\
-    \ m);\n    vi from(m), to(m), cost(m, 1);\n    rep(i, m) input(from[i], to[i]);\n\
-    \    Graph g(n, from, to, cost);\n    auto scc = scc_decompose(g);\n    print(sz(scc));\n\
-    \    repe(e, scc) {\n        print_sep_end(\"\", \" \", sz(e));\n        print(e);\n\
-    \    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n#include \"competitive/std/std.hpp\"\
+    \n#include \"competitive/graph/scc.hpp\"\n#include \"competitive/std/io.hpp\"\n\
+    int main() {\n    ll n,m;\n    input(n, m);\n    vi from(m), to(m), cost(m, 1);\n\
+    \    rep(i, m) input(from[i], to[i]);\n    Graph g(n, from, to, cost);\n    auto\
+    \ scc = scc_decompose(g);\n    print(sz(scc));\n    repe(e, scc) {\n        print_sep_end(\"\
+    \", \" \", sz(e));\n        print(e);\n    }\n}\n"
   dependsOn:
   - competitive/std/std.hpp
   - competitive/graph/scc.hpp
@@ -208,8 +210,8 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/scc.test.cpp
   requiredBy: []
-  timestamp: '2023-04-04 16:11:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-04 17:43:45+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/scc.test.cpp
 layout: document

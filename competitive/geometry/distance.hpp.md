@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/intersection.hpp
     title: intersection.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
