@@ -73,6 +73,9 @@ data:
     path: competitive/helper/board_helper.hpp
     title: board_helper.hpp
   - icon: ':warning:'
+    path: competitive/helper/compress.hpp
+    title: "\u5EA7\u6A19\u5727\u7E2E"
+  - icon: ':warning:'
     path: competitive/math/baby_step_giant_step.hpp
     title: Baby Step Giant Step
   - icon: ':warning:'
@@ -378,6 +381,7 @@ data:
   - competitive/tree/depth.hpp
   - competitive/tree/diameter.hpp
   - competitive/tree/kruskal.hpp
+  - competitive/helper/compress.hpp
   - competitive/helper/board_helper.hpp
   - competitive/graph/dijkstra.hpp
   - competitive/graph/graph.hpp

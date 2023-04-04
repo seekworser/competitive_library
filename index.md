@@ -140,6 +140,9 @@ data:
     - icon: ':warning:'
       path: competitive/helper/board_helper.hpp
       title: board_helper.hpp
+    - icon: ':warning:'
+      path: competitive/helper/compress.hpp
+      title: "\u5EA7\u6A19\u5727\u7E2E"
   - name: competitive/itertools
     pages:
     - icon: ':warning:'
