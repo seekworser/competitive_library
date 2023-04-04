@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: online_test/yukicoder/yuki-649.test.cpp
+    title: online_test/yukicoder/yuki-649.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/helper/compress.md
     document_title: "\u5EA7\u6A19\u5727\u7E2E"
@@ -84,36 +87,38 @@ data:
     \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
     \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
     \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/helper/compress.hpp\"\n\
-    template <typename Val, typename Key> struct Compress {\n    vector<Key> coordinates;\n\
+    template <typename Key, typename Val> struct Compress {\n    vector<Key> coordinates;\n\
     \    vector<Val> val;\n    Compress() = default;\n    Compress(const vector<Key>\
-    \ &_coordinates, Val default_val) {\n        coordinates = _coordinates;\n   \
-    \     uniq(coordinates);\n        sort(all(coordinates));\n        val = vector<Val>(sz(coordinates),\
+    \ &_coordinates, Val default_val = Val(0)) {\n        coordinates = _coordinates;\n\
+    \        uniq(coordinates);\n        sort(all(coordinates));\n        val = vector<Val>(sz(coordinates),\
     \ default_val);\n    }\n    int pos(const Key key) const {\n        auto iter\
     \ = lower_bound(all(coordinates), key);\n        assert(iter != coordinates.end()\
     \ && *iter == key);\n        return distance(coordinates.begin(), iter);\n   \
     \ }\n    Val &operator[](const Key key) {\n        return val[pos(key)];\n   \
-    \ }\n    Key &key_at(const int i) const {\n        return coordinates[i];\n  \
-    \  }\n};\n/**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n * @docs docs/helper/compress.md\n\
-    \ */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate <typename Val,\
-    \ typename Key> struct Compress {\n    vector<Key> coordinates;\n    vector<Val>\
+    \ }\n    Key key_at(const int i) const {\n        return coordinates[i];\n   \
+    \ }\n    size_t size() const {\n        return coordinates.size();\n    }\n};\n\
+    /**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n * @docs docs/helper/compress.md\n */\n"
+  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate <typename Key,\
+    \ typename Val> struct Compress {\n    vector<Key> coordinates;\n    vector<Val>\
     \ val;\n    Compress() = default;\n    Compress(const vector<Key> &_coordinates,\
-    \ Val default_val) {\n        coordinates = _coordinates;\n        uniq(coordinates);\n\
+    \ Val default_val = Val(0)) {\n        coordinates = _coordinates;\n        uniq(coordinates);\n\
     \        sort(all(coordinates));\n        val = vector<Val>(sz(coordinates), default_val);\n\
     \    }\n    int pos(const Key key) const {\n        auto iter = lower_bound(all(coordinates),\
     \ key);\n        assert(iter != coordinates.end() && *iter == key);\n        return\
     \ distance(coordinates.begin(), iter);\n    }\n    Val &operator[](const Key key)\
-    \ {\n        return val[pos(key)];\n    }\n    Key &key_at(const int i) const\
-    \ {\n        return coordinates[i];\n    }\n};\n/**\n * @brief \u5EA7\u6A19\u5727\
-    \u7E2E\n * @docs docs/helper/compress.md\n */\n"
+    \ {\n        return val[pos(key)];\n    }\n    Key key_at(const int i) const {\n\
+    \        return coordinates[i];\n    }\n    size_t size() const {\n        return\
+    \ coordinates.size();\n    }\n};\n/**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n *\
+    \ @docs docs/helper/compress.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/helper/compress.hpp
   requiredBy: []
-  timestamp: '2023-04-04 17:32:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-04-04 18:59:15+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - online_test/yukicoder/yuki-649.test.cpp
 documentation_of: competitive/helper/compress.hpp
 layout: document
 redirect_from:

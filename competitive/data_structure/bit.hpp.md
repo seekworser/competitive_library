@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy:
@@ -9,12 +9,15 @@ data:
     path: competitive/math/inversion_num.hpp
     title: inversion_num.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: online_test/yukicoder/yuki-649.test.cpp
+    title: online_test/yukicoder/yuki-649.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data_structure/bit.md
     document_title: "BIT\uFF08Binary Index Tree\uFF09"
@@ -90,38 +93,64 @@ data:
     \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
     \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
     \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/data_structure/bit.hpp\"\
-    \ntemplate<class T> struct BIT {\n    private:\n        vector<T> bit;\n     \
-    \   int _n;\n    public:\n        BIT(int size):_n(size),bit(size+1, 0) {}\n \
-    \       void add(int p, T x) {\n            assert(0 <= p && p <= _n);\n     \
-    \       p++;\n            for (int i = p; i <= _n; i += i & -i) {\n          \
-    \      bit[i] += x;\n            }\n        }\n        T sum_from_left(int p)\
-    \ {\n            assert(0 <= p && p <= _n);\n            T ret = 0;\n        \
-    \    for (int i = p; i > 0; i -= i & -i){\n                ret += bit[i];\n  \
-    \          }\n            return ret;\n        }\n        T sum(int ps, int pt)\
-    \ {\n            return sum_from_left(pt) - sum_from_left(ps);\n        }\n};\n\
-    /**\n * @brief BIT\uFF08Binary Index Tree\uFF09\n * @docs docs/data_structure/bit.md\n\
+    \ntemplate<typename T> struct Bit {\n    vector<T> bit;\n    int _n;\n    Bit(int\
+    \ size, T val = T(0)) : _n(size), bit(size+1, val) {}\n    Bit(const vector<T>\
+    \ val) : _n(sz(val)), bit(sz(val)+1, T(0)) {\n        rep(i, _n) set(i, val[i]);\n\
+    \    }\n    void add(int p, T x) {\n        assert(0 <= p && p <= _n);\n     \
+    \   p++;\n        for (int i = p; i <= _n; i += i & -i) {\n            bit[i]\
+    \ += x;\n        }\n    }\n    T sum(int r) const {\n        assert(0 <= r &&\
+    \ r <= _n);\n        T ret = 0;\n        for (int i = r; i > 0; i -= i & -i){\n\
+    \            ret += bit[i];\n        }\n        return ret;\n    }\n    T sum(int\
+    \ l, int r) const {\n        return sum(r) - sum(l);\n    }\n    T get(int p)\
+    \ const {\n        assert(0 <= p && p < _n);\n        return sum(p, p+1);\n  \
+    \  }\n    void set(int p, T x) {\n        assert(0 <= p && p < _n);\n        add(p,\
+    \ x - get(p));\n    }\n    int lower_bound(T w) const {\n        if (w <= 0) return\
+    \ 0;\n        int x = 0;\n        for (int k = 1 << __lg(_n); k; k >>= 1) {\n\
+    \            if (x + k <= _n && bit[x + k] < w) {\n                w -= bit[x\
+    \ + k];\n                x += k;\n            }\n        }\n        return x;\n\
+    \    }\n    int upper_bound(T w) const {\n        if (w < 0) return 0;\n     \
+    \   int x = 0;\n        for (int k = 1 << __lg(_n); k; k >>= 1) {\n          \
+    \  if (x + k <= _n && bit[x + k] <= w) {\n                w -= bit[x + k];\n \
+    \               x += k;\n            }\n        }\n        return x;\n    }\n\
+    };\ntemplate <typename T> std::ostream& operator<<(std::ostream& os, const Bit<T>\
+    \ bit) {\n    rep(i, bit._n) { os << bit.get(i); if (i != bit._n-1) os << \" \"\
+    ; }\n    return os;\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\n * @docs\
+    \ docs/data_structure/bit.md\n */\n"
+  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<typename T>\
+    \ struct Bit {\n    vector<T> bit;\n    int _n;\n    Bit(int size, T val = T(0))\
+    \ : _n(size), bit(size+1, val) {}\n    Bit(const vector<T> val) : _n(sz(val)),\
+    \ bit(sz(val)+1, T(0)) {\n        rep(i, _n) set(i, val[i]);\n    }\n    void\
+    \ add(int p, T x) {\n        assert(0 <= p && p <= _n);\n        p++;\n      \
+    \  for (int i = p; i <= _n; i += i & -i) {\n            bit[i] += x;\n       \
+    \ }\n    }\n    T sum(int r) const {\n        assert(0 <= r && r <= _n);\n   \
+    \     T ret = 0;\n        for (int i = r; i > 0; i -= i & -i){\n            ret\
+    \ += bit[i];\n        }\n        return ret;\n    }\n    T sum(int l, int r) const\
+    \ {\n        return sum(r) - sum(l);\n    }\n    T get(int p) const {\n      \
+    \  assert(0 <= p && p < _n);\n        return sum(p, p+1);\n    }\n    void set(int\
+    \ p, T x) {\n        assert(0 <= p && p < _n);\n        add(p, x - get(p));\n\
+    \    }\n    int lower_bound(T w) const {\n        if (w <= 0) return 0;\n    \
+    \    int x = 0;\n        for (int k = 1 << __lg(_n); k; k >>= 1) {\n         \
+    \   if (x + k <= _n && bit[x + k] < w) {\n                w -= bit[x + k];\n \
+    \               x += k;\n            }\n        }\n        return x;\n    }\n\
+    \    int upper_bound(T w) const {\n        if (w < 0) return 0;\n        int x\
+    \ = 0;\n        for (int k = 1 << __lg(_n); k; k >>= 1) {\n            if (x +\
+    \ k <= _n && bit[x + k] <= w) {\n                w -= bit[x + k];\n          \
+    \      x += k;\n            }\n        }\n        return x;\n    }\n};\ntemplate\
+    \ <typename T> std::ostream& operator<<(std::ostream& os, const Bit<T> bit) {\n\
+    \    rep(i, bit._n) { os << bit.get(i); if (i != bit._n-1) os << \" \"; }\n  \
+    \  return os;\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\n * @docs docs/data_structure/bit.md\n\
     \ */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<class T> struct\
-    \ BIT {\n    private:\n        vector<T> bit;\n        int _n;\n    public:\n\
-    \        BIT(int size):_n(size),bit(size+1, 0) {}\n        void add(int p, T x)\
-    \ {\n            assert(0 <= p && p <= _n);\n            p++;\n            for\
-    \ (int i = p; i <= _n; i += i & -i) {\n                bit[i] += x;\n        \
-    \    }\n        }\n        T sum_from_left(int p) {\n            assert(0 <= p\
-    \ && p <= _n);\n            T ret = 0;\n            for (int i = p; i > 0; i -=\
-    \ i & -i){\n                ret += bit[i];\n            }\n            return\
-    \ ret;\n        }\n        T sum(int ps, int pt) {\n            return sum_from_left(pt)\
-    \ - sum_from_left(ps);\n        }\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\
-    \n * @docs docs/data_structure/bit.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/data_structure/bit.hpp
   requiredBy:
   - competitive/math/inversion_num.hpp
-  timestamp: '2023-04-04 12:00:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-04-04 18:59:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - online_test/library-checker/static_range_sum.test.cpp
+  - online_test/yukicoder/yuki-649.test.cpp
 documentation_of: competitive/data_structure/bit.hpp
 layout: document
 redirect_from:

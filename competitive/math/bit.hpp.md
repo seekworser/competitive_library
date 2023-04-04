@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/math/bit.md
-    document_title: bit.hpp
+    document_title: "\u30D3\u30C3\u30C8\u6F14\u7B97"
     links: []
   bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
     \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
@@ -92,7 +92,8 @@ data:
     \ digit(lsb(x)); }\n    int count(ll x) { return __builtin_popcountll(x); }\n\
     \    string to_string(ll x, bool rev=true) { stringstream ss; while (x) { ss <<\
     \ lb(x); x >>= 1;} string s(ss.str()); if (rev) reverse(all(s)); return s; }\n\
-    }\n/**\n * @brief bit.hpp\n * @docs docs/math/bit.md\n */\n"
+    }\n/**\n * @brief \u30D3\u30C3\u30C8\u6F14\u7B97\n * @docs docs/math/bit.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\nnamespace bit{\n    bool\
     \ lb(ll x) { return (x & 1); }\n    bool get(ll x, int n) { return ((x >> n) &\
     \ 1); }\n    ll update(ll x, int n, bool b) { return (x & ~(1LL << n)) + (b <<\
@@ -101,14 +102,14 @@ data:
     \ 0; return 1LL << (digit(x) - 1); }\n    int lsbd(ll x) {return digit(lsb(x));\
     \ }\n    int count(ll x) { return __builtin_popcountll(x); }\n    string to_string(ll\
     \ x, bool rev=true) { stringstream ss; while (x) { ss << lb(x); x >>= 1;} string\
-    \ s(ss.str()); if (rev) reverse(all(s)); return s; }\n}\n/**\n * @brief bit.hpp\n\
-    \ * @docs docs/math/bit.md\n */\n"
+    \ s(ss.str()); if (rev) reverse(all(s)); return s; }\n}\n/**\n * @brief \u30D3\
+    \u30C3\u30C8\u6F14\u7B97\n * @docs docs/math/bit.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/math/bit.hpp
   requiredBy: []
-  timestamp: '2023-04-04 12:00:09+09:00'
+  timestamp: '2023-04-04 18:59:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/bit.hpp
@@ -116,5 +117,5 @@ layout: document
 redirect_from:
 - /library/competitive/math/bit.hpp
 - /library/competitive/math/bit.hpp.html
-title: bit.hpp
+title: "\u30D3\u30C3\u30C8\u6F14\u7B97"
 ---

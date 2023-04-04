@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: competitive/data_structure/bit.hpp
+    title: "BIT\uFF08Binary Index Tree\uFF09"
   - icon: ':heavy_check_mark:'
-    path: competitive/graph/graph.hpp
-    title: graph.hpp
-  - icon: ':heavy_check_mark:'
-    path: competitive/graph/warshall_floyd.hpp
-    title: warshall_floyd.hpp
+    path: competitive/helper/compress.hpp
+    title: "\u5EA7\u6A19\u5727\u7E2E"
   - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
@@ -20,16 +20,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
+    PROBLEM: https://yukicoder.me/problems/no/649
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
-  bundledCode: "#line 1 \"online_test/AOJ/GRL_1_C.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
-    \n#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n\
-    #pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
-    unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
-    )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
-    \nusing ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\n\
-    using vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
+    - https://yukicoder.me/problems/no/649
+  bundledCode: "#line 1 \"online_test/yukicoder/yuki-649.test.cpp\"\n#define PROBLEM\
+    \ \"https://yukicoder.me/problems/no/649\"\n#line 2 \"competitive/std/std.hpp\"\
+    \n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n#pragma GCC target (\"avx\")\n\
+    #pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\")\n#pragma\
+    \ GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n#endif\
+    \ // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\nusing\
+    \ ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\nusing\
+    \ vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
     \ vl = vector<ll>;  using vvl = vector<vl>; using vvvl = vector<vvl>;\nusing vb\
     \ = vector<bool>; using vvb = vector<vb>; using vvvb = vector<vvb>;\nusing vc\
     \ = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd\
@@ -94,58 +95,50 @@ data:
     \u3092\u66F4\u65B0\uFF08\u66F4\u65B0\u3055\u308C\u305F\u3089 true \u3092\u8FD4\
     \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
     \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
-    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/graph/graph.hpp\"\ntemplate\
-    \ <class Cost> struct Graph{\npublic:\n    struct Edge {\n        int to;\n  \
-    \      Cost cost;\n        Edge() {};\n        Edge(int _to, Cost _cost) : to(_to),\
-    \ cost(_cost) {};\n    };\n    struct AdjacencyListRange{\n        using iterator\
-    \ = typename std::vector<Edge>::const_iterator;\n        iterator begi, endi;\n\
-    \        iterator begin() const { return begi; }\n        iterator end() const\
-    \ { return endi; }\n        int size() const { return (int)distance(begi, endi);\
-    \ }\n        const Edge& operator[](int i) const { return begi[i]; }\n    };\n\
-    private:\npublic:\n    vector<Edge> E;\n    vector<int> I;\n    int n;\n    Graph()\
-    \ : n(0) {}\n    Graph(int _n) : n(_n) {}\n    Graph(int _n, const vector<int>&\
-    \ from, vector<int>& to, vector<Cost>& cost, bool rev = false) : n(_n) {\n   \
-    \     vector<int> buf(n+1, 0);\n        for(int i=0; i<(int)from.size(); i++){\n\
-    \            ++buf[from[i]];\n            if (rev) ++buf[to[i]];\n        }\n\
-    \        for(int i=1; i<=_n; i++) buf[i] += buf[i-1];\n        E.resize(buf[n]);\n\
-    \        for(int i=(int)from.size()-1; i>=0; i--){\n            int u = from[i];\n\
-    \            int v = to[i];\n            Cost c = cost[i];\n            E[--buf[u]]\
-    \ = Edge(v, c);\n            if(rev) E[--buf[v]] = Edge(u, c);\n        }\n  \
-    \      I = move(buf);\n    }\n    AdjacencyListRange operator[](int u) const {\n\
-    \        return AdjacencyListRange{ E.begin() + I[u], E.begin() + I[u+1] };\n\
-    \    }\n    int num_vertices() const { return n; }\n    int size() const { return\
-    \ num_vertices(); }\n    int num_edges() const { return E.size(); }\n    Graph<Cost>\
-    \ reversed_edges() const {\n        Graph<Cost> res;\n        int _n = res.n =\
-    \ n;\n        vi buf(n+1, 0);\n        for(auto v : E) ++buf[v.to];\n        for(int\
-    \ i=1; i<=n; i++) buf[i] += buf[i-1];\n        res.E.resize(buf[n]);\n       \
-    \ for(int u=0; u<n; u++) for(auto v : operator[](u)) res.E[--buf[v.to]] = {u,\
-    \ v.cost};\n        res.I = std::move(buf);\n        return res;\n    }\n};\n\
-    template <class T> ostream& operator<<(ostream& os, Graph<T> g) {\n    bool first\
-    \ = true;\n    rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n\
-    \        else os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n\
-    \    }\n    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n\
-    \ */\n#line 4 \"competitive/graph/warshall_floyd.hpp\"\ntemplate <class Cost>\
-    \ bool warshall_floyd(\n    Graph<Cost> &G,\n    vector<vector<Cost>> &min_cost,\n\
-    \    Cost inf=INF,\n    Cost identity=0\n) {\n    min_cost = vector<vector<Cost>>(G.n,\
-    \ vector<Cost>(G.n, inf));\n    rep(i, G.n) repe(e, G[i]) {\n        min_cost[i][e.to]\
-    \ = e.cost;\n    }\n    rep(i, G.n) chmin(min_cost[i][i], identity);\n    rep(k,\
-    \ G.n) {\n        rep(i, G.n) {\n            rep(j, G.n) {\n                if\
-    \ (min_cost[i][k] == inf || min_cost[k][j] == inf) continue;\n               \
-    \ if (min_cost[i][j] == inf) {\n                    min_cost[i][j] = min_cost[i][k]\
-    \ + min_cost[k][j];\n                } else {\n                    chmin(min_cost[i][j],\
-    \ min_cost[i][k] + min_cost[k][j]);\n                }\n            }\n      \
-    \  }\n    }\n    rep(i, G.n) {\n        if (min_cost[i][i] < identity) return\
-    \ false;\n    }\n    return true;\n}\n/**\n * @brief warshall_floyd.hpp\n * @docs\
-    \ docs/graph/warshall_floyd.md\n */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\
-    \u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline istream&\
-    \ operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline istream&\
-    \ operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U> inline ostream&\
-    \ operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class T> inline ostream&\
-    \ operator<<(ostream& os, const vector<T>& v);\ntemplate <typename T, typename\
-    \ S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename T>\
-    \ ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
+    \ * @docs docs/std/std.md\n */\n#line 3 \"competitive/helper/compress.hpp\"\n\
+    template <typename Key, typename Val> struct Compress {\n    vector<Key> coordinates;\n\
+    \    vector<Val> val;\n    Compress() = default;\n    Compress(const vector<Key>\
+    \ &_coordinates, Val default_val = Val(0)) {\n        coordinates = _coordinates;\n\
+    \        uniq(coordinates);\n        sort(all(coordinates));\n        val = vector<Val>(sz(coordinates),\
+    \ default_val);\n    }\n    int pos(const Key key) const {\n        auto iter\
+    \ = lower_bound(all(coordinates), key);\n        assert(iter != coordinates.end()\
+    \ && *iter == key);\n        return distance(coordinates.begin(), iter);\n   \
+    \ }\n    Val &operator[](const Key key) {\n        return val[pos(key)];\n   \
+    \ }\n    Key key_at(const int i) const {\n        return coordinates[i];\n   \
+    \ }\n    size_t size() const {\n        return coordinates.size();\n    }\n};\n\
+    /**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n * @docs docs/helper/compress.md\n */\n\
+    #line 3 \"competitive/data_structure/bit.hpp\"\ntemplate<typename T> struct Bit\
+    \ {\n    vector<T> bit;\n    int _n;\n    Bit(int size, T val = T(0)) : _n(size),\
+    \ bit(size+1, val) {}\n    Bit(const vector<T> val) : _n(sz(val)), bit(sz(val)+1,\
+    \ T(0)) {\n        rep(i, _n) set(i, val[i]);\n    }\n    void add(int p, T x)\
+    \ {\n        assert(0 <= p && p <= _n);\n        p++;\n        for (int i = p;\
+    \ i <= _n; i += i & -i) {\n            bit[i] += x;\n        }\n    }\n    T sum(int\
+    \ r) const {\n        assert(0 <= r && r <= _n);\n        T ret = 0;\n       \
+    \ for (int i = r; i > 0; i -= i & -i){\n            ret += bit[i];\n        }\n\
+    \        return ret;\n    }\n    T sum(int l, int r) const {\n        return sum(r)\
+    \ - sum(l);\n    }\n    T get(int p) const {\n        assert(0 <= p && p < _n);\n\
+    \        return sum(p, p+1);\n    }\n    void set(int p, T x) {\n        assert(0\
+    \ <= p && p < _n);\n        add(p, x - get(p));\n    }\n    int lower_bound(T\
+    \ w) const {\n        if (w <= 0) return 0;\n        int x = 0;\n        for (int\
+    \ k = 1 << __lg(_n); k; k >>= 1) {\n            if (x + k <= _n && bit[x + k]\
+    \ < w) {\n                w -= bit[x + k];\n                x += k;\n        \
+    \    }\n        }\n        return x;\n    }\n    int upper_bound(T w) const {\n\
+    \        if (w < 0) return 0;\n        int x = 0;\n        for (int k = 1 << __lg(_n);\
+    \ k; k >>= 1) {\n            if (x + k <= _n && bit[x + k] <= w) {\n         \
+    \       w -= bit[x + k];\n                x += k;\n            }\n        }\n\
+    \        return x;\n    }\n};\ntemplate <typename T> std::ostream& operator<<(std::ostream&\
+    \ os, const Bit<T> bit) {\n    rep(i, bit._n) { os << bit.get(i); if (i != bit._n-1)\
+    \ os << \" \"; }\n    return os;\n};\n/**\n * @brief BIT\uFF08Binary Index Tree\uFF09\
+    \n * @docs docs/data_structure/bit.md\n */\n#line 3 \"competitive/std/io.hpp\"\
+    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
+    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
+    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
+    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
+    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
+    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
+    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
     \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
     \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
@@ -191,39 +184,44 @@ data:
     \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
     \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
     \ T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs\
-    \ docs/std/io.md\n */\n#line 5 \"online_test/AOJ/GRL_1_C.test.cpp\"\n\nint main()\
-    \ {\n    int V, E;\n    cin >> V >> E;\n    vi from(E), to(E);\n    vl cost(E);\n\
-    \    rep(i, E) {\n        cin >> from[i] >> to[i] >> cost[i];\n    }\n    Graph\
-    \ g(V, from, to, cost);\n    vvl min_cost;\n    bool valid = warshall_floyd(g,\
-    \ min_cost, INFL);\n    if (!valid) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n\
-    \        return 0;\n    }\n    rep(i, V) rep(j, V) {\n        if (min_cost[i][j]\
-    \ != INFL) cout << min_cost[i][j];\n        else cout << \"INF\";\n        if\
-    \ (j == V - 1) cout << \"\\n\";\n        else cout << \" \";\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
-    \n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/warshall_floyd.hpp\"\
-    \n#include \"competitive/std/io.hpp\"\n\nint main() {\n    int V, E;\n    cin\
-    \ >> V >> E;\n    vi from(E), to(E);\n    vl cost(E);\n    rep(i, E) {\n     \
-    \   cin >> from[i] >> to[i] >> cost[i];\n    }\n    Graph g(V, from, to, cost);\n\
-    \    vvl min_cost;\n    bool valid = warshall_floyd(g, min_cost, INFL);\n    if\
-    \ (!valid) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n\
-    \    }\n    rep(i, V) rep(j, V) {\n        if (min_cost[i][j] != INFL) cout <<\
-    \ min_cost[i][j];\n        else cout << \"INF\";\n        if (j == V - 1) cout\
-    \ << \"\\n\";\n        else cout << \" \";\n    }\n}"
+    \ docs/std/io.md\n */\n#line 6 \"online_test/yukicoder/yuki-649.test.cpp\"\nint\
+    \ main() {\n    ll q,k;\n    input(q,k);\n    vector<pll> query(q);\n    vl coordinates;\n\
+    \    rep(i, q) {\n        ll t;\n        input(t);\n        ll x;\n        if\
+    \ (t == 1) {\n            input(x);\n            coordinates.push_back(x);\n \
+    \       }\n        query[i] = make_pair(t, x);\n    }\n    Compress<ll,ll> c(coordinates);\n\
+    \    Bit<ll> bit(sz(c));\n    repe(q, query) {\n        auto [t, x] = q;\n   \
+    \     if (t == 1) {\n            bit.set(c.pos(x), 1+bit.get(c.pos(x)));\n   \
+    \     } else {\n            if (bit.sum(sz(c)) < k) {\n                print(-1);\n\
+    \                continue;\n            }\n            ll p = bit.lower_bound(k);\n\
+    \            print(c.key_at(p));\n            bit.add(p, -1);\n        }\n   \
+    \ }\n}\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/649\"\n#include \"competitive/std/std.hpp\"\
+    \n#include \"competitive/helper/compress.hpp\"\n#include \"competitive/data_structure/bit.hpp\"\
+    \n#include \"competitive/std/io.hpp\"\nint main() {\n    ll q,k;\n    input(q,k);\n\
+    \    vector<pll> query(q);\n    vl coordinates;\n    rep(i, q) {\n        ll t;\n\
+    \        input(t);\n        ll x;\n        if (t == 1) {\n            input(x);\n\
+    \            coordinates.push_back(x);\n        }\n        query[i] = make_pair(t,\
+    \ x);\n    }\n    Compress<ll,ll> c(coordinates);\n    Bit<ll> bit(sz(c));\n \
+    \   repe(q, query) {\n        auto [t, x] = q;\n        if (t == 1) {\n      \
+    \      bit.set(c.pos(x), 1+bit.get(c.pos(x)));\n        } else {\n           \
+    \ if (bit.sum(sz(c)) < k) {\n                print(-1);\n                continue;\n\
+    \            }\n            ll p = bit.lower_bound(k);\n            print(c.key_at(p));\n\
+    \            bit.add(p, -1);\n        }\n    }\n}\n"
   dependsOn:
   - competitive/std/std.hpp
-  - competitive/graph/warshall_floyd.hpp
-  - competitive/graph/graph.hpp
+  - competitive/helper/compress.hpp
+  - competitive/data_structure/bit.hpp
   - competitive/std/io.hpp
   isVerificationFile: true
-  path: online_test/AOJ/GRL_1_C.test.cpp
+  path: online_test/yukicoder/yuki-649.test.cpp
   requiredBy: []
-  timestamp: '2023-04-04 12:00:09+09:00'
+  timestamp: '2023-04-04 18:59:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: online_test/AOJ/GRL_1_C.test.cpp
+documentation_of: online_test/yukicoder/yuki-649.test.cpp
 layout: document
 redirect_from:
-- /verify/online_test/AOJ/GRL_1_C.test.cpp
-- /verify/online_test/AOJ/GRL_1_C.test.cpp.html
-title: online_test/AOJ/GRL_1_C.test.cpp
+- /verify/online_test/yukicoder/yuki-649.test.cpp
+- /verify/online_test/yukicoder/yuki-649.test.cpp.html
+title: online_test/yukicoder/yuki-649.test.cpp
 ---

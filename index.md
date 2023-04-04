@@ -73,7 +73,7 @@ data:
       title: mo.hpp
   - name: competitive/data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/data_structure/bit.hpp
       title: "BIT\uFF08Binary Index Tree\uFF09"
     - icon: ':heavy_check_mark:'
@@ -140,7 +140,7 @@ data:
     - icon: ':warning:'
       path: competitive/helper/board_helper.hpp
       title: board_helper.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: competitive/helper/compress.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
   - name: competitive/itertools
@@ -158,7 +158,7 @@ data:
       title: binsearch.hpp
     - icon: ':warning:'
       path: competitive/math/bit.hpp
-      title: bit.hpp
+      title: "\u30D3\u30C3\u30C8\u6F14\u7B97"
     - icon: ':warning:'
       path: competitive/math/combination.hpp
       title: combination.hpp
@@ -236,10 +236,10 @@ data:
       title: tree
   - name: competitive/std
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/std/io.hpp
       title: io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/std/std.hpp
       title: std.hpp
   - name: competitive/string
@@ -352,11 +352,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
       title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/library-checker/static_range_sum.test.cpp
       title: online_test/library-checker/static_range_sum.test.cpp
   - name: online_test/yukicoder
     pages:
+    - icon: ':heavy_check_mark:'
+      path: online_test/yukicoder/yuki-649.test.cpp
+      title: online_test/yukicoder/yuki-649.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/yukicoder/yuki-hello-world.test.cpp
       title: online_test/yukicoder/yuki-hello-world.test.cpp

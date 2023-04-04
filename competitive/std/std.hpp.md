@@ -14,7 +14,7 @@ data:
   - icon: ':warning:'
     path: competitive/algorithm/mo.hpp
     title: mo.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/data_structure/bit.hpp
     title: "BIT\uFF08Binary Index Tree\uFF09"
   - icon: ':heavy_check_mark:'
@@ -72,7 +72,7 @@ data:
   - icon: ':warning:'
     path: competitive/helper/board_helper.hpp
     title: board_helper.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/helper/compress.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
   - icon: ':warning:'
@@ -80,7 +80,7 @@ data:
     title: Baby Step Giant Step
   - icon: ':warning:'
     path: competitive/math/bit.hpp
-    title: bit.hpp
+    title: "\u30D3\u30C3\u30C8\u6F14\u7B97"
   - icon: ':warning:'
     path: competitive/math/combination.hpp
     title: combination.hpp
@@ -114,7 +114,7 @@ data:
   - icon: ':warning:'
     path: competitive/random/tree.hpp
     title: tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
   - icon: ':heavy_check_mark:'
@@ -217,15 +217,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: online_test/yukicoder/yuki-649.test.cpp
+    title: online_test/yukicoder/yuki-649.test.cpp
+  - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-hello-world.test.cpp
     title: online_test/yukicoder/yuki-hello-world.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/std/std.md
     document_title: std.hpp
@@ -420,7 +423,7 @@ data:
   - competitive/data_structure/splay_tree.hpp
   - online_test/AOJ/NTL_1_D.cpp
   timestamp: '2023-04-04 12:00:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
   - online_test/library-checker/scc.test.cpp
@@ -428,6 +431,7 @@ data:
   - online_test/library-checker/longest_increasing_subsequence.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp
   - online_test/library-checker/static_range_sum.test.cpp
+  - online_test/yukicoder/yuki-649.test.cpp
   - online_test/yukicoder/yuki-hello-world.test.cpp
   - online_test/AOJ/CGL_2_A.test.cpp
   - online_test/AOJ/CGL_1_A.test.cpp

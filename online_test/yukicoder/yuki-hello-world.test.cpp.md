@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -145,17 +145,17 @@ data:
     \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
     \ T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs\
     \ docs/std/io.md\n */\n#line 4 \"online_test/yukicoder/yuki-hello-world.test.cpp\"\
-    \nint main() {\n    cout << \"Hello World!\" << endl;\n}\n"
+    \nint main() {\n    cout << \"Hello World!\" << \"\\n\";\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/9000\"\n#include \"competitive/std/std.hpp\"\
     \n#include \"competitive/std/io.hpp\"\nint main() {\n    cout << \"Hello World!\"\
-    \ << endl;\n}"
+    \ << \"\\n\";\n}"
   dependsOn:
   - competitive/std/std.hpp
   - competitive/std/io.hpp
   isVerificationFile: true
   path: online_test/yukicoder/yuki-hello-world.test.cpp
   requiredBy: []
-  timestamp: '2023-04-04 12:00:09+09:00'
+  timestamp: '2023-04-04 18:59:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/yukicoder/yuki-hello-world.test.cpp
