@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/longest_increasing_subsequence"
+#define PROBLEM ""
 #include "competitive/std/std.hpp"
 #include "competitive/graph/scc.hpp"
 #include "competitive/std/io.hpp"

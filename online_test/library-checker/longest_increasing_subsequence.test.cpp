@@ -4,10 +4,10 @@
 #include "competitive/std/io.hpp"
 int main() {
     int n;
-    cin >> n;
+    input(n);
     vl a(n);
-    cin >> a;
+    input(a);
     vi lis_a = lis(a, true);
-    cout << sz(lis_a) << endl;
-    cout << lis_a << endl;
+    print(sz(lis_a));
+    print(lis_a);
 }
