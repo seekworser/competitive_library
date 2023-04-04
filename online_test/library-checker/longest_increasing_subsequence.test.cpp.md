@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/algorithm/longest_increasing_subsequence.hpp
     title: longest_increasing_subsequence.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -41,13 +41,13 @@ data:
     \ vector<T>(h4, val)))); }\ntemplate <class T> using priority_queue_min = priority_queue<T,\
     \ vector<T>, greater<T>>;\n// \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double\
     \ PI = 3.14159265358979323;\nconstexpr int INF = 100100111; constexpr ll INFL\
-    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const\
-    \ double x, const double y) { return abs(x - y) < EPSL; }\nbool eq(const float\
-    \ x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const\
-    \ T x, const T y) { return x == y; }\ntemplate<typename T> bool neq(const T x,\
-    \ const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool ge(const T\
-    \ x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename T> bool\
-    \ le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
+    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\ntemplate<typename\
+    \ T> bool eq(const T x, const T y) { return x == y; }\ntemplate<> bool eq<double>(const\
+    \ double x, const double y) { return abs(x - y) < EPSL; }\ntemplate<> bool eq<float>(const\
+    \ float x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool\
+    \ neq(const T x, const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool\
+    \ ge(const T x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename\
+    \ T> bool le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
     \ T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }\ntemplate<typename\
     \ T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353\
     \ = 998244353;\nconstexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\
@@ -160,14 +160,13 @@ data:
     \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
     \ T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs\
     \ docs/std/io.md\n */\n#line 5 \"online_test/library-checker/longest_increasing_subsequence.test.cpp\"\
-    \nint main() {\n    int n;\n    cin >> n;\n    vl a(n);\n    cin >> a;\n    vi\
-    \ lis_a = lis(a, true);\n    cout << sz(lis_a) << endl;\n    cout << lis_a <<\
-    \ endl;\n}\n"
+    \nint main() {\n    int n;\n    input(n);\n    vl a(n);\n    input(a);\n    vi\
+    \ lis_a = lis(a, true);\n    print(sz(lis_a));\n    print(lis_a);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n#include \"competitive/std/std.hpp\"\n#include \"competitive/algorithm/longest_increasing_subsequence.hpp\"\
-    \n#include \"competitive/std/io.hpp\"\nint main() {\n    int n;\n    cin >> n;\n\
-    \    vl a(n);\n    cin >> a;\n    vi lis_a = lis(a, true);\n    cout << sz(lis_a)\
-    \ << endl;\n    cout << lis_a << endl;\n}\n"
+    \n#include \"competitive/std/io.hpp\"\nint main() {\n    int n;\n    input(n);\n\
+    \    vl a(n);\n    input(a);\n    vi lis_a = lis(a, true);\n    print(sz(lis_a));\n\
+    \    print(lis_a);\n}\n"
   dependsOn:
   - competitive/std/std.hpp
   - competitive/algorithm/longest_increasing_subsequence.hpp
@@ -175,7 +174,7 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/longest_increasing_subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 18:31:43+09:00'
+  timestamp: '2023-04-04 16:11:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/longest_increasing_subsequence.test.cpp

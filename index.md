@@ -18,7 +18,7 @@ data:
     - icon: ':warning:'
       path: atcoder/internal_csr.hpp
       title: atcoder/internal_csr.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/internal_math.hpp
       title: atcoder/internal_math.hpp
     - icon: ':warning:'
@@ -27,7 +27,7 @@ data:
     - icon: ':warning:'
       path: atcoder/internal_scc.hpp
       title: atcoder/internal_scc.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/internal_type_traits.hpp
       title: atcoder/internal_type_traits.hpp
     - icon: ':heavy_check_mark:'
@@ -42,7 +42,7 @@ data:
     - icon: ':warning:'
       path: atcoder/mincostflow.hpp
       title: atcoder/mincostflow.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/modint.hpp
       title: atcoder/modint.hpp
     - icon: ':warning:'
@@ -123,13 +123,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/graph/fast_dijkstra.hpp
       title: fast_dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/graph/graph.hpp
       title: graph.hpp
     - icon: ':warning:'
       path: competitive/graph/max_k_dijkstra.hpp
       title: max_k_dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/graph/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
     - icon: ':heavy_check_mark:'
@@ -174,7 +174,7 @@ data:
     - icon: ':warning:'
       path: competitive/math/inversion_num.hpp
       title: inversion_num.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: competitive/math/modint.hpp
       title: modint.hpp
     - icon: ':warning:'
@@ -233,10 +233,10 @@ data:
       title: tree
   - name: competitive/std
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/std/io.hpp
       title: io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/std/std.hpp
       title: std.hpp
   - name: competitive/string
@@ -264,11 +264,17 @@ data:
   - name: online_test/AOJ
     pages:
     - icon: ':heavy_check_mark:'
+      path: online_test/AOJ/ NTL_1_B.test.cpp
+      title: online_test/AOJ/ NTL_1_B.test.cpp
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/ALDS_1_10_C.test.cpp
       title: online_test/AOJ/ALDS_1_10_C.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/ALDS_1_14_B.test.cpp
       title: online_test/AOJ/ALDS_1_14_B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: online_test/AOJ/AOJ3209.test.cpp
+      title: online_test/AOJ/AOJ3209.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/CGL_1_A.test.cpp
       title: online_test/AOJ/CGL_1_A.test.cpp
@@ -334,6 +340,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/longest_increasing_subsequence.test.cpp
       title: online_test/library-checker/longest_increasing_subsequence.test.cpp
+    - icon: ':x:'
+      path: online_test/library-checker/scc.test.cpp
+      title: online_test/library-checker/scc.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/shortest_path_dijkstra.test.cpp
       title: online_test/library-checker/shortest_path_dijkstra.test.cpp

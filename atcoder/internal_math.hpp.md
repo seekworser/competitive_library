@@ -8,16 +8,22 @@ data:
   - icon: ':warning:'
     path: atcoder/math.hpp
     title: atcoder/math.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/math/modint.hpp
     title: modint.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/ NTL_1_B.test.cpp
+    title: online_test/AOJ/ NTL_1_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/AOJ3209.test.cpp
+    title: online_test/AOJ/AOJ3209.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://en.wikipedia.org/wiki/Barrett_reduction
@@ -178,8 +184,10 @@ data:
   - atcoder/convolution.hpp
   - atcoder/math.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - online_test/AOJ/ NTL_1_B.test.cpp
+  - online_test/AOJ/AOJ3209.test.cpp
 documentation_of: atcoder/internal_math.hpp
 layout: document
 redirect_from:

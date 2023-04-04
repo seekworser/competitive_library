@@ -5,21 +5,25 @@ data:
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':question:'
+    path: competitive/graph/scc.hpp
+    title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
+  - icon: ':question:'
+    path: competitive/std/io.hpp
+    title: io.hpp
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: competitive/tree/diameter.hpp
-    title: diameter.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _isVerificationFailed: true
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
   attributes:
-    _deprecated_at_docs: docs/tree/depth.md
-    document_title: depth.hpp
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: ''
     links: []
-  bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
+  bundledCode: "#line 1 \"online_test/library-checker/scc.test.cpp\"\n#define PROBLEM\
+    \ \"\"\n#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
     \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
     \ GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
     )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
@@ -119,38 +123,98 @@ data:
     \ = true;\n    rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n\
     \        else os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n\
     \    }\n    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n\
-    \ */\n#line 4 \"competitive/tree/depth.hpp\"\n// return depth of the tree and\
-    \ deepest node number\ntemplate<class Cost> pair<Cost, int> depth(const Graph<Cost>&\
-    \ tree, int root, Cost identity=0) {\n    vb seen(tree.n, false);\n    Cost rev_d\
-    \ = identity;\n    int rev_x = root;\n    auto dfs = [&] (auto self, int x, int\
-    \ d) {\n        if (seen[x]) return;\n        seen[x] = true;\n        repe(e,\
-    \ tree[x]) {\n            self(self, e.to, d + e.cost);\n        }\n        if\
-    \ (chmax(rev_d, d)) rev_x = x;\n        return;\n    };\n    dfs(dfs, root, 0);\n\
-    \    return {rev_d, rev_x};\n}\n/**\n * @brief depth.hpp\n * @docs docs/tree/depth.md\n\
-    \ */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/graph.hpp\"\
-    \n// return depth of the tree and deepest node number\ntemplate<class Cost> pair<Cost,\
-    \ int> depth(const Graph<Cost>& tree, int root, Cost identity=0) {\n    vb seen(tree.n,\
-    \ false);\n    Cost rev_d = identity;\n    int rev_x = root;\n    auto dfs = [&]\
-    \ (auto self, int x, int d) {\n        if (seen[x]) return;\n        seen[x] =\
-    \ true;\n        repe(e, tree[x]) {\n            self(self, e.to, d + e.cost);\n\
-    \        }\n        if (chmax(rev_d, d)) rev_x = x;\n        return;\n    };\n\
-    \    dfs(dfs, root, 0);\n    return {rev_d, rev_x};\n}\n/**\n * @brief depth.hpp\n\
-    \ * @docs docs/tree/depth.md\n */\n"
+    \ */\n#line 4 \"competitive/graph/scc.hpp\"\ntemplate<typename Cost> vvi scc_decompose(Graph<Cost>\
+    \ g) {\n    vvi rev;\n    Graph<Cost> gi = g.reversed_edges();\n    int n = g.n;\n\
+    \    vi path;\n    vb seen(n, false);\n    auto dfs = [&] (auto self, int x) ->\
+    \ void {\n        if (seen[x]) return;\n        seen[x] = true;\n        repe(e,\
+    \ g[x]) self(self, e.to);\n        path.push_back(x);\n    };\n    rep(i, n) if(!seen[i])\
+    \ dfs(dfs, i);\n    seen = vb(n, false);\n    ll cnt = 0;\n    auto dfs2 = [&]\
+    \ (auto self, int x) -> void {\n        if (seen[x]) return;\n        seen[x]\
+    \ = true;\n        rev[cnt].push_back(x);\n        repe(e, gi[x]) self(self, e.to);\n\
+    \    };\n    reverse(all(path));\n    repe(e, path) if (!seen[e]) {\n        rev.push_back(vi());\n\
+    \        dfs2(dfs2, e);\n        cnt++;\n    }\n    return rev;\n};\n/**\n * @brief\
+    \ \u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09\n * @docs docs/graph/scc.md\n\
+    \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
+    \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
+    \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
+    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
+    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
+    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
+    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
+    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
+    template <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
+    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
+    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
+    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
+    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
+    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
+    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
+    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
+    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
+    \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
+    \ i++) { os << *itr << (i + 1 != (int)st.size() ? \" \" : \"\"); itr++; } return\
+    \ os; }\ntemplate <typename T> ostream &operator<<(ostream &os, const multiset<T>\
+    \ &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size(); i++) { os\
+    \ << *itr << (i + 1 != (int)st.size() ? \" \" : \"\"); itr++; } return os; }\n\
+    template <typename T> ostream &operator<<(ostream &os, queue<T> q) { while (q.size())\
+    \ { os << q.front() << \" \"; q.pop(); } return os; }\ntemplate <typename T> ostream\
+    \ &operator<<(ostream &os, deque<T> q) { while (q.size()) { os << q.front() <<\
+    \ \" \"; q.pop_front(); } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, stack<T> st) { while (st.size()) { os << st.top() << \" \"; st.pop(); }\
+    \ return os; }\ntemplate <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq) { while (pq.size()) { os << pq.top()\
+    \ << \" \"; pq.pop(); } return os; }\n\ntemplate <typename T> void print_sep_end(string\
+    \ sep, string end, const T& val) { (void)sep; cout << val << end; };\ntemplate\
+    \ <typename T1, typename... T2> void print_sep_end(string sep, string end, const\
+    \ T1 &val, const T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep,\
+    \ end, remain...);\n};\ntemplate <typename... T> void print(const T &...args)\
+    \ { print_sep_end(\" \", \"\\n\", args...); };\ntemplate <typename... T> void\
+    \ flush() { cout << flush; };\ntemplate <typename... T> void print_and_flush(const\
+    \ T &...args) { print(args...); flush(); };\n#define debug(...) debug_func(0,\
+    \ #__VA_ARGS__, __VA_ARGS__) // debug print\ntemplate <typename T> void input(T\
+    \ &a) { cin >> a; };\ntemplate <typename T1, typename... T2> void input(T1&a,\
+    \ T2 &...b) { cin >> a; input(b...); };\n#ifdef LOCAL_TEST\ntemplate <typename\
+    \ T>\nvoid debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }\n\
+    template <typename T1, typename T2, typename... T3> void debug_func(int i, const\
+    \ T1 &name, const T2 &a, const T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs\
+    \ docs/std/io.md\n */\n#line 5 \"online_test/library-checker/scc.test.cpp\"\n\
+    int main() {\n    ll n,m;\n    input(n, m);\n    vi from(m), to(m), cost(m, 1);\n\
+    \    rep(i, m) input(from[i], to[i]);\n    Graph g(n, from, to, cost);\n    auto\
+    \ scc = scc_decompose(g);\n    print(sz(scc));\n    repe(e, scc) {\n        print_sep_end(\"\
+    \", \" \", sz(e));\n        print(e);\n    }\n}\n"
+  code: "#define PROBLEM \"\"\n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/scc.hpp\"\
+    \n#include \"competitive/std/io.hpp\"\nint main() {\n    ll n,m;\n    input(n,\
+    \ m);\n    vi from(m), to(m), cost(m, 1);\n    rep(i, m) input(from[i], to[i]);\n\
+    \    Graph g(n, from, to, cost);\n    auto scc = scc_decompose(g);\n    print(sz(scc));\n\
+    \    repe(e, scc) {\n        print_sep_end(\"\", \" \", sz(e));\n        print(e);\n\
+    \    }\n}\n"
   dependsOn:
   - competitive/std/std.hpp
+  - competitive/graph/scc.hpp
   - competitive/graph/graph.hpp
-  isVerificationFile: false
-  path: competitive/tree/depth.hpp
-  requiredBy:
-  - competitive/tree/diameter.hpp
-  timestamp: '2023-04-04 12:00:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  - competitive/std/io.hpp
+  isVerificationFile: true
+  path: online_test/library-checker/scc.test.cpp
+  requiredBy: []
+  timestamp: '2023-04-04 16:11:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: competitive/tree/depth.hpp
+documentation_of: online_test/library-checker/scc.test.cpp
 layout: document
 redirect_from:
-- /library/competitive/tree/depth.hpp
-- /library/competitive/tree/depth.hpp.html
-title: depth.hpp
+- /verify/online_test/library-checker/scc.test.cpp
+- /verify/online_test/library-checker/scc.test.cpp.html
+title: online_test/library-checker/scc.test.cpp
 ---

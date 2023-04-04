@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/math/fraction.hpp
     title: fraction.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -46,13 +46,13 @@ data:
     \ vector<T>(h4, val)))); }\ntemplate <class T> using priority_queue_min = priority_queue<T,\
     \ vector<T>, greater<T>>;\n// \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double\
     \ PI = 3.14159265358979323;\nconstexpr int INF = 100100111; constexpr ll INFL\
-    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const\
-    \ double x, const double y) { return abs(x - y) < EPSL; }\nbool eq(const float\
-    \ x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const\
-    \ T x, const T y) { return x == y; }\ntemplate<typename T> bool neq(const T x,\
-    \ const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool ge(const T\
-    \ x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename T> bool\
-    \ le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
+    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\ntemplate<typename\
+    \ T> bool eq(const T x, const T y) { return x == y; }\ntemplate<> bool eq<double>(const\
+    \ double x, const double y) { return abs(x - y) < EPSL; }\ntemplate<> bool eq<float>(const\
+    \ float x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool\
+    \ neq(const T x, const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool\
+    \ ge(const T x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename\
+    \ T> bool le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
     \ T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }\ntemplate<typename\
     \ T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353\
     \ = 998244353;\nconstexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\
@@ -312,7 +312,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/CGL_1_C.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 18:31:43+09:00'
+  timestamp: '2023-04-04 12:00:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/CGL_1_C.test.cpp

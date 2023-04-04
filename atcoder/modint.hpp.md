@@ -1,23 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_math.hpp
     title: atcoder/internal_math.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_type_traits.hpp
     title: atcoder/internal_type_traits.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: atcoder/convolution.hpp
     title: atcoder/convolution.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/math/modint.hpp
     title: modint.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/ NTL_1_B.test.cpp
+    title: online_test/AOJ/ NTL_1_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/AOJ3209.test.cpp
+    title: online_test/AOJ/AOJ3209.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"atcoder/modint.hpp\"\n#include <cassert>\n#include <numeric>\n\
@@ -329,8 +335,10 @@ data:
   - competitive/math/modint.hpp
   - atcoder/convolution.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - online_test/AOJ/ NTL_1_B.test.cpp
+  - online_test/AOJ/AOJ3209.test.cpp
 documentation_of: atcoder/modint.hpp
 layout: document
 redirect_from:

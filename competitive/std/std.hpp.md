@@ -57,13 +57,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/fast_dijkstra.hpp
     title: fast_dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':warning:'
     path: competitive/graph/max_k_dijkstra.hpp
     title: max_k_dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/graph/scc.hpp
     title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\uFF08SCC\uFF09"
   - icon: ':heavy_check_mark:'
@@ -96,7 +96,7 @@ data:
   - icon: ':warning:'
     path: competitive/math/inversion_num.hpp
     title: inversion_num.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/math/modint.hpp
     title: modint.hpp
   - icon: ':warning:'
@@ -111,7 +111,7 @@ data:
   - icon: ':warning:'
     path: competitive/random/tree.hpp
     title: tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
   - icon: ':heavy_check_mark:'
@@ -131,11 +131,17 @@ data:
     title: online_test/AOJ/NTL_1_D.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/ NTL_1_B.test.cpp
+    title: online_test/AOJ/ NTL_1_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ALDS_1_10_C.test.cpp
     title: online_test/AOJ/ALDS_1_10_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ALDS_1_14_B.test.cpp
     title: online_test/AOJ/ALDS_1_14_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/AOJ3209.test.cpp
+    title: online_test/AOJ/AOJ3209.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_A.test.cpp
     title: online_test/AOJ/CGL_1_A.test.cpp
@@ -199,6 +205,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/longest_increasing_subsequence.test.cpp
     title: online_test/library-checker/longest_increasing_subsequence.test.cpp
+  - icon: ':x:'
+    path: online_test/library-checker/scc.test.cpp
+    title: online_test/library-checker/scc.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/shortest_path_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_dijkstra.test.cpp
@@ -211,9 +220,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-hello-world.test.cpp
     title: online_test/yukicoder/yuki-hello-world.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/std/std.md
     document_title: std.hpp
@@ -237,13 +246,13 @@ data:
     \ vector<T>(h4, val)))); }\ntemplate <class T> using priority_queue_min = priority_queue<T,\
     \ vector<T>, greater<T>>;\n// \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double\
     \ PI = 3.14159265358979323;\nconstexpr int INF = 100100111; constexpr ll INFL\
-    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const\
-    \ double x, const double y) { return abs(x - y) < EPSL; }\nbool eq(const float\
-    \ x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const\
-    \ T x, const T y) { return x == y; }\ntemplate<typename T> bool neq(const T x,\
-    \ const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool ge(const T\
-    \ x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename T> bool\
-    \ le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
+    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\ntemplate<typename\
+    \ T> bool eq(const T x, const T y) { return x == y; }\ntemplate<> bool eq<double>(const\
+    \ double x, const double y) { return abs(x - y) < EPSL; }\ntemplate<> bool eq<float>(const\
+    \ float x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool\
+    \ neq(const T x, const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool\
+    \ ge(const T x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename\
+    \ T> bool le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
     \ T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }\ntemplate<typename\
     \ T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353\
     \ = 998244353;\nconstexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\
@@ -308,13 +317,13 @@ data:
     \ vector<T>(h4, val)))); }\ntemplate <class T> using priority_queue_min = priority_queue<T,\
     \ vector<T>, greater<T>>;\n// \u5B9A\u6570\u306E\u5B9A\u7FA9\nconstexpr double\
     \ PI = 3.14159265358979323;\nconstexpr int INF = 100100111; constexpr ll INFL\
-    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\nbool eq(const\
-    \ double x, const double y) { return abs(x - y) < EPSL; }\nbool eq(const float\
-    \ x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool eq(const\
-    \ T x, const T y) { return x == y; }\ntemplate<typename T> bool neq(const T x,\
-    \ const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool ge(const T\
-    \ x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename T> bool\
-    \ le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
+    \ = 3300300300300300491LL;\nfloat EPS = 1e-8; double EPSL = 1e-16;\ntemplate<typename\
+    \ T> bool eq(const T x, const T y) { return x == y; }\ntemplate<> bool eq<double>(const\
+    \ double x, const double y) { return abs(x - y) < EPSL; }\ntemplate<> bool eq<float>(const\
+    \ float x, const float y) { return abs(x - y) < EPS; }\ntemplate<typename T> bool\
+    \ neq(const T x, const T y) { return !(eq<T>(x, y)); }\ntemplate<typename T> bool\
+    \ ge(const T x, const T y) { return (eq<T>(x, y) || (x > y)); }\ntemplate<typename\
+    \ T> bool le(const T x, const T y) { return (eq<T>(x, y) || (x < y)); }\ntemplate<typename\
     \ T> bool gt(const T x, const T y) { return !(le<T>(x, y)); }\ntemplate<typename\
     \ T> bool lt(const T x, const T y) { return !(ge<T>(x, y)); }\nconstexpr int MODINT998244353\
     \ = 998244353;\nconstexpr int MODINT1000000007 = 1000000007;\n// \u5165\u51FA\u529B\
@@ -406,10 +415,11 @@ data:
   - competitive/data_structure/union_find.hpp
   - competitive/data_structure/splay_tree.hpp
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-04-02 18:31:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-04-04 12:00:09+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
+  - online_test/library-checker/scc.test.cpp
   - online_test/library-checker/aplusb.test.cpp
   - online_test/library-checker/longest_increasing_subsequence.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp
@@ -430,7 +440,9 @@ data:
   - online_test/AOJ/ALDS_1_14_B.test.cpp
   - online_test/AOJ/CGL_3_B.test.cpp
   - online_test/AOJ/GRL_3_C.test.cpp
+  - online_test/AOJ/ NTL_1_B.test.cpp
   - online_test/AOJ/ALDS_1_10_C.test.cpp
+  - online_test/AOJ/AOJ3209.test.cpp
   - online_test/AOJ/GRL_1_C.test.cpp
   - online_test/AOJ/DSL_2_H.test.cpp
   - online_test/AOJ/DPL_1_D.test.cpp
