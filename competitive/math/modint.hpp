@@ -1,10 +1,6 @@
 #pragma once
 #include "competitive/std/std.hpp"
 #include "atcoder/modint.hpp"
-inline istream& operator>>(istream& is, atcoder::modint& x);
-template<int m> inline istream& operator>>(istream& is, atcoder::static_modint<m>& x);
-inline ostream& operator<<(ostream& os, const atcoder::modint& x);
-template<int m> inline ostream& operator<<(ostream& os, const atcoder::static_modint<m>& x);
 namespace modint_internal {
     template<typename Mint> Mint pow(Mint a, ll n) {
         Mint res = 1;
