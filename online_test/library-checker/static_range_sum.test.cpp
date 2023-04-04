@@ -4,16 +4,16 @@
 #include "competitive/std/io.hpp"
 int main() {
     int n,q;
-    cin >> n >> q;
-    BIT<ll> b(n);
+    input(n, q);
+    Bit<ll> b(n);
     rep(i, n) {
         ll x;
-        cin >> x;
+        input(x);
         b.add(i, x);
     }
     rep(i, q) {
         int l,r;
-        cin >> l >> r;
-        cout << b.sum(l, r) << "\n";
+        input(l, r);
+        print(b.sum(l, r));
     }
 }
