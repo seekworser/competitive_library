@@ -2,5 +2,5 @@
 #include "competitive/std/std.hpp"
 #include "competitive/std/io.hpp"
 int main() {
-    cout << "Hello World!" << endl;
+    cout << "Hello World!" << "\n";
 }

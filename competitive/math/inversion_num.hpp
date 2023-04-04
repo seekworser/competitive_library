@@ -3,13 +3,13 @@
 #include "competitive/data_structure/bit.hpp"
 template<class T> ll inversion_number(vector<T> &a) {
     ll ans = 0;
-    BIT<ll> b(a.size());
+    Bit<ll> b(a.size());
     vector<T> sorted_a = a;
     sort(all(sorted_a));
-    map<T, ll> ind_map;
+    unordered_map<T, ll> ind_map;
     rep(i, a.size()) ind_map[sorted_a[i]] = i;
     rep(i, a.size()) {
-        ans += i - b.sum_from_left(ind_map[a[i]]);
+        ans += i - b.sum(ind_map[a[i]] + 1);
         b.add(ind_map[a[i]], 1);
     }
     return ans;

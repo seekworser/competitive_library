@@ -12,6 +12,6 @@ namespace bit{
     string to_string(ll x, bool rev=true) { stringstream ss; while (x) { ss << lb(x); x >>= 1;} string s(ss.str()); if (rev) reverse(all(s)); return s; }
 }
 /**
- * @brief bit.hpp
+ * @brief ビット演算
  * @docs docs/math/bit.md
  */

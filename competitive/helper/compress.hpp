@@ -1,10 +1,10 @@
 #pragma once
 #include "competitive/std/std.hpp"
-template <typename Val, typename Key> struct Compress {
+template <typename Key, typename Val> struct Compress {
     vector<Key> coordinates;
     vector<Val> val;
     Compress() = default;
-    Compress(const vector<Key> &_coordinates, Val default_val) {
+    Compress(const vector<Key> &_coordinates, Val default_val = Val(0)) {
         coordinates = _coordinates;
         uniq(coordinates);
         sort(all(coordinates));
@@ -18,8 +18,11 @@ template <typename Val, typename Key> struct Compress {
     Val &operator[](const Key key) {
         return val[pos(key)];
     }
-    Key &key_at(const int i) const {
+    Key key_at(const int i) const {
         return coordinates[i];
+    }
+    size_t size() const {
+        return coordinates.size();
     }
 };
 /**
