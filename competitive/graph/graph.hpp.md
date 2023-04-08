@@ -107,11 +107,13 @@ data:
     \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
-    \ a) { return *min_element(all(a)); };\ntemplate<typename T> T sum(vector<T>&\
-    \ a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\n\
-    template<typename T> bool in_range(const T& val, const T& s, const T& t) { return\
-    \ s <= val && val < t; };\n\ntemplate <class T> inline vector<T>& operator--(vector<T>&\
-    \ v) { repe(x, v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
+    \ a) { return *min_element(all(a)); };\ntemplate<typename T> vector<T> vec_slice(const\
+    \ vector<T>& a, int l, int r) { vector<T> rev; rep(i, l, r) rev.push_back(a[i]);\
+    \ return rev; };\ntemplate<typename T> T sum(vector<T>& a, T zero = T(0)) { T\
+    \ rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\ntemplate<typename T>\
+    \ bool in_range(const T& val, const T& s, const T& t) { return s <= val && val\
+    \ < t; };\n\ntemplate <class T> inline vector<T>& operator--(vector<T>& v) { repe(x,\
+    \ v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
     \ v) { repe(x, v) ++x; return v; }\n\n// mod\u3067\u306Epow\nll powm(ll a, ll\
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
@@ -191,23 +193,23 @@ data:
   isVerificationFile: false
   path: competitive/graph/graph.hpp
   requiredBy:
-  - competitive/tree/depth.hpp
-  - competitive/tree/diameter.hpp
-  - competitive/tree/kruskal.hpp
+  - competitive/graph/fast_dijkstra.hpp
+  - competitive/graph/scc.hpp
   - competitive/graph/dijkstra.hpp
   - competitive/graph/max_k_dijkstra.hpp
-  - competitive/graph/scc.hpp
   - competitive/graph/warshall_floyd.hpp
-  - competitive/graph/fast_dijkstra.hpp
-  timestamp: '2023-04-04 12:00:09+09:00'
+  - competitive/tree/kruskal.hpp
+  - competitive/tree/diameter.hpp
+  - competitive/tree/depth.hpp
+  timestamp: '2023-04-09 02:19:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  - online_test/library-checker/scc.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp
-  - online_test/AOJ/GRL_1_A.test.cpp
-  - online_test/AOJ/GRL_3_C.test.cpp
+  - online_test/library-checker/scc.test.cpp
   - online_test/AOJ/GRL_1_C.test.cpp
+  - online_test/AOJ/GRL_3_C.test.cpp
+  - online_test/AOJ/GRL_1_A.test.cpp
 documentation_of: competitive/graph/graph.hpp
 layout: document
 redirect_from:

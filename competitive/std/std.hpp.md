@@ -285,11 +285,13 @@ data:
     \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
-    \ a) { return *min_element(all(a)); };\ntemplate<typename T> T sum(vector<T>&\
-    \ a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\n\
-    template<typename T> bool in_range(const T& val, const T& s, const T& t) { return\
-    \ s <= val && val < t; };\n\ntemplate <class T> inline vector<T>& operator--(vector<T>&\
-    \ v) { repe(x, v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
+    \ a) { return *min_element(all(a)); };\ntemplate<typename T> vector<T> vec_slice(const\
+    \ vector<T>& a, int l, int r) { vector<T> rev; rep(i, l, r) rev.push_back(a[i]);\
+    \ return rev; };\ntemplate<typename T> T sum(vector<T>& a, T zero = T(0)) { T\
+    \ rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\ntemplate<typename T>\
+    \ bool in_range(const T& val, const T& s, const T& t) { return s <= val && val\
+    \ < t; };\n\ntemplate <class T> inline vector<T>& operator--(vector<T>& v) { repe(x,\
+    \ v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
     \ v) { repe(x, v) ++x; return v; }\n\n// mod\u3067\u306Epow\nll powm(ll a, ll\
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
@@ -356,11 +358,13 @@ data:
     \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
-    \ a) { return *min_element(all(a)); };\ntemplate<typename T> T sum(vector<T>&\
-    \ a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\n\
-    template<typename T> bool in_range(const T& val, const T& s, const T& t) { return\
-    \ s <= val && val < t; };\n\ntemplate <class T> inline vector<T>& operator--(vector<T>&\
-    \ v) { repe(x, v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
+    \ a) { return *min_element(all(a)); };\ntemplate<typename T> vector<T> vec_slice(const\
+    \ vector<T>& a, int l, int r) { vector<T> rev; rep(i, l, r) rev.push_back(a[i]);\
+    \ return rev; };\ntemplate<typename T> T sum(vector<T>& a, T zero = T(0)) { T\
+    \ rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };\ntemplate<typename T>\
+    \ bool in_range(const T& val, const T& s, const T& t) { return s <= val && val\
+    \ < t; };\n\ntemplate <class T> inline vector<T>& operator--(vector<T>& v) { repe(x,\
+    \ v) --x; return v; }\ntemplate <class T> inline vector<T>& operator++(vector<T>&\
     \ v) { repe(x, v) ++x; return v; }\n\n// mod\u3067\u306Epow\nll powm(ll a, ll\
     \ n, ll mod=INFL) {\n    ll res = 1;\n    while (n > 0) {\n        if (n & 1)\
     \ res = (res * a) % mod;\n        if (n > 1) a = (a * a) % mod;\n        n >>=\
@@ -379,83 +383,83 @@ data:
   isVerificationFile: false
   path: competitive/std/std.hpp
   requiredBy:
-  - competitive/std/io.hpp
+  - online_test/AOJ/NTL_1_D.cpp
   - competitive/string/rolling_hash.hpp
-  - competitive/tree/depth.hpp
-  - competitive/tree/diameter.hpp
-  - competitive/tree/kruskal.hpp
-  - competitive/helper/compress.hpp
-  - competitive/helper/board_helper.hpp
+  - competitive/graph/fast_dijkstra.hpp
+  - competitive/graph/scc.hpp
   - competitive/graph/dijkstra.hpp
   - competitive/graph/graph.hpp
   - competitive/graph/max_k_dijkstra.hpp
-  - competitive/graph/scc.hpp
   - competitive/graph/warshall_floyd.hpp
-  - competitive/graph/fast_dijkstra.hpp
-  - competitive/random/random_base.hpp
+  - competitive/tree/kruskal.hpp
+  - competitive/tree/diameter.hpp
+  - competitive/tree/depth.hpp
   - competitive/random/tree.hpp
-  - competitive/geometry/distance.hpp
-  - competitive/geometry/base.hpp
-  - competitive/geometry/angle.hpp
-  - competitive/geometry/intersection.hpp
+  - competitive/random/random_base.hpp
   - competitive/geometry/projection.hpp
+  - competitive/geometry/distance.hpp
+  - competitive/geometry/intersection.hpp
   - competitive/geometry/counter_clockwise.hpp
+  - competitive/geometry/base.hpp
   - competitive/geometry/polygon.hpp
-  - competitive/math/modint.hpp
-  - competitive/math/euler_phi.hpp
-  - competitive/math/distance.hpp
-  - competitive/math/inversion_num.hpp
-  - competitive/math/baby_step_giant_step.hpp
+  - competitive/geometry/angle.hpp
   - competitive/math/f2.hpp
-  - competitive/math/bit.hpp
+  - competitive/math/inversion_num.hpp
+  - competitive/math/combination.hpp
+  - competitive/math/distance.hpp
   - competitive/math/fraction.hpp
   - competitive/math/prime.hpp
-  - competitive/math/combination.hpp
-  - competitive/algorithm/longest_increasing_subsequence.hpp
-  - competitive/algorithm/mo.hpp
-  - competitive/algorithm/longest_common_subsequence.hpp
-  - competitive/algorithm/minimum_excludant.hpp
-  - competitive/matrix/matrix.hpp
-  - competitive/data_structure/lazysegtree.hpp
-  - competitive/data_structure/bit.hpp
+  - competitive/math/bit.hpp
+  - competitive/math/euler_phi.hpp
+  - competitive/math/modint.hpp
+  - competitive/math/baby_step_giant_step.hpp
   - competitive/data_structure/segtree.hpp
+  - competitive/data_structure/lazysegtree.hpp
   - competitive/data_structure/union_find.hpp
+  - competitive/data_structure/bit.hpp
   - competitive/data_structure/splay_tree.hpp
-  - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-04-04 12:00:09+09:00'
+  - competitive/helper/compress.hpp
+  - competitive/helper/board_helper.hpp
+  - competitive/std/io.hpp
+  - competitive/matrix/matrix.hpp
+  - competitive/algorithm/longest_common_subsequence.hpp
+  - competitive/algorithm/mo.hpp
+  - competitive/algorithm/longest_increasing_subsequence.hpp
+  - competitive/algorithm/minimum_excludant.hpp
+  timestamp: '2023-04-09 02:19:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  - online_test/library-checker/scc.test.cpp
   - online_test/library-checker/aplusb.test.cpp
-  - online_test/library-checker/longest_increasing_subsequence.test.cpp
-  - online_test/library-checker/shortest_path_dijkstra.test.cpp
+  - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
   - online_test/library-checker/static_range_sum.test.cpp
-  - online_test/yukicoder/yuki-649.test.cpp
-  - online_test/yukicoder/yuki-hello-world.test.cpp
-  - online_test/AOJ/CGL_2_A.test.cpp
+  - online_test/library-checker/shortest_path_dijkstra.test.cpp
+  - online_test/library-checker/scc.test.cpp
+  - online_test/library-checker/longest_increasing_subsequence.test.cpp
+  - online_test/AOJ/DSL_2_I.test.cpp
+  - online_test/AOJ/DPL_1_D.test.cpp
   - online_test/AOJ/CGL_1_A.test.cpp
-  - online_test/AOJ/CGL_4_A.test.cpp
-  - online_test/AOJ/ITPI_1_A.test.cpp
+  - online_test/AOJ/CGL_3_A.test.cpp
+  - online_test/AOJ/CGL_2_D.test.cpp
+  - online_test/AOJ/CGL_1_C.test.cpp
   - online_test/AOJ/CGL_2_C.test.cpp
+  - online_test/AOJ/CGL_2_B.test.cpp
+  - online_test/AOJ/DSL_2_G.test.cpp
+  - online_test/AOJ/DSL_2_H.test.cpp
+  - online_test/AOJ/GRL_1_C.test.cpp
+  - online_test/AOJ/AOJ3209.test.cpp
+  - online_test/AOJ/GRL_3_C.test.cpp
   - online_test/AOJ/CGL_1_B.test.cpp
   - online_test/AOJ/GRL_1_A.test.cpp
   - online_test/AOJ/DSL_2_F.test.cpp
-  - online_test/AOJ/CGL_2_D.test.cpp
-  - online_test/AOJ/CGL_2_B.test.cpp
-  - online_test/AOJ/CGL_3_A.test.cpp
-  - online_test/AOJ/DSL_2_I.test.cpp
+  - online_test/AOJ/ NTL_1_B.test.cpp
+  - online_test/AOJ/ITPI_1_A.test.cpp
+  - online_test/AOJ/CGL_2_A.test.cpp
   - online_test/AOJ/ALDS_1_14_B.test.cpp
   - online_test/AOJ/CGL_3_B.test.cpp
-  - online_test/AOJ/GRL_3_C.test.cpp
-  - online_test/AOJ/ NTL_1_B.test.cpp
+  - online_test/AOJ/CGL_4_A.test.cpp
   - online_test/AOJ/ALDS_1_10_C.test.cpp
-  - online_test/AOJ/AOJ3209.test.cpp
-  - online_test/AOJ/GRL_1_C.test.cpp
-  - online_test/AOJ/DSL_2_H.test.cpp
-  - online_test/AOJ/DPL_1_D.test.cpp
-  - online_test/AOJ/CGL_1_C.test.cpp
-  - online_test/AOJ/DSL_2_G.test.cpp
+  - online_test/yukicoder/yuki-hello-world.test.cpp
+  - online_test/yukicoder/yuki-649.test.cpp
 documentation_of: competitive/std/std.hpp
 layout: document
 redirect_from:

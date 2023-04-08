@@ -118,15 +118,15 @@ data:
   isVerificationFile: false
   path: atcoder/internal_type_traits.hpp
   requiredBy:
-  - competitive/math/modint.hpp
-  - atcoder/modint.hpp
   - atcoder/fenwicktree.hpp
   - atcoder/convolution.hpp
+  - atcoder/modint.hpp
+  - competitive/math/modint.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - online_test/AOJ/ NTL_1_B.test.cpp
   - online_test/AOJ/AOJ3209.test.cpp
+  - online_test/AOJ/ NTL_1_B.test.cpp
 documentation_of: atcoder/internal_type_traits.hpp
 layout: document
 redirect_from:
