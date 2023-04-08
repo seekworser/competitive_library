@@ -55,6 +55,7 @@ template<typename T, size_t N> T max(array<T, N>& a) { return *max_element(all(a
 template<typename T, size_t N> T min(array<T, N>& a) { return *min_element(all(a)); };
 template<typename T> T max(vector<T>& a) { return *max_element(all(a)); };
 template<typename T> T min(vector<T>& a) { return *min_element(all(a)); };
+template<typename T> vector<T> vec_slice(const vector<T>& a, int l, int r) { vector<T> rev; rep(i, l, r) rev.push_back(a[i]); return rev; };
 template<typename T> T sum(vector<T>& a, T zero = T(0)) { T rev = zero; rep(i, sz(a)) rev += a[i]; return rev; };
 template<typename T> bool in_range(const T& val, const T& s, const T& t) { return s <= val && val < t; };
 
