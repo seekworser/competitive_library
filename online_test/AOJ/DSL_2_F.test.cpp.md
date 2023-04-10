@@ -1,27 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_F
@@ -187,37 +187,39 @@ data:
     \ {\n    template<typename T> struct AddNode {\n        T value;\n        ll size;\n\
     \        AddNode() : value(T(0)), size(1) {};\n        AddNode(T value, ll size)\
     \ : value(value), size(size) {};\n        friend ostream& operator<<(std::ostream&\
-    \ os, const AddNode<T> &n) { os << n.value; return os; };\n    };\n\n    int e_max()\
-    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
-    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
-    \ }\n    template<typename T> AddNode<T> e_add() { return {0, 1}; }\n\n    template<typename\
-    \ T> T op_max(T x, T y) { return x > y ? x : y; }\n    template<typename T> T\
-    \ op_min(T x, T y) { return x < y ? x : y; }\n    template<typename T> AddNode<T>\
-    \ op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value, x.size + y.size};\
-    \ }\n\n    template<typename T> T id_radd(){ return 0; }\n    int id_rupdate(){\
-    \ return INF; }\n    template<typename T> T id_rupdate(){ return INFL; }\n\n \
-    \   template<typename T> AddNode<T> mapping_add_radd(T f, AddNode<T> x){ return\
-    \ {x.value + f * x.size, x.size}; }\n    template<typename T> AddNode<T> mapping_add_rupdate(T\
-    \ f, AddNode<T> x){\n        AddNode<T> rev = AddNode<T>(x);\n        if(f !=\
-    \ id_rupdate<T>()) rev.value = f * rev.size;\n        return rev;\n    }\n   \
-    \ template<typename T> T mapping_radd(T f, T x){ return f+x; }\n    template<typename\
-    \ T> T mapping_rupdate(T f, T x){ return (f == id_rupdate() ? x : f); }\n\n  \
-    \  template<typename T> T composition_radd(T f, T g){ return f+g; }\n    template<typename\
-    \ T> T composition_rupdate(T f, T g){ return (f == id_rupdate() ? g : f); }\n\
-    }\n\ntemplate<typename T> using lseg_add_radd = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
-    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_radd, lsegtree::composition_radd,\
-    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_min_radd = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
-    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
-    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
-    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_rupdate, lsegtree::composition_rupdate,\
-    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_min_rupdate = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
-    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
-    \ lsegtree::id_rupdate>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\
-    \u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
+    \ os, const AddNode<T> &n) { os << n.value; return os; };\n    };\n\n    template<typename\
+    \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
+    \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
+    \ { return INF; }\n    template<typename T> AddNode<T> e_add() { return {0, 1};\
+    \ }\n\n    template<typename T> T op_max(T x, T y) { return x > y ? x : y; }\n\
+    \    template<typename T> T op_min(T x, T y) { return x < y ? x : y; }\n    template<typename\
+    \ T> AddNode<T> op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value,\
+    \ x.size + y.size}; }\n\n    template<typename T> T id_radd(){ return 0; }\n \
+    \   template<typename T> T id_rupdate(){ return INFL; }\n    template<> int id_rupdate(){\
+    \ return INF; }\n\n    template<typename T> AddNode<T> mapping_add_radd(T f, AddNode<T>\
+    \ x){ return {x.value + f * x.size, x.size}; }\n    template<typename T> AddNode<T>\
+    \ mapping_add_rupdate(T f, AddNode<T> x){\n        AddNode<T> rev = AddNode<T>(x);\n\
+    \        if(f != id_rupdate<T>()) rev.value = f * rev.size;\n        return rev;\n\
+    \    }\n    template<typename T> T mapping_radd(T f, T x){ return f+x; }\n   \
+    \ template<typename T> T mapping_rupdate(T f, T x){ return (f == id_rupdate<T>()\
+    \ ? x : f); }\n\n    template<typename T> T composition_radd(T f, T g){ return\
+    \ f+g; }\n    template<typename T> T composition_rupdate(T f, T g){ return (f\
+    \ == id_rupdate<T>() ? g : f); }\n}\n\ntemplate<typename T> using lseg_add_radd\
+    \ = atcoder::lazy_segtree<lsegtree::AddNode<T>, lsegtree::op_add<T>, lsegtree::e_add<T>,\
+    \ T, lsegtree::mapping_add_radd<T>, lsegtree::composition_radd<T>, lsegtree::id_radd<T>>;\n\
+    template<typename T> using lseg_min_radd = atcoder::lazy_segtree<T, lsegtree::op_min<T>,\
+    \ lsegtree::e_min<T>, T, lsegtree::mapping_radd<T>, lsegtree::composition_radd<T>,\
+    \ lsegtree::id_radd<T>>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_max<T>, lsegtree::e_max<T>, T, lsegtree::mapping_radd<T>, lsegtree::composition_radd<T>,\
+    \ lsegtree::id_radd<T>>;\ntemplate<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
+    \ lsegtree::op_add<T>, lsegtree::e_add<T>, T, lsegtree::mapping_add_rupdate<T>,\
+    \ lsegtree::composition_rupdate<T>, lsegtree::id_rupdate<T>>;\ntemplate<typename\
+    \ T> using lseg_min_rupdate = atcoder::lazy_segtree<T, lsegtree::op_min<T>, lsegtree::e_min<T>,\
+    \ T, lsegtree::mapping_rupdate<T>, lsegtree::composition_rupdate<T>, lsegtree::id_rupdate<T>>;\n\
+    template<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T, lsegtree::op_max<T>,\
+    \ lsegtree::e_max<T>, T, lsegtree::mapping_rupdate<T>, lsegtree::composition_rupdate<T>,\
+    \ lsegtree::id_rupdate<T>>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
     \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
     \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
     \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
@@ -277,22 +279,20 @@ data:
     \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
     \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
     \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 5 \"online_test/AOJ/DSL_2_F.test.cpp\"\n\nint main() {\n    int n,q;\n    cin\
-    \ >> n >> q;\n    lseg_min_rupdate<ll> lseg(n);\n    lseg.apply(0, n, powm(2,\
-    \ 31) - 1);\n    debug(lseg);\n    rep(i, q) {\n        int t;\n        cin >>\
-    \ t;\n        if (t == 0) {\n            int s,t; ll x;\n            cin >> s\
-    \ >> t >> x;\n            lseg.apply(s, t+1, x);\n        } else {\n         \
-    \   int s,t;\n            cin >> s >> t;\n            cout << lseg.prod(s, t+1)\
-    \ << '\\n';\n        }\n        debug(lseg);\n    }\n}\n"
+    \ 5 \"online_test/AOJ/DSL_2_F.test.cpp\"\nint main() {\n    int n,q;\n    input(n,q);\n\
+    \    lseg_min_rupdate<ll> lseg(vl(n, powm(2,31) - 1));\n    rep(i, q) {\n    \
+    \    int t;\n        input(t);\n        if (t == 0) {\n            int s,t; ll\
+    \ x;\n            input(s,t,x);\n            lseg.apply(s, t+1, x);\n        }\
+    \ else {\n            int s,t;\n            input(s,t);\n            print(lseg.prod(s,\
+    \ t+1));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_F\"\n#include\
     \ \"competitive/std/std.hpp\"\n#include \"competitive/data_structure/lazysegtree.hpp\"\
-    \n#include \"competitive/std/io.hpp\"\n\nint main() {\n    int n,q;\n    cin >>\
-    \ n >> q;\n    lseg_min_rupdate<ll> lseg(n);\n    lseg.apply(0, n, powm(2, 31)\
-    \ - 1);\n    debug(lseg);\n    rep(i, q) {\n        int t;\n        cin >> t;\n\
-    \        if (t == 0) {\n            int s,t; ll x;\n            cin >> s >> t\
-    \ >> x;\n            lseg.apply(s, t+1, x);\n        } else {\n            int\
-    \ s,t;\n            cin >> s >> t;\n            cout << lseg.prod(s, t+1) << '\\\
-    n';\n        }\n        debug(lseg);\n    }\n}\n"
+    \n#include \"competitive/std/io.hpp\"\nint main() {\n    int n,q;\n    input(n,q);\n\
+    \    lseg_min_rupdate<ll> lseg(vl(n, powm(2,31) - 1));\n    rep(i, q) {\n    \
+    \    int t;\n        input(t);\n        if (t == 0) {\n            int s,t; ll\
+    \ x;\n            input(s,t,x);\n            lseg.apply(s, t+1, x);\n        }\
+    \ else {\n            int s,t;\n            input(s,t);\n            print(lseg.prod(s,\
+    \ t+1));\n        }\n    }\n}\n"
   dependsOn:
   - competitive/std/std.hpp
   - competitive/data_structure/lazysegtree.hpp
@@ -302,8 +302,8 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/DSL_2_F.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 04:33:35+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-11 05:23:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/DSL_2_F.test.cpp
 layout: document

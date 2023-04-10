@@ -4,10 +4,10 @@ data:
   - icon: ':warning:'
     path: atcoder/dsu.hpp
     title: atcoder/dsu.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []

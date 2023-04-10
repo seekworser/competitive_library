@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/tree/heavy_light_decomposition.hpp
     title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_5_C.test.cpp
     title: online_test/AOJ/GRL_5_C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/library-checker/lca_hld.test.cpp
     title: online_test/library-checker/lca_hld.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-399.test.cpp
     title: online_test/yukicoder/yuki-399.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/segtree.md
     document_title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
@@ -162,30 +162,30 @@ data:
     \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\nnamespace\
     \ segtree {\n    template<typename T> T op_max(T x, T y) { return x > y? x : y;\
     \ }\n    template<typename T> T op_min(T x, T y) { return x < y? x : y; }\n  \
-    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    int e_max()\
-    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
-    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
-    \ }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename T>\
-    \ using seg_add = atcoder::segtree<T, segtree::op_add, segtree::e_add>;\ntemplate<typename\
-    \ T> using seg_max = atcoder::segtree<T, segtree::op_max, segtree::e_max>;\ntemplate<typename\
-    \ T> using seg_min = atcoder::segtree<T, segtree::op_min, segtree::e_min>;\n/**\n\
-    \ * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\
-    \n * @docs docs/data_structure/segtree.md\n */\n"
+    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
+    \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
+    \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
+    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename\
+    \ T> using seg_add = atcoder::segtree<T, segtree::op_add<T>, segtree::e_add<T>>;\n\
+    template<typename T> using seg_max = atcoder::segtree<T, segtree::op_max<T>, segtree::e_max<T>>;\n\
+    template<typename T> using seg_min = atcoder::segtree<T, segtree::op_min<T>, segtree::e_min<T>>;\n\
+    /**\n * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
+    \uFF09\n * @docs docs/data_structure/segtree.md\n */\n"
   code: "#pragma once\n#include \"atcoder/segtree.hpp\"\n#include \"competitive/std/std.hpp\"\
     \ntemplate <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
     \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
     \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\nnamespace\
     \ segtree {\n    template<typename T> T op_max(T x, T y) { return x > y? x : y;\
     \ }\n    template<typename T> T op_min(T x, T y) { return x < y? x : y; }\n  \
-    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    int e_max()\
-    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
-    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
-    \ }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename T>\
-    \ using seg_add = atcoder::segtree<T, segtree::op_add, segtree::e_add>;\ntemplate<typename\
-    \ T> using seg_max = atcoder::segtree<T, segtree::op_max, segtree::e_max>;\ntemplate<typename\
-    \ T> using seg_min = atcoder::segtree<T, segtree::op_min, segtree::e_min>;\n/**\n\
-    \ * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\
-    \n * @docs docs/data_structure/segtree.md\n */\n"
+    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
+    \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
+    \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
+    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename\
+    \ T> using seg_add = atcoder::segtree<T, segtree::op_add<T>, segtree::e_add<T>>;\n\
+    template<typename T> using seg_max = atcoder::segtree<T, segtree::op_max<T>, segtree::e_max<T>>;\n\
+    template<typename T> using seg_min = atcoder::segtree<T, segtree::op_min<T>, segtree::e_min<T>>;\n\
+    /**\n * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
+    \uFF09\n * @docs docs/data_structure/segtree.md\n */\n"
   dependsOn:
   - atcoder/segtree.hpp
   - atcoder/internal_bit.hpp
@@ -194,8 +194,8 @@ data:
   path: competitive/data_structure/segtree.hpp
   requiredBy:
   - competitive/tree/heavy_light_decomposition.hpp
-  timestamp: '2023-04-11 04:33:35+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-04-11 05:23:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/lca_hld.test.cpp
   - online_test/AOJ/GRL_5_C.test.cpp

@@ -1,39 +1,39 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/segtree.hpp
     title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/tree/heavy_light_decomposition.hpp
     title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/5/GRL_5_C
@@ -199,15 +199,15 @@ data:
     \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\nnamespace\
     \ segtree {\n    template<typename T> T op_max(T x, T y) { return x > y? x : y;\
     \ }\n    template<typename T> T op_min(T x, T y) { return x < y? x : y; }\n  \
-    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    int e_max()\
-    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
-    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
-    \ }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename T>\
-    \ using seg_add = atcoder::segtree<T, segtree::op_add, segtree::e_add>;\ntemplate<typename\
-    \ T> using seg_max = atcoder::segtree<T, segtree::op_max, segtree::e_max>;\ntemplate<typename\
-    \ T> using seg_min = atcoder::segtree<T, segtree::op_min, segtree::e_min>;\n/**\n\
-    \ * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\
-    \n * @docs docs/data_structure/segtree.md\n */\n#line 6 \"atcoder/lazysegtree.hpp\"\
+    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
+    \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
+    \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
+    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename\
+    \ T> using seg_add = atcoder::segtree<T, segtree::op_add<T>, segtree::e_add<T>>;\n\
+    template<typename T> using seg_max = atcoder::segtree<T, segtree::op_max<T>, segtree::e_max<T>>;\n\
+    template<typename T> using seg_min = atcoder::segtree<T, segtree::op_min<T>, segtree::e_min<T>>;\n\
+    /**\n * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
+    \uFF09\n * @docs docs/data_structure/segtree.md\n */\n#line 6 \"atcoder/lazysegtree.hpp\"\
     \n\n#line 8 \"atcoder/lazysegtree.hpp\"\n\nnamespace atcoder {\n\ntemplate <class\
     \ S,\n          S (*_op)(S, S),\n          S (*_e)(),\n          class F,\n  \
     \        S (*_mapping)(F, S),\n          F (*_composition)(F, F),\n          F\
@@ -284,37 +284,39 @@ data:
     \ {\n    template<typename T> struct AddNode {\n        T value;\n        ll size;\n\
     \        AddNode() : value(T(0)), size(1) {};\n        AddNode(T value, ll size)\
     \ : value(value), size(size) {};\n        friend ostream& operator<<(std::ostream&\
-    \ os, const AddNode<T> &n) { os << n.value; return os; };\n    };\n\n    int e_max()\
-    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
-    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
-    \ }\n    template<typename T> AddNode<T> e_add() { return {0, 1}; }\n\n    template<typename\
-    \ T> T op_max(T x, T y) { return x > y ? x : y; }\n    template<typename T> T\
-    \ op_min(T x, T y) { return x < y ? x : y; }\n    template<typename T> AddNode<T>\
-    \ op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value, x.size + y.size};\
-    \ }\n\n    template<typename T> T id_radd(){ return 0; }\n    int id_rupdate(){\
-    \ return INF; }\n    template<typename T> T id_rupdate(){ return INFL; }\n\n \
-    \   template<typename T> AddNode<T> mapping_add_radd(T f, AddNode<T> x){ return\
-    \ {x.value + f * x.size, x.size}; }\n    template<typename T> AddNode<T> mapping_add_rupdate(T\
-    \ f, AddNode<T> x){\n        AddNode<T> rev = AddNode<T>(x);\n        if(f !=\
-    \ id_rupdate<T>()) rev.value = f * rev.size;\n        return rev;\n    }\n   \
-    \ template<typename T> T mapping_radd(T f, T x){ return f+x; }\n    template<typename\
-    \ T> T mapping_rupdate(T f, T x){ return (f == id_rupdate() ? x : f); }\n\n  \
-    \  template<typename T> T composition_radd(T f, T g){ return f+g; }\n    template<typename\
-    \ T> T composition_rupdate(T f, T g){ return (f == id_rupdate() ? g : f); }\n\
-    }\n\ntemplate<typename T> using lseg_add_radd = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
-    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_radd, lsegtree::composition_radd,\
-    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_min_radd = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
-    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
-    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
-    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_rupdate, lsegtree::composition_rupdate,\
-    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_min_rupdate = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
-    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
-    \ lsegtree::id_rupdate>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\
-    \u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
+    \ os, const AddNode<T> &n) { os << n.value; return os; };\n    };\n\n    template<typename\
+    \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
+    \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
+    \ { return INF; }\n    template<typename T> AddNode<T> e_add() { return {0, 1};\
+    \ }\n\n    template<typename T> T op_max(T x, T y) { return x > y ? x : y; }\n\
+    \    template<typename T> T op_min(T x, T y) { return x < y ? x : y; }\n    template<typename\
+    \ T> AddNode<T> op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value,\
+    \ x.size + y.size}; }\n\n    template<typename T> T id_radd(){ return 0; }\n \
+    \   template<typename T> T id_rupdate(){ return INFL; }\n    template<> int id_rupdate(){\
+    \ return INF; }\n\n    template<typename T> AddNode<T> mapping_add_radd(T f, AddNode<T>\
+    \ x){ return {x.value + f * x.size, x.size}; }\n    template<typename T> AddNode<T>\
+    \ mapping_add_rupdate(T f, AddNode<T> x){\n        AddNode<T> rev = AddNode<T>(x);\n\
+    \        if(f != id_rupdate<T>()) rev.value = f * rev.size;\n        return rev;\n\
+    \    }\n    template<typename T> T mapping_radd(T f, T x){ return f+x; }\n   \
+    \ template<typename T> T mapping_rupdate(T f, T x){ return (f == id_rupdate<T>()\
+    \ ? x : f); }\n\n    template<typename T> T composition_radd(T f, T g){ return\
+    \ f+g; }\n    template<typename T> T composition_rupdate(T f, T g){ return (f\
+    \ == id_rupdate<T>() ? g : f); }\n}\n\ntemplate<typename T> using lseg_add_radd\
+    \ = atcoder::lazy_segtree<lsegtree::AddNode<T>, lsegtree::op_add<T>, lsegtree::e_add<T>,\
+    \ T, lsegtree::mapping_add_radd<T>, lsegtree::composition_radd<T>, lsegtree::id_radd<T>>;\n\
+    template<typename T> using lseg_min_radd = atcoder::lazy_segtree<T, lsegtree::op_min<T>,\
+    \ lsegtree::e_min<T>, T, lsegtree::mapping_radd<T>, lsegtree::composition_radd<T>,\
+    \ lsegtree::id_radd<T>>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_max<T>, lsegtree::e_max<T>, T, lsegtree::mapping_radd<T>, lsegtree::composition_radd<T>,\
+    \ lsegtree::id_radd<T>>;\ntemplate<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
+    \ lsegtree::op_add<T>, lsegtree::e_add<T>, T, lsegtree::mapping_add_rupdate<T>,\
+    \ lsegtree::composition_rupdate<T>, lsegtree::id_rupdate<T>>;\ntemplate<typename\
+    \ T> using lseg_min_rupdate = atcoder::lazy_segtree<T, lsegtree::op_min<T>, lsegtree::e_min<T>,\
+    \ T, lsegtree::mapping_rupdate<T>, lsegtree::composition_rupdate<T>, lsegtree::id_rupdate<T>>;\n\
+    template<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T, lsegtree::op_max<T>,\
+    \ lsegtree::e_max<T>, T, lsegtree::mapping_rupdate<T>, lsegtree::composition_rupdate<T>,\
+    \ lsegtree::id_rupdate<T>>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
     \ */\n#line 6 \"competitive/tree/heavy_light_decomposition.hpp\"\ntemplate <typename\
     \ Cost, typename Seg> struct HeavyLightDecomposition {\n    vi heavy_edge,in,out,head,par,pos;\n\
     \    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>& g, Seg&\
@@ -349,36 +351,37 @@ data:
     \ > in[v]) swap(u, v), swap(l, r);\n        // \u30D1\u30B9\u30AF\u30A8\u30EA\u306E\
     \u5834\u5408\u306Fu\uFF08u\u304B\u3089u\u306E\u89AA\u3078\u306E\u30D1\u30B9\uFF09\
     \u306F\u8DB3\u3055\u306A\u3044\n        return seg.op(seg.op(seg.prod(in[u] +\
-    \ edge, in[v] + 1), l) , r);\n    }\n\n    void apply(int u, int v, decltype(seg.id())\
-    \ f) {\n        while (head[u] != head[v]) {\n            if (in[u] > in[v]) swap(u,\
-    \ v);\n            seg.apply(in[head[v]], in[v] + 1, f);\n            v = par[head[v]];\n\
-    \        }\n        if (in[u] > in[v]) swap(u, v);\n        seg.apply(in[u] +\
-    \ edge, in[v] + 1, f);\n    }\n\n    int edge_pos(int u, int v) {\n        if\
-    \ (par[u] != v) swap(u, v);\n        assert(par[u] == v);\n        return in[u];\n\
-    \    }\n};\n/**\n * @brief HL\u5206\u89E3 (Heavy Light Decomposition)\n * @docs\
-    \ docs/tree/heavy_light_decomposition.md\n */\n#line 3 \"competitive/std/io.hpp\"\
-    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
-    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
-    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
-    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
-    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
-    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
-    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const unordered_set<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
-    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
-    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
-    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
-    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
-    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
-    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
-    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
-    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
-    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ edge, in[v] + 1), l) , r);\n    }\n\n    template<typename F> void apply(int\
+    \ u, int v, F f) {\n        while (head[u] != head[v]) {\n            if (in[u]\
+    \ > in[v]) swap(u, v);\n            seg.apply(in[head[v]], in[v] + 1, f);\n  \
+    \          v = par[head[v]];\n        }\n        if (in[u] > in[v]) swap(u, v);\n\
+    \        seg.apply(in[u] + edge, in[v] + 1, f);\n    }\n\n    int edge_pos(int\
+    \ u, int v) {\n        if (par[u] != v) swap(u, v);\n        assert(par[u] ==\
+    \ v);\n        return in[u];\n    }\n};\n/**\n * @brief HL\u5206\u89E3 (Heavy\
+    \ Light Decomposition)\n * @docs docs/tree/heavy_light_decomposition.md\n */\n\
+    #line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\
+    \u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\
+    \ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
+    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
+    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
+    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
+    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const unordered_set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
+    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
+    template <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
+    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
+    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
+    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
+    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
+    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
+    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
+    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
+    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
     \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
     \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
@@ -444,8 +447,8 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/GRL_5_C.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 04:58:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-11 05:23:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/GRL_5_C.test.cpp
 layout: document
