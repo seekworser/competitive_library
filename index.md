@@ -48,7 +48,7 @@ data:
     - icon: ':warning:'
       path: atcoder/scc.hpp
       title: atcoder/scc.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/segtree.hpp
       title: atcoder/segtree.hpp
     - icon: ':warning:'
@@ -83,7 +83,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/radix_heap.hpp
       title: Radix Heap
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: competitive/data_structure/segtree.hpp
       title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
     - icon: ':warning:'
@@ -255,6 +255,9 @@ data:
     - icon: ':warning:'
       path: competitive/tree/diameter.hpp
       title: diameter.hpp
+    - icon: ':heavy_check_mark:'
+      path: competitive/tree/heavy_light_decomposition.hpp
+      title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
     - icon: ':warning:'
       path: competitive/tree/kruskal.hpp
       title: kruskal.hpp
@@ -333,6 +336,9 @@ data:
       path: online_test/AOJ/GRL_3_C.test.cpp
       title: online_test/AOJ/GRL_3_C.test.cpp
     - icon: ':heavy_check_mark:'
+      path: online_test/AOJ/GRL_5_C.test.cpp
+      title: online_test/AOJ/GRL_5_C.test.cpp
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/ITPI_1_A.test.cpp
       title: online_test/AOJ/ITPI_1_A.test.cpp
   - name: online_test/library-checker
@@ -340,6 +346,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/aplusb.test.cpp
       title: online_test/library-checker/aplusb.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: online_test/library-checker/lca_hld.test.cpp
+      title: online_test/library-checker/lca_hld.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/longest_increasing_subsequence.test.cpp
       title: online_test/library-checker/longest_increasing_subsequence.test.cpp

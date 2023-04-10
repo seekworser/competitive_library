@@ -21,7 +21,7 @@ data:
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/segtree.hpp
     title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
   - icon: ':warning:'
@@ -126,6 +126,9 @@ data:
   - icon: ':warning:'
     path: competitive/tree/diameter.hpp
     title: diameter.hpp
+  - icon: ':heavy_check_mark:'
+    path: competitive/tree/heavy_light_decomposition.hpp
+    title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   - icon: ':warning:'
     path: competitive/tree/kruskal.hpp
     title: kruskal.hpp
@@ -200,11 +203,17 @@ data:
     path: online_test/AOJ/GRL_3_C.test.cpp
     title: online_test/AOJ/GRL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/GRL_5_C.test.cpp
+    title: online_test/AOJ/GRL_5_C.test.cpp
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ITPI_1_A.test.cpp
     title: online_test/AOJ/ITPI_1_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/aplusb.test.cpp
     title: online_test/library-checker/aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/library-checker/lca_hld.test.cpp
+    title: online_test/library-checker/lca_hld.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/longest_increasing_subsequence.test.cpp
     title: online_test/library-checker/longest_increasing_subsequence.test.cpp
@@ -392,6 +401,7 @@ data:
   - competitive/graph/max_k_dijkstra.hpp
   - competitive/graph/warshall_floyd.hpp
   - competitive/tree/kruskal.hpp
+  - competitive/tree/heavy_light_decomposition.hpp
   - competitive/tree/diameter.hpp
   - competitive/tree/depth.hpp
   - competitive/random/tree.hpp
@@ -431,6 +441,7 @@ data:
   verifiedWith:
   - online_test/library-checker/aplusb.test.cpp
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
+  - online_test/library-checker/lca_hld.test.cpp
   - online_test/library-checker/static_range_sum.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp
   - online_test/library-checker/scc.test.cpp
@@ -441,6 +452,7 @@ data:
   - online_test/AOJ/CGL_3_A.test.cpp
   - online_test/AOJ/CGL_2_D.test.cpp
   - online_test/AOJ/CGL_1_C.test.cpp
+  - online_test/AOJ/GRL_5_C.test.cpp
   - online_test/AOJ/CGL_2_C.test.cpp
   - online_test/AOJ/CGL_2_B.test.cpp
   - online_test/AOJ/DSL_2_G.test.cpp

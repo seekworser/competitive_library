@@ -2,17 +2,26 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: atcoder/internal_bit.hpp
+    title: atcoder/internal_bit.hpp
+  - icon: ':heavy_check_mark:'
+    path: atcoder/segtree.hpp
+    title: atcoder/segtree.hpp
+  - icon: ':heavy_check_mark:'
+    path: competitive/data_structure/segtree.hpp
+    title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
+  - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':heavy_check_mark:'
-    path: competitive/graph/warshall_floyd.hpp
-    title: warshall_floyd.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
+  - icon: ':heavy_check_mark:'
+    path: competitive/tree/heavy_light_decomposition.hpp
+    title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,10 +29,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/5/GRL_5_C
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
-  bundledCode: "#line 1 \"online_test/AOJ/GRL_1_C.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/5/GRL_5_C
+  bundledCode: "#line 1 \"online_test/AOJ/GRL_5_C.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/5/GRL_5_C\"\
     \n#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n\
     #pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
     unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
@@ -126,28 +135,117 @@ data:
     \ = true;\n    rep(i, g.n) repe(e, g[i]) {\n        if (first) first = false;\n\
     \        else os << endl;\n        os << i << \"->\" << e.to << \": \" << e.cost;\n\
     \    }\n    return os;\n}\n/**\n * @brief graph.hpp\n * @docs docs/graph/graph.md\n\
-    \ */\n#line 4 \"competitive/graph/warshall_floyd.hpp\"\ntemplate <class Cost>\
-    \ bool warshall_floyd(\n    Graph<Cost> &G,\n    vector<vector<Cost>> &min_cost,\n\
-    \    Cost inf=INF,\n    Cost identity=0\n) {\n    min_cost = vector<vector<Cost>>(G.n,\
-    \ vector<Cost>(G.n, inf));\n    rep(i, G.n) repe(e, G[i]) {\n        min_cost[i][e.to]\
-    \ = e.cost;\n    }\n    rep(i, G.n) chmin(min_cost[i][i], identity);\n    rep(k,\
-    \ G.n) {\n        rep(i, G.n) {\n            rep(j, G.n) {\n                if\
-    \ (min_cost[i][k] == inf || min_cost[k][j] == inf) continue;\n               \
-    \ if (min_cost[i][j] == inf) {\n                    min_cost[i][j] = min_cost[i][k]\
-    \ + min_cost[k][j];\n                } else {\n                    chmin(min_cost[i][j],\
-    \ min_cost[i][k] + min_cost[k][j]);\n                }\n            }\n      \
-    \  }\n    }\n    rep(i, G.n) {\n        if (min_cost[i][i] < identity) return\
-    \ false;\n    }\n    return true;\n}\n/**\n * @brief warshall_floyd.hpp\n * @docs\
-    \ docs/graph/warshall_floyd.md\n */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\
-    \u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline istream&\
-    \ operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline istream&\
-    \ operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U> inline ostream&\
-    \ operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class T> inline ostream&\
-    \ operator<<(ostream& os, const vector<T>& v);\ntemplate <typename T, typename\
-    \ S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename T>\
-    \ ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
+    \ */\n#line 5 \"atcoder/segtree.hpp\"\n\n#line 2 \"atcoder/internal_bit.hpp\"\n\
+    #ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
+    \ internal {\n\n// @param n `0 <= n`\n// @return minimum non-negative `x` s.t.\
+    \ `n <= 2**x`\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
+    \ (unsigned int)(n)) x++;\n    return x;\n}\n\n// @param n `1 <= n`\n// @return\
+    \ minimum non-negative `x` s.t. `(n & (1 << x)) != 0`\nconstexpr int bsf_constexpr(unsigned\
+    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
+    }\n\n// @param n `1 <= n`\n// @return minimum non-negative `x` s.t. `(n & (1 <<\
+    \ x)) != 0`\nint bsf(unsigned int n) {\n#ifdef _MSC_VER\n    unsigned long index;\n\
+    \    _BitScanForward(&index, n);\n    return index;\n#else\n    return __builtin_ctz(n);\n\
+    #endif\n}\n\n}  // namespace internal\n\n}  // namespace atcoder\n#line 7 \"atcoder/segtree.hpp\"\
+    \n\nnamespace atcoder {\n\ntemplate <class S, S (*_op)(S, S), S (*_e)()> struct\
+    \ segtree {\n  public:\n    S (*op)(S, S) = _op;\n    S (*e)() = _e;\n    segtree()\
+    \ : segtree(0) {}\n    explicit segtree(int n) : segtree(std::vector<S>(n, e()))\
+    \ {}\n    explicit segtree(const std::vector<S>& v) : _n(int(v.size())) {\n  \
+    \      log = internal::ceil_pow2(_n);\n        size = 1 << log;\n        d = std::vector<S>(2\
+    \ * size, e());\n        for (int i = 0; i < _n; i++) d[size + i] = v[i];\n  \
+    \      for (int i = size - 1; i >= 1; i--) {\n            update(i);\n       \
+    \ }\n    }\n\n    void set(int p, S x) {\n        assert(0 <= p && p < _n);\n\
+    \        p += size;\n        d[p] = x;\n        for (int i = 1; i <= log; i++)\
+    \ update(p >> i);\n    }\n\n    void add(int p, S x) {\n        assert(0 <= p\
+    \ && p < _n);\n        (*this).set(p, (*this).get(p) + x);\n    }\n\n    S get(int\
+    \ p) const {\n        assert(0 <= p && p < _n);\n        return d[p + size];\n\
+    \    }\n\n    S prod(int l, int r) const {\n        assert(0 <= l && l <= r &&\
+    \ r <= _n);\n        S sml = e(), smr = e();\n        l += size;\n        r +=\
+    \ size;\n\n        while (l < r) {\n            if (l & 1) sml = op(sml, d[l++]);\n\
+    \            if (r & 1) smr = op(d[--r], smr);\n            l >>= 1;\n       \
+    \     r >>= 1;\n        }\n        return op(sml, smr);\n    }\n\n    S all_prod()\
+    \ const { return d[1]; }\n\n    template <bool (*f)(S)> int max_right(int l) const\
+    \ {\n        return max_right(l, [](S x) { return f(x); });\n    }\n    template\
+    \ <class F> int max_right(int l, F f) const {\n        assert(0 <= l && l <= _n);\n\
+    \        assert(f(e()));\n        if (l == _n) return _n;\n        l += size;\n\
+    \        S sm = e();\n        do {\n            while (l % 2 == 0) l >>= 1;\n\
+    \            if (!f(op(sm, d[l]))) {\n                while (l < size) {\n   \
+    \                 l = (2 * l);\n                    if (f(op(sm, d[l]))) {\n \
+    \                       sm = op(sm, d[l]);\n                        l++;\n   \
+    \                 }\n                }\n                return l - size;\n   \
+    \         }\n            sm = op(sm, d[l]);\n            l++;\n        } while\
+    \ ((l & -l) != l);\n        return _n;\n    }\n\n    template <bool (*f)(S)> int\
+    \ min_left(int r) const {\n        return min_left(r, [](S x) { return f(x); });\n\
+    \    }\n    template <class F> int min_left(int r, F f) const {\n        assert(0\
+    \ <= r && r <= _n);\n        assert(f(e()));\n        if (r == 0) return 0;\n\
+    \        r += size;\n        S sm = e();\n        do {\n            r--;\n   \
+    \         while (r > 1 && (r % 2)) r >>= 1;\n            if (!f(op(d[r], sm)))\
+    \ {\n                while (r < size) {\n                    r = (2 * r + 1);\n\
+    \                    if (f(op(d[r], sm))) {\n                        sm = op(d[r],\
+    \ sm);\n                        r--;\n                    }\n                }\n\
+    \                return r + 1 - size;\n            }\n            sm = op(d[r],\
+    \ sm);\n        } while ((r & -r) != r);\n        return 0;\n    }\n\n    int\
+    \ n() const {return (*this)._n;}\n\n  private:\n    int _n, size, log;\n    std::vector<S>\
+    \ d;\n\n    void update(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }\n};\n\n\
+    }  // namespace atcoder\n#line 4 \"competitive/data_structure/segtree.hpp\"\n\
+    template <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
+    \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
+    \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\ntemplate<typename\
+    \ T> T op_max(T x, T y) { return x > y? x : y; }\ntemplate<typename T> T op_min(T\
+    \ x, T y) { return x < y? x : y; }\ntemplate<typename T> T op_add(T x, T y) {\
+    \ return x + y; }\n\nint e_max() { return -INF; }\ntemplate<typename T> T e_max()\
+    \ { return -INFL; }\nint e_min() { return INF; }\ntemplate<typename T> T e_min()\
+    \ { return INFL; }\ntemplate<typename T> T e_add() { return 0; }\n\ntemplate<typename\
+    \ T> using seg_add = atcoder::segtree<T, op_add<T>, e_add<T>>;\ntemplate<typename\
+    \ T> using seg_max = atcoder::segtree<T, op_max<T>, e_max>;\ntemplate<typename\
+    \ T> using seg_min = atcoder::segtree<T, op_min<T>, e_min>;\n/**\n * @brief \u30BB\
+    \u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/segtree.md\n\
+    \ */\n#line 5 \"competitive/tree/heavy_light_decomposition.hpp\"\ntemplate <typename\
+    \ Cost, typename Seg> struct HeavyLightDecomposition {\n    vi heavy_edge,in,out,head,par,pos;\n\
+    \    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>& g, Seg&\
+    \ seg, bool edge = true) :\n        heavy_edge(g.n), in(g.n), out(g.n), head(g.n),\
+    \ par(g.n), pos(g.n), seg(seg), edge(edge) {\n        build(g);\n    }\n\n   \
+    \ void build(Graph<Cost>& g) {\n        vi subtree_size(g.n, 0);\n        auto\
+    \ dfs_sz = [&] (auto self, int x, int p) -> int {\n            par[x] = p;\n \
+    \           subtree_size[x] = 1;\n            repe(e, g[x]) {\n              \
+    \  if (e.to == p) continue;\n                subtree_size[x] += self(self, e.to,\
+    \ x);\n            }\n            int maxs = -INF;\n            heavy_edge[x]\
+    \ = -1;\n            repe(e, g[x]) {\n                if (e.to == p) continue;\n\
+    \                if (chmax(maxs, subtree_size[e.to])) heavy_edge[x] = e.to;\n\
+    \            }\n            return subtree_size[x];\n        };\n        dfs_sz(dfs_sz,\
+    \ 0, -1);\n        int t = 0;\n        auto dfs_hld = [&] (auto self, int x, int\
+    \ par) -> void {\n            in[x] = t++;\n            pos[in[x]] = x;\n    \
+    \        if (heavy_edge[x] != -1) {\n                head[heavy_edge[x]] = head[x];\n\
+    \                self(self, heavy_edge[x], x);\n            }\n            repe(e,\
+    \ g[x]) {\n                if (e.to == par || e.to == heavy_edge[x]) continue;\n\
+    \                head[e.to] = e.to;\n                self(self, e.to, x);\n  \
+    \          }\n            out[x] = t;\n        };\n        dfs_hld(dfs_hld, 0,\
+    \ -1);\n    }\n\n    int lca(int u, int v) {\n        while (head[u] != head[v])\
+    \ {\n            if (in[u] > in[v]) swap(u, v);\n            v = par[head[v]];\n\
+    \        }\n        return in[u] < in[v] ? u : v;\n    }\n\n    int la(int u,\
+    \ int k) {\n        while (true) {\n            if (u == -1) return -1;\n    \
+    \        if (u == 0 && k > 0) return -1;\n            int v = head[u];\n     \
+    \       if (in[u] - k >= in[v]) return pos[in[u] - k];\n            k -= in[u]\
+    \ - in[v] + 1;\n            u = par[head[u]];\n        }\n    }\n\n    decltype(seg.e())\
+    \ query(int u, int v) {\n        using T = decltype(seg.e());\n        T l = seg.e();\n\
+    \        T r = seg.e();\n        while (head[u] != head[v]) {\n            if\
+    \ (in[u] > in[v]) swap(u, v), swap(l, r);\n            l = seg.op(seg.prod(in[head[v]],\
+    \ in[v] + 1), l);\n            v = par[head[v]];\n        }\n        if (in[u]\
+    \ > in[v]) swap(u, v), swap(l, r);\n        // \u30D1\u30B9\u30AF\u30A8\u30EA\u306E\
+    \u5834\u5408\u306Fu\uFF08u\u304B\u3089u\u306E\u89AA\u3078\u306E\u30D1\u30B9\uFF09\
+    \u306F\u8DB3\u3055\u306A\u3044\n        return seg.op(seg.op(seg.prod(in[u] +\
+    \ edge, in[v] + 1), l) , r);\n    }\n\n    int edge_pos(int u, int v) {\n    \
+    \    if (par[u] != v) swap(u, v);\n        assert(par[u] == v);\n        return\
+    \ in[u];\n    }\n};\n/**\n * @brief HL\u5206\u89E3 (Heavy Light Decomposition)\n\
+    \ * @docs docs/tree/heavy_light_decomposition.md\n */\n#line 3 \"competitive/std/io.hpp\"\
+    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
+    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
+    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
+    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
+    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
+    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
+    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
     \ T> ostream &operator<<(ostream &os, const unordered_set<T> &st);\ntemplate <typename\
     \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
     \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
@@ -197,39 +295,40 @@ data:
     \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
     \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
     \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 5 \"online_test/AOJ/GRL_1_C.test.cpp\"\n\nint main() {\n    int V, E;\n    cin\
-    \ >> V >> E;\n    vi from(E), to(E);\n    vl cost(E);\n    rep(i, E) {\n     \
-    \   cin >> from[i] >> to[i] >> cost[i];\n    }\n    Graph g(V, from, to, cost);\n\
-    \    vvl min_cost;\n    bool valid = warshall_floyd(g, min_cost, INFL);\n    if\
-    \ (!valid) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n\
-    \    }\n    rep(i, V) rep(j, V) {\n        if (min_cost[i][j] != INFL) cout <<\
-    \ min_cost[i][j];\n        else cout << \"INF\";\n        if (j == V - 1) cout\
-    \ << \"\\n\";\n        else cout << \" \";\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
-    \n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/warshall_floyd.hpp\"\
-    \n#include \"competitive/std/io.hpp\"\n\nint main() {\n    int V, E;\n    cin\
-    \ >> V >> E;\n    vi from(E), to(E);\n    vl cost(E);\n    rep(i, E) {\n     \
-    \   cin >> from[i] >> to[i] >> cost[i];\n    }\n    Graph g(V, from, to, cost);\n\
-    \    vvl min_cost;\n    bool valid = warshall_floyd(g, min_cost, INFL);\n    if\
-    \ (!valid) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n\
-    \    }\n    rep(i, V) rep(j, V) {\n        if (min_cost[i][j] != INFL) cout <<\
-    \ min_cost[i][j];\n        else cout << \"INF\";\n        if (j == V - 1) cout\
-    \ << \"\\n\";\n        else cout << \" \";\n    }\n}"
+    \ 5 \"online_test/AOJ/GRL_5_C.test.cpp\"\nint main() {\n    ll n;\n    input(n);\n\
+    \    vi from, to; vi cost(n-1, 1);\n    rep(i, n) {\n        ll k;\n        input(k);\n\
+    \        rep(k) {\n            ll v;\n            input(v);\n            from.push_back(i);\n\
+    \            to.push_back(v);\n        }\n    }\n    Graph g(n, from, to, cost,\
+    \ true);\n    seg_add<ll> seg(vl(n, 0));\n    HeavyLightDecomposition hld(g, seg);\n\
+    \    ll q;\n    input(q);\n    rep(q) {\n        ll u,v;\n        input(u,v);\n\
+    \        print(hld.lca(u,v));\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/5/GRL_5_C\"\
+    \n#include \"competitive/std/std.hpp\"\n#include \"competitive/tree/heavy_light_decomposition.hpp\"\
+    \n#include \"competitive/std/io.hpp\"\nint main() {\n    ll n;\n    input(n);\n\
+    \    vi from, to; vi cost(n-1, 1);\n    rep(i, n) {\n        ll k;\n        input(k);\n\
+    \        rep(k) {\n            ll v;\n            input(v);\n            from.push_back(i);\n\
+    \            to.push_back(v);\n        }\n    }\n    Graph g(n, from, to, cost,\
+    \ true);\n    seg_add<ll> seg(vl(n, 0));\n    HeavyLightDecomposition hld(g, seg);\n\
+    \    ll q;\n    input(q);\n    rep(q) {\n        ll u,v;\n        input(u,v);\n\
+    \        print(hld.lca(u,v));\n    }\n}\n"
   dependsOn:
   - competitive/std/std.hpp
-  - competitive/graph/warshall_floyd.hpp
+  - competitive/tree/heavy_light_decomposition.hpp
   - competitive/graph/graph.hpp
+  - competitive/data_structure/segtree.hpp
+  - atcoder/segtree.hpp
+  - atcoder/internal_bit.hpp
   - competitive/std/io.hpp
   isVerificationFile: true
-  path: online_test/AOJ/GRL_1_C.test.cpp
+  path: online_test/AOJ/GRL_5_C.test.cpp
   requiredBy: []
   timestamp: '2023-04-11 04:02:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: online_test/AOJ/GRL_1_C.test.cpp
+documentation_of: online_test/AOJ/GRL_5_C.test.cpp
 layout: document
 redirect_from:
-- /verify/online_test/AOJ/GRL_1_C.test.cpp
-- /verify/online_test/AOJ/GRL_1_C.test.cpp.html
-title: online_test/AOJ/GRL_1_C.test.cpp
+- /verify/online_test/AOJ/GRL_5_C.test.cpp
+- /verify/online_test/AOJ/GRL_5_C.test.cpp.html
+title: online_test/AOJ/GRL_5_C.test.cpp
 ---

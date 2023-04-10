@@ -26,6 +26,9 @@ data:
   - icon: ':warning:'
     path: competitive/tree/diameter.hpp
     title: diameter.hpp
+  - icon: ':heavy_check_mark:'
+    path: competitive/tree/heavy_light_decomposition.hpp
+    title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   - icon: ':warning:'
     path: competitive/tree/kruskal.hpp
     title: kruskal.hpp
@@ -39,6 +42,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_3_C.test.cpp
     title: online_test/AOJ/GRL_3_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/GRL_5_C.test.cpp
+    title: online_test/AOJ/GRL_5_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/library-checker/lca_hld.test.cpp
+    title: online_test/library-checker/lca_hld.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/scc.test.cpp
     title: online_test/library-checker/scc.test.cpp
@@ -199,14 +208,17 @@ data:
   - competitive/graph/max_k_dijkstra.hpp
   - competitive/graph/warshall_floyd.hpp
   - competitive/tree/kruskal.hpp
+  - competitive/tree/heavy_light_decomposition.hpp
   - competitive/tree/diameter.hpp
   - competitive/tree/depth.hpp
   timestamp: '2023-04-09 02:19:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
+  - online_test/library-checker/lca_hld.test.cpp
   - online_test/library-checker/shortest_path_dijkstra.test.cpp
   - online_test/library-checker/scc.test.cpp
+  - online_test/AOJ/GRL_5_C.test.cpp
   - online_test/AOJ/GRL_1_C.test.cpp
   - online_test/AOJ/GRL_3_C.test.cpp
   - online_test/AOJ/GRL_1_A.test.cpp

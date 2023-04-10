@@ -8,16 +8,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/segtree.hpp
     title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
+  - icon: ':heavy_check_mark:'
+    path: competitive/tree/heavy_light_decomposition.hpp
+    title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_F.test.cpp
@@ -31,6 +34,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/AOJ/GRL_5_C.test.cpp
+    title: online_test/AOJ/GRL_5_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/library-checker/lca_hld.test.cpp
+    title: online_test/library-checker/lca_hld.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -65,12 +74,15 @@ data:
   - atcoder/segtree.hpp
   - atcoder/lazysegtree.hpp
   - atcoder/convolution.hpp
+  - competitive/tree/heavy_light_decomposition.hpp
   - competitive/data_structure/segtree.hpp
   - competitive/data_structure/lazysegtree.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - online_test/library-checker/lca_hld.test.cpp
   - online_test/AOJ/DSL_2_I.test.cpp
+  - online_test/AOJ/GRL_5_C.test.cpp
   - online_test/AOJ/DSL_2_G.test.cpp
   - online_test/AOJ/DSL_2_H.test.cpp
   - online_test/AOJ/DSL_2_F.test.cpp
