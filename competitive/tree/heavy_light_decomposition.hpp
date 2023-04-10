@@ -2,6 +2,7 @@
 #include "competitive/std/std.hpp"
 #include "competitive/graph/graph.hpp"
 #include "competitive/data_structure/segtree.hpp"
+#include "competitive/data_structure/lazysegtree.hpp"
 template <typename Cost, typename Seg> struct HeavyLightDecomposition {
     vi heavy_edge,in,out,head,par,pos;
     Seg &seg;
@@ -66,7 +67,7 @@ template <typename Cost, typename Seg> struct HeavyLightDecomposition {
         }
     }
 
-    decltype(seg.e()) query(int u, int v) {
+    decltype(seg.e()) prod(int u, int v) {
         using T = decltype(seg.e());
         T l = seg.e();
         T r = seg.e();
@@ -78,6 +79,16 @@ template <typename Cost, typename Seg> struct HeavyLightDecomposition {
         if (in[u] > in[v]) swap(u, v), swap(l, r);
         // パスクエリの場合はu（uからuの親へのパス）は足さない
         return seg.op(seg.op(seg.prod(in[u] + edge, in[v] + 1), l) , r);
+    }
+
+    void apply(int u, int v, decltype(seg.id()) f) {
+        while (head[u] != head[v]) {
+            if (in[u] > in[v]) swap(u, v);
+            seg.apply(in[head[v]], in[v] + 1, f);
+            v = par[head[v]];
+        }
+        if (in[u] > in[v]) swap(u, v);
+        seg.apply(in[u] + edge, in[v] + 1, f);
     }
 
     int edge_pos(int u, int v) {
