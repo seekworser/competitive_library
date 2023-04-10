@@ -12,7 +12,6 @@ template <class S, S (*_op)(S, S), S (*_e)()> struct segtree {
     S (*op)(S, S) = _op;
     S (*e)() = _e;
     segtree() : segtree(0) {}
-    explicit segtree(int n) : segtree(std::vector<S>(n, e())) {}
     explicit segtree(const std::vector<S>& v) : _n(int(v.size())) {
         log = internal::ceil_pow2(_n);
         size = 1 << log;
@@ -22,6 +21,7 @@ template <class S, S (*_op)(S, S), S (*_e)()> struct segtree {
             update(i);
         }
     }
+    explicit segtree(int n) : segtree(std::vector<S>(n, _e())) {}
 
     void set(int p, S x) {
         assert(0 <= p && p < _n);

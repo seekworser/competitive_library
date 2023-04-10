@@ -9,16 +9,21 @@
 namespace atcoder {
 
 template <class S,
-          S (*op)(S, S),
-          S (*e)(),
+          S (*_op)(S, S),
+          S (*_e)(),
           class F,
-          S (*mapping)(F, S),
-          F (*composition)(F, F),
-          F (*id)()>
+          S (*_mapping)(F, S),
+          F (*_composition)(F, F),
+          F (*_id)()>
 struct lazy_segtree {
   public:
+    S (*op)(S, S) = _op;
+    S (*e)() = _e;
+    S (*mapping)(F, S) = _mapping;
+    F (*composition)(F, F) = _composition;
+    F (*id)() = _id;
     lazy_segtree() : lazy_segtree(0) {}
-    explicit lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}
+    explicit lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, _e())) {}
     explicit lazy_segtree(const std::vector<S>& v) : _n(int(v.size())) {
         log = internal::ceil_pow2(_n);
         size = 1 << log;
