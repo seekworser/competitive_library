@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   - icon: ':heavy_check_mark:'
@@ -148,25 +148,25 @@ data:
     #endif\n}\n\n}  // namespace internal\n\n}  // namespace atcoder\n#line 7 \"atcoder/segtree.hpp\"\
     \n\nnamespace atcoder {\n\ntemplate <class S, S (*_op)(S, S), S (*_e)()> struct\
     \ segtree {\n  public:\n    S (*op)(S, S) = _op;\n    S (*e)() = _e;\n    segtree()\
-    \ : segtree(0) {}\n    explicit segtree(int n) : segtree(std::vector<S>(n, e()))\
-    \ {}\n    explicit segtree(const std::vector<S>& v) : _n(int(v.size())) {\n  \
-    \      log = internal::ceil_pow2(_n);\n        size = 1 << log;\n        d = std::vector<S>(2\
-    \ * size, e());\n        for (int i = 0; i < _n; i++) d[size + i] = v[i];\n  \
-    \      for (int i = size - 1; i >= 1; i--) {\n            update(i);\n       \
-    \ }\n    }\n\n    void set(int p, S x) {\n        assert(0 <= p && p < _n);\n\
-    \        p += size;\n        d[p] = x;\n        for (int i = 1; i <= log; i++)\
-    \ update(p >> i);\n    }\n\n    void add(int p, S x) {\n        assert(0 <= p\
-    \ && p < _n);\n        (*this).set(p, (*this).get(p) + x);\n    }\n\n    S get(int\
-    \ p) const {\n        assert(0 <= p && p < _n);\n        return d[p + size];\n\
-    \    }\n\n    S prod(int l, int r) const {\n        assert(0 <= l && l <= r &&\
-    \ r <= _n);\n        S sml = e(), smr = e();\n        l += size;\n        r +=\
-    \ size;\n\n        while (l < r) {\n            if (l & 1) sml = op(sml, d[l++]);\n\
-    \            if (r & 1) smr = op(d[--r], smr);\n            l >>= 1;\n       \
-    \     r >>= 1;\n        }\n        return op(sml, smr);\n    }\n\n    S all_prod()\
-    \ const { return d[1]; }\n\n    template <bool (*f)(S)> int max_right(int l) const\
-    \ {\n        return max_right(l, [](S x) { return f(x); });\n    }\n    template\
-    \ <class F> int max_right(int l, F f) const {\n        assert(0 <= l && l <= _n);\n\
-    \        assert(f(e()));\n        if (l == _n) return _n;\n        l += size;\n\
+    \ : segtree(0) {}\n    explicit segtree(const std::vector<S>& v) : _n(int(v.size()))\
+    \ {\n        log = internal::ceil_pow2(_n);\n        size = 1 << log;\n      \
+    \  d = std::vector<S>(2 * size, e());\n        for (int i = 0; i < _n; i++) d[size\
+    \ + i] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n            update(i);\n\
+    \        }\n    }\n    explicit segtree(int n) : segtree(std::vector<S>(n, _e()))\
+    \ {}\n\n    void set(int p, S x) {\n        assert(0 <= p && p < _n);\n      \
+    \  p += size;\n        d[p] = x;\n        for (int i = 1; i <= log; i++) update(p\
+    \ >> i);\n    }\n\n    void add(int p, S x) {\n        assert(0 <= p && p < _n);\n\
+    \        (*this).set(p, (*this).get(p) + x);\n    }\n\n    S get(int p) const\
+    \ {\n        assert(0 <= p && p < _n);\n        return d[p + size];\n    }\n\n\
+    \    S prod(int l, int r) const {\n        assert(0 <= l && l <= r && r <= _n);\n\
+    \        S sml = e(), smr = e();\n        l += size;\n        r += size;\n\n \
+    \       while (l < r) {\n            if (l & 1) sml = op(sml, d[l++]);\n     \
+    \       if (r & 1) smr = op(d[--r], smr);\n            l >>= 1;\n            r\
+    \ >>= 1;\n        }\n        return op(sml, smr);\n    }\n\n    S all_prod() const\
+    \ { return d[1]; }\n\n    template <bool (*f)(S)> int max_right(int l) const {\n\
+    \        return max_right(l, [](S x) { return f(x); });\n    }\n    template <class\
+    \ F> int max_right(int l, F f) const {\n        assert(0 <= l && l <= _n);\n \
+    \       assert(f(e()));\n        if (l == _n) return _n;\n        l += size;\n\
     \        S sm = e();\n        do {\n            while (l % 2 == 0) l >>= 1;\n\
     \            if (!f(op(sm, d[l]))) {\n                while (l < size) {\n   \
     \                 l = (2 * l);\n                    if (f(op(sm, d[l]))) {\n \
@@ -189,26 +189,27 @@ data:
     }  // namespace atcoder\n#line 4 \"competitive/data_structure/segtree.hpp\"\n\
     template <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
     \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
-    \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\ntemplate<typename\
-    \ T> T op_max(T x, T y) { return x > y? x : y; }\ntemplate<typename T> T op_min(T\
-    \ x, T y) { return x < y? x : y; }\ntemplate<typename T> T op_add(T x, T y) {\
-    \ return x + y; }\n\nint e_max() { return -INF; }\ntemplate<typename T> T e_max()\
-    \ { return -INFL; }\nint e_min() { return INF; }\ntemplate<typename T> T e_min()\
-    \ { return INFL; }\ntemplate<typename T> T e_add() { return 0; }\n\ntemplate<typename\
-    \ T> using seg_add = atcoder::segtree<T, op_add<T>, e_add<T>>;\ntemplate<typename\
-    \ T> using seg_max = atcoder::segtree<T, op_max<T>, e_max>;\ntemplate<typename\
-    \ T> using seg_min = atcoder::segtree<T, op_min<T>, e_min>;\n/**\n * @brief \u30BB\
-    \u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/segtree.md\n\
-    \ */\n#line 5 \"competitive/tree/heavy_light_decomposition.hpp\"\ntemplate <typename\
-    \ Cost, typename Seg> struct HeavyLightDecomposition {\n    vi heavy_edge,in,out,head,par,pos;\n\
-    \    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>& g, Seg&\
-    \ seg, bool edge = true) :\n        heavy_edge(g.n), in(g.n), out(g.n), head(g.n),\
-    \ par(g.n), pos(g.n), seg(seg), edge(edge) {\n        build(g);\n    }\n\n   \
-    \ void build(Graph<Cost>& g) {\n        vi subtree_size(g.n, 0);\n        auto\
-    \ dfs_sz = [&] (auto self, int x, int p) -> int {\n            par[x] = p;\n \
-    \           subtree_size[x] = 1;\n            repe(e, g[x]) {\n              \
-    \  if (e.to == p) continue;\n                subtree_size[x] += self(self, e.to,\
-    \ x);\n            }\n            int maxs = -INF;\n            heavy_edge[x]\
+    \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\nnamespace\
+    \ segtree {\n    template<typename T> T op_max(T x, T y) { return x > y? x : y;\
+    \ }\n    template<typename T> T op_min(T x, T y) { return x < y? x : y; }\n  \
+    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    int e_max()\
+    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
+    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
+    \ }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename T>\
+    \ using seg_add = atcoder::segtree<T, segtree::op_add, segtree::e_add>;\ntemplate<typename\
+    \ T> using seg_max = atcoder::segtree<T, segtree::op_max, segtree::e_max>;\ntemplate<typename\
+    \ T> using seg_min = atcoder::segtree<T, segtree::op_min, segtree::e_min>;\n/**\n\
+    \ * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\
+    \n * @docs docs/data_structure/segtree.md\n */\n#line 5 \"competitive/tree/heavy_light_decomposition.hpp\"\
+    \ntemplate <typename Cost, typename Seg> struct HeavyLightDecomposition {\n  \
+    \  vi heavy_edge,in,out,head,par,pos;\n    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>&\
+    \ g, Seg& seg, bool edge = true) :\n        heavy_edge(g.n), in(g.n), out(g.n),\
+    \ head(g.n), par(g.n), pos(g.n), seg(seg), edge(edge) {\n        build(g);\n \
+    \   }\n\n    void build(Graph<Cost>& g) {\n        vi subtree_size(g.n, 0);\n\
+    \        auto dfs_sz = [&] (auto self, int x, int p) -> int {\n            par[x]\
+    \ = p;\n            subtree_size[x] = 1;\n            repe(e, g[x]) {\n      \
+    \          if (e.to == p) continue;\n                subtree_size[x] += self(self,\
+    \ e.to, x);\n            }\n            int maxs = -INF;\n            heavy_edge[x]\
     \ = -1;\n            repe(e, g[x]) {\n                if (e.to == p) continue;\n\
     \                if (chmax(maxs, subtree_size[e.to])) heavy_edge[x] = e.to;\n\
     \            }\n            return subtree_size[x];\n        };\n        dfs_sz(dfs_sz,\
@@ -322,7 +323,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/GRL_5_C.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 04:02:35+09:00'
+  timestamp: '2023-04-11 04:33:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/GRL_5_C.test.cpp

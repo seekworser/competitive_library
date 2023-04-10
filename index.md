@@ -12,7 +12,7 @@ data:
     - icon: ':warning:'
       path: atcoder/fenwicktree.hpp
       title: atcoder/fenwicktree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/internal_bit.hpp
       title: atcoder/internal_bit.hpp
     - icon: ':warning:'
@@ -30,7 +30,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: atcoder/internal_type_traits.hpp
       title: atcoder/internal_type_traits.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/lazysegtree.hpp
       title: atcoder/lazysegtree.hpp
     - icon: ':warning:'
@@ -76,7 +76,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/bit.hpp
       title: "BIT\uFF08Binary Index Tree\uFF09"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/data_structure/lazysegtree.hpp
       title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
         \u30FC\uFF09"
@@ -236,10 +236,10 @@ data:
       title: tree
   - name: competitive/std
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/std/io.hpp
       title: io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/std/std.hpp
       title: std.hpp
   - name: competitive/string
@@ -314,7 +314,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DPL_1_D.test.cpp
       title: online_test/AOJ/DPL_1_D.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/DSL_2_F.test.cpp
       title: online_test/AOJ/DSL_2_F.test.cpp
     - icon: ':heavy_check_mark:'
@@ -323,7 +323,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_H.test.cpp
       title: online_test/AOJ/DSL_2_H.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/DSL_2_I.test.cpp
       title: online_test/AOJ/DSL_2_I.test.cpp
     - icon: ':heavy_check_mark:'

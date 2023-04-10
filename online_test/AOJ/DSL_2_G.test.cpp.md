@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -112,11 +112,13 @@ data:
     \ {\n#ifdef _MSC_VER\n    unsigned long index;\n    _BitScanForward(&index, n);\n\
     \    return index;\n#else\n    return __builtin_ctz(n);\n#endif\n}\n\n}  // namespace\
     \ internal\n\n}  // namespace atcoder\n#line 8 \"atcoder/lazysegtree.hpp\"\n\n\
-    namespace atcoder {\n\ntemplate <class S,\n          S (*op)(S, S),\n        \
-    \  S (*e)(),\n          class F,\n          S (*mapping)(F, S),\n          F (*composition)(F,\
-    \ F),\n          F (*id)()>\nstruct lazy_segtree {\n  public:\n    lazy_segtree()\
+    namespace atcoder {\n\ntemplate <class S,\n          S (*_op)(S, S),\n       \
+    \   S (*_e)(),\n          class F,\n          S (*_mapping)(F, S),\n         \
+    \ F (*_composition)(F, F),\n          F (*_id)()>\nstruct lazy_segtree {\n  public:\n\
+    \    S (*op)(S, S) = _op;\n    S (*e)() = _e;\n    S (*mapping)(F, S) = _mapping;\n\
+    \    F (*composition)(F, F) = _composition;\n    F (*id)() = _id;\n    lazy_segtree()\
     \ : lazy_segtree(0) {}\n    explicit lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
-    \ e())) {}\n    explicit lazy_segtree(const std::vector<S>& v) : _n(int(v.size()))\
+    \ _e())) {}\n    explicit lazy_segtree(const std::vector<S>& v) : _n(int(v.size()))\
     \ {\n        log = internal::ceil_pow2(_n);\n        size = 1 << log;\n      \
     \  d = std::vector<S>(2 * size, e());\n        lz = std::vector<F>(size, id());\n\
     \        for (int i = 0; i < _n; i++) d[size + i] = v[i];\n        for (int i\
@@ -181,61 +183,64 @@ data:
     \ S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>\n\
     std::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S, op, e, F,\
     \ mapping, composition, id> seg) {\n    int n = seg.n();\n    rep(i, n) { os <<\
-    \ seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\n\ntemplate<typename\
-    \ T> struct AddNode {\n    T value;\n    ll size;\n    AddNode() : value(T(0)),\
-    \ size(1) {};\n    AddNode(T value, ll size) : value(value), size(size) {};\n\
-    \    friend ostream& operator<<(std::ostream& os, const AddNode<T> &n) { os <<\
-    \ n.value; return os; };\n};\n\nint e_max() { return -INF; }\ntemplate<typename\
-    \ T> T e_max() { return -INFL; }\nint e_min() { return INF; }\ntemplate<typename\
-    \ T> T e_min() { return INFL; }\ntemplate<typename T> AddNode<T> e_add() { return\
-    \ {0, 1}; }\n\ntemplate<typename T> T op_max(T x, T y) { return x > y ? x : y;\
-    \ }\ntemplate<typename T> T op_min(T x, T y) { return x < y ? x : y; }\ntemplate<typename\
-    \ T> AddNode<T> op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value,\
-    \ x.size + y.size}; }\n\ntemplate<typename T> T id_radd(){ return 0; }\nint id_rupdate(){\
-    \ return INF; }\ntemplate<typename T> T id_rupdate(){ return INFL; }\n\ntemplate<typename\
-    \ T> AddNode<T> mapping_add_radd(T f, AddNode<T> x){ return {x.value + f * x.size,\
-    \ x.size}; }\ntemplate<typename T> AddNode<T> mapping_add_rupdate(T f, AddNode<T>\
-    \ x){\n    AddNode<T> rev = AddNode<T>(x);\n    if(f != id_rupdate<T>()) rev.value\
-    \ = f * rev.size;\n    return rev;\n}\ntemplate<typename T> T mapping_radd(T f,\
-    \ T x){ return f+x; }\ntemplate<typename T> T mapping_rupdate(T f, T x){ return\
-    \ (f == id_rupdate<T>() ? x : f); }\n\ntemplate<typename T> T composition_radd(T\
-    \ f, T g){ return f+g; }\ntemplate<typename T> T composition_rupdate(T f, T g){\
-    \ return (f == id_rupdate<T>() ? g : f); }\n\ntemplate<typename T> using lseg_add_radd\
-    \ = atcoder::lazy_segtree<AddNode<T>, op_add<T>, e_add<T>, T, mapping_add_radd<T>,\
-    \ composition_radd<T>, id_radd<T>>;\ntemplate<typename T> using lseg_min_radd\
-    \ = atcoder::lazy_segtree<T, op_min<T>, e_min<T>, T, mapping_radd<T>, composition_radd<T>,\
-    \ id_radd<T>>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
-    \ op_max<T>, e_max<T>, T, mapping_radd<T>, composition_radd<T>, id_radd<T>>;\n\
-    template<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<AddNode<T>,\
-    \ op_add<T>, e_add<T>, T, mapping_add_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;\n\
-    template<typename T> using lseg_min_rupdate = atcoder::lazy_segtree<T, op_min<T>,\
-    \ e_min<T>, T, mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;\ntemplate<typename\
-    \ T> using lseg_max_rupdate = atcoder::lazy_segtree<T, op_max<T>, e_max<T>, T,\
-    \ mapping_rupdate<T>, composition_rupdate<T>, id_rupdate<T>>;\n/**\n * @brief\
-    \ \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
-    \uFF09\n * @docs docs/data_structure/lazysegtree.md\n */\n#line 3 \"competitive/std/io.hpp\"\
-    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
-    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
-    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
-    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
-    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
-    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
-    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const unordered_set<T> &st);\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
-    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
-    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
-    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
-    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
-    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
-    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
-    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
-    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
-    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
-    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\n\nnamespace lsegtree\
+    \ {\n    template<typename T> struct AddNode {\n        T value;\n        ll size;\n\
+    \        AddNode() : value(T(0)), size(1) {};\n        AddNode(T value, ll size)\
+    \ : value(value), size(size) {};\n        friend ostream& operator<<(std::ostream&\
+    \ os, const AddNode<T> &n) { os << n.value; return os; };\n    };\n\n    int e_max()\
+    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
+    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
+    \ }\n    template<typename T> AddNode<T> e_add() { return {0, 1}; }\n\n    template<typename\
+    \ T> T op_max(T x, T y) { return x > y ? x : y; }\n    template<typename T> T\
+    \ op_min(T x, T y) { return x < y ? x : y; }\n    template<typename T> AddNode<T>\
+    \ op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value, x.size + y.size};\
+    \ }\n\n    template<typename T> T id_radd(){ return 0; }\n    int id_rupdate(){\
+    \ return INF; }\n    template<typename T> T id_rupdate(){ return INFL; }\n\n \
+    \   template<typename T> AddNode<T> mapping_add_radd(T f, AddNode<T> x){ return\
+    \ {x.value + f * x.size, x.size}; }\n    template<typename T> AddNode<T> mapping_add_rupdate(T\
+    \ f, AddNode<T> x){\n        AddNode<T> rev = AddNode<T>(x);\n        if(f !=\
+    \ id_rupdate<T>()) rev.value = f * rev.size;\n        return rev;\n    }\n   \
+    \ template<typename T> T mapping_radd(T f, T x){ return f+x; }\n    template<typename\
+    \ T> T mapping_rupdate(T f, T x){ return (f == id_rupdate() ? x : f); }\n\n  \
+    \  template<typename T> T composition_radd(T f, T g){ return f+g; }\n    template<typename\
+    \ T> T composition_rupdate(T f, T g){ return (f == id_rupdate() ? g : f); }\n\
+    }\n\ntemplate<typename T> using lseg_add_radd = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
+    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_radd, lsegtree::composition_radd,\
+    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_min_radd = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
+    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
+    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
+    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_rupdate, lsegtree::composition_rupdate,\
+    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_min_rupdate = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
+    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
+    \ lsegtree::id_rupdate>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\
+    \u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
+    \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
+    \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
+    \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
+    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
+    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
+    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
+    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const unordered_set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
+    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
+    template <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
+    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
+    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
+    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
+    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
+    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
+    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
+    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
+    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
     \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
     \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
@@ -297,7 +302,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/DSL_2_G.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 04:02:35+09:00'
+  timestamp: '2023-04-11 04:33:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/DSL_2_G.test.cpp

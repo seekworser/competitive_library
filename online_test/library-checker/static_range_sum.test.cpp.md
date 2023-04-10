@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
     title: "BIT\uFF08Binary Index Tree\uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []

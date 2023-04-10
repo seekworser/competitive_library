@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/algorithm/longest_common_subsequence.hpp
     title: longest_common_subsequence.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
