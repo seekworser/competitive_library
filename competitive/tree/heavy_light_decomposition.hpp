@@ -81,7 +81,7 @@ template <typename Cost, typename Seg> struct HeavyLightDecomposition {
         return seg.op(seg.op(seg.prod(in[u] + edge, in[v] + 1), l) , r);
     }
 
-    void apply(int u, int v, decltype(seg.id()) f) {
+    template<typename F> void apply(int u, int v, F f) {
         while (head[u] != head[v]) {
             if (in[u] > in[v]) swap(u, v);
             seg.apply(in[head[v]], in[v] + 1, f);

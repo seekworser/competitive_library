@@ -2,25 +2,21 @@
 #include "competitive/std/std.hpp"
 #include "competitive/data_structure/lazysegtree.hpp"
 #include "competitive/std/io.hpp"
-
 int main() {
     int n,q;
-    cin >> n >> q;
-    lseg_min_rupdate<ll> lseg(n);
-    lseg.apply(0, n, powm(2, 31) - 1);
-    debug(lseg);
+    input(n,q);
+    lseg_min_rupdate<ll> lseg(vl(n, powm(2,31) - 1));
     rep(i, q) {
         int t;
-        cin >> t;
+        input(t);
         if (t == 0) {
             int s,t; ll x;
-            cin >> s >> t >> x;
+            input(s,t,x);
             lseg.apply(s, t+1, x);
         } else {
             int s,t;
-            cin >> s >> t;
-            cout << lseg.prod(s, t+1) << '\n';
+            input(s,t);
+            print(lseg.prod(s, t+1));
         }
-        debug(lseg);
     }
 }
