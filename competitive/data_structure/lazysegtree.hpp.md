@@ -10,7 +10,10 @@ data:
   - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':question:'
+    path: competitive/tree/heavy_light_decomposition.hpp
+    title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedVerifiedWith:
   - icon: ':x:'
     path: online_test/AOJ/DSL_2_F.test.cpp
@@ -24,6 +27,15 @@ data:
   - icon: ':x:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
+  - icon: ':x:'
+    path: online_test/AOJ/GRL_5_C.test.cpp
+    title: online_test/AOJ/GRL_5_C.test.cpp
+  - icon: ':x:'
+    path: online_test/library-checker/lca_hld.test.cpp
+    title: online_test/library-checker/lca_hld.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/yukicoder/yuki-399.test.cpp
+    title: online_test/yukicoder/yuki-399.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -269,14 +281,18 @@ data:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/data_structure/lazysegtree.hpp
-  requiredBy: []
+  requiredBy:
+  - competitive/tree/heavy_light_decomposition.hpp
   timestamp: '2023-04-11 04:33:35+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - online_test/library-checker/lca_hld.test.cpp
   - online_test/AOJ/DSL_2_I.test.cpp
+  - online_test/AOJ/GRL_5_C.test.cpp
   - online_test/AOJ/DSL_2_G.test.cpp
   - online_test/AOJ/DSL_2_H.test.cpp
   - online_test/AOJ/DSL_2_F.test.cpp
+  - online_test/yukicoder/yuki-399.test.cpp
 documentation_of: competitive/data_structure/lazysegtree.hpp
 layout: document
 redirect_from:

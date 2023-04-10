@@ -75,7 +75,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_3_C.test.cpp
     title: online_test/AOJ/GRL_3_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/GRL_5_C.test.cpp
     title: online_test/AOJ/GRL_5_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -84,7 +84,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/aplusb.test.cpp
     title: online_test/library-checker/aplusb.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/lca_hld.test.cpp
     title: online_test/library-checker/lca_hld.test.cpp
   - icon: ':heavy_check_mark:'
@@ -102,6 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/static_range_sum.test.cpp
     title: online_test/library-checker/static_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: online_test/yukicoder/yuki-399.test.cpp
+    title: online_test/yukicoder/yuki-399.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-649.test.cpp
     title: online_test/yukicoder/yuki-649.test.cpp
@@ -347,6 +350,7 @@ data:
   - online_test/AOJ/ALDS_1_10_C.test.cpp
   - online_test/yukicoder/yuki-hello-world.test.cpp
   - online_test/yukicoder/yuki-649.test.cpp
+  - online_test/yukicoder/yuki-399.test.cpp
 documentation_of: competitive/std/io.hpp
 layout: document
 redirect_from:

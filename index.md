@@ -48,7 +48,7 @@ data:
     - icon: ':warning:'
       path: atcoder/scc.hpp
       title: atcoder/scc.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/segtree.hpp
       title: atcoder/segtree.hpp
     - icon: ':warning:'
@@ -83,7 +83,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/radix_heap.hpp
       title: Radix Heap
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/data_structure/segtree.hpp
       title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
     - icon: ':warning:'
@@ -123,7 +123,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/graph/fast_dijkstra.hpp
       title: fast_dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/graph/graph.hpp
       title: graph.hpp
     - icon: ':warning:'
@@ -255,7 +255,7 @@ data:
     - icon: ':warning:'
       path: competitive/tree/diameter.hpp
       title: diameter.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: competitive/tree/heavy_light_decomposition.hpp
       title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
     - icon: ':warning:'
@@ -335,7 +335,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/GRL_3_C.test.cpp
       title: online_test/AOJ/GRL_3_C.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/AOJ/GRL_5_C.test.cpp
       title: online_test/AOJ/GRL_5_C.test.cpp
     - icon: ':heavy_check_mark:'
@@ -346,7 +346,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/library-checker/aplusb.test.cpp
       title: online_test/library-checker/aplusb.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: online_test/library-checker/lca_hld.test.cpp
       title: online_test/library-checker/lca_hld.test.cpp
     - icon: ':heavy_check_mark:'
@@ -366,6 +366,9 @@ data:
       title: online_test/library-checker/static_range_sum.test.cpp
   - name: online_test/yukicoder
     pages:
+    - icon: ':heavy_check_mark:'
+      path: online_test/yukicoder/yuki-399.test.cpp
+      title: online_test/yukicoder/yuki-399.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/yukicoder/yuki-649.test.cpp
       title: online_test/yukicoder/yuki-649.test.cpp

@@ -4,13 +4,20 @@ data:
   - icon: ':question:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: atcoder/lazysegtree.hpp
+    title: atcoder/lazysegtree.hpp
+  - icon: ':question:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: competitive/data_structure/lazysegtree.hpp
+    title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
+      \u30FC\uFF09"
+  - icon: ':question:'
     path: competitive/data_structure/segtree.hpp
     title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':question:'
@@ -19,14 +26,14 @@ data:
   - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/tree/heavy_light_decomposition.hpp
     title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -201,16 +208,124 @@ data:
     \ T> using seg_max = atcoder::segtree<T, segtree::op_max, segtree::e_max>;\ntemplate<typename\
     \ T> using seg_min = atcoder::segtree<T, segtree::op_min, segtree::e_min>;\n/**\n\
     \ * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\
-    \n * @docs docs/data_structure/segtree.md\n */\n#line 5 \"competitive/tree/heavy_light_decomposition.hpp\"\
-    \ntemplate <typename Cost, typename Seg> struct HeavyLightDecomposition {\n  \
-    \  vi heavy_edge,in,out,head,par,pos;\n    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>&\
-    \ g, Seg& seg, bool edge = true) :\n        heavy_edge(g.n), in(g.n), out(g.n),\
-    \ head(g.n), par(g.n), pos(g.n), seg(seg), edge(edge) {\n        build(g);\n \
-    \   }\n\n    void build(Graph<Cost>& g) {\n        vi subtree_size(g.n, 0);\n\
-    \        auto dfs_sz = [&] (auto self, int x, int p) -> int {\n            par[x]\
-    \ = p;\n            subtree_size[x] = 1;\n            repe(e, g[x]) {\n      \
-    \          if (e.to == p) continue;\n                subtree_size[x] += self(self,\
-    \ e.to, x);\n            }\n            int maxs = -INF;\n            heavy_edge[x]\
+    \n * @docs docs/data_structure/segtree.md\n */\n#line 6 \"atcoder/lazysegtree.hpp\"\
+    \n\n#line 8 \"atcoder/lazysegtree.hpp\"\n\nnamespace atcoder {\n\ntemplate <class\
+    \ S,\n          S (*_op)(S, S),\n          S (*_e)(),\n          class F,\n  \
+    \        S (*_mapping)(F, S),\n          F (*_composition)(F, F),\n          F\
+    \ (*_id)()>\nstruct lazy_segtree {\n  public:\n    S (*op)(S, S) = _op;\n    S\
+    \ (*e)() = _e;\n    S (*mapping)(F, S) = _mapping;\n    F (*composition)(F, F)\
+    \ = _composition;\n    F (*id)() = _id;\n    lazy_segtree() : lazy_segtree(0)\
+    \ {}\n    explicit lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, _e()))\
+    \ {}\n    explicit lazy_segtree(const std::vector<S>& v) : _n(int(v.size())) {\n\
+    \        log = internal::ceil_pow2(_n);\n        size = 1 << log;\n        d =\
+    \ std::vector<S>(2 * size, e());\n        lz = std::vector<F>(size, id());\n \
+    \       for (int i = 0; i < _n; i++) d[size + i] = v[i];\n        for (int i =\
+    \ size - 1; i >= 1; i--) {\n            update(i);\n        }\n    }\n\n    void\
+    \ set(int p, S x) {\n        assert(0 <= p && p < _n);\n        p += size;\n \
+    \       for (int i = log; i >= 1; i--) push(p >> i);\n        d[p] = x;\n    \
+    \    for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    void add(int\
+    \ p, S x) {\n        assert(0 <= p && p < _n);\n        (*this).set(p, (*this).get(p)\
+    \ + x);\n    }\n\n    S get(int p) {\n        assert(0 <= p && p < _n);\n    \
+    \    p += size;\n        for (int i = log; i >= 1; i--) push(p >> i);\n      \
+    \  return d[p];\n    }\n\n    S prod(int l, int r) {\n        assert(0 <= l &&\
+    \ l <= r && r <= _n);\n        if (l == r) return e();\n\n        l += size;\n\
+    \        r += size;\n\n        for (int i = log; i >= 1; i--) {\n            if\
+    \ (((l >> i) << i) != l) push(l >> i);\n            if (((r >> i) << i) != r)\
+    \ push((r - 1) >> i);\n        }\n\n        S sml = e(), smr = e();\n        while\
+    \ (l < r) {\n            if (l & 1) sml = op(sml, d[l++]);\n            if (r\
+    \ & 1) smr = op(d[--r], smr);\n            l >>= 1;\n            r >>= 1;\n  \
+    \      }\n\n        return op(sml, smr);\n    }\n\n    S all_prod() { return d[1];\
+    \ }\n\n    void apply(int p, F f) {\n        assert(0 <= p && p < _n);\n     \
+    \   p += size;\n        for (int i = log; i >= 1; i--) push(p >> i);\n       \
+    \ d[p] = mapping(f, d[p]);\n        for (int i = 1; i <= log; i++) update(p >>\
+    \ i);\n    }\n    void apply(int l, int r, F f) {\n        assert(0 <= l && l\
+    \ <= r && r <= _n);\n        if (l == r) return;\n\n        l += size;\n     \
+    \   r += size;\n\n        for (int i = log; i >= 1; i--) {\n            if (((l\
+    \ >> i) << i) != l) push(l >> i);\n            if (((r >> i) << i) != r) push((r\
+    \ - 1) >> i);\n        }\n\n        {\n            int l2 = l, r2 = r;\n     \
+    \       while (l < r) {\n                if (l & 1) all_apply(l++, f);\n     \
+    \           if (r & 1) all_apply(--r, f);\n                l >>= 1;\n        \
+    \        r >>= 1;\n            }\n            l = l2;\n            r = r2;\n \
+    \       }\n\n        for (int i = 1; i <= log; i++) {\n            if (((l >>\
+    \ i) << i) != l) update(l >> i);\n            if (((r >> i) << i) != r) update((r\
+    \ - 1) >> i);\n        }\n    }\n\n    template <bool (*g)(S)> int max_right(int\
+    \ l) {\n        return max_right(l, [](S x) { return g(x); });\n    }\n    template\
+    \ <class G> int max_right(int l, G g) {\n        assert(0 <= l && l <= _n);\n\
+    \        assert(g(e()));\n        if (l == _n) return _n;\n        l += size;\n\
+    \        for (int i = log; i >= 1; i--) push(l >> i);\n        S sm = e();\n \
+    \       do {\n            while (l % 2 == 0) l >>= 1;\n            if (!g(op(sm,\
+    \ d[l]))) {\n                while (l < size) {\n                    push(l);\n\
+    \                    l = (2 * l);\n                    if (g(op(sm, d[l]))) {\n\
+    \                        sm = op(sm, d[l]);\n                        l++;\n  \
+    \                  }\n                }\n                return l - size;\n  \
+    \          }\n            sm = op(sm, d[l]);\n            l++;\n        } while\
+    \ ((l & -l) != l);\n        return _n;\n    }\n\n    template <bool (*g)(S)> int\
+    \ min_left(int r) {\n        return min_left(r, [](S x) { return g(x); });\n \
+    \   }\n    template <class G> int min_left(int r, G g) {\n        assert(0 <=\
+    \ r && r <= _n);\n        assert(g(e()));\n        if (r == 0) return 0;\n   \
+    \     r += size;\n        for (int i = log; i >= 1; i--) push((r - 1) >> i);\n\
+    \        S sm = e();\n        do {\n            r--;\n            while (r > 1\
+    \ && (r % 2)) r >>= 1;\n            if (!g(op(d[r], sm))) {\n                while\
+    \ (r < size) {\n                    push(r);\n                    r = (2 * r +\
+    \ 1);\n                    if (g(op(d[r], sm))) {\n                        sm\
+    \ = op(d[r], sm);\n                        r--;\n                    }\n     \
+    \           }\n                return r + 1 - size;\n            }\n         \
+    \   sm = op(d[r], sm);\n        } while ((r & -r) != r);\n        return 0;\n\
+    \    }\n\n    int n() {return (*this)._n;}\n\n  private:\n    int _n, size, log;\n\
+    \    std::vector<S> d;\n    std::vector<F> lz;\n\n    void update(int k) { d[k]\
+    \ = op(d[2 * k], d[2 * k + 1]); }\n    void all_apply(int k, F f) {\n        d[k]\
+    \ = mapping(f, d[k]);\n        if (k < size) lz[k] = composition(f, lz[k]);\n\
+    \    }\n    void push(int k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2\
+    \ * k + 1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n}  // namespace atcoder\n\
+    #line 4 \"competitive/data_structure/lazysegtree.hpp\"\ntemplate <class S, S (*op)(S,\
+    \ S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>\n\
+    std::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S, op, e, F,\
+    \ mapping, composition, id> seg) {\n    int n = seg.n();\n    rep(i, n) { os <<\
+    \ seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\n\nnamespace lsegtree\
+    \ {\n    template<typename T> struct AddNode {\n        T value;\n        ll size;\n\
+    \        AddNode() : value(T(0)), size(1) {};\n        AddNode(T value, ll size)\
+    \ : value(value), size(size) {};\n        friend ostream& operator<<(std::ostream&\
+    \ os, const AddNode<T> &n) { os << n.value; return os; };\n    };\n\n    int e_max()\
+    \ { return -INF; }\n    template<typename T> T e_max() { return -INFL; }\n   \
+    \ int e_min() { return INF; }\n    template<typename T> T e_min() { return INFL;\
+    \ }\n    template<typename T> AddNode<T> e_add() { return {0, 1}; }\n\n    template<typename\
+    \ T> T op_max(T x, T y) { return x > y ? x : y; }\n    template<typename T> T\
+    \ op_min(T x, T y) { return x < y ? x : y; }\n    template<typename T> AddNode<T>\
+    \ op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value, x.size + y.size};\
+    \ }\n\n    template<typename T> T id_radd(){ return 0; }\n    int id_rupdate(){\
+    \ return INF; }\n    template<typename T> T id_rupdate(){ return INFL; }\n\n \
+    \   template<typename T> AddNode<T> mapping_add_radd(T f, AddNode<T> x){ return\
+    \ {x.value + f * x.size, x.size}; }\n    template<typename T> AddNode<T> mapping_add_rupdate(T\
+    \ f, AddNode<T> x){\n        AddNode<T> rev = AddNode<T>(x);\n        if(f !=\
+    \ id_rupdate<T>()) rev.value = f * rev.size;\n        return rev;\n    }\n   \
+    \ template<typename T> T mapping_radd(T f, T x){ return f+x; }\n    template<typename\
+    \ T> T mapping_rupdate(T f, T x){ return (f == id_rupdate() ? x : f); }\n\n  \
+    \  template<typename T> T composition_radd(T f, T g){ return f+g; }\n    template<typename\
+    \ T> T composition_rupdate(T f, T g){ return (f == id_rupdate() ? g : f); }\n\
+    }\n\ntemplate<typename T> using lseg_add_radd = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
+    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_radd, lsegtree::composition_radd,\
+    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_min_radd = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
+    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_radd, lsegtree::composition_radd,\
+    \ lsegtree::id_radd>;\ntemplate<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
+    \ lsegtree::op_add, lsegtree::e_add, T, lsegtree::mapping_add_rupdate, lsegtree::composition_rupdate,\
+    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_min_rupdate = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_min, lsegtree::e_min, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
+    \ lsegtree::id_rupdate>;\ntemplate<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T,\
+    \ lsegtree::op_max, lsegtree::e_max, T, lsegtree::mapping_rupdate, lsegtree::composition_rupdate,\
+    \ lsegtree::id_rupdate>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\
+    \u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
+    \ */\n#line 6 \"competitive/tree/heavy_light_decomposition.hpp\"\ntemplate <typename\
+    \ Cost, typename Seg> struct HeavyLightDecomposition {\n    vi heavy_edge,in,out,head,par,pos;\n\
+    \    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>& g, Seg&\
+    \ seg, bool edge = true) :\n        heavy_edge(g.n), in(g.n), out(g.n), head(g.n),\
+    \ par(g.n), pos(g.n), seg(seg), edge(edge) {\n        build(g);\n    }\n\n   \
+    \ void build(Graph<Cost>& g) {\n        vi subtree_size(g.n, 0);\n        auto\
+    \ dfs_sz = [&] (auto self, int x, int p) -> int {\n            par[x] = p;\n \
+    \           subtree_size[x] = 1;\n            repe(e, g[x]) {\n              \
+    \  if (e.to == p) continue;\n                subtree_size[x] += self(self, e.to,\
+    \ x);\n            }\n            int maxs = -INF;\n            heavy_edge[x]\
     \ = -1;\n            repe(e, g[x]) {\n                if (e.to == p) continue;\n\
     \                if (chmax(maxs, subtree_size[e.to])) heavy_edge[x] = e.to;\n\
     \            }\n            return subtree_size[x];\n        };\n        dfs_sz(dfs_sz,\
@@ -228,17 +343,21 @@ data:
     \        if (u == 0 && k > 0) return -1;\n            int v = head[u];\n     \
     \       if (in[u] - k >= in[v]) return pos[in[u] - k];\n            k -= in[u]\
     \ - in[v] + 1;\n            u = par[head[u]];\n        }\n    }\n\n    decltype(seg.e())\
-    \ query(int u, int v) {\n        using T = decltype(seg.e());\n        T l = seg.e();\n\
+    \ prod(int u, int v) {\n        using T = decltype(seg.e());\n        T l = seg.e();\n\
     \        T r = seg.e();\n        while (head[u] != head[v]) {\n            if\
     \ (in[u] > in[v]) swap(u, v), swap(l, r);\n            l = seg.op(seg.prod(in[head[v]],\
     \ in[v] + 1), l);\n            v = par[head[v]];\n        }\n        if (in[u]\
     \ > in[v]) swap(u, v), swap(l, r);\n        // \u30D1\u30B9\u30AF\u30A8\u30EA\u306E\
     \u5834\u5408\u306Fu\uFF08u\u304B\u3089u\u306E\u89AA\u3078\u306E\u30D1\u30B9\uFF09\
     \u306F\u8DB3\u3055\u306A\u3044\n        return seg.op(seg.op(seg.prod(in[u] +\
-    \ edge, in[v] + 1), l) , r);\n    }\n\n    int edge_pos(int u, int v) {\n    \
-    \    if (par[u] != v) swap(u, v);\n        assert(par[u] == v);\n        return\
-    \ in[u];\n    }\n};\n/**\n * @brief HL\u5206\u89E3 (Heavy Light Decomposition)\n\
-    \ * @docs docs/tree/heavy_light_decomposition.md\n */\n#line 3 \"competitive/std/io.hpp\"\
+    \ edge, in[v] + 1), l) , r);\n    }\n\n    void apply(int u, int v, decltype(seg.id())\
+    \ f) {\n        while (head[u] != head[v]) {\n            if (in[u] > in[v]) swap(u,\
+    \ v);\n            seg.apply(in[head[v]], in[v] + 1, f);\n            v = par[head[v]];\n\
+    \        }\n        if (in[u] > in[v]) swap(u, v);\n        seg.apply(in[u] +\
+    \ edge, in[v] + 1, f);\n    }\n\n    int edge_pos(int u, int v) {\n        if\
+    \ (par[u] != v) swap(u, v);\n        assert(par[u] == v);\n        return in[u];\n\
+    \    }\n};\n/**\n * @brief HL\u5206\u89E3 (Heavy Light Decomposition)\n * @docs\
+    \ docs/tree/heavy_light_decomposition.md\n */\n#line 3 \"competitive/std/io.hpp\"\
     \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
     \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
     \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
@@ -318,12 +437,14 @@ data:
   - competitive/data_structure/segtree.hpp
   - atcoder/segtree.hpp
   - atcoder/internal_bit.hpp
+  - competitive/data_structure/lazysegtree.hpp
+  - atcoder/lazysegtree.hpp
   - competitive/std/io.hpp
   isVerificationFile: true
   path: online_test/library-checker/lca_hld.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 04:33:35+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-04-11 04:58:06+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: online_test/library-checker/lca_hld.test.cpp
 layout: document

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/fast_dijkstra.hpp
     title: fast_dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':question:'

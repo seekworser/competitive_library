@@ -21,32 +21,32 @@ data:
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':question:'
+    path: competitive/std/io.hpp
+    title: io.hpp
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
+  - icon: ':question:'
+    path: competitive/tree/heavy_light_decomposition.hpp
+    title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: online_test/AOJ/GRL_5_C.test.cpp
-    title: online_test/AOJ/GRL_5_C.test.cpp
-  - icon: ':x:'
-    path: online_test/library-checker/lca_hld.test.cpp
-    title: online_test/library-checker/lca_hld.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: online_test/yukicoder/yuki-399.test.cpp
-    title: online_test/yukicoder/yuki-399.test.cpp
-  _isVerificationFailed: true
-  _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/tree/heavy_light_decomposition.md
-    document_title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
-    links: []
-  bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
-    \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
-    \ GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
-    )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
-    \nusing ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\n\
-    using vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://yukicoder.me/problems/no/399
+    links:
+    - https://yukicoder.me/problems/no/399
+  bundledCode: "#line 1 \"online_test/yukicoder/yuki-399.test.cpp\"\n#define PROBLEM\
+    \ \"https://yukicoder.me/problems/no/399\"\n#line 2 \"competitive/std/std.hpp\"\
+    \n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n#pragma GCC target (\"avx\")\n\
+    #pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\")\n#pragma\
+    \ GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n#endif\
+    \ // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\nusing\
+    \ ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\nusing\
+    \ vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
     \ vl = vector<ll>;  using vvl = vector<vl>; using vvvl = vector<vvl>;\nusing vb\
     \ = vector<bool>; using vvb = vector<vb>; using vvvb = vector<vvb>;\nusing vc\
     \ = vector<char>; using vvc = vector<vc>; using vvvc = vector<vvc>;\nusing vd\
@@ -357,71 +357,100 @@ data:
     \ edge, in[v] + 1, f);\n    }\n\n    int edge_pos(int u, int v) {\n        if\
     \ (par[u] != v) swap(u, v);\n        assert(par[u] == v);\n        return in[u];\n\
     \    }\n};\n/**\n * @brief HL\u5206\u89E3 (Heavy Light Decomposition)\n * @docs\
-    \ docs/tree/heavy_light_decomposition.md\n */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/graph/graph.hpp\"\
-    \n#include \"competitive/data_structure/segtree.hpp\"\n#include \"competitive/data_structure/lazysegtree.hpp\"\
-    \ntemplate <typename Cost, typename Seg> struct HeavyLightDecomposition {\n  \
-    \  vi heavy_edge,in,out,head,par,pos;\n    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>&\
-    \ g, Seg& seg, bool edge = true) :\n        heavy_edge(g.n), in(g.n), out(g.n),\
-    \ head(g.n), par(g.n), pos(g.n), seg(seg), edge(edge) {\n        build(g);\n \
-    \   }\n\n    void build(Graph<Cost>& g) {\n        vi subtree_size(g.n, 0);\n\
-    \        auto dfs_sz = [&] (auto self, int x, int p) -> int {\n            par[x]\
-    \ = p;\n            subtree_size[x] = 1;\n            repe(e, g[x]) {\n      \
-    \          if (e.to == p) continue;\n                subtree_size[x] += self(self,\
-    \ e.to, x);\n            }\n            int maxs = -INF;\n            heavy_edge[x]\
-    \ = -1;\n            repe(e, g[x]) {\n                if (e.to == p) continue;\n\
-    \                if (chmax(maxs, subtree_size[e.to])) heavy_edge[x] = e.to;\n\
-    \            }\n            return subtree_size[x];\n        };\n        dfs_sz(dfs_sz,\
-    \ 0, -1);\n        int t = 0;\n        auto dfs_hld = [&] (auto self, int x, int\
-    \ par) -> void {\n            in[x] = t++;\n            pos[in[x]] = x;\n    \
-    \        if (heavy_edge[x] != -1) {\n                head[heavy_edge[x]] = head[x];\n\
-    \                self(self, heavy_edge[x], x);\n            }\n            repe(e,\
-    \ g[x]) {\n                if (e.to == par || e.to == heavy_edge[x]) continue;\n\
-    \                head[e.to] = e.to;\n                self(self, e.to, x);\n  \
-    \          }\n            out[x] = t;\n        };\n        dfs_hld(dfs_hld, 0,\
-    \ -1);\n    }\n\n    int lca(int u, int v) {\n        while (head[u] != head[v])\
-    \ {\n            if (in[u] > in[v]) swap(u, v);\n            v = par[head[v]];\n\
-    \        }\n        return in[u] < in[v] ? u : v;\n    }\n\n    int la(int u,\
-    \ int k) {\n        while (true) {\n            if (u == -1) return -1;\n    \
-    \        if (u == 0 && k > 0) return -1;\n            int v = head[u];\n     \
-    \       if (in[u] - k >= in[v]) return pos[in[u] - k];\n            k -= in[u]\
-    \ - in[v] + 1;\n            u = par[head[u]];\n        }\n    }\n\n    decltype(seg.e())\
-    \ prod(int u, int v) {\n        using T = decltype(seg.e());\n        T l = seg.e();\n\
-    \        T r = seg.e();\n        while (head[u] != head[v]) {\n            if\
-    \ (in[u] > in[v]) swap(u, v), swap(l, r);\n            l = seg.op(seg.prod(in[head[v]],\
-    \ in[v] + 1), l);\n            v = par[head[v]];\n        }\n        if (in[u]\
-    \ > in[v]) swap(u, v), swap(l, r);\n        // \u30D1\u30B9\u30AF\u30A8\u30EA\u306E\
-    \u5834\u5408\u306Fu\uFF08u\u304B\u3089u\u306E\u89AA\u3078\u306E\u30D1\u30B9\uFF09\
-    \u306F\u8DB3\u3055\u306A\u3044\n        return seg.op(seg.op(seg.prod(in[u] +\
-    \ edge, in[v] + 1), l) , r);\n    }\n\n    void apply(int u, int v, decltype(seg.id())\
-    \ f) {\n        while (head[u] != head[v]) {\n            if (in[u] > in[v]) swap(u,\
-    \ v);\n            seg.apply(in[head[v]], in[v] + 1, f);\n            v = par[head[v]];\n\
-    \        }\n        if (in[u] > in[v]) swap(u, v);\n        seg.apply(in[u] +\
-    \ edge, in[v] + 1, f);\n    }\n\n    int edge_pos(int u, int v) {\n        if\
-    \ (par[u] != v) swap(u, v);\n        assert(par[u] == v);\n        return in[u];\n\
-    \    }\n};\n/**\n * @brief HL\u5206\u89E3 (Heavy Light Decomposition)\n * @docs\
-    \ docs/tree/heavy_light_decomposition.md\n */\n"
+    \ docs/tree/heavy_light_decomposition.md\n */\n#line 3 \"competitive/std/io.hpp\"\
+    \n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\
+    \u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline\
+    \ istream& operator>>(istream& is, pair<T, U>& p);\ntemplate <class T> inline\
+    \ istream& operator>>(istream& is, vector<T>& v);\ntemplate <class T, class U>\
+    \ inline ostream& operator<<(ostream& os, const pair<T, U>& p);\ntemplate <class\
+    \ T> inline ostream& operator<<(ostream& os, const vector<T>& v);\ntemplate <typename\
+    \ T, typename S> ostream &operator<<(ostream &os, const map<T, S> &mp);\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const set<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const multiset<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const unordered_set<T> &st);\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, queue<T> q);\ntemplate <typename T> ostream\
+    \ &operator<<(ostream &os, deque<T> q);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, stack<T> st);\ntemplate <class T, class Container, class Compare> ostream\
+    \ &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\
+    \u7B97\u5B50\u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class\
+    \ U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >>\
+    \ p.second; return is; }\ntemplate <class T> inline istream& operator>>(istream&\
+    \ is, vector<T>& v) { repe(x, v) is >> x; return is; }\ntemplate <class T, class\
+    \ U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first\
+    \ << \" \" << p.second; return os; }\ntemplate <class T> inline ostream& operator<<(ostream&\
+    \ os, const vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1)\
+    \ os << \" \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
+    \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
+    \ i++) { os << *itr << (i + 1 != (int)st.size() ? \" \" : \"\"); itr++; } return\
+    \ os; }\ntemplate <typename T> ostream &operator<<(ostream &os, const multiset<T>\
+    \ &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size(); i++) { os\
+    \ << *itr << (i + 1 != (int)st.size() ? \" \" : \"\"); itr++; } return os; }\n\
+    template <typename T> ostream &operator<<(ostream &os, const unordered_set<T>\
+    \ &st) { ll cnt = 0; for (auto &e : st) { os << e << (++cnt != (int)st.size()\
+    \ ? \" \" : \"\"); } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, queue<T> q) { while (q.size()) { os << q.front() << \" \"; q.pop(); } return\
+    \ os; }\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T> q) {\
+    \ while (q.size()) { os << q.front() << \" \"; q.pop_front(); } return os; }\n\
+    template <typename T> ostream &operator<<(ostream &os, stack<T> st) { while (st.size())\
+    \ { os << st.top() << \" \"; st.pop(); } return os; }\ntemplate <class T, class\
+    \ Container, class Compare> ostream &operator<<(ostream &os, priority_queue<T,\
+    \ Container, Compare> pq) { while (pq.size()) { os << pq.top() << \" \"; pq.pop();\
+    \ } return os; }\n\ntemplate <typename T> void print_sep_end(string sep, string\
+    \ end, const T& val) { (void)sep; cout << val << end; };\ntemplate <typename T1,\
+    \ typename... T2> void print_sep_end(string sep, string end, const T1 &val, const\
+    \ T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep, end, remain...);\n\
+    };\ntemplate <typename... T> void print(const T &...args) { print_sep_end(\" \"\
+    , \"\\n\", args...); };\ntemplate <typename... T> void flush() { cout << flush;\
+    \ };\ntemplate <typename... T> void print_and_flush(const T &...args) { print(args...);\
+    \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
+    \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
+    \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
+    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
+    \ typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3\
+    \ &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') &&\
+    \ name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] ==\
+    \ '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] == '}')\
+    \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
+    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
+    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
+    \ 5 \"online_test/yukicoder/yuki-399.test.cpp\"\nint main() {\n    ll n;\n   \
+    \ input(n);\n    vi from(n-1), to(n-1), cost(n-1, 0);\n    rep(i, n-1) input(from[i],\
+    \ to[i]);\n    --from; --to;\n    Graph g(n, from, to, cost, true);\n    lseg_add_radd<ll>\
+    \ seg(n);\n    HeavyLightDecomposition hld(g, seg, false);\n    ll q;\n    input(q);\n\
+    \    ll ans = 0;\n    rep(q) {\n        ll u,v;\n        input(u,v);\n       \
+    \ --u; --v;\n        hld.apply(u,v,1);\n        ans += hld.prod(u,v).value;\n\
+    \    }\n    print(ans);\n}\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/399\"\n#include \"competitive/std/std.hpp\"\
+    \n#include \"competitive/tree/heavy_light_decomposition.hpp\"\n#include \"competitive/std/io.hpp\"\
+    \nint main() {\n    ll n;\n    input(n);\n    vi from(n-1), to(n-1), cost(n-1,\
+    \ 0);\n    rep(i, n-1) input(from[i], to[i]);\n    --from; --to;\n    Graph g(n,\
+    \ from, to, cost, true);\n    lseg_add_radd<ll> seg(n);\n    HeavyLightDecomposition\
+    \ hld(g, seg, false);\n    ll q;\n    input(q);\n    ll ans = 0;\n    rep(q) {\n\
+    \        ll u,v;\n        input(u,v);\n        --u; --v;\n        hld.apply(u,v,1);\n\
+    \        ans += hld.prod(u,v).value;\n    }\n    print(ans);\n}\n"
   dependsOn:
   - competitive/std/std.hpp
+  - competitive/tree/heavy_light_decomposition.hpp
   - competitive/graph/graph.hpp
   - competitive/data_structure/segtree.hpp
   - atcoder/segtree.hpp
   - atcoder/internal_bit.hpp
   - competitive/data_structure/lazysegtree.hpp
   - atcoder/lazysegtree.hpp
-  isVerificationFile: false
-  path: competitive/tree/heavy_light_decomposition.hpp
+  - competitive/std/io.hpp
+  isVerificationFile: true
+  path: online_test/yukicoder/yuki-399.test.cpp
   requiredBy: []
   timestamp: '2023-04-11 04:58:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - online_test/library-checker/lca_hld.test.cpp
-  - online_test/AOJ/GRL_5_C.test.cpp
-  - online_test/yukicoder/yuki-399.test.cpp
-documentation_of: competitive/tree/heavy_light_decomposition.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: online_test/yukicoder/yuki-399.test.cpp
 layout: document
 redirect_from:
-- /library/competitive/tree/heavy_light_decomposition.hpp
-- /library/competitive/tree/heavy_light_decomposition.hpp.html
-title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
+- /verify/online_test/yukicoder/yuki-399.test.cpp
+- /verify/online_test/yukicoder/yuki-399.test.cpp.html
+title: online_test/yukicoder/yuki-399.test.cpp
 ---

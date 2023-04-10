@@ -5,22 +5,25 @@ data:
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/data_structure/segtree.hpp
     title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/tree/heavy_light_decomposition.hpp
     title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/GRL_5_C.test.cpp
     title: online_test/AOJ/GRL_5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/lca_hld.test.cpp
     title: online_test/library-checker/lca_hld.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: online_test/yukicoder/yuki-399.test.cpp
+    title: online_test/yukicoder/yuki-399.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"atcoder/segtree.hpp\"\n#include <algorithm>\n#include <cassert>\n\
@@ -126,10 +129,11 @@ data:
   - competitive/tree/heavy_light_decomposition.hpp
   - competitive/data_structure/segtree.hpp
   timestamp: '2023-04-11 04:33:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - online_test/library-checker/lca_hld.test.cpp
   - online_test/AOJ/GRL_5_C.test.cpp
+  - online_test/yukicoder/yuki-399.test.cpp
 documentation_of: atcoder/segtree.hpp
 layout: document
 redirect_from:

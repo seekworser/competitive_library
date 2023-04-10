@@ -26,7 +26,7 @@ data:
   - icon: ':warning:'
     path: competitive/tree/diameter.hpp
     title: diameter.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/tree/heavy_light_decomposition.hpp
     title: "HL\u5206\u89E3 (Heavy Light Decomposition)"
   - icon: ':warning:'
@@ -42,10 +42,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/GRL_3_C.test.cpp
     title: online_test/AOJ/GRL_3_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/GRL_5_C.test.cpp
     title: online_test/AOJ/GRL_5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/library-checker/lca_hld.test.cpp
     title: online_test/library-checker/lca_hld.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,9 +57,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
     title: online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: online_test/yukicoder/yuki-399.test.cpp
+    title: online_test/yukicoder/yuki-399.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/graph/graph.md
     document_title: graph.hpp
@@ -212,7 +215,7 @@ data:
   - competitive/tree/diameter.hpp
   - competitive/tree/depth.hpp
   timestamp: '2023-04-09 02:19:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
   - online_test/library-checker/lca_hld.test.cpp
@@ -222,6 +225,7 @@ data:
   - online_test/AOJ/GRL_1_C.test.cpp
   - online_test/AOJ/GRL_3_C.test.cpp
   - online_test/AOJ/GRL_1_A.test.cpp
+  - online_test/yukicoder/yuki-399.test.cpp
 documentation_of: competitive/graph/graph.hpp
 layout: document
 redirect_from:

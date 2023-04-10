@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/radix_heap.hpp
     title: Radix Heap
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':question:'

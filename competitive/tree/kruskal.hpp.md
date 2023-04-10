@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: atcoder/dsu.hpp
     title: atcoder/dsu.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':question:'

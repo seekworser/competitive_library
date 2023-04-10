@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/dijkstra.hpp
     title: dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
   - icon: ':question:'
