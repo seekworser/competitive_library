@@ -7,8 +7,10 @@
 
 namespace atcoder {
 
-template <class S, S (*op)(S, S), S (*e)()> struct segtree {
+template <class S, S (*_op)(S, S), S (*_e)()> struct segtree {
   public:
+    S (*op)(S, S) = _op;
+    S (*e)() = _e;
     segtree() : segtree(0) {}
     explicit segtree(int n) : segtree(std::vector<S>(n, e())) {}
     explicit segtree(const std::vector<S>& v) : _n(int(v.size())) {
