@@ -157,33 +157,35 @@ data:
     \u3059\uFF09\nint digit(ll x, int d=10) { int rev=0; while (x > 0) { rev++; x\
     \ /= d;}; return rev; } // x\u306Ed\u9032\u6570\u6841\u6570\n/**\n * @brief std.hpp\n\
     \ * @docs docs/std/std.md\n */\n#line 4 \"competitive/data_structure/segtree.hpp\"\
-    \ntemplate <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
+    \ntemplate <typename S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
     \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
     \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\nnamespace\
-    \ segtree {\n    template<typename T> T op_max(T x, T y) { return x > y? x : y;\
-    \ }\n    template<typename T> T op_min(T x, T y) { return x < y? x : y; }\n  \
-    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
+    \ segtree_internal {\n    template<typename T> T op_max(T x, T y) { return x >\
+    \ y? x : y; }\n    template<typename T> T op_min(T x, T y) { return x < y? x :\
+    \ y; }\n    template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
     \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
     \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
-    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename\
-    \ T> using seg_add = atcoder::segtree<T, segtree::op_add<T>, segtree::e_add<T>>;\n\
-    template<typename T> using seg_max = atcoder::segtree<T, segtree::op_max<T>, segtree::e_max<T>>;\n\
-    template<typename T> using seg_min = atcoder::segtree<T, segtree::op_min<T>, segtree::e_min<T>>;\n\
+    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<class\
+    \ S, S (*op)(S,S), S(*e)()> using segtree = atcoder::segtree<S, op, e>;\ntemplate<typename\
+    \ T> using seg_add = segtree<T, segtree_internal::op_add<T>, segtree_internal::e_add<T>>;\n\
+    template<typename T> using seg_max = segtree<T, segtree_internal::op_max<T>, segtree_internal::e_max<T>>;\n\
+    template<typename T> using seg_min = segtree<T, segtree_internal::op_min<T>, segtree_internal::e_min<T>>;\n\
     /**\n * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
     \uFF09\n * @docs docs/data_structure/segtree.md\n */\n"
   code: "#pragma once\n#include \"atcoder/segtree.hpp\"\n#include \"competitive/std/std.hpp\"\
-    \ntemplate <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
+    \ntemplate <typename S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
     \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
     \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\nnamespace\
-    \ segtree {\n    template<typename T> T op_max(T x, T y) { return x > y? x : y;\
-    \ }\n    template<typename T> T op_min(T x, T y) { return x < y? x : y; }\n  \
-    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
+    \ segtree_internal {\n    template<typename T> T op_max(T x, T y) { return x >\
+    \ y? x : y; }\n    template<typename T> T op_min(T x, T y) { return x < y? x :\
+    \ y; }\n    template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
     \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
     \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
-    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename\
-    \ T> using seg_add = atcoder::segtree<T, segtree::op_add<T>, segtree::e_add<T>>;\n\
-    template<typename T> using seg_max = atcoder::segtree<T, segtree::op_max<T>, segtree::e_max<T>>;\n\
-    template<typename T> using seg_min = atcoder::segtree<T, segtree::op_min<T>, segtree::e_min<T>>;\n\
+    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<class\
+    \ S, S (*op)(S,S), S(*e)()> using segtree = atcoder::segtree<S, op, e>;\ntemplate<typename\
+    \ T> using seg_add = segtree<T, segtree_internal::op_add<T>, segtree_internal::e_add<T>>;\n\
+    template<typename T> using seg_max = segtree<T, segtree_internal::op_max<T>, segtree_internal::e_max<T>>;\n\
+    template<typename T> using seg_min = segtree<T, segtree_internal::op_min<T>, segtree_internal::e_min<T>>;\n\
     /**\n * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
     \uFF09\n * @docs docs/data_structure/segtree.md\n */\n"
   dependsOn:
@@ -194,7 +196,7 @@ data:
   path: competitive/data_structure/segtree.hpp
   requiredBy:
   - competitive/tree/heavy_light_decomposition.hpp
-  timestamp: '2023-04-11 05:23:43+09:00'
+  timestamp: '2023-04-14 01:48:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/lca_hld.test.cpp

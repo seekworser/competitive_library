@@ -195,18 +195,19 @@ data:
     \ n() const {return (*this)._n;}\n\n  private:\n    int _n, size, log;\n    std::vector<S>\
     \ d;\n\n    void update(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }\n};\n\n\
     }  // namespace atcoder\n#line 4 \"competitive/data_structure/segtree.hpp\"\n\
-    template <class S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
+    template <typename S, S (*op)(S, S), S (*e)()> std::ostream& operator<<(std::ostream&\
     \ os, const atcoder::segtree<S, op, e> seg) {\n    int n = seg.n();\n    rep(i,\
     \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\nnamespace\
-    \ segtree {\n    template<typename T> T op_max(T x, T y) { return x > y? x : y;\
-    \ }\n    template<typename T> T op_min(T x, T y) { return x < y? x : y; }\n  \
-    \  template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
+    \ segtree_internal {\n    template<typename T> T op_max(T x, T y) { return x >\
+    \ y? x : y; }\n    template<typename T> T op_min(T x, T y) { return x < y? x :\
+    \ y; }\n    template<typename T> T op_add(T x, T y) { return x + y; }\n\n    template<typename\
     \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
     \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
-    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<typename\
-    \ T> using seg_add = atcoder::segtree<T, segtree::op_add<T>, segtree::e_add<T>>;\n\
-    template<typename T> using seg_max = atcoder::segtree<T, segtree::op_max<T>, segtree::e_max<T>>;\n\
-    template<typename T> using seg_min = atcoder::segtree<T, segtree::op_min<T>, segtree::e_min<T>>;\n\
+    \ { return INF; }\n    template<typename T> T e_add() { return 0; }\n}\ntemplate<class\
+    \ S, S (*op)(S,S), S(*e)()> using segtree = atcoder::segtree<S, op, e>;\ntemplate<typename\
+    \ T> using seg_add = segtree<T, segtree_internal::op_add<T>, segtree_internal::e_add<T>>;\n\
+    template<typename T> using seg_max = segtree<T, segtree_internal::op_max<T>, segtree_internal::e_max<T>>;\n\
+    template<typename T> using seg_min = segtree<T, segtree_internal::op_min<T>, segtree_internal::e_min<T>>;\n\
     /**\n * @brief \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\
     \uFF09\n * @docs docs/data_structure/segtree.md\n */\n#line 6 \"atcoder/lazysegtree.hpp\"\
     \n\n#line 8 \"atcoder/lazysegtree.hpp\"\n\nnamespace atcoder {\n\ntemplate <class\
@@ -277,47 +278,53 @@ data:
     \ = mapping(f, d[k]);\n        if (k < size) lz[k] = composition(f, lz[k]);\n\
     \    }\n    void push(int k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2\
     \ * k + 1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n}  // namespace atcoder\n\
-    #line 4 \"competitive/data_structure/lazysegtree.hpp\"\ntemplate <class S, S (*op)(S,\
-    \ S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>\n\
-    std::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S, op, e, F,\
-    \ mapping, composition, id> seg) {\n    int n = seg.n();\n    rep(i, n) { os <<\
-    \ seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\n\nnamespace lsegtree\
-    \ {\n    template<typename T> struct AddNode {\n        T value;\n        ll size;\n\
-    \        AddNode() : value(T(0)), size(1) {};\n        AddNode(T value, ll size)\
-    \ : value(value), size(size) {};\n        friend ostream& operator<<(std::ostream&\
-    \ os, const AddNode<T> &n) { os << n.value; return os; };\n    };\n\n    template<typename\
-    \ T> T e_max() { return -INFL; }\n    template<> int e_max() { return -INF; }\n\
-    \    template<typename T> T e_min() { return INFL; }\n    template<> int e_min()\
-    \ { return INF; }\n    template<typename T> AddNode<T> e_add() { return {0, 1};\
-    \ }\n\n    template<typename T> T op_max(T x, T y) { return x > y ? x : y; }\n\
-    \    template<typename T> T op_min(T x, T y) { return x < y ? x : y; }\n    template<typename\
-    \ T> AddNode<T> op_add(AddNode<T> x, AddNode<T> y) { return {x.value + y.value,\
-    \ x.size + y.size}; }\n\n    template<typename T> T id_radd(){ return 0; }\n \
-    \   template<typename T> T id_rupdate(){ return INFL; }\n    template<> int id_rupdate(){\
-    \ return INF; }\n\n    template<typename T> AddNode<T> mapping_add_radd(T f, AddNode<T>\
-    \ x){ return {x.value + f * x.size, x.size}; }\n    template<typename T> AddNode<T>\
-    \ mapping_add_rupdate(T f, AddNode<T> x){\n        AddNode<T> rev = AddNode<T>(x);\n\
-    \        if(f != id_rupdate<T>()) rev.value = f * rev.size;\n        return rev;\n\
-    \    }\n    template<typename T> T mapping_radd(T f, T x){ return f+x; }\n   \
-    \ template<typename T> T mapping_rupdate(T f, T x){ return (f == id_rupdate<T>()\
-    \ ? x : f); }\n\n    template<typename T> T composition_radd(T f, T g){ return\
-    \ f+g; }\n    template<typename T> T composition_rupdate(T f, T g){ return (f\
-    \ == id_rupdate<T>() ? g : f); }\n}\n\ntemplate<typename T> using lseg_add_radd\
-    \ = atcoder::lazy_segtree<lsegtree::AddNode<T>, lsegtree::op_add<T>, lsegtree::e_add<T>,\
-    \ T, lsegtree::mapping_add_radd<T>, lsegtree::composition_radd<T>, lsegtree::id_radd<T>>;\n\
-    template<typename T> using lseg_min_radd = atcoder::lazy_segtree<T, lsegtree::op_min<T>,\
-    \ lsegtree::e_min<T>, T, lsegtree::mapping_radd<T>, lsegtree::composition_radd<T>,\
-    \ lsegtree::id_radd<T>>;\ntemplate<typename T> using lseg_max_radd = atcoder::lazy_segtree<T,\
-    \ lsegtree::op_max<T>, lsegtree::e_max<T>, T, lsegtree::mapping_radd<T>, lsegtree::composition_radd<T>,\
-    \ lsegtree::id_radd<T>>;\ntemplate<typename T> using lseg_add_rupdate = atcoder::lazy_segtree<lsegtree::AddNode<T>,\
-    \ lsegtree::op_add<T>, lsegtree::e_add<T>, T, lsegtree::mapping_add_rupdate<T>,\
-    \ lsegtree::composition_rupdate<T>, lsegtree::id_rupdate<T>>;\ntemplate<typename\
-    \ T> using lseg_min_rupdate = atcoder::lazy_segtree<T, lsegtree::op_min<T>, lsegtree::e_min<T>,\
-    \ T, lsegtree::mapping_rupdate<T>, lsegtree::composition_rupdate<T>, lsegtree::id_rupdate<T>>;\n\
-    template<typename T> using lseg_max_rupdate = atcoder::lazy_segtree<T, lsegtree::op_max<T>,\
-    \ lsegtree::e_max<T>, T, lsegtree::mapping_rupdate<T>, lsegtree::composition_rupdate<T>,\
-    \ lsegtree::id_rupdate<T>>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
+    #line 4 \"competitive/data_structure/lazysegtree.hpp\"\ntemplate <typename S,\
+    \ S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F),\
+    \ F (*id)()>\nstd::ostream& operator<<(std::ostream& os, atcoder::lazy_segtree<S,\
+    \ op, e, F, mapping, composition, id> seg) {\n    int n = seg.n();\n    rep(i,\
+    \ n) { os << seg.get(i); if (i != n-1) os << \" \"; }\n    return os;\n};\n\n\
+    namespace lsegtree_internal {\n    template<typename T> struct AddNode {\n   \
+    \     T value;\n        ll size;\n        AddNode() : value(T(0)), size(1) {};\n\
+    \        AddNode(T value, ll size) : value(value), size(size) {};\n        friend\
+    \ ostream& operator<<(std::ostream& os, const AddNode<T> &n) { os << n.value;\
+    \ return os; };\n    };\n\n    template<typename T> T e_max() { return -INFL;\
+    \ }\n    template<> int e_max() { return -INF; }\n    template<typename T> T e_min()\
+    \ { return INFL; }\n    template<> int e_min() { return INF; }\n    template<typename\
+    \ T> AddNode<T> e_add() { return {0, 1}; }\n\n    template<typename T> T op_max(T\
+    \ x, T y) { return x > y ? x : y; }\n    template<typename T> T op_min(T x, T\
+    \ y) { return x < y ? x : y; }\n    template<typename T> AddNode<T> op_add(AddNode<T>\
+    \ x, AddNode<T> y) { return {x.value + y.value, x.size + y.size}; }\n\n    template<typename\
+    \ T> T id_radd(){ return 0; }\n    template<typename T> T id_rupdate(){ return\
+    \ INFL; }\n    template<> int id_rupdate(){ return INF; }\n\n    template<typename\
+    \ T> AddNode<T> mapping_add_radd(T f, AddNode<T> x){ return {x.value + f * x.size,\
+    \ x.size}; }\n    template<typename T> AddNode<T> mapping_add_rupdate(T f, AddNode<T>\
+    \ x){\n        AddNode<T> rev = AddNode<T>(x);\n        if(f != id_rupdate<T>())\
+    \ rev.value = f * rev.size;\n        return rev;\n    }\n    template<typename\
+    \ T> T mapping_radd(T f, T x){ return f+x; }\n    template<typename T> T mapping_rupdate(T\
+    \ f, T x){ return (f == id_rupdate<T>() ? x : f); }\n\n    template<typename T>\
+    \ T composition_radd(T f, T g){ return f+g; }\n    template<typename T> T composition_rupdate(T\
+    \ f, T g){ return (f == id_rupdate<T>() ? g : f); }\n}\n\ntemplate <typename S,\
+    \ S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F),\
+    \ F (*id)()>\nusing lsegtree = atcoder::lazy_segtree<S, op, e, F, mapping, composition,\
+    \ id>;\ntemplate<typename T> using lseg_add_radd = atcoder::lazy_segtree<lsegtree_internal::AddNode<T>,\
+    \ lsegtree_internal::op_add<T>, lsegtree_internal::e_add<T>, T, lsegtree_internal::mapping_add_radd<T>,\
+    \ lsegtree_internal::composition_radd<T>, lsegtree_internal::id_radd<T>>;\ntemplate<typename\
+    \ T> using lseg_min_radd = atcoder::lazy_segtree<T, lsegtree_internal::op_min<T>,\
+    \ lsegtree_internal::e_min<T>, T, lsegtree_internal::mapping_radd<T>, lsegtree_internal::composition_radd<T>,\
+    \ lsegtree_internal::id_radd<T>>;\ntemplate<typename T> using lseg_max_radd =\
+    \ atcoder::lazy_segtree<T, lsegtree_internal::op_max<T>, lsegtree_internal::e_max<T>,\
+    \ T, lsegtree_internal::mapping_radd<T>, lsegtree_internal::composition_radd<T>,\
+    \ lsegtree_internal::id_radd<T>>;\ntemplate<typename T> using lseg_add_rupdate\
+    \ = atcoder::lazy_segtree<lsegtree_internal::AddNode<T>, lsegtree_internal::op_add<T>,\
+    \ lsegtree_internal::e_add<T>, T, lsegtree_internal::mapping_add_rupdate<T>, lsegtree_internal::composition_rupdate<T>,\
+    \ lsegtree_internal::id_rupdate<T>>;\ntemplate<typename T> using lseg_min_rupdate\
+    \ = atcoder::lazy_segtree<T, lsegtree_internal::op_min<T>, lsegtree_internal::e_min<T>,\
+    \ T, lsegtree_internal::mapping_rupdate<T>, lsegtree_internal::composition_rupdate<T>,\
+    \ lsegtree_internal::id_rupdate<T>>;\ntemplate<typename T> using lseg_max_rupdate\
+    \ = atcoder::lazy_segtree<T, lsegtree_internal::op_max<T>, lsegtree_internal::e_max<T>,\
+    \ T, lsegtree_internal::mapping_rupdate<T>, lsegtree_internal::composition_rupdate<T>,\
+    \ lsegtree_internal::id_rupdate<T>>;\n/**\n * @brief \u9045\u5EF6\u30BB\u30B0\u30E1\
+    \u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09\n * @docs docs/data_structure/lazysegtree.md\n\
     \ */\n#line 6 \"competitive/tree/heavy_light_decomposition.hpp\"\ntemplate <typename\
     \ Cost, typename Seg> struct HeavyLightDecomposition {\n    vi heavy_edge,in,out,head,par,pos;\n\
     \    Seg &seg;\n    bool edge;\n    HeavyLightDecomposition(Graph<Cost>& g, Seg&\
@@ -446,7 +453,7 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/lca_hld.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 05:23:43+09:00'
+  timestamp: '2023-04-14 01:48:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/lca_hld.test.cpp
