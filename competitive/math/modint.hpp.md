@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: competitive/math/combination.hpp
+    title: combination.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ NTL_1_B.test.cpp
@@ -350,7 +353,8 @@ data:
   - atcoder/internal_type_traits.hpp
   isVerificationFile: false
   path: competitive/math/modint.hpp
-  requiredBy: []
+  requiredBy:
+  - competitive/math/combination.hpp
   timestamp: '2023-04-09 02:19:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

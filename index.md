@@ -87,6 +87,9 @@ data:
       path: competitive/data_structure/segtree.hpp
       title: "\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\u30FC\uFF09"
     - icon: ':warning:'
+      path: competitive/data_structure/sorted_set.hpp
+      title: sorted_set
+    - icon: ':warning:'
       path: competitive/data_structure/splay_tree.hpp
       title: "Splay\u6728"
     - icon: ':warning:'

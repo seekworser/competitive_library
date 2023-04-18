@@ -92,32 +92,33 @@ data:
     template <typename Key, typename Val> struct Compress {\n    vector<Key> coordinates;\n\
     \    vector<Val> val;\n    Compress() = default;\n    Compress(const vector<Key>\
     \ &_coordinates, Val default_val = Val(0)) {\n        coordinates = _coordinates;\n\
-    \        uniq(coordinates);\n        sort(all(coordinates));\n        val = vector<Val>(sz(coordinates),\
-    \ default_val);\n    }\n    int pos(const Key key) const {\n        auto iter\
-    \ = lower_bound(all(coordinates), key);\n        assert(iter != coordinates.end()\
-    \ && *iter == key);\n        return distance(coordinates.begin(), iter);\n   \
-    \ }\n    Val &operator[](const Key key) {\n        return val[pos(key)];\n   \
-    \ }\n    Key key_at(const int i) const {\n        return coordinates[i];\n   \
-    \ }\n    size_t size() const {\n        return coordinates.size();\n    }\n};\n\
-    /**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n * @docs docs/helper/compress.md\n */\n"
+    \        uniq(coordinates);\n        val = vector<Val>(sz(coordinates), default_val);\n\
+    \    }\n    int pos(const Key key) const {\n        auto iter = lower_bound(all(coordinates),\
+    \ key);\n        assert(iter != coordinates.end() && *iter == key);\n        return\
+    \ distance(coordinates.begin(), iter);\n    }\n    Val& operator[](Key key) {\
+    \ return val[pos(key)]; }\n    const Val& operator[](const Key key) const { return\
+    \ val[pos(key)]; }\n    Key key_at(const int i) const {\n        return coordinates[i];\n\
+    \    }\n    size_t size() const {\n        return coordinates.size();\n    }\n\
+    };\n/**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n * @docs docs/helper/compress.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate <typename Key,\
     \ typename Val> struct Compress {\n    vector<Key> coordinates;\n    vector<Val>\
     \ val;\n    Compress() = default;\n    Compress(const vector<Key> &_coordinates,\
     \ Val default_val = Val(0)) {\n        coordinates = _coordinates;\n        uniq(coordinates);\n\
-    \        sort(all(coordinates));\n        val = vector<Val>(sz(coordinates), default_val);\n\
-    \    }\n    int pos(const Key key) const {\n        auto iter = lower_bound(all(coordinates),\
-    \ key);\n        assert(iter != coordinates.end() && *iter == key);\n        return\
-    \ distance(coordinates.begin(), iter);\n    }\n    Val &operator[](const Key key)\
-    \ {\n        return val[pos(key)];\n    }\n    Key key_at(const int i) const {\n\
-    \        return coordinates[i];\n    }\n    size_t size() const {\n        return\
-    \ coordinates.size();\n    }\n};\n/**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n *\
-    \ @docs docs/helper/compress.md\n */\n"
+    \        val = vector<Val>(sz(coordinates), default_val);\n    }\n    int pos(const\
+    \ Key key) const {\n        auto iter = lower_bound(all(coordinates), key);\n\
+    \        assert(iter != coordinates.end() && *iter == key);\n        return distance(coordinates.begin(),\
+    \ iter);\n    }\n    Val& operator[](Key key) { return val[pos(key)]; }\n    const\
+    \ Val& operator[](const Key key) const { return val[pos(key)]; }\n    Key key_at(const\
+    \ int i) const {\n        return coordinates[i];\n    }\n    size_t size() const\
+    \ {\n        return coordinates.size();\n    }\n};\n/**\n * @brief \u5EA7\u6A19\
+    \u5727\u7E2E\n * @docs docs/helper/compress.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/helper/compress.hpp
   requiredBy: []
-  timestamp: '2023-04-09 02:19:23+09:00'
+  timestamp: '2023-04-19 00:52:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/yukicoder/yuki-649.test.cpp
@@ -138,6 +139,7 @@ keyの座標を返す
 
 ## Val &operator[](const Key key)
 keyの座標の値を返す
+**Valにはbool型を用いないこと。（vector<bool>の各要素の参照はbool&ではないため）**
 
 ## Key &key_at(const Key key)
 keyの座標の値を返す。更新不可。

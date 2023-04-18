@@ -101,16 +101,16 @@ data:
     template <typename Key, typename Val> struct Compress {\n    vector<Key> coordinates;\n\
     \    vector<Val> val;\n    Compress() = default;\n    Compress(const vector<Key>\
     \ &_coordinates, Val default_val = Val(0)) {\n        coordinates = _coordinates;\n\
-    \        uniq(coordinates);\n        sort(all(coordinates));\n        val = vector<Val>(sz(coordinates),\
-    \ default_val);\n    }\n    int pos(const Key key) const {\n        auto iter\
-    \ = lower_bound(all(coordinates), key);\n        assert(iter != coordinates.end()\
-    \ && *iter == key);\n        return distance(coordinates.begin(), iter);\n   \
-    \ }\n    Val &operator[](const Key key) {\n        return val[pos(key)];\n   \
-    \ }\n    Key key_at(const int i) const {\n        return coordinates[i];\n   \
-    \ }\n    size_t size() const {\n        return coordinates.size();\n    }\n};\n\
-    /**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n * @docs docs/helper/compress.md\n */\n\
-    #line 3 \"competitive/data_structure/bit.hpp\"\ntemplate<typename T> struct Bit\
-    \ {\n    vector<T> bit;\n    int _n;\n    Bit(int size, T val = T(0)) : _n(size),\
+    \        uniq(coordinates);\n        val = vector<Val>(sz(coordinates), default_val);\n\
+    \    }\n    int pos(const Key key) const {\n        auto iter = lower_bound(all(coordinates),\
+    \ key);\n        assert(iter != coordinates.end() && *iter == key);\n        return\
+    \ distance(coordinates.begin(), iter);\n    }\n    Val& operator[](Key key) {\
+    \ return val[pos(key)]; }\n    const Val& operator[](const Key key) const { return\
+    \ val[pos(key)]; }\n    Key key_at(const int i) const {\n        return coordinates[i];\n\
+    \    }\n    size_t size() const {\n        return coordinates.size();\n    }\n\
+    };\n/**\n * @brief \u5EA7\u6A19\u5727\u7E2E\n * @docs docs/helper/compress.md\n\
+    \ */\n#line 3 \"competitive/data_structure/bit.hpp\"\ntemplate<typename T> struct\
+    \ Bit {\n    vector<T> bit;\n    int _n;\n    Bit(int size, T val = T(0)) : _n(size),\
     \ bit(size+1, val) {}\n    Bit(const vector<T> val) : _n(sz(val)), bit(sz(val)+1,\
     \ T(0)) {\n        rep(i, _n) set(i, val[i]);\n    }\n    void add(int p, T x)\
     \ {\n        assert(0 <= p && p <= _n);\n        p++;\n        for (int i = p;\
@@ -221,7 +221,7 @@ data:
   isVerificationFile: true
   path: online_test/yukicoder/yuki-649.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 04:02:35+09:00'
+  timestamp: '2023-04-19 00:52:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/yukicoder/yuki-649.test.cpp

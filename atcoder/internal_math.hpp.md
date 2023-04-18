@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
+  - icon: ':warning:'
+    path: competitive/math/combination.hpp
+    title: combination.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/math/modint.hpp
     title: modint.hpp
@@ -182,6 +185,7 @@ data:
   - atcoder/convolution.hpp
   - atcoder/math.hpp
   - atcoder/modint.hpp
+  - competitive/math/combination.hpp
   - competitive/math/modint.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
