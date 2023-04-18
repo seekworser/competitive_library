@@ -7,7 +7,6 @@ template <typename Key, typename Val> struct Compress {
     Compress(const vector<Key> &_coordinates, Val default_val = Val(0)) {
         coordinates = _coordinates;
         uniq(coordinates);
-        sort(all(coordinates));
         val = vector<Val>(sz(coordinates), default_val);
     }
     int pos(const Key key) const {
@@ -15,9 +14,8 @@ template <typename Key, typename Val> struct Compress {
         assert(iter != coordinates.end() && *iter == key);
         return distance(coordinates.begin(), iter);
     }
-    Val &operator[](const Key key) {
-        return val[pos(key)];
-    }
+    Val& operator[](Key key) { return val[pos(key)]; }
+    const Val& operator[](const Key key) const { return val[pos(key)]; }
     Key key_at(const int i) const {
         return coordinates[i];
     }
