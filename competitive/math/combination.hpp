@@ -18,7 +18,7 @@ template<typename mint> struct Combination {
     }
     mint operator()(int n, int r) {
         if (r < 0 || n < r) return 0;
-        return fact[n] / fact_inv[r] / fact_inv[n - r];
+        return fact[n] * fact_inv[r] * fact_inv[n - r];
     }
 };
 /**
