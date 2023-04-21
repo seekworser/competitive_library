@@ -71,9 +71,10 @@ data:
     \ // v \u306E\u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n,\
     \ m) ((((n) % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n)\
     \ - smod(n, m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
-    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b) { cout << (b ? \"\
-    Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b) { cout << (b ? \"YES\\n\"\
-    \ : \"NO\\n\"); return; };\ntemplate<typename T, size_t N> T max(array<T, N>&\
+    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b=true) { cout << (b\
+    \ ? \"Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b=true) { cout << (b ?\
+    \ \"YES\\n\" : \"NO\\n\"); return; };\nvoid No(bool b=true) {Yes(!b);};\nvoid\
+    \ NO(bool b=true) {YES(!b);};\ntemplate<typename T, size_t N> T max(array<T, N>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
@@ -329,8 +330,8 @@ data:
     \ = 1;\n        for (int i = 2; i < nmax+1; i++) {\n            fact[i] = fact[i\
     \ - 1] * i;\n            inv[i] = p - inv[p % i] * (p / i);\n            fact_inv[i]\
     \ = fact_inv[i - 1] * inv[i];\n        }\n    }\n    mint operator()(int n, int\
-    \ r) {\n        if (r < 0 || n < r) return 0;\n        return fact[n] / fact_inv[r]\
-    \ / fact_inv[n - r];\n    }\n};\n/**\n * @brief combination.hpp\n * @docs docs/math/combination.md\n\
+    \ r) {\n        if (r < 0 || n < r) return 0;\n        return fact[n] * fact_inv[r]\
+    \ * fact_inv[n - r];\n    }\n};\n/**\n * @brief combination.hpp\n * @docs docs/math/combination.md\n\
     \ */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n#include \"competitive/math/modint.hpp\"\
     \ntemplate<typename mint> struct Combination {\n    vector<mint> fact, fact_inv;\n\
@@ -340,8 +341,8 @@ data:
     \ = 1;\n        for (int i = 2; i < nmax+1; i++) {\n            fact[i] = fact[i\
     \ - 1] * i;\n            inv[i] = p - inv[p % i] * (p / i);\n            fact_inv[i]\
     \ = fact_inv[i - 1] * inv[i];\n        }\n    }\n    mint operator()(int n, int\
-    \ r) {\n        if (r < 0 || n < r) return 0;\n        return fact[n] / fact_inv[r]\
-    \ / fact_inv[n - r];\n    }\n};\n/**\n * @brief combination.hpp\n * @docs docs/math/combination.md\n\
+    \ r) {\n        if (r < 0 || n < r) return 0;\n        return fact[n] * fact_inv[r]\
+    \ * fact_inv[n - r];\n    }\n};\n/**\n * @brief combination.hpp\n * @docs docs/math/combination.md\n\
     \ */\n"
   dependsOn:
   - competitive/std/std.hpp
@@ -352,7 +353,7 @@ data:
   isVerificationFile: false
   path: competitive/math/combination.hpp
   requiredBy: []
-  timestamp: '2023-04-19 01:05:56+09:00'
+  timestamp: '2023-04-22 02:44:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/math/combination.hpp

@@ -68,9 +68,10 @@ data:
     \ // v \u306E\u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n,\
     \ m) ((((n) % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n)\
     \ - smod(n, m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
-    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b) { cout << (b ? \"\
-    Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b) { cout << (b ? \"YES\\n\"\
-    \ : \"NO\\n\"); return; };\ntemplate<typename T, size_t N> T max(array<T, N>&\
+    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b=true) { cout << (b\
+    \ ? \"Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b=true) { cout << (b ?\
+    \ \"YES\\n\" : \"NO\\n\"); return; };\nvoid No(bool b=true) {Yes(!b);};\nvoid\
+    \ NO(bool b=true) {YES(!b);};\ntemplate<typename T, size_t N> T max(array<T, N>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
@@ -111,8 +112,8 @@ data:
     \ hash_t n) {\n        hash_t res = 1;\n        while (n > 0) {\n            if\
     \ (n & 1) res = Mul(res, a);\n            a = Mul(a, a);\n            n >>= 1;\n\
     \        }\n        return res;\n    }\n}\n\nstruct RollingHash {\n    private:\n\
-    \    static bool initialized;\n    static int hash_size;\n    static vector<hash_t>\
-    \ base;\n    static vector<hash_t> base_inv;\n\n    public:\n    vector<hash_vector_t>\
+    \    static bool initialized;\n    static int hash_size;\n\n    public:\n    static\
+    \ vector<hash_t> base;\n    static vector<hash_t> base_inv;\n    vector<hash_vector_t>\
     \ cum;\n    template<typename T> RollingHash(vector<T> &a, int hash_size=3, ll\
     \ maxa=1e9) {\n        if(!initialized) (*this).init_base(hash_size, maxa);\n\
     \        (*this).calc(a);\n    };\n    RollingHash(string &a, int hash_size=3,\
@@ -227,7 +228,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/ALDS_1_14_B.test.cpp
   requiredBy: []
-  timestamp: '2023-04-11 04:02:35+09:00'
+  timestamp: '2023-04-22 02:44:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/ALDS_1_14_B.test.cpp
