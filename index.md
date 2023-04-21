@@ -250,6 +250,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/string/rolling_hash.hpp
       title: rolling_hash.hpp
+    - icon: ':warning:'
+      path: competitive/string/z_algorithm.hpp
+      title: z_algorithm
   - name: competitive/tree
     pages:
     - icon: ':warning:'
@@ -269,6 +272,11 @@ data:
     - icon: ':warning:'
       path: online_test/AOJ/NTL_1_D.cpp
       title: online_test/AOJ/NTL_1_D.cpp
+  - name: online_test/library-checker
+    pages:
+    - icon: ':warning:'
+      path: online_test/library-checker/zalgorithm.cpp
+      title: online_test/library-checker/zalgorithm.cpp
   verificationCategories:
   - name: online_test/AOJ
     pages:

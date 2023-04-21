@@ -8,6 +8,9 @@ data:
   - icon: ':warning:'
     path: online_test/AOJ/NTL_1_D.cpp
     title: online_test/AOJ/NTL_1_D.cpp
+  - icon: ':warning:'
+    path: online_test/library-checker/zalgorithm.cpp
+    title: online_test/library-checker/zalgorithm.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ NTL_1_B.test.cpp
@@ -314,6 +317,7 @@ data:
   isVerificationFile: false
   path: competitive/std/io.hpp
   requiredBy:
+  - online_test/library-checker/zalgorithm.cpp
   - online_test/AOJ/NTL_1_D.cpp
   timestamp: '2023-04-22 02:44:06+09:00'
   verificationStatus: LIBRARY_ALL_AC

@@ -124,6 +124,9 @@ data:
     path: competitive/string/rolling_hash.hpp
     title: rolling_hash.hpp
   - icon: ':warning:'
+    path: competitive/string/z_algorithm.hpp
+    title: z_algorithm
+  - icon: ':warning:'
     path: competitive/tree/depth.hpp
     title: depth.hpp
   - icon: ':warning:'
@@ -138,6 +141,9 @@ data:
   - icon: ':warning:'
     path: online_test/AOJ/NTL_1_D.cpp
     title: online_test/AOJ/NTL_1_D.cpp
+  - icon: ':warning:'
+    path: online_test/library-checker/zalgorithm.cpp
+    title: online_test/library-checker/zalgorithm.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/ NTL_1_B.test.cpp
@@ -400,8 +406,10 @@ data:
   isVerificationFile: false
   path: competitive/std/std.hpp
   requiredBy:
+  - online_test/library-checker/zalgorithm.cpp
   - online_test/AOJ/NTL_1_D.cpp
   - competitive/string/rolling_hash.hpp
+  - competitive/string/z_algorithm.hpp
   - competitive/graph/fast_dijkstra.hpp
   - competitive/graph/scc.hpp
   - competitive/graph/dijkstra.hpp
