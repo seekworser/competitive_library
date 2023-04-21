@@ -46,10 +46,10 @@ struct RollingHash {
     private:
     static bool initialized;
     static int hash_size;
-    static vector<hash_t> base;
-    static vector<hash_t> base_inv;
 
     public:
+    static vector<hash_t> base;
+    static vector<hash_t> base_inv;
     vector<hash_vector_t> cum;
     template<typename T> RollingHash(vector<T> &a, int hash_size=3, ll maxa=1e9) {
         if(!initialized) (*this).init_base(hash_size, maxa);
