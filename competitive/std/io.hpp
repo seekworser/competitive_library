@@ -42,7 +42,7 @@ template <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; in
 #ifdef LOCAL_TEST
 template <typename T>
 void debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }
-template <typename T1, typename T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3 &...b) {
+template <typename T1, typename T2, typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {
     int scope = 0;
     for ( ; (scope != 0 || name[i] != ',') && name[i] != '\0'; i++ ) {
         cerr << name[i];
@@ -55,7 +55,7 @@ template <typename T1, typename T2, typename... T3> void debug_func(int i, const
 #endif
 #ifndef LOCAL_TEST
 template <typename... T>
-void debug_func(const T &...) {}
+void debug_func(T &...) {}
 #endif
 /**
  * @brief io.hpp
