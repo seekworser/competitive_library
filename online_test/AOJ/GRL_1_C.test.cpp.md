@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/warshall_floyd.hpp
     title: warshall_floyd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -189,19 +189,25 @@ data:
     \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
     \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
-    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
-    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
-    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
-    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
-    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
-    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
-    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
-    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 5 \"\
-    online_test/AOJ/GRL_1_C.test.cpp\"\n\nint main() {\n    int V, E;\n    cin >>\
-    \ V >> E;\n    vi from(E), to(E);\n    vl cost(E);\n    rep(i, E) {\n        cin\
-    \ >> from[i] >> to[i] >> cost[i];\n    }\n    Graph g(V, from, to, cost);\n  \
-    \  vvl min_cost;\n    bool valid = warshall_floyd(g, min_cost, INFL);\n    if\
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T> void debug_func(int i, const T\
+    \ name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',')\
+    \ && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i]\
+    \ == '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] ==\
+    \ '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1,\
+    \ name, b...);\n}\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
+    \ i, const T1 &name, T2 &a, T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(T &...) {}\ntemplate <typename... T>\nvoid debug_func(const\
+    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
+    \ 5 \"online_test/AOJ/GRL_1_C.test.cpp\"\n\nint main() {\n    int V, E;\n    cin\
+    \ >> V >> E;\n    vi from(E), to(E);\n    vl cost(E);\n    rep(i, E) {\n     \
+    \   cin >> from[i] >> to[i] >> cost[i];\n    }\n    Graph g(V, from, to, cost);\n\
+    \    vvl min_cost;\n    bool valid = warshall_floyd(g, min_cost, INFL);\n    if\
     \ (!valid) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n\
     \    }\n    rep(i, V) rep(j, V) {\n        if (min_cost[i][j] != INFL) cout <<\
     \ min_cost[i][j];\n        else cout << \"INF\";\n        if (j == V - 1) cout\
@@ -224,7 +230,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/GRL_1_C.test.cpp
   requiredBy: []
-  timestamp: '2023-04-25 10:54:41+09:00'
+  timestamp: '2023-04-25 12:18:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/GRL_1_C.test.cpp

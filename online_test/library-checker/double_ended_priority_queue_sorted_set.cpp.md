@@ -4,10 +4,10 @@ data:
   - icon: ':warning:'
     path: competitive/data_structure/sorted_set.hpp
     title: sorted_set
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -233,22 +233,29 @@ data:
     \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
     \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
-    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
-    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
-    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
-    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
-    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
-    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
-    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
-    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 5 \"\
-    online_test/library-checker/double_ended_priority_queue_sorted_set.cpp\"\nint\
-    \ main() {\n    ll n,q;\n    input(n,q);\n    vl a(n);\n    input(a);\n    SortedMultiSet<ll>\
-    \ s(a);\n    rep(q) {\n        ll t;\n        input(t);\n        if (t == 0) {\n\
-    \            ll x;\n            input(x);\n            s.insert(x);\n        }\
-    \ else if (t == 1) {\n            print(s[0]);\n            s.erase(*s.begin());\n\
-    \        } else {\n            print(*--s.end());\n            ll ans = s[sz(s)-1];\n\
-    \            s.erase(ans);\n        }\n    }\n}\n"
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T> void debug_func(int i, const T\
+    \ name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',')\
+    \ && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i]\
+    \ == '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] ==\
+    \ '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1,\
+    \ name, b...);\n}\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
+    \ i, const T1 &name, T2 &a, T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(T &...) {}\ntemplate <typename... T>\nvoid debug_func(const\
+    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
+    \ 5 \"online_test/library-checker/double_ended_priority_queue_sorted_set.cpp\"\
+    \nint main() {\n    ll n,q;\n    input(n,q);\n    vl a(n);\n    input(a);\n  \
+    \  SortedMultiSet<ll> s(a);\n    rep(q) {\n        ll t;\n        input(t);\n\
+    \        if (t == 0) {\n            ll x;\n            input(x);\n           \
+    \ s.insert(x);\n        } else if (t == 1) {\n            print(s[0]);\n     \
+    \       s.erase(*s.begin());\n        } else {\n            print(*--s.end());\n\
+    \            ll ans = s[sz(s)-1];\n            s.erase(ans);\n        }\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
     \n#include \"competitive/std/std.hpp\"\n#include \"competitive/data_structure/sorted_set.hpp\"\
     \n#include \"competitive/std/io.hpp\"\nint main() {\n    ll n,q;\n    input(n,q);\n\
@@ -265,7 +272,7 @@ data:
   isVerificationFile: false
   path: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
   requiredBy: []
-  timestamp: '2023-04-25 10:54:41+09:00'
+  timestamp: '2023-04-25 12:18:24+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp

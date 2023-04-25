@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   - icon: ':warning:'

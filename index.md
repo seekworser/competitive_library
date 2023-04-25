@@ -12,7 +12,7 @@ data:
     - icon: ':warning:'
       path: atcoder/fenwicktree.hpp
       title: atcoder/fenwicktree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/internal_bit.hpp
       title: atcoder/internal_bit.hpp
     - icon: ':warning:'
@@ -30,7 +30,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: atcoder/internal_type_traits.hpp
       title: atcoder/internal_type_traits.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: atcoder/lazysegtree.hpp
       title: atcoder/lazysegtree.hpp
     - icon: ':warning:'
@@ -76,7 +76,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: competitive/data_structure/bit.hpp
       title: "BIT\uFF08Binary Index Tree\uFF09"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/data_structure/lazysegtree.hpp
       title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
         \u30FC\uFF09"
@@ -97,19 +97,19 @@ data:
       title: Union Find
   - name: competitive/geometry
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/geometry/angle.hpp
       title: angle.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/geometry/base.hpp
       title: "Point\u30AF\u30E9\u30B9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/geometry/counter_clockwise.hpp
       title: counter_clockwise.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: competitive/geometry/distance.hpp
       title: distance.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/geometry/intersection.hpp
       title: intersection.hpp
     - icon: ':heavy_check_mark:'
@@ -174,7 +174,7 @@ data:
     - icon: ':warning:'
       path: competitive/math/f2.hpp
       title: f2.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/math/fraction.hpp
       title: fraction.hpp
     - icon: ':warning:'
@@ -239,10 +239,10 @@ data:
       title: tree
   - name: competitive/std
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/std/io.hpp
       title: io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: competitive/std/std.hpp
       title: std.hpp
   - name: competitive/string
@@ -301,7 +301,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/CGL_1_B.test.cpp
       title: online_test/AOJ/CGL_1_B.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/CGL_1_C.test.cpp
       title: online_test/AOJ/CGL_1_C.test.cpp
     - icon: ':heavy_check_mark:'
@@ -313,7 +313,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/CGL_2_C.test.cpp
       title: online_test/AOJ/CGL_2_C.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/CGL_2_D.test.cpp
       title: online_test/AOJ/CGL_2_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -331,13 +331,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_F.test.cpp
       title: online_test/AOJ/DSL_2_F.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_G.test.cpp
       title: online_test/AOJ/DSL_2_G.test.cpp
     - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_H.test.cpp
       title: online_test/AOJ/DSL_2_H.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: online_test/AOJ/DSL_2_I.test.cpp
       title: online_test/AOJ/DSL_2_I.test.cpp
     - icon: ':heavy_check_mark:'

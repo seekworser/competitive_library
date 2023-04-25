@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_B.test.cpp
     title: online_test/AOJ/CGL_1_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_C.test.cpp
     title: online_test/AOJ/CGL_1_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -27,9 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_3_B.test.cpp
     title: online_test/AOJ/CGL_3_B.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/fraction.md
     document_title: fraction.hpp
@@ -203,7 +203,7 @@ data:
   path: competitive/math/fraction.hpp
   requiredBy: []
   timestamp: '2023-04-22 02:44:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_1_A.test.cpp
   - online_test/AOJ/CGL_1_C.test.cpp

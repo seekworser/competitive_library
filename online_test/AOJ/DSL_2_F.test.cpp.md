@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -277,16 +277,22 @@ data:
     \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
     \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
-    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
-    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
-    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
-    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
-    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
-    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
-    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
-    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 5 \"\
-    online_test/AOJ/DSL_2_F.test.cpp\"\nint main() {\n    int n,q;\n    input(n,q);\n\
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T> void debug_func(int i, const T\
+    \ name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',')\
+    \ && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i]\
+    \ == '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] ==\
+    \ '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1,\
+    \ name, b...);\n}\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
+    \ i, const T1 &name, T2 &a, T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(T &...) {}\ntemplate <typename... T>\nvoid debug_func(const\
+    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
+    \ 5 \"online_test/AOJ/DSL_2_F.test.cpp\"\nint main() {\n    int n,q;\n    input(n,q);\n\
     \    lseg_min_rupdate<ll> lseg(vl(n, powm(2,31) - 1));\n    rep(i, q) {\n    \
     \    int t;\n        input(t);\n        if (t == 0) {\n            int s,t; ll\
     \ x;\n            input(s,t,x);\n            lseg.apply(s, t+1, x);\n        }\
@@ -309,7 +315,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/DSL_2_F.test.cpp
   requiredBy: []
-  timestamp: '2023-04-25 10:54:41+09:00'
+  timestamp: '2023-04-25 12:18:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/DSL_2_F.test.cpp

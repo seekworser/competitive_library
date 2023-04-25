@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/angle.hpp
     title: angle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/base.hpp
     title: "Point\u30AF\u30E9\u30B9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/counter_clockwise.hpp
     title: counter_clockwise.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/intersection.hpp
     title: intersection.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_2_D.test.cpp
     title: online_test/AOJ/CGL_2_D.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/geometry/distance.md
     document_title: distance.hpp
@@ -268,7 +268,7 @@ data:
   path: competitive/geometry/distance.hpp
   requiredBy: []
   timestamp: '2023-04-22 02:44:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/AOJ/CGL_2_D.test.cpp
 documentation_of: competitive/geometry/distance.hpp

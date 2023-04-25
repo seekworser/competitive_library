@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/angle.hpp
     title: angle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/base.hpp
     title: "Point\u30AF\u30E9\u30B9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/counter_clockwise.hpp
     title: counter_clockwise.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/distance.hpp
     title: distance.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/geometry/intersection.hpp
     title: intersection.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-6
@@ -295,16 +295,22 @@ data:
     \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
     \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
-    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
-    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
-    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
-    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
-    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
-    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
-    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
-    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 6 \"\
-    online_test/AOJ/CGL_2_D.test.cpp\"\n\nint main() {\n    using P = Point<double>;\n\
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T> void debug_func(int i, const T\
+    \ name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',')\
+    \ && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i]\
+    \ == '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] ==\
+    \ '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1,\
+    \ name, b...);\n}\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
+    \ i, const T1 &name, T2 &a, T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(T &...) {}\ntemplate <typename... T>\nvoid debug_func(const\
+    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
+    \ 6 \"online_test/AOJ/CGL_2_D.test.cpp\"\n\nint main() {\n    using P = Point<double>;\n\
     \    using S = Segment<double>;\n    int q;\n    cin >> q;\n    while (q--) {\n\
     \        double x1, y1, x2, y2;\n        cin >> x1 >> y1 >> x2 >> y2;\n      \
     \  S s1(P(x1, y1), P(x2, y2));\n        cin >> x1 >> y1 >> x2 >> y2;\n       \
@@ -329,8 +335,8 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/CGL_2_D.test.cpp
   requiredBy: []
-  timestamp: '2023-04-25 10:54:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-25 12:18:24+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/CGL_2_D.test.cpp
 layout: document

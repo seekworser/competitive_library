@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy:
@@ -33,7 +33,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_B.test.cpp
     title: online_test/AOJ/CGL_1_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_C.test.cpp
     title: online_test/AOJ/CGL_1_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_2_C.test.cpp
     title: online_test/AOJ/CGL_2_C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_2_D.test.cpp
     title: online_test/AOJ/CGL_2_D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -63,13 +63,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_F.test.cpp
     title: online_test/AOJ/DSL_2_F.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_G.test.cpp
     title: online_test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_H.test.cpp
     title: online_test/AOJ/DSL_2_H.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
   - icon: ':heavy_check_mark:'
@@ -117,9 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-hello-world.test.cpp
     title: online_test/yukicoder/yuki-hello-world.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/std/io.md
     document_title: io.hpp
@@ -247,15 +247,21 @@ data:
     \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
     \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
-    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
-    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
-    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
-    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
-    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
-    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
-    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
-    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n"
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T> void debug_func(int i, const T\
+    \ name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',')\
+    \ && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i]\
+    \ == '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] ==\
+    \ '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1,\
+    \ name, b...);\n}\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
+    \ i, const T1 &name, T2 &a, T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(T &...) {}\ntemplate <typename... T>\nvoid debug_func(const\
+    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\n// \u6F14\u7B97\u5B50\
     \u30AA\u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\
     \u30D7\u5BA3\u8A00\uFF09\ntemplate <class T, class U> inline istream& operator>>(istream&\
@@ -306,15 +312,21 @@ data:
     \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
     \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
-    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
-    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
-    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
-    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
-    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
-    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
-    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
-    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n"
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T> void debug_func(int i, const T\
+    \ name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
+    \ T3 &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',')\
+    \ && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i]\
+    \ == '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] ==\
+    \ '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1,\
+    \ name, b...);\n}\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
+    \ i, const T1 &name, T2 &a, T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
+    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
+    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
+    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
+    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
+    \ T>\nvoid debug_func(T &...) {}\ntemplate <typename... T>\nvoid debug_func(const\
+    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
@@ -323,8 +335,8 @@ data:
   - online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
   - online_test/library-checker/zalgorithm.cpp
   - online_test/AOJ/NTL_1_D.cpp
-  timestamp: '2023-04-25 10:54:41+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-04-25 12:18:24+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/aplusb.test.cpp
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp

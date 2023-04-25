@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy:
@@ -18,13 +18,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_F.test.cpp
     title: online_test/AOJ/DSL_2_F.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_G.test.cpp
     title: online_test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_H.test.cpp
     title: online_test/AOJ/DSL_2_H.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,9 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-399.test.cpp
     title: online_test/yukicoder/yuki-399.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/lazysegtree.md
     document_title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\
@@ -303,7 +303,7 @@ data:
   requiredBy:
   - competitive/tree/heavy_light_decomposition.hpp
   timestamp: '2023-04-22 02:44:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - online_test/library-checker/lca_hld.test.cpp
   - online_test/AOJ/DSL_2_I.test.cpp
