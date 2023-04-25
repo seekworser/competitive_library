@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/base.hpp
     title: "Point\u30AF\u30E9\u30B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/counter_clockwise.hpp
     title: counter_clockwise.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/helper/compress.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -184,24 +184,23 @@ data:
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
     \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
     \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3\
-    \ &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') &&\
-    \ name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] ==\
-    \ '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] == '}')\
-    \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
-    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 6 \"online_test/yukicoder/yuki-649.test.cpp\"\nint main() {\n    ll q,k;\n \
-    \   input(q,k);\n    vector<pll> query(q);\n    vl coordinates;\n    rep(i, q)\
-    \ {\n        ll t;\n        input(t);\n        ll x;\n        if (t == 1) {\n\
-    \            input(x);\n            coordinates.push_back(x);\n        }\n   \
-    \     query[i] = make_pair(t, x);\n    }\n    Compress<ll,ll> c(coordinates);\n\
-    \    Bit<ll> bit(sz(c));\n    repe(q, query) {\n        auto [t, x] = q;\n   \
-    \     if (t == 1) {\n            bit.set(c.pos(x), 1+bit.get(c.pos(x)));\n   \
-    \     } else {\n            if (bit.sum(sz(c)) < k) {\n                print(-1);\n\
-    \                continue;\n            }\n            ll p = bit.lower_bound(k);\n\
-    \            print(c.key_at(p));\n            bit.add(p, -1);\n        }\n   \
-    \ }\n}\n"
+    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
+    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
+    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
+    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
+    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
+    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
+    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 6 \"\
+    online_test/yukicoder/yuki-649.test.cpp\"\nint main() {\n    ll q,k;\n    input(q,k);\n\
+    \    vector<pll> query(q);\n    vl coordinates;\n    rep(i, q) {\n        ll t;\n\
+    \        input(t);\n        ll x;\n        if (t == 1) {\n            input(x);\n\
+    \            coordinates.push_back(x);\n        }\n        query[i] = make_pair(t,\
+    \ x);\n    }\n    Compress<ll,ll> c(coordinates);\n    Bit<ll> bit(sz(c));\n \
+    \   repe(q, query) {\n        auto [t, x] = q;\n        if (t == 1) {\n      \
+    \      bit.set(c.pos(x), 1+bit.get(c.pos(x)));\n        } else {\n           \
+    \ if (bit.sum(sz(c)) < k) {\n                print(-1);\n                continue;\n\
+    \            }\n            ll p = bit.lower_bound(k);\n            print(c.key_at(p));\n\
+    \            bit.add(p, -1);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/649\"\n#include \"competitive/std/std.hpp\"\
     \n#include \"competitive/helper/compress.hpp\"\n#include \"competitive/data_structure/bit.hpp\"\
     \n#include \"competitive/std/io.hpp\"\nint main() {\n    ll q,k;\n    input(q,k);\n\
@@ -222,7 +221,7 @@ data:
   isVerificationFile: true
   path: online_test/yukicoder/yuki-649.test.cpp
   requiredBy: []
-  timestamp: '2023-04-22 02:44:06+09:00'
+  timestamp: '2023-04-25 10:54:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/yukicoder/yuki-649.test.cpp

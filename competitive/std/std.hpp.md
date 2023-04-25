@@ -17,7 +17,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/data_structure/bit.hpp
     title: "BIT\uFF08Binary Index Tree\uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
@@ -33,19 +33,19 @@ data:
   - icon: ':warning:'
     path: competitive/data_structure/union_find.hpp
     title: Union Find
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/angle.hpp
     title: angle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/base.hpp
     title: "Point\u30AF\u30E9\u30B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/counter_clockwise.hpp
     title: counter_clockwise.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: competitive/geometry/distance.hpp
     title: distance.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/intersection.hpp
     title: intersection.hpp
   - icon: ':heavy_check_mark:'
@@ -96,7 +96,7 @@ data:
   - icon: ':warning:'
     path: competitive/math/f2.hpp
     title: f2.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/math/fraction.hpp
     title: fraction.hpp
   - icon: ':warning:'
@@ -117,7 +117,7 @@ data:
   - icon: ':warning:'
     path: competitive/random/tree.hpp
     title: tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
   - icon: ':heavy_check_mark:'
@@ -142,6 +142,9 @@ data:
     path: online_test/AOJ/NTL_1_D.cpp
     title: online_test/AOJ/NTL_1_D.cpp
   - icon: ':warning:'
+    path: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
+    title: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
+  - icon: ':warning:'
     path: online_test/library-checker/zalgorithm.cpp
     title: online_test/library-checker/zalgorithm.cpp
   _extendedVerifiedWith:
@@ -163,7 +166,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_1_B.test.cpp
     title: online_test/AOJ/CGL_1_B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/CGL_1_C.test.cpp
     title: online_test/AOJ/CGL_1_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -175,7 +178,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/CGL_2_C.test.cpp
     title: online_test/AOJ/CGL_2_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/CGL_2_D.test.cpp
     title: online_test/AOJ/CGL_2_D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -193,13 +196,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_F.test.cpp
     title: online_test/AOJ/DSL_2_F.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_G.test.cpp
     title: online_test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
     path: online_test/AOJ/DSL_2_H.test.cpp
     title: online_test/AOJ/DSL_2_H.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: online_test/AOJ/DSL_2_I.test.cpp
     title: online_test/AOJ/DSL_2_I.test.cpp
   - icon: ':heavy_check_mark:'
@@ -247,9 +250,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: online_test/yukicoder/yuki-hello-world.test.cpp
     title: online_test/yukicoder/yuki-hello-world.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/std/std.md
     document_title: std.hpp
@@ -406,6 +409,7 @@ data:
   isVerificationFile: false
   path: competitive/std/std.hpp
   requiredBy:
+  - online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
   - online_test/library-checker/zalgorithm.cpp
   - online_test/AOJ/NTL_1_D.cpp
   - competitive/string/rolling_hash.hpp
@@ -454,7 +458,7 @@ data:
   - competitive/algorithm/longest_increasing_subsequence.hpp
   - competitive/algorithm/minimum_excludant.hpp
   timestamp: '2023-04-22 02:44:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - online_test/library-checker/aplusb.test.cpp
   - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp

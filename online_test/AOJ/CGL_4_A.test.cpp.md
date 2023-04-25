@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/base.hpp
     title: "Point\u30AF\u30E9\u30B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/counter_clockwise.hpp
     title: counter_clockwise.hpp
   - icon: ':heavy_check_mark:'
     path: competitive/geometry/polygon.hpp
     title: polygon.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -261,21 +261,21 @@ data:
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
     \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
     \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3\
-    \ &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') &&\
-    \ name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] ==\
-    \ '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] == '}')\
-    \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
-    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 5 \"online_test/AOJ/CGL_4_A.test.cpp\"\n\nint main() {\n    int n;\n    cin\
-    \ >> n;\n    using P = Point<ll>;\n    vector<P> points;\n    rep(i, n) {\n  \
-    \      ll x, y;\n        cin >> x >> y;\n        points.emplace_back(x, y);\n\
-    \    }\n    Polygon<ll> p = convex_full(points, false);\n    cout << sz(p.vertex)\
-    \ << endl;\n    int pos = 0;\n    pll cur = {p.vertex[0].y, p.vertex[0].x};\n\
-    \    rep(i, sz(p.vertex)) {\n        if (chmin(cur, pll(p.vertex[i].y, p.vertex[i].x)))\
-    \ pos = i;\n    }\n    rep(i, sz(p.vertex)) {\n        cout << p.vertex[pos] <<\
-    \ endl;\n        pos++;\n        pos %= sz(p.vertex);\n    }\n}\n"
+    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
+    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
+    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
+    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
+    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
+    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
+    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 5 \"\
+    online_test/AOJ/CGL_4_A.test.cpp\"\n\nint main() {\n    int n;\n    cin >> n;\n\
+    \    using P = Point<ll>;\n    vector<P> points;\n    rep(i, n) {\n        ll\
+    \ x, y;\n        cin >> x >> y;\n        points.emplace_back(x, y);\n    }\n \
+    \   Polygon<ll> p = convex_full(points, false);\n    cout << sz(p.vertex) << endl;\n\
+    \    int pos = 0;\n    pll cur = {p.vertex[0].y, p.vertex[0].x};\n    rep(i, sz(p.vertex))\
+    \ {\n        if (chmin(cur, pll(p.vertex[i].y, p.vertex[i].x))) pos = i;\n   \
+    \ }\n    rep(i, sz(p.vertex)) {\n        cout << p.vertex[pos] << endl;\n    \
+    \    pos++;\n        pos %= sz(p.vertex);\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_4_A\"\
     \n#include \"competitive/std/std.hpp\"\n#include \"competitive/geometry/polygon.hpp\"\
     \n#include \"competitive/std/io.hpp\"\n\nint main() {\n    int n;\n    cin >>\
@@ -295,7 +295,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/CGL_4_A.test.cpp
   requiredBy: []
-  timestamp: '2023-04-22 02:44:06+09:00'
+  timestamp: '2023-04-25 10:54:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/CGL_4_A.test.cpp

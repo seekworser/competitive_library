@@ -1,24 +1,28 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':warning:'
+    path: competitive/data_structure/sorted_set.hpp
+    title: sorted_set
+  - icon: ':question:'
+    path: competitive/std/io.hpp
+    title: io.hpp
   - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
-    title: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/sorted_set.md
-    document_title: sorted_set
-    links: []
-  bundledCode: "#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef\
-    \ LOCAL_TEST\n#pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma\
-    \ GCC optimize(\"unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
+    links:
+    - https://judge.yosupo.jp/problem/double_ended_priority_queue
+  bundledCode: "#line 1 \"online_test/library-checker/double_ended_priority_queue_sorted_set.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
+    \n#line 2 \"competitive/std/std.hpp\"\n#include <bits/stdc++.h>\n#ifndef LOCAL_TEST\n\
+    #pragma GCC target (\"avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
+    unroll-loops\")\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\"\
     )\n#endif // LOCAL_TEST\nusing namespace std;\n// \u578B\u540D\u306E\u77ED\u7E2E\
     \nusing ll = long long;\nusing pii = pair<int, int>; using pll = pair<ll, ll>;\n\
     using vi = vector<int>;  using vvi = vector<vi>; using vvvi = vector<vvi>;\nusing\
@@ -179,111 +183,95 @@ data:
     \ &os, SortedMultiSet<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
     \ i++) { os << *itr << (i + 1 != (int)st.size() ? \" \" : \"\"); itr++; } return\
     \ os; }\n/**\n * @brief sorted_set\n * @docs docs/data_structure/sorted_set.md\n\
-    \ */\n"
-  code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<typename T>\
-    \ struct SortedSet {\n    protected:\n    static const int BUCKET_RATIO = 50;\n\
-    \    static const int REBUILD_RATIO = 170;\n\n    public:\n    vector<vector<T>>\
-    \ a;\n    protected:\n    int _sz;\n    void build(const vector<T> &ai) {\n  \
-    \      _sz = sz(ai);\n        int bucket_size = max<int>(sqrtll(_sz / BUCKET_RATIO),\
-    \ 1);\n        a = vector<vector<T>>(bucket_size);\n        rep(i, bucket_size)\
-    \ {\n            ll s = _sz * i / bucket_size;\n            ll t = min<int>(_sz\
-    \ * (i+1) / bucket_size, _sz);\n            rep(j, s, t) a[i].push_back(ai[j]);\n\
-    \        }\n    }\n    void build() {\n        vector<T> ai;\n        rep(i, sz(a))\
-    \ rep(j, sz(a[i])) ai.push_back(a[i][j]);\n        build(ai);\n    }\n    int\
-    \ find_bucket(T x) {\n        if (sz(a) == 0) return 0;\n        rep(i, sz(a))\
-    \ {\n            if (x <= a[i].back()) return i;\n        }\n        return sz(a)\
-    \ - 1;\n    }\n\n    struct Iterator {\n        SortedSet<T>& ss;\n        int\
-    \ p1, p2;\n        Iterator() = delete;\n        Iterator(SortedSet<T>& _ss, int\
-    \ _p1, int _p2) : ss(_ss), p1(_p1), p2(_p2) {}\n        const T& operator*() const\
-    \ { return ss.a[p1][p2]; }\n        Iterator& operator++() {\n            assert(p1\
-    \ != sz(ss.a));\n            p2++;\n            if (p2 == sz(ss.a[p1])) {p1++;\
-    \ p2 = 0;}\n            return *this;\n        }\n        Iterator& operator--()\
-    \ {\n            assert(p1 != 0 || p2 != 0);\n            p2--;\n            if(p2\
-    \ < 0) {p1--; p2 = sz(ss.a[p1]) - 1;}\n            return *this;\n        }\n\
-    \        Iterator operator++(int) { Iterator iter(*this); ++(*this); return iter;}\n\
-    \        Iterator operator--(int) { Iterator iter(*this); --(*this); return iter;}\n\
-    \        Iterator& operator+=(int rhs) {\n            p2 += rhs;\n           \
-    \ while (p1 < sz(ss.a) && p2 >= sz(ss.a[p1])) { p2 -= sz(ss.a[p1++]); }\n    \
-    \        return *this;\n        }\n        Iterator& operator-=(int rhs) {\n \
-    \           p2 -= rhs;\n            while (p1 >= 0 && p2 < 0) { p2 += sz(ss.a[--p1]);\
-    \ }\n            return *this;\n        }\n        friend Iterator operator+(const\
-    \ Iterator& iter, int x) { return Iterator(iter) += x; }\n        friend Iterator\
-    \ operator+(int x, const Iterator& iter) { return Iterator(iter) += x; }\n   \
-    \     friend Iterator operator-(const Iterator& iter, int x) { return Iterator(iter)\
-    \ -= x; }\n        friend Iterator operator-(int x, const Iterator& iter) { return\
-    \ Iterator(iter) -= x; }\n        friend int operator-(const Iterator& lhs, const\
-    \ Iterator& rhs) {\n            int rev = 0;\n            int lp1 = lhs.p1;\n\
-    \            int lp2 = lhs.p2;\n            while (rhs.p1 > lp1) { lp2 -= sz(lhs.ss.a[lp1++]);\
-    \ }\n            while (rhs.p1 < lp1) { lp2 += sz(lhs.ss.a[--lp1]); }\n      \
-    \      return lp2 - rhs.p2;\n        }\n        bool operator==(const Iterator&\
-    \ iter) { return this->p1 == iter.p1 && this->p2 == iter.p2; }\n        bool operator!=(const\
-    \ Iterator& iter) { return !(*this == iter); }\n        Iterator& operator=(const\
-    \ Iterator& iter) { ss = iter.ss; p1 = iter.p1; p2 = iter.p2; return *this; }\n\
-    \    };\n\n    public:\n    SortedSet() = default;\n    template<typename Iterable>\n\
-    \    explicit SortedSet(const Iterable& _a) : _sz(sz(_a)) {\n        vector<T>\
-    \ ai(_sz);\n        auto iter = _a.begin();\n        rep(i, _sz) ai[i] = *iter++;\n\
-    \        sort(all(ai));\n        uniq(ai);\n        build(ai);\n    };\n    explicit\
-    \ SortedSet(int n) : _sz(n) {\n        vector<T> ai(n);\n        build(ai);\n\
-    \    }\n    explicit SortedSet(ll n) : _sz(n) {\n        vector<T> ai(n);\n  \
-    \      build(ai);\n    }\n    template<typename Iterator>\n    SortedSet(const\
-    \ Iterator& begin, const Iterator end) {\n        vector<T> ai;\n        auto\
-    \ iter = begin;\n        while(iter != end) ai.push_back(*iter++);\n        size\
-    \ = sz(ai);\n        sort(all(ai));\n        build(ai);\n    };\n\n    int size()\
-    \ const {return _sz;}\n    Iterator begin() {return Iterator(*this, 0, 0);}\n\
-    \    Iterator end() {return Iterator(*this, sz(a), 0);}\n\n    bool insert(T x)\
-    \ {\n        if (_sz == 0) {\n            a = {{x}};\n            _sz++;\n   \
-    \         return true;\n        }\n        int pos = find_bucket(x);\n       \
-    \ auto iter = std::lower_bound(all(a[pos]), x);\n        if (iter != a[pos].end()\
-    \ && *iter == x) return false;\n        a[pos].insert(iter, x);\n        _sz++;\n\
-    \        if (sz(a[pos]) > sz(a) * REBUILD_RATIO) build();\n        return true;\n\
-    \    }\n\n    bool erase(T x) {\n        if (_sz == 0) return false;\n       \
-    \ int pos = find_bucket(x);\n        auto iter = std::lower_bound(all(a[pos]),\
-    \ x);\n        if (iter == a[pos].end() && *iter != x) return false;\n       \
-    \ a[pos].erase(iter);\n        _sz--;\n        if (sz(a[pos]) == 0) build();\n\
-    \        return true;\n    }\n\n    bool contains(T x) {\n        if (_sz == 0)\
-    \ return false;\n        int pos = find_bucket(x);\n        auto iter = lower_bound(all(a[pos]),\
-    \ x);\n        return iter != a[pos].end() && *iter == x;\n    }\n\n    T operator[](int\
-    \ x) {\n        assert(0 <= x && x < _sz);\n        rep(i, sz(a)) {\n        \
-    \    if (x < sz(a[i])) return a[i][x];\n            x -= sz(a[i]);\n        }\n\
-    \        return -1;\n    }\n    Iterator lower_bound(T x) {\n        rep(i, sz(a))\
-    \ {\n            if (a[i].back() >= x) {\n                auto iter = std::lower_bound(all(a[i]),\
-    \ x);\n                return Iterator(*this, i, distance(a[i].begin(), iter));\n\
-    \            }\n        }\n        return end();\n    }\n    Iterator upper_bound(T\
-    \ x) {\n        rep(i, sz(a)) {\n            if (a[i].back() > x) {\n        \
-    \        auto iter = std::upper_bound(all(a[i]), x);\n                return Iterator(*this,\
-    \ i, distance(a[i].begin(), iter));\n            }\n        }\n        return\
-    \ end();\n    }\n};\ntemplate<typename T> struct SortedMultiSet : public SortedSet<T>\
-    \ {\n    using SortedSet<T>::SortedSet;\n    template<typename Iterable>\n   \
-    \ explicit SortedMultiSet(const Iterable& _a) {\n        SortedSet<T>::_sz = sz(_a);\n\
-    \        vector<T> ai(SortedSet<T>::_sz);\n        auto iter = _a.begin();\n \
-    \       rep(i, SortedSet<T>::_sz) ai[i] = *iter++;\n        sort(all(ai));\n \
-    \       SortedSet<T>::build(ai);\n    };\n\n    bool insert(T x) {\n        if\
-    \ (SortedSet<T>::_sz == 0) {\n            SortedSet<T>::a = {{x}};\n         \
-    \   SortedSet<T>::_sz++;\n            return true;\n        }\n        int pos\
-    \ = SortedSet<T>::find_bucket(x);\n        auto iter = std::lower_bound(all(SortedSet<T>::a[pos]),\
-    \ x);\n        SortedSet<T>::a[pos].insert(iter, x);\n        SortedSet<T>::_sz++;\n\
-    \        if (sz(SortedSet<T>::a[pos]) > sz(SortedSet<T>::a) * SortedSet<T>::REBUILD_RATIO)\
-    \ SortedSet<T>::build();\n        return true;\n    }\n};\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, SortedSet<T> &st) { auto itr = st.begin();\
-    \ for (int i = 0; i < (int)st.size(); i++) { os << *itr << (i + 1 != (int)st.size()\
-    \ ? \" \" : \"\"); itr++; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, SortedMultiSet<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
+    \ */\n#line 3 \"competitive/std/io.hpp\"\n// \u6F14\u7B97\u5B50\u30AA\u30FC\u30D0\
+    \u30FC\u30ED\u30FC\u30C9\uFF08\u30D7\u30ED\u30C8\u30BF\u30A4\u30D7\u5BA3\u8A00\
+    \uFF09\ntemplate <class T, class U> inline istream& operator>>(istream& is, pair<T,\
+    \ U>& p);\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>&\
+    \ v);\ntemplate <class T, class U> inline ostream& operator<<(ostream& os, const\
+    \ pair<T, U>& p);\ntemplate <class T> inline ostream& operator<<(ostream& os,\
+    \ const vector<T>& v);\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const multiset<T> &st);\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const unordered_set<T> &st);\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, queue<T> q);\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T>\
+    \ q);\ntemplate <typename T> ostream &operator<<(ostream &os, stack<T> st);\n\
+    template <class T, class Container, class Compare> ostream &operator<<(ostream\
+    \ &os, priority_queue<T, Container, Compare> pq);\n\n// \u6F14\u7B97\u5B50\u30AA\
+    \u30FC\u30D0\u30FC\u30ED\u30FC\u30C9\ntemplate <class T, class U> inline istream&\
+    \ operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is;\
+    \ }\ntemplate <class T> inline istream& operator>>(istream& is, vector<T>& v)\
+    \ { repe(x, v) is >> x; return is; }\ntemplate <class T, class U> inline ostream&\
+    \ operator<<(ostream& os, const pair<T, U>& p) { os << p.first << \" \" << p.second;\
+    \ return os; }\ntemplate <class T> inline ostream& operator<<(ostream& os, const\
+    \ vector<T>& v) { rep(i, sz(v)) { os << v.at(i); if (i != sz(v) - 1) os << \"\
+    \ \"; } return os; }\ntemplate <typename T, typename S> ostream &operator<<(ostream\
+    \ &os, const map<T, S> &mp) { for (auto &[key, val] : mp) { os << key << \":\"\
+    \ << val << \" \"; } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size();\
     \ i++) { os << *itr << (i + 1 != (int)st.size() ? \" \" : \"\"); itr++; } return\
-    \ os; }\n/**\n * @brief sorted_set\n * @docs docs/data_structure/sorted_set.md\n\
-    \ */\n"
+    \ os; }\ntemplate <typename T> ostream &operator<<(ostream &os, const multiset<T>\
+    \ &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size(); i++) { os\
+    \ << *itr << (i + 1 != (int)st.size() ? \" \" : \"\"); itr++; } return os; }\n\
+    template <typename T> ostream &operator<<(ostream &os, const unordered_set<T>\
+    \ &st) { ll cnt = 0; for (auto &e : st) { os << e << (++cnt != (int)st.size()\
+    \ ? \" \" : \"\"); } return os; }\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, queue<T> q) { while (q.size()) { os << q.front() << \" \"; q.pop(); } return\
+    \ os; }\ntemplate <typename T> ostream &operator<<(ostream &os, deque<T> q) {\
+    \ while (q.size()) { os << q.front() << \" \"; q.pop_front(); } return os; }\n\
+    template <typename T> ostream &operator<<(ostream &os, stack<T> st) { while (st.size())\
+    \ { os << st.top() << \" \"; st.pop(); } return os; }\ntemplate <class T, class\
+    \ Container, class Compare> ostream &operator<<(ostream &os, priority_queue<T,\
+    \ Container, Compare> pq) { while (pq.size()) { os << pq.top() << \" \"; pq.pop();\
+    \ } return os; }\n\ntemplate <typename T> void print_sep_end(string sep, string\
+    \ end, const T& val) { (void)sep; cout << val << end; };\ntemplate <typename T1,\
+    \ typename... T2> void print_sep_end(string sep, string end, const T1 &val, const\
+    \ T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep, end, remain...);\n\
+    };\ntemplate <typename... T> void print(const T &...args) { print_sep_end(\" \"\
+    , \"\\n\", args...); };\ntemplate <typename... T> void flush() { cout << flush;\
+    \ };\ntemplate <typename... T> void print_and_flush(const T &...args) { print(args...);\
+    \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
+    \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
+    \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
+    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
+    \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
+    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
+    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
+    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
+    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
+    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
+    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
+    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 5 \"\
+    online_test/library-checker/double_ended_priority_queue_sorted_set.cpp\"\nint\
+    \ main() {\n    ll n,q;\n    input(n,q);\n    vl a(n);\n    input(a);\n    SortedMultiSet<ll>\
+    \ s(a);\n    rep(q) {\n        ll t;\n        input(t);\n        if (t == 0) {\n\
+    \            ll x;\n            input(x);\n            s.insert(x);\n        }\
+    \ else if (t == 1) {\n            print(s[0]);\n            s.erase(*s.begin());\n\
+    \        } else {\n            print(*--s.end());\n            ll ans = s[sz(s)-1];\n\
+    \            s.erase(ans);\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
+    \n#include \"competitive/std/std.hpp\"\n#include \"competitive/data_structure/sorted_set.hpp\"\
+    \n#include \"competitive/std/io.hpp\"\nint main() {\n    ll n,q;\n    input(n,q);\n\
+    \    vl a(n);\n    input(a);\n    SortedMultiSet<ll> s(a);\n    rep(q) {\n   \
+    \     ll t;\n        input(t);\n        if (t == 0) {\n            ll x;\n   \
+    \         input(x);\n            s.insert(x);\n        } else if (t == 1) {\n\
+    \            print(s[0]);\n            s.erase(*s.begin());\n        } else {\n\
+    \            print(*--s.end());\n            ll ans = s[sz(s)-1];\n          \
+    \  s.erase(ans);\n        }\n    }\n}"
   dependsOn:
   - competitive/std/std.hpp
+  - competitive/data_structure/sorted_set.hpp
+  - competitive/std/io.hpp
   isVerificationFile: false
-  path: competitive/data_structure/sorted_set.hpp
-  requiredBy:
-  - online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
+  path: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
+  requiredBy: []
   timestamp: '2023-04-25 10:54:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: competitive/data_structure/sorted_set.hpp
+documentation_of: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
 layout: document
 redirect_from:
-- /library/competitive/data_structure/sorted_set.hpp
-- /library/competitive/data_structure/sorted_set.hpp.html
-title: sorted_set
+- /library/online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
+- /library/online_test/library-checker/double_ended_priority_queue_sorted_set.cpp.html
+title: online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
 ---

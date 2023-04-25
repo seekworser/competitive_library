@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
   - icon: ':heavy_check_mark:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/data_structure/lazysegtree.hpp
     title: "\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\uFF08\u30E9\u30C3\u30D1\
       \u30FC\uFF09"
@@ -20,10 +20,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/graph/graph.hpp
     title: graph.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   - icon: ':heavy_check_mark:'
@@ -420,15 +420,15 @@ data:
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
     \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
     \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3\
-    \ &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') &&\
-    \ name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] ==\
-    \ '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] == '}')\
-    \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
-    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 5 \"online_test/library-checker/lca_hld.test.cpp\"\nint main() {\n    ll n,q;\n\
-    \    input(n,q);\n    vi from, to, cost(n-1, 1);\n    rep(i, n-1) {\n        ll\
+    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
+    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
+    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
+    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
+    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
+    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
+    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 5 \"\
+    online_test/library-checker/lca_hld.test.cpp\"\nint main() {\n    ll n,q;\n  \
+    \  input(n,q);\n    vi from, to, cost(n-1, 1);\n    rep(i, n-1) {\n        ll\
     \ p;\n        input(p);\n        from.push_back(p);\n        to.push_back(i+1);\n\
     \    }\n    Graph g(n, from, to, cost, true);\n    seg_add<ll> seg(vl(n, 0));\n\
     \    HeavyLightDecomposition hld(g, seg);\n    rep(q) {\n        ll u,v;\n   \
@@ -454,7 +454,7 @@ data:
   isVerificationFile: true
   path: online_test/library-checker/lca_hld.test.cpp
   requiredBy: []
-  timestamp: '2023-04-22 02:44:06+09:00'
+  timestamp: '2023-04-25 10:54:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/library-checker/lca_hld.test.cpp

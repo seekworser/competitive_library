@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: competitive/algorithm/longest_common_subsequence.hpp
     title: longest_common_subsequence.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -165,18 +165,17 @@ data:
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
     \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
     \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3\
-    \ &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') &&\
-    \ name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] ==\
-    \ '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] == '}')\
-    \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
-    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 5 \"online_test/AOJ/ALDS_1_10_C.test.cpp\"\nint main() {\n    int n;\n    cin\
-    \ >> n;\n    rep(i, n) {\n        string s,t;\n        cin >> s >> t;\n      \
-    \  vector<char> sv, tv;\n        rep(i, sz(s)) sv.push_back(s[i]);\n        rep(i,\
-    \ sz(t)) tv.push_back(t[i]);\n        cout << lcs(sv, tv).size() << endl;\n  \
-    \  }\n}\n"
+    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
+    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
+    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
+    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
+    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
+    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
+    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 5 \"\
+    online_test/AOJ/ALDS_1_10_C.test.cpp\"\nint main() {\n    int n;\n    cin >> n;\n\
+    \    rep(i, n) {\n        string s,t;\n        cin >> s >> t;\n        vector<char>\
+    \ sv, tv;\n        rep(i, sz(s)) sv.push_back(s[i]);\n        rep(i, sz(t)) tv.push_back(t[i]);\n\
+    \        cout << lcs(sv, tv).size() << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C\"\
     \n#include \"competitive/std/std.hpp\"\n#include \"competitive/algorithm/longest_common_subsequence.hpp\"\
     \n#include \"competitive/std/io.hpp\"\nint main() {\n    int n;\n    cin >> n;\n\
@@ -190,7 +189,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/ALDS_1_10_C.test.cpp
   requiredBy: []
-  timestamp: '2023-04-22 02:44:06+09:00'
+  timestamp: '2023-04-25 10:54:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/ALDS_1_10_C.test.cpp

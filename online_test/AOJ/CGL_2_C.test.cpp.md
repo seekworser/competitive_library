@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/angle.hpp
     title: angle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/base.hpp
     title: "Point\u30AF\u30E9\u30B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/counter_clockwise.hpp
     title: counter_clockwise.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/geometry/intersection.hpp
     title: intersection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/math/fraction.hpp
     title: fraction.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/io.hpp
     title: io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: competitive/std/std.hpp
     title: std.hpp
   _extendedRequiredBy: []
@@ -324,14 +324,14 @@ data:
     \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
     \ };\n#ifdef LOCAL_TEST\ntemplate <typename T>\nvoid debug_func(int i, T name)\
     \ { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename T2,\
-    \ typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3\
-    \ &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') &&\
-    \ name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] ==\
-    \ '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] == '}')\
-    \ scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name,\
-    \ b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 7 \"online_test/AOJ/CGL_2_C.test.cpp\"\n\nint main() {\n    using P = Point<Frac>;\n\
+    \ typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {\n\
+    \    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i] !=\
+    \ '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
+    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
+    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
+    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
+    \ {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 7 \"\
+    online_test/AOJ/CGL_2_C.test.cpp\"\n\nint main() {\n    using P = Point<Frac>;\n\
     \    using S = Segment<Frac>;\n    int q;\n    cin >> q;\n    rep(_, q) {\n  \
     \      ll x1, y1, x2, y2;\n        cin >> x1 >> y1 >> x2 >> y2;\n        S s1(P(x1,\
     \ y1), P(x2, y2));\n        cin >> x1 >> y1 >> x2 >> y2;\n        S s2(P(x1, y1),\
@@ -355,7 +355,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/CGL_2_C.test.cpp
   requiredBy: []
-  timestamp: '2023-04-22 02:44:06+09:00'
+  timestamp: '2023-04-25 10:54:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/CGL_2_C.test.cpp
