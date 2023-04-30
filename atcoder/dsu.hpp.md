@@ -72,8 +72,8 @@ data:
   path: atcoder/dsu.hpp
   requiredBy:
   - competitive/tree/kruskal.hpp
-  - competitive/random/tree.hpp
   - competitive/data_structure/union_find.hpp
+  - competitive/random/tree.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

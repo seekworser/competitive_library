@@ -336,8 +336,8 @@ data:
   path: atcoder/modint.hpp
   requiredBy:
   - atcoder/convolution.hpp
-  - competitive/math/combination.hpp
   - competitive/math/modint.hpp
+  - competitive/math/combination.hpp
   timestamp: '2023-02-28 16:59:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

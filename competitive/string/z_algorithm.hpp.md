@@ -62,11 +62,11 @@ data:
     \ // v \u306E\u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n,\
     \ m) ((((n) % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n)\
     \ - smod(n, m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
-    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b=true) { cout << (b\
-    \ ? \"Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b=true) { cout << (b ?\
-    \ \"YES\\n\" : \"NO\\n\"); return; };\nvoid No(bool b=true) {Yes(!b);};\nvoid\
-    \ NO(bool b=true) {YES(!b);};\ntemplate<typename T, size_t N> T max(array<T, N>&\
-    \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
+    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nint Yes(bool b=true) { cout << (b\
+    \ ? \"Yes\\n\" : \"No\\n\"); return 0; };\nint YES(bool b=true) { cout << (b ?\
+    \ \"YES\\n\" : \"NO\\n\"); return 0; };\nint No(bool b=true) {return Yes(!b);};\n\
+    int NO(bool b=true) {return YES(!b);};\ntemplate<typename T, size_t N> T max(array<T,\
+    \ N>& a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
     \ a) { return *min_element(all(a)); };\ntemplate<typename T> vector<T> vec_slice(const\
@@ -94,28 +94,28 @@ data:
     \    vi rev(n);\n    rev[0] = n;\n    int pos(1), len(0);\n    while(pos < n)\
     \ {\n        while (pos + len < n && vec[pos+len] == vec[len]) len++;\n      \
     \  rev[pos] = len;\n        pos++;\n        if (len > 0) len--;\n        ll written\
-    \ = 1;\n        debug(pos, len);\n        while (len > 0) {\n            if (rev[written]\
-    \ >= len) break;\n            rev[pos] = rev[written];\n            len--; written++;\
-    \ pos++;\n        }\n        debug(pos, len);\n    }\n    return rev;\n}\nvi z_algorithm(string&\
-    \ s) {\n    vector<char> vec(all(s));\n    return z_algorithm(vec);\n}\n/**\n\
-    \ * @brief z_algorithm\n * @docs docs/string/z_algorithm.md\n */\n"
+    \ = 1;\n        while (len > 0) {\n            if (rev[written] >= len) break;\n\
+    \            rev[pos] = rev[written];\n            len--; written++; pos++;\n\
+    \        }\n    }\n    return rev;\n}\nvi z_algorithm(string& s) {\n    vector<char>\
+    \ vec(all(s));\n    return z_algorithm(vec);\n}\n/**\n * @brief z_algorithm\n\
+    \ * @docs docs/string/z_algorithm.md\n */\n"
   code: "#pragma once\n#include \"competitive/std/std.hpp\"\ntemplate<typename T>\
     \ vi z_algorithm(vector<T>& vec) {\n    int n = sz(vec);\n    vi rev(n);\n   \
     \ rev[0] = n;\n    int pos(1), len(0);\n    while(pos < n) {\n        while (pos\
     \ + len < n && vec[pos+len] == vec[len]) len++;\n        rev[pos] = len;\n   \
-    \     pos++;\n        if (len > 0) len--;\n        ll written = 1;\n        debug(pos,\
-    \ len);\n        while (len > 0) {\n            if (rev[written] >= len) break;\n\
-    \            rev[pos] = rev[written];\n            len--; written++; pos++;\n\
-    \        }\n        debug(pos, len);\n    }\n    return rev;\n}\nvi z_algorithm(string&\
-    \ s) {\n    vector<char> vec(all(s));\n    return z_algorithm(vec);\n}\n/**\n\
-    \ * @brief z_algorithm\n * @docs docs/string/z_algorithm.md\n */\n"
+    \     pos++;\n        if (len > 0) len--;\n        ll written = 1;\n        while\
+    \ (len > 0) {\n            if (rev[written] >= len) break;\n            rev[pos]\
+    \ = rev[written];\n            len--; written++; pos++;\n        }\n    }\n  \
+    \  return rev;\n}\nvi z_algorithm(string& s) {\n    vector<char> vec(all(s));\n\
+    \    return z_algorithm(vec);\n}\n/**\n * @brief z_algorithm\n * @docs docs/string/z_algorithm.md\n\
+    \ */\n"
   dependsOn:
   - competitive/std/std.hpp
   isVerificationFile: false
   path: competitive/string/z_algorithm.hpp
   requiredBy:
   - online_test/library-checker/zalgorithm.cpp
-  timestamp: '2023-04-22 03:00:52+09:00'
+  timestamp: '2023-04-30 20:32:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: competitive/string/z_algorithm.hpp

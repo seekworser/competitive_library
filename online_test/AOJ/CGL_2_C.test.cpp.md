@@ -80,11 +80,11 @@ data:
     \ // v \u306E\u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n,\
     \ m) ((((n) % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n)\
     \ - smod(n, m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
-    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b=true) { cout << (b\
-    \ ? \"Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b=true) { cout << (b ?\
-    \ \"YES\\n\" : \"NO\\n\"); return; };\nvoid No(bool b=true) {Yes(!b);};\nvoid\
-    \ NO(bool b=true) {YES(!b);};\ntemplate<typename T, size_t N> T max(array<T, N>&\
-    \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
+    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nint Yes(bool b=true) { cout << (b\
+    \ ? \"Yes\\n\" : \"No\\n\"); return 0; };\nint YES(bool b=true) { cout << (b ?\
+    \ \"YES\\n\" : \"NO\\n\"); return 0; };\nint No(bool b=true) {return Yes(!b);};\n\
+    int NO(bool b=true) {return YES(!b);};\ntemplate<typename T, size_t N> T max(array<T,\
+    \ N>& a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
     \ a) { return *min_element(all(a)); };\ntemplate<typename T> vector<T> vec_slice(const\
@@ -312,36 +312,37 @@ data:
     \ { os << st.top() << \" \"; st.pop(); } return os; }\ntemplate <class T, class\
     \ Container, class Compare> ostream &operator<<(ostream &os, priority_queue<T,\
     \ Container, Compare> pq) { while (pq.size()) { os << pq.top() << \" \"; pq.pop();\
-    \ } return os; }\n\ntemplate <typename T> void print_sep_end(string sep, string\
-    \ end, const T& val) { (void)sep; cout << val << end; };\ntemplate <typename T1,\
-    \ typename... T2> void print_sep_end(string sep, string end, const T1 &val, const\
-    \ T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep, end, remain...);\n\
-    };\ntemplate <typename... T> void print(const T &...args) { print_sep_end(\" \"\
-    , \"\\n\", args...); };\ntemplate <typename... T> void flush() { cout << flush;\
-    \ };\ntemplate <typename... T> void print_and_flush(const T &...args) { print(args...);\
-    \ flush(); };\n#define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) //\
-    \ debug print\ntemplate <typename T> void input(T &a) { cin >> a; };\ntemplate\
-    \ <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...);\
-    \ };\n#ifdef LOCAL_TEST\ntemplate <typename T> void debug_func(int i, const T\
-    \ name) { (void)i; (void)name; cerr << endl; }\ntemplate <typename T1, typename\
-    \ T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const\
-    \ T3 &...b) {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',')\
-    \ && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i]\
-    \ == '(' || name[i] == '{') scope++;\n        if (name[i] == ')' || name[i] ==\
-    \ '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1,\
-    \ name, b...);\n}\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int\
-    \ i, const T1 &name, T2 &a, T3 &...b) {\n    int scope = 0;\n    for ( ; (scope\
-    \ != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr << name[i];\n\
-    \        if (name[i] == '(' || name[i] == '{') scope++;\n        if (name[i] ==\
-    \ ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" << a << \" \";\n \
-    \   debug_func(i + 1, name, b...);\n}\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename...\
-    \ T>\nvoid debug_func(T &...) {}\ntemplate <typename... T>\nvoid debug_func(const\
-    \ T &...) {}\n#endif\n/**\n * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line\
-    \ 7 \"online_test/AOJ/CGL_2_C.test.cpp\"\n\nint main() {\n    using P = Point<Frac>;\n\
-    \    using S = Segment<Frac>;\n    int q;\n    cin >> q;\n    rep(_, q) {\n  \
-    \      ll x1, y1, x2, y2;\n        cin >> x1 >> y1 >> x2 >> y2;\n        S s1(P(x1,\
-    \ y1), P(x2, y2));\n        cin >> x1 >> y1 >> x2 >> y2;\n        S s2(P(x1, y1),\
-    \ P(x2, y2));\n        cout << cross_point(s1, s2) << endl;\n    }\n}\n"
+    \ } return os; }\n\ntemplate <typename T> int print_sep_end(string sep, string\
+    \ end, const T& val) { (void)sep; cout << val << end; return 0; };\ntemplate <typename\
+    \ T1, typename... T2> int print_sep_end(string sep, string end, const T1 &val,\
+    \ const T2 &...remain) {\n    cout << val << sep;\n    print_sep_end(sep, end,\
+    \ remain...);\n    return 0;\n};\ntemplate <typename... T> int print(const T &...args)\
+    \ { print_sep_end(\" \", \"\\n\", args...); return 0; };\ntemplate <typename...\
+    \ T> void flush() { cout << flush; };\ntemplate <typename... T> int print_and_flush(const\
+    \ T &...args) { print(args...); flush(); return 0; };\n#define debug(...) debug_func(0,\
+    \ #__VA_ARGS__, __VA_ARGS__) // debug print\ntemplate <typename T> void input(T\
+    \ &a) { cin >> a; };\ntemplate <typename T1, typename... T2> void input(T1&a,\
+    \ T2 &...b) { cin >> a; input(b...); };\n#ifdef LOCAL_TEST\ntemplate <typename\
+    \ T> void debug_func(int i, const T name) { (void)i; (void)name; cerr << endl;\
+    \ }\ntemplate <typename T1, typename T2, typename... T3> void debug_func(int i,\
+    \ const T1 &name, const T2 &a, const T3 &...b) {\n    int scope = 0;\n    for\
+    \ ( ; (scope != 0 || name[i] != ',') && name[i] != '\\0'; i++ ) {\n        cerr\
+    \ << name[i];\n        if (name[i] == '(' || name[i] == '{') scope++;\n      \
+    \  if (name[i] == ')' || name[i] == '}') scope--;\n    }\n    cerr << \":\" <<\
+    \ a << \" \";\n    debug_func(i + 1, name, b...);\n}\ntemplate <typename T1, typename\
+    \ T2, typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b)\
+    \ {\n    int scope = 0;\n    for ( ; (scope != 0 || name[i] != ',') && name[i]\
+    \ != '\\0'; i++ ) {\n        cerr << name[i];\n        if (name[i] == '(' || name[i]\
+    \ == '{') scope++;\n        if (name[i] == ')' || name[i] == '}') scope--;\n \
+    \   }\n    cerr << \":\" << a << \" \";\n    debug_func(i + 1, name, b...);\n\
+    }\n#endif\n#ifndef LOCAL_TEST\ntemplate <typename... T>\nvoid debug_func(T &...)\
+    \ {}\ntemplate <typename... T>\nvoid debug_func(const T &...) {}\n#endif\n/**\n\
+    \ * @brief io.hpp\n * @docs docs/std/io.md\n */\n#line 7 \"online_test/AOJ/CGL_2_C.test.cpp\"\
+    \n\nint main() {\n    using P = Point<Frac>;\n    using S = Segment<Frac>;\n \
+    \   int q;\n    cin >> q;\n    rep(_, q) {\n        ll x1, y1, x2, y2;\n     \
+    \   cin >> x1 >> y1 >> x2 >> y2;\n        S s1(P(x1, y1), P(x2, y2));\n      \
+    \  cin >> x1 >> y1 >> x2 >> y2;\n        S s2(P(x1, y1), P(x2, y2));\n       \
+    \ cout << cross_point(s1, s2) << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_2_C\"\
     \n#define ERROR 1e-6\n#include \"competitive/std/std.hpp\"\n#include \"competitive/geometry/intersection.hpp\"\
     \n#include \"competitive/math/fraction.hpp\"\n#include \"competitive/std/io.hpp\"\
@@ -361,7 +362,7 @@ data:
   isVerificationFile: true
   path: online_test/AOJ/CGL_2_C.test.cpp
   requiredBy: []
-  timestamp: '2023-04-25 12:18:24+09:00'
+  timestamp: '2023-04-30 20:34:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: online_test/AOJ/CGL_2_C.test.cpp

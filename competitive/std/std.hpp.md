@@ -303,11 +303,11 @@ data:
     \ // v \u306E\u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n,\
     \ m) ((((n) % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n)\
     \ - smod(n, m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
-    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b=true) { cout << (b\
-    \ ? \"Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b=true) { cout << (b ?\
-    \ \"YES\\n\" : \"NO\\n\"); return; };\nvoid No(bool b=true) {Yes(!b);};\nvoid\
-    \ NO(bool b=true) {YES(!b);};\ntemplate<typename T, size_t N> T max(array<T, N>&\
-    \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
+    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nint Yes(bool b=true) { cout << (b\
+    \ ? \"Yes\\n\" : \"No\\n\"); return 0; };\nint YES(bool b=true) { cout << (b ?\
+    \ \"YES\\n\" : \"NO\\n\"); return 0; };\nint No(bool b=true) {return Yes(!b);};\n\
+    int NO(bool b=true) {return YES(!b);};\ntemplate<typename T, size_t N> T max(array<T,\
+    \ N>& a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
     \ a) { return *min_element(all(a)); };\ntemplate<typename T> vector<T> vec_slice(const\
@@ -377,11 +377,11 @@ data:
     \ // v \u306E\u5168\u8981\u7D20\uFF08\u5909\u66F4\u53EF\u80FD\uFF09\n#define smod(n,\
     \ m) ((((n) % (m)) + (m)) % (m)) // \u975E\u8CA0mod\n#define sdiv(n, m) (((n)\
     \ - smod(n, m)) / (m)) // \u975E\u8CA0div\n#define uniq(a) {sort(all(a)); (a).erase(unique(all(a)),\
-    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nvoid Yes(bool b=true) { cout << (b\
-    \ ? \"Yes\\n\" : \"No\\n\"); return; };\nvoid YES(bool b=true) { cout << (b ?\
-    \ \"YES\\n\" : \"NO\\n\"); return; };\nvoid No(bool b=true) {Yes(!b);};\nvoid\
-    \ NO(bool b=true) {YES(!b);};\ntemplate<typename T, size_t N> T max(array<T, N>&\
-    \ a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
+    \ (a).end());} // \u91CD\u8907\u9664\u53BB\nint Yes(bool b=true) { cout << (b\
+    \ ? \"Yes\\n\" : \"No\\n\"); return 0; };\nint YES(bool b=true) { cout << (b ?\
+    \ \"YES\\n\" : \"NO\\n\"); return 0; };\nint No(bool b=true) {return Yes(!b);};\n\
+    int NO(bool b=true) {return YES(!b);};\ntemplate<typename T, size_t N> T max(array<T,\
+    \ N>& a) { return *max_element(all(a)); };\ntemplate<typename T, size_t N> T min(array<T,\
     \ N>& a) { return *min_element(all(a)); };\ntemplate<typename T> T max(vector<T>&\
     \ a) { return *max_element(all(a)); };\ntemplate<typename T> T min(vector<T>&\
     \ a) { return *min_element(all(a)); };\ntemplate<typename T> vector<T> vec_slice(const\
@@ -409,91 +409,91 @@ data:
   isVerificationFile: false
   path: competitive/std/std.hpp
   requiredBy:
-  - online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
-  - online_test/library-checker/zalgorithm.cpp
-  - online_test/AOJ/NTL_1_D.cpp
-  - competitive/string/rolling_hash.hpp
-  - competitive/string/z_algorithm.hpp
   - competitive/graph/fast_dijkstra.hpp
-  - competitive/graph/scc.hpp
-  - competitive/graph/dijkstra.hpp
   - competitive/graph/graph.hpp
-  - competitive/graph/max_k_dijkstra.hpp
   - competitive/graph/warshall_floyd.hpp
-  - competitive/tree/kruskal.hpp
-  - competitive/tree/heavy_light_decomposition.hpp
-  - competitive/tree/diameter.hpp
-  - competitive/tree/depth.hpp
-  - competitive/random/tree.hpp
-  - competitive/random/random_base.hpp
+  - competitive/graph/dijkstra.hpp
+  - competitive/graph/scc.hpp
+  - competitive/graph/max_k_dijkstra.hpp
   - competitive/geometry/projection.hpp
+  - competitive/geometry/polygon.hpp
   - competitive/geometry/distance.hpp
+  - competitive/geometry/base.hpp
+  - competitive/geometry/angle.hpp
   - competitive/geometry/intersection.hpp
   - competitive/geometry/counter_clockwise.hpp
-  - competitive/geometry/base.hpp
-  - competitive/geometry/polygon.hpp
-  - competitive/geometry/angle.hpp
-  - competitive/math/f2.hpp
-  - competitive/math/inversion_num.hpp
-  - competitive/math/combination.hpp
-  - competitive/math/distance.hpp
-  - competitive/math/fraction.hpp
-  - competitive/math/prime.hpp
-  - competitive/math/bit.hpp
-  - competitive/math/euler_phi.hpp
-  - competitive/math/modint.hpp
-  - competitive/math/baby_step_giant_step.hpp
-  - competitive/data_structure/segtree.hpp
-  - competitive/data_structure/lazysegtree.hpp
-  - competitive/data_structure/union_find.hpp
-  - competitive/data_structure/bit.hpp
-  - competitive/data_structure/sorted_set.hpp
-  - competitive/data_structure/splay_tree.hpp
   - competitive/helper/compress.hpp
   - competitive/helper/board_helper.hpp
+  - competitive/string/z_algorithm.hpp
+  - competitive/string/rolling_hash.hpp
   - competitive/std/io.hpp
+  - competitive/tree/kruskal.hpp
+  - competitive/tree/depth.hpp
+  - competitive/tree/diameter.hpp
+  - competitive/tree/heavy_light_decomposition.hpp
+  - competitive/data_structure/union_find.hpp
+  - competitive/data_structure/splay_tree.hpp
+  - competitive/data_structure/segtree.hpp
+  - competitive/data_structure/sorted_set.hpp
+  - competitive/data_structure/lazysegtree.hpp
+  - competitive/data_structure/bit.hpp
   - competitive/matrix/matrix.hpp
-  - competitive/algorithm/longest_common_subsequence.hpp
-  - competitive/algorithm/mo.hpp
-  - competitive/algorithm/longest_increasing_subsequence.hpp
+  - competitive/random/tree.hpp
+  - competitive/random/random_base.hpp
+  - competitive/math/baby_step_giant_step.hpp
+  - competitive/math/prime.hpp
+  - competitive/math/modint.hpp
+  - competitive/math/distance.hpp
+  - competitive/math/euler_phi.hpp
+  - competitive/math/combination.hpp
+  - competitive/math/fraction.hpp
+  - competitive/math/f2.hpp
+  - competitive/math/inversion_num.hpp
+  - competitive/math/bit.hpp
   - competitive/algorithm/minimum_excludant.hpp
-  timestamp: '2023-04-22 02:44:06+09:00'
+  - competitive/algorithm/mo.hpp
+  - competitive/algorithm/longest_common_subsequence.hpp
+  - competitive/algorithm/longest_increasing_subsequence.hpp
+  - online_test/AOJ/NTL_1_D.cpp
+  - online_test/library-checker/double_ended_priority_queue_sorted_set.cpp
+  - online_test/library-checker/zalgorithm.cpp
+  timestamp: '2023-04-30 20:32:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - online_test/library-checker/aplusb.test.cpp
-  - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
-  - online_test/library-checker/lca_hld.test.cpp
-  - online_test/library-checker/static_range_sum.test.cpp
-  - online_test/library-checker/shortest_path_dijkstra.test.cpp
-  - online_test/library-checker/scc.test.cpp
-  - online_test/library-checker/longest_increasing_subsequence.test.cpp
-  - online_test/AOJ/DSL_2_I.test.cpp
-  - online_test/AOJ/DPL_1_D.test.cpp
-  - online_test/AOJ/CGL_1_A.test.cpp
-  - online_test/AOJ/CGL_3_A.test.cpp
-  - online_test/AOJ/CGL_2_D.test.cpp
-  - online_test/AOJ/CGL_1_C.test.cpp
-  - online_test/AOJ/GRL_5_C.test.cpp
   - online_test/AOJ/CGL_2_C.test.cpp
-  - online_test/AOJ/CGL_2_B.test.cpp
-  - online_test/AOJ/DSL_2_G.test.cpp
+  - online_test/AOJ/CGL_1_A.test.cpp
+  - online_test/AOJ/ALDS_1_14_B.test.cpp
+  - online_test/AOJ/ALDS_1_10_C.test.cpp
+  - online_test/AOJ/CGL_1_B.test.cpp
   - online_test/AOJ/DSL_2_H.test.cpp
+  - online_test/AOJ/CGL_3_A.test.cpp
+  - online_test/AOJ/CGL_4_A.test.cpp
+  - online_test/AOJ/GRL_1_A.test.cpp
+  - online_test/AOJ/CGL_2_B.test.cpp
+  - online_test/AOJ/DPL_1_D.test.cpp
   - online_test/AOJ/GRL_1_C.test.cpp
   - online_test/AOJ/AOJ3209.test.cpp
   - online_test/AOJ/GRL_3_C.test.cpp
-  - online_test/AOJ/CGL_1_B.test.cpp
-  - online_test/AOJ/GRL_1_A.test.cpp
-  - online_test/AOJ/DSL_2_F.test.cpp
-  - online_test/AOJ/ NTL_1_B.test.cpp
-  - online_test/AOJ/ITPI_1_A.test.cpp
-  - online_test/AOJ/CGL_2_A.test.cpp
-  - online_test/AOJ/ALDS_1_14_B.test.cpp
+  - online_test/AOJ/GRL_5_C.test.cpp
   - online_test/AOJ/CGL_3_B.test.cpp
-  - online_test/AOJ/CGL_4_A.test.cpp
-  - online_test/AOJ/ALDS_1_10_C.test.cpp
+  - online_test/AOJ/ITPI_1_A.test.cpp
+  - online_test/AOJ/CGL_1_C.test.cpp
+  - online_test/AOJ/ NTL_1_B.test.cpp
+  - online_test/AOJ/DSL_2_G.test.cpp
+  - online_test/AOJ/CGL_2_D.test.cpp
+  - online_test/AOJ/DSL_2_F.test.cpp
+  - online_test/AOJ/CGL_2_A.test.cpp
+  - online_test/AOJ/DSL_2_I.test.cpp
   - online_test/yukicoder/yuki-hello-world.test.cpp
   - online_test/yukicoder/yuki-649.test.cpp
   - online_test/yukicoder/yuki-399.test.cpp
+  - online_test/library-checker/shortest_path_fast_dijkstra.test.cpp
+  - online_test/library-checker/lca_hld.test.cpp
+  - online_test/library-checker/scc.test.cpp
+  - online_test/library-checker/aplusb.test.cpp
+  - online_test/library-checker/shortest_path_dijkstra.test.cpp
+  - online_test/library-checker/static_range_sum.test.cpp
+  - online_test/library-checker/longest_increasing_subsequence.test.cpp
 documentation_of: competitive/std/std.hpp
 layout: document
 redirect_from:
