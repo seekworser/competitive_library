@@ -28,14 +28,15 @@ template <typename T> ostream &operator<<(ostream &os, deque<T> q) { while (q.si
 template <typename T> ostream &operator<<(ostream &os, stack<T> st) { while (st.size()) { os << st.top() << " "; st.pop(); } return os; }
 template <class T, class Container, class Compare> ostream &operator<<(ostream &os, priority_queue<T, Container, Compare> pq) { while (pq.size()) { os << pq.top() << " "; pq.pop(); } return os; }
 
-template <typename T> void print_sep_end(string sep, string end, const T& val) { (void)sep; cout << val << end; };
-template <typename T1, typename... T2> void print_sep_end(string sep, string end, const T1 &val, const T2 &...remain) {
+template <typename T> int print_sep_end(string sep, string end, const T& val) { (void)sep; cout << val << end; return 0; };
+template <typename T1, typename... T2> int print_sep_end(string sep, string end, const T1 &val, const T2 &...remain) {
     cout << val << sep;
     print_sep_end(sep, end, remain...);
+    return 0;
 };
-template <typename... T> void print(const T &...args) { print_sep_end(" ", "\n", args...); };
+template <typename... T> int print(const T &...args) { print_sep_end(" ", "\n", args...); return 0; };
 template <typename... T> void flush() { cout << flush; };
-template <typename... T> void print_and_flush(const T &...args) { print(args...); flush(); };
+template <typename... T> int print_and_flush(const T &...args) { print(args...); flush(); return 0; };
 #define debug(...) debug_func(0, #__VA_ARGS__, __VA_ARGS__) // debug print
 template <typename T> void input(T &a) { cin >> a; };
 template <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...); };

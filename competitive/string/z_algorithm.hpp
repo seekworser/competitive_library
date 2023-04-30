@@ -11,13 +11,11 @@ template<typename T> vi z_algorithm(vector<T>& vec) {
         pos++;
         if (len > 0) len--;
         ll written = 1;
-        debug(pos, len);
         while (len > 0) {
             if (rev[written] >= len) break;
             rev[pos] = rev[written];
             len--; written++; pos++;
         }
-        debug(pos, len);
     }
     return rev;
 }
