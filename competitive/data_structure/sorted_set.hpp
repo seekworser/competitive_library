@@ -1,12 +1,13 @@
 #pragma once
 #include "competitive/std/std.hpp"
 template<typename T> struct SortedSet {
+    protected:
     static const int BUCKET_RATIO = 50;
     static const int REBUILD_RATIO = 170;
 
     public:
     vector<vector<T>> a;
-    private:
+    protected:
     int _sz;
     void build(const vector<T> &ai) {
         _sz = sz(ai);
@@ -47,8 +48,6 @@ template<typename T> struct SortedSet {
             assert(p1 != 0 || p2 != 0);
             p2--;
             if(p2 < 0) {p1--; p2 = sz(ss.a[p1]) - 1;}
-            p2++;
-            if (p2 == sz(ss.a[p1])) {p1++; p2 = 0;}
             return *this;
         }
         Iterator operator++(int) { Iterator iter(*this); ++(*this); return iter;}
@@ -88,6 +87,7 @@ template<typename T> struct SortedSet {
         auto iter = _a.begin();
         rep(i, _sz) ai[i] = *iter++;
         sort(all(ai));
+        uniq(ai);
         build(ai);
     };
     explicit SortedSet(int n) : _sz(n) {
@@ -172,6 +172,34 @@ template<typename T> struct SortedSet {
         return end();
     }
 };
+template<typename T> struct SortedMultiSet : public SortedSet<T> {
+    using SortedSet<T>::SortedSet;
+    template<typename Iterable>
+    explicit SortedMultiSet(const Iterable& _a) {
+        SortedSet<T>::_sz = sz(_a);
+        vector<T> ai(SortedSet<T>::_sz);
+        auto iter = _a.begin();
+        rep(i, SortedSet<T>::_sz) ai[i] = *iter++;
+        sort(all(ai));
+        SortedSet<T>::build(ai);
+    };
+
+    bool insert(T x) {
+        if (SortedSet<T>::_sz == 0) {
+            SortedSet<T>::a = {{x}};
+            SortedSet<T>::_sz++;
+            return true;
+        }
+        int pos = SortedSet<T>::find_bucket(x);
+        auto iter = std::lower_bound(all(SortedSet<T>::a[pos]), x);
+        SortedSet<T>::a[pos].insert(iter, x);
+        SortedSet<T>::_sz++;
+        if (sz(SortedSet<T>::a[pos]) > sz(SortedSet<T>::a) * SortedSet<T>::REBUILD_RATIO) SortedSet<T>::build();
+        return true;
+    }
+};
+template <typename T> ostream &operator<<(ostream &os, SortedSet<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size(); i++) { os << *itr << (i + 1 != (int)st.size() ? " " : ""); itr++; } return os; }
+template <typename T> ostream &operator<<(ostream &os, SortedMultiSet<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size(); i++) { os << *itr << (i + 1 != (int)st.size() ? " " : ""); itr++; } return os; }
 /**
  * @brief sorted_set
  * @docs docs/data_structure/sorted_set.md

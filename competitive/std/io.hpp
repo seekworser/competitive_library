@@ -41,9 +41,18 @@ template <typename... T> int print_and_flush(const T &...args) { print(args...);
 template <typename T> void input(T &a) { cin >> a; };
 template <typename T1, typename... T2> void input(T1&a, T2 &...b) { cin >> a; input(b...); };
 #ifdef LOCAL_TEST
-template <typename T>
-void debug_func(int i, T name) { (void)i; (void)name; cerr << endl; }
+template <typename T> void debug_func(int i, const T name) { (void)i; (void)name; cerr << endl; }
 template <typename T1, typename T2, typename... T3> void debug_func(int i, const T1 &name, const T2 &a, const T3 &...b) {
+    int scope = 0;
+    for ( ; (scope != 0 || name[i] != ',') && name[i] != '\0'; i++ ) {
+        cerr << name[i];
+        if (name[i] == '(' || name[i] == '{') scope++;
+        if (name[i] == ')' || name[i] == '}') scope--;
+    }
+    cerr << ":" << a << " ";
+    debug_func(i + 1, name, b...);
+}
+template <typename T1, typename T2, typename... T3> void debug_func(int i, const T1 &name, T2 &a, T3 &...b) {
     int scope = 0;
     for ( ; (scope != 0 || name[i] != ',') && name[i] != '\0'; i++ ) {
         cerr << name[i];
@@ -55,6 +64,8 @@ template <typename T1, typename T2, typename... T3> void debug_func(int i, const
 }
 #endif
 #ifndef LOCAL_TEST
+template <typename... T>
+void debug_func(T &...) {}
 template <typename... T>
 void debug_func(const T &...) {}
 #endif
