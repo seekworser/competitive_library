@@ -1,6 +1,6 @@
 #pragma once
 #include "competitive/std/std.hpp"
-// 演算子オーバーロード（プロトタイプ宣言）
+// overload operators (prototypes)
 template <class T, class U> inline istream& operator>>(istream& is, pair<T, U>& p);
 template <class T> inline istream& operator>>(istream& is, vector<T>& v);
 template <class T, class U> inline ostream& operator<<(ostream& os, const pair<T, U>& p);
@@ -14,7 +14,7 @@ template <typename T> ostream &operator<<(ostream &os, deque<T> q);
 template <typename T> ostream &operator<<(ostream &os, stack<T> st);
 template <class T, class Container, class Compare> ostream &operator<<(ostream &os, priority_queue<T, Container, Compare> pq);
 
-// 演算子オーバーロード
+// overload operators
 template <class T, class U> inline istream& operator>>(istream& is, pair<T, U>& p) { is >> p.first >> p.second; return is; }
 template <class T> inline istream& operator>>(istream& is, vector<T>& v) { repe(x, v) is >> x; return is; }
 template <class T, class U> inline ostream& operator<<(ostream& os, const pair<T, U>& p) { os << p.first << " " << p.second; return os; }
@@ -24,7 +24,7 @@ template <typename T> ostream &operator<<(ostream &os, const set<T> &st) { auto 
 template <typename T> ostream &operator<<(ostream &os, const multiset<T> &st) { auto itr = st.begin(); for (int i = 0; i < (int)st.size(); i++) { os << *itr << (i + 1 != (int)st.size() ? " " : ""); itr++; } return os; }
 template <typename T> ostream &operator<<(ostream &os, const unordered_set<T> &st) { ll cnt = 0; for (auto &e : st) { os << e << (++cnt != (int)st.size() ? " " : ""); } return os; }
 template <typename T> ostream &operator<<(ostream &os, queue<T> q) { while (q.size()) { os << q.front() << " "; q.pop(); } return os; }
-template <typename T> ostream &operator<<(ostream &os, deque<T> q) { while (q.size()) { os << q.front() << " "; q.pop_front(); } return os; }
+template <typename T> ostream &operator<<(ostream &os, deque<T> q) { while (q.size()) { os << q.front(); q.pop_front(); if (q.size()) os << " "; } return os; }
 template <typename T> ostream &operator<<(ostream &os, stack<T> st) { while (st.size()) { os << st.top() << " "; st.pop(); } return os; }
 template <class T, class Container, class Compare> ostream &operator<<(ostream &os, priority_queue<T, Container, Compare> pq) { while (pq.size()) { os << pq.top() << " "; pq.pop(); } return os; }
 

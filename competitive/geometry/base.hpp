@@ -48,8 +48,10 @@ template<typename T> struct Point {
     T abs() const {return sqrt((*this).norm()); };
     T arg() const {return atan((*this).y / (*this).x); };
     Point<T> rotate(const double &theta) {
-        (*this).x = cos(theta) * (*this).x - sin(theta) * (*this).y;
-        (*this).y = sin(theta) * (*this).x + cos(theta) * (*this).y;
+        double nx = cos(theta) * (*this).x - sin(theta) * (*this).y;
+        double ny = sin(theta) * (*this).x + cos(theta) * (*this).y;
+        (*this).x = nx;
+        (*this).y = ny;
         return (*this);
     };
 

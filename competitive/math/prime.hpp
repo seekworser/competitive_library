@@ -1,13 +1,38 @@
 #pragma once
 #include "competitive/std/std.hpp"
-template <class T> bool is_prime(T n) {
+bool is_prime(ll n) {
+    using u128 = __uint128_t;
+    vector<u128> a_list = {2, 7, 61, 325, 9375, 28178, 450775, 9780504, 1795265022};
     if (n == 1) return false;
-    for (T i=2; i <= (T)std::sqrt(n); i++) {
-        if (n % i == 0) return false;
+    if (n == 2) return true;
+    if (n % 2 == 0) return false;
+    ll r = 0;
+    ll d = n - 1;
+    while (!(d & 1)) {
+        d >>= 1;
+        r++;
+    }
+    ll cnt = 0;
+    repe(a, a_list) {
+        if (a >= n) continue;
+        u128 res = 1;
+        ll di = d;
+        while (di > 0) {
+            if (di & 1) res = (res * a) % n;
+            if (di > 1) a = (a * a) % n;
+            di >>= 1;
+        }
+        if (res == 1) continue;
+        bool valid = false;
+        rep(i, r) {
+            if (res == n - 1) valid = true;
+            res = (res * res) % n;
+        }
+        if (!valid) return false;
     }
     return true;
-};
-//return all devisor
+}
+
 template <class T> vector<T> divisor(T n, bool sorted=true) {
     vector<T> ans(0);
     for (T i = 1; i <= (T)std::sqrt(n); i++) {

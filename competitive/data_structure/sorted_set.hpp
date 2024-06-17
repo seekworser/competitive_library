@@ -151,7 +151,7 @@ template<typename T> struct SortedSet {
             if (x < sz(a[i])) return a[i][x];
             x -= sz(a[i]);
         }
-        return -1;
+        return T();
     }
     Iterator lower_bound(T x) {
         rep(i, sz(a)) {
