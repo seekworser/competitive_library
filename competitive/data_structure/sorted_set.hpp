@@ -141,7 +141,7 @@ template<typename T> struct SortedSet {
     bool contains(T x) {
         if (_sz == 0) return false;
         int pos = find_bucket(x);
-        auto iter = lower_bound(all(a[pos]), x);
+        auto iter = std::lower_bound(all(a[pos]), x);
         return iter != a[pos].end() && *iter == x;
     }
 

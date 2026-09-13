@@ -6,11 +6,16 @@ template<typename T> struct Polygon {
     vector<Point<T>> vertex;
     int n;
     Polygon() = default;
-    Polygon(const vector<Point<T>>& p) : vertex(p), n(sz(p)) { if ((*this).area() < T(0)) reverse(all((*this).vertex)); }
+    Polygon(const vector<Point<T>>& p) : vertex(p), n(sz(p)) { if ((*this).area2() < T(0)) reverse(all((*this).vertex)); }
     T area() const {
         T rev(0);
         rep(i, (*this).n) rev += cross((*this).vertex[i], (*this).vertex[(i + 1) % (*this).n]);
         return rev / T(2);
+    }
+    T area2() const {
+        T rev(0);
+        rep(i, (*this).n) rev += cross((*this).vertex[i], (*this).vertex[(i + 1) % (*this).n]);
+        return rev;
     }
 };
 template<typename T> T area(const Polygon<T>& p) { return p.area(); }

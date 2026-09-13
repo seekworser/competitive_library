@@ -1,5 +1,6 @@
 #pragma once
 #include <bits/stdc++.h>
+#include <cassert>
 #ifndef LOCAL_TEST
 #pragma GCC target ("avx")
 #pragma GCC optimize("O3")
